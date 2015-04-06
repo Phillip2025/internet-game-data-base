@@ -1,0 +1,16 @@
+{
+  "name": "igdb",
+  "version": "1.0.0",
+  "description": "Internet Game Data Base",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FMurillo - RMorena - MArranz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.3",
+    "mongodb": "^2.0.25",
+    "xml2js": "^0.4.6"
+  }
+}
