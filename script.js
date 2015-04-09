@@ -52,49 +52,57 @@ function saveGamebyId(id) {
 	  	res.on("end", function() {
 	  		var options = {
 	    		mergeAttrs: true,
-	    		explicitArray: false,
-	    		charkey: "content"
+	    		charkey: "url"
 	    	};
 			parseString(xml, options, function(err, result) {
 				try {
 					if (result.Data.Game !== undefined) {
-						var datos = result.Data.Game;
+						var datos = result.Data.Game[0];
 				    	var json = {};
-				    	json._id = parseInt(datos.id);
-				    	json.titulo = datos.GameTitle;
+				    	json._id = parseInt(datos.id[0]);
+				    	json.gameTitle = datos.GameTitle[0];
 				    	if (datos.AlternateTitles !== undefined) {
-				    		json.tituloAlternativo = datos.AlternateTitles.title;
+				    		json.alternateTitles = datos.AlternateTitles[0].title;
 				    	}
-				    	json.idPlataforma = parseInt(datos.PlatformId);
-				    	json.plataforma = datos.Platform;
-				    	json.fechaDeLanzamiento = datos.ReleaseDate;
-				    	json.descripcion = datos.Overview;
+				    	json.platformId = parseInt(datos.PlatformId[0]);
+				    	json.platform = datos.Platform[0];
+				    	json.releaseDate = datos.ReleaseDate[0];
+				    	json.overview = datos.Overview[0];
 				    	if (datos.ESRB !== undefined) {
-				    		json.clasificacion = datos.ESRB;
+				    		json.esrb = datos.ESRB[0];
 				    	}
 				    	if (datos.Genres !== undefined) {
-				    		json.genero = datos.Genres.genre;
+				    		json.genres = datos.Genres[0].genre;
 				    	}
 				    	if (datos.Players !== undefined) {
-				    		json.jugadores = datos.Players;
+				    		json.players = datos.Players[0];
 				    	}
-				    	json.coop = datos['Co-op'];
+				    	if (datos['Co-op'] !== undefined) {
+				    		json.coop = datos['Co-op'][0];
+				    	}
 				    	if (datos.Youtube !== undefined) {
-				    		json.youtube = datos.Youtube;
+				    		json.youtube = datos.Youtube[0];
 				    	}
 				    	if (datos.Publisher !== undefined) {
-				    		json.editor = datos.Publisher;
+				    		json.publisher = datos.Publisher[0];
 				    	}
 				    	if (datos.Developer !== undefined) {
-				    		json.desarrollador = datos.Developer;
+				    		json.developer = datos.Developer[0];
 				    	}
-				    	json.puntuacion = datos.Rating;
+				    	if (datos.Rating !== undefined) {
+				    		json.rating = parseFloat(datos.Rating[0]);
+				    	}
+				    	else {
+				    		json.rating = 5;
+				    	}
+				    	json.ratings = [];
+				    	json.comments = [];
 				    	if (datos.Images !== undefined) {
-					    	json.imagenes = datos.Images;
-					    	json.urlBase = result.Data.baseImgUrl;
+					    	json.images = datos.Images[0];
+					    	json.baseUrl = result.Data.baseImgUrl[0];
 					    } 
 					    coll.insert(json);
-					    console.log("Guardado juego con id " + id);
+					    console.log("Guardado juego con id " + datos.id);
 					    total++;
 					}
 					else {
@@ -110,4 +118,4 @@ function saveGamebyId(id) {
 	}).on('error', function(e) {
 	  console.log("Error en peticion get de id " + id + ": " + e.message);
 	});
-};
+}
