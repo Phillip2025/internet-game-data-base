@@ -22,4 +22,7 @@ require('./server/routers/juegos.router')(app);
 require('./server/routers/index.router')(app);
 
 app.listen(config.port);
+
+//exports = module.exports = app;
+
 console.log(chalk.green("Escuchando en el puerto " + config.port));
