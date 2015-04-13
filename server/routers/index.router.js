@@ -1,7 +1,7 @@
-var index = require('../controladores/index.controlador');
+var index = require('../controllers/index.controller');
 
 module.exports = function(app) {
 
 	app.route("/")
-		.get(index.mostrarIndex);
+		.get(index.getIndex);
 };

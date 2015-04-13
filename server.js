@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var config = require('./config/config');
 var mongoose = require('mongoose');
-require('./server/modelos/juego');
+require('./server/models/game');
 var chalk = require('chalk');
 
 var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
@@ -18,7 +18,7 @@ mongoose.connection.on('error', function(err) {
 	}
 );
 
-require('./server/routers/juegos.router')(app);
+require('./server/routers/games.router')(app);
 require('./server/routers/index.router')(app);
 
 app.listen(config.port);
