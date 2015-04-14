@@ -1,9 +1,9 @@
 var app = angular.module('igdbAngular', ['ngRoute']);  
 
-app.controller('gameController', function ($scope, $http) {
+app.controller('gameController', function ($scope, $http, $location) {
 	$scope.formData = {};
 	
-	$http.get('/games')
+	$http.get('/latest')
 		.success(function(games) {
 			$scope.games = games;
 			console.log(games);
@@ -11,6 +11,21 @@ app.controller('gameController', function ($scope, $http) {
 		.error(function(err) {
 			console.log(err);
 		});
+
+	$scope.getGameById = function (id) {
+		console.log('Peticion a juego ' + id);
+		$http.get('/games/' + id)
+			.success(function(game) {
+				$scope.game = game;
+				$location.path('games/' + id);
+
+			})
+			.error(function(err) {
+				console.log(err);
+			})
+	}
+
+
 	
 	
 });

@@ -11,5 +11,8 @@ module.exports = function(app) {
 		.get(games.getAllGames)
 		.post(games.insert);
 
+	app.route("/latest")
+		.get(games.getLatestGames);
+
 	app.param('id', games.getGameById);
 };

@@ -81,3 +81,17 @@ exports.getAllGames = function(req, res){
 		}
 	});
 };
+
+exports.getLatestGames = function(req, res) {
+	console.log("Peticion de ultimos juegos");
+	Game.find().sort('-releaseDate').limit(10).exec(function (err, games) {
+		if(err){
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		else{
+			res.send(games);
+		}
+	});
+};

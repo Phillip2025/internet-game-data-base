@@ -37,39 +37,13 @@
 				<li><a href="#">Tu perfil</a></li>
 			</ul>
 		</nav>
-		<button class="btn btn-default" id="boton"></button>
-		<p id="texto"></p>
-		<div ng-controller="gameController" class="container">
-		<div class="checkbox" ng-repeat="game in games">  
-    		<label>
-        		<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ game.gameTitle }}
-    		</label>
-		</div> 
-			<h2>Titulo</h2>
-			<div class="row">
-				<div class="thumbnail col-md-3">
-					<img src="" alt="">
-				</div>
-				<div class="col-md-9">
-					<ul class="list-unstyled">
-						<li>Titulos Alternativos</li>
-						<li>Plataforma</li>
-						<li>Fecha de lanzamiento</li>
-						<li>Calificación</li>
-						<li>Jugadores</li>
-						<li>Cooperativo</li>
-						<li>Editor</li>
-						<li>Desarrollador</li>
-						<li>Géneros</li>
-					</ul>
-				</div>
+		<div class="container" ng-controller="gameController">
+			<h3>Ultimos juegos añadidos</h3>
+			<div ng-repeat="game in games">
+				<a href="#" ng-click="$parent.getGameById(game._id)"><p>{{game.gameTitle}}</p></a>
 			</div>
-			<p>Descripción</p>
-			<p>Imágenes</p>
-			<p>Plataformas disponibles</p>
-			<p>Comentarios</p>
-			<p>Juegos relacionados:</p>
 		</div>
+		
 	</div>
 </body>
 </html>
