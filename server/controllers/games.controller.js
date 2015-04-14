@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Game = mongoose.model('Game');
+chalk = require('chalk');
 
 exports.getGameById = function(req, res, next, id) {
 	console.log("Peticion de juego con id " + id);
@@ -10,9 +11,10 @@ exports.getGameById = function(req, res, next, id) {
 		});
 	}
 
-	Game.findById(id).exec(function(err, game) {
+	Game.findById(id, function(err, game) {
 		if (err) return next(err);
 		if (!game) {
+			console.log(chalk.red("Juego con id " + id + " no encontrado"));
 			return res.status(404).send({
 				message: 'Juego no encontrado'
 			});
@@ -23,14 +25,56 @@ exports.getGameById = function(req, res, next, id) {
 };
 
 exports.read = function(req, res) {
+	console.log("Peticion de visualizacion");
 	res.json(req.game);
 };
 
+exports.update = function(req, res) {
+	console.log("Peticion de update");
+	var game = req.game;
+	game.save(function (err) {
+		if (err) {
+			return res.status(500).send({
+				message: 'Error interno de servidor'
+			});
+		}
+		res.json(game);
+	});
+};
+
+exports.delete = function(req, res) {
+	console.log("Peticion de borrado");
+	var game = req.game;
+	game.remove(function(err) {
+		if (err) {
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(game);
+	});
+};
+
+exports.insert = function(req, res) {
+	console.log("Peticion de insercion");
+	var game = req.game;
+	game.save(function(err) {
+		if (err) {
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(game);
+	});
+};
+
 exports.getAllGames = function(req, res){
-	Game.find(function(err, games){
+	console.log("Peticion a todos los juegos");
+	Game.find().sort('-releaseDate').exec(function(err, games){
 		if(err){
-			console.log(err);
-			res.send(err);
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
 		}
 		else{
 			res.send(games);

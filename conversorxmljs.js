@@ -15,7 +15,7 @@ var coll;
 
 MongoClient.connect(url, function(err, db) {
 	dataBase = db;
-	coll = db.collection('juegos');
+	coll = db.collection('games');
 	var options = {
 	    		mergeAttrs: true,
 	    		charkey: "url"

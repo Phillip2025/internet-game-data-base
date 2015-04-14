@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 require('./server/models/game');
 var chalk = require('chalk');
 
+app.use(express.static('./public'));
+
 var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
 	if (err) {
 		console.error(chalk.red("No se pudo establecer conexion con la base de datos"));

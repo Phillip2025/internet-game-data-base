@@ -2,11 +2,14 @@ var games = require('../controllers/games.controller');
 
 module.exports = function(app) {
 
-	app.route("/game/:id")
-		.get(games.read);
+	app.route("/games/:id")
+		.get(games.read)
+		.put(games.update)
+		.delete(games.delete);
 
 	app.route("/games")
-		.get(games.getAllGames);
+		.get(games.getAllGames)
+		.post(games.insert);
 
 	app.param('id', games.getGameById);
 };
