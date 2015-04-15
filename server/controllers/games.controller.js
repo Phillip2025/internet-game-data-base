@@ -24,6 +24,27 @@ exports.getGameById = function(req, res, next, id) {
 	});
 };
 
+exports.getGameByName = function(req, res) {
+	var term = req.query.term;
+	console.log("Peticion por nombre: " + term);
+	var regex = new RegExp('^.*'+term+'.*$', "i");
+	Game.find({gameTitle: regex}).select('gameTitle').sort('rating').exec( function(err, games) {
+		if (err) {
+			return res.status(500).send({
+				message: 'Error interno de servidor'
+			});
+		}
+		if (games.length === 0) {
+			console.log(chalk.red("No hay similitudes"));
+			return res.json({
+				message: 'No hay similitudes'
+			});
+		}
+		res.json(games);
+		
+	});
+};
+
 exports.read = function(req, res) {
 	console.log("Peticion de visualizacion");
 	res.json(req.game);
