@@ -1,0 +1,6 @@
+
+<div ng-controller="gameController">
+<h3>Ultimos juegos añadidos</h3>
+			<div ng-repeat="game in games">
+				<a href="#" ng-click="$parent.getGameById(game._id)"><p>{{game.gameTitle}}</p></a>
+			</div>
