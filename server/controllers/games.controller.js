@@ -98,7 +98,7 @@ exports.getAllGames = function(req, res){
 			});
 		}
 		else{
-			res.send(games);
+			res.json(games);
 		}
 	});
 };
@@ -112,7 +112,7 @@ exports.getLatestGames = function(req, res) {
 			});
 		}
 		else{
-			res.send(games);
+			res.json(games);
 		}
 	});
 };

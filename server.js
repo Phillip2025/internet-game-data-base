@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var app = express();
 var config = require('./config/config');
 var mongoose = require('mongoose');
@@ -6,6 +7,10 @@ require('./server/models/game');
 var chalk = require('chalk');
 
 app.use(express.static('./public'));
+app.use(session({secret: config.sessionSecret, 
+	resave: true,
+    saveUninitialized: true}
+));
 
 var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
 	if (err) {
