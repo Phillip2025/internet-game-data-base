@@ -1,7 +1,7 @@
 var controllers = angular.module('controllers', []);  
 
 controllers.controller('gameController', function ($scope, $rootScope, $http, $location) {
-	$scope.formData = {};
+	//$scope.formData = {};
 	$scope.search = {};
 	
 	$http.get('/latest')
