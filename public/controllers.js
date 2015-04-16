@@ -24,16 +24,46 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		});
 	};
 
-	$scope.getGamesByName = function () {
+	$scope.getGamesByTerm = function () {
 		var term = $scope.search.term;
-		$http.get('/games/search?term=' + term)
+		$http.get('/search/' + term)
 			.success(function(games) {
 				console.log(games);
 				$rootScope.games = games;
 				$rootScope.term = term;
-				$location.path('/games/search');
+				$location.path('/search/' + term);
 			});
 	};
 
 	
+});
+
+controllers.controller('userController', function ($scope, $rootScope, $http, $location) {
+
+	$scope.credentials = {};
+
+	$scope.login = function() {
+		$http.post('/login', $scope.credentials)
+			.success(function(user) {
+				console.log("Logeado");
+				$rootScope.user = user;
+				$location.path('/');
+			})
+			.error(function (err) {
+				console.log("Error: " + err);
+			});
+	};
+
+	$scope.signUp = function() {
+		$http.post('/signup', $scope.credentials)
+			.success(function (user) {
+				console.log ("Registrado y logeado");
+				$rootScope.user = user;
+				$location.path('/');
+			})
+			.error(function (err) {
+				console.log("Error: " + err);
+			});
+	};
+
 });

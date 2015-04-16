@@ -13,7 +13,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: 'main.html',
 	})
 	.state('search', {
-		url: '/games/search',
+		url: '/search/:term',
 		templateUrl: 'search.html'
 	})
 	.state('game', {

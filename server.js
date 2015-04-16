@@ -2,15 +2,23 @@ var express = require('express');
 var session = require('express-session');
 var app = express();
 var config = require('./config/config');
+var bodyParser = require('body-parser');
+var passport = require('passport');
 var mongoose = require('mongoose');
 require('./server/models/game');
+require('./server/models/user');
+require('./config/passport')(app);
 var chalk = require('chalk');
 
 app.use(express.static('./public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(session({secret: config.sessionSecret, 
 	resave: true,
     saveUninitialized: true}
 ));
+app.use(passport.initialize());
+app.use(passport.session());
 
 var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
 	if (err) {
@@ -27,6 +35,8 @@ mongoose.connection.on('error', function(err) {
 
 require('./server/routers/games.router')(app);
 require('./server/routers/index.router')(app);
+require('./server/routers/search.router')(app);
+require('./server/routers/users.router')(app);
 
 app.listen(config.port);
 

@@ -2,11 +2,8 @@ $(function() {
   $( "#tags" ).autocomplete({
     source: function(request, response) {
       $.ajax({
-        url: "/games/search",
+        url: "search/" + request.term,
         dataType: "json",
-        data: {
-          term: request.term
-        },
       	success: function(data) {
           
       		if (data.length > 0) {

@@ -2,9 +2,6 @@ var games = require('../controllers/games.controller');
 
 module.exports = function(app) {
 
-	app.route("/games/search")
-		.get(games.getGameByName);
-
 	app.route("/games/:id")
 		.get(games.read)
 		.put(games.update)
