@@ -67,3 +67,20 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 	};
 
 });
+
+controllers.controller('adminController', function ($scope, $rootScope, $http, $location) {
+	
+	$scope.newGame = {};
+
+	$scope.newGame = function(){
+		$http.post('/games', $scope.newGame)
+			.success(function (game){
+				console.log("Nuevo juego insertado");
+				$rootScope.game = game;
+				$location.path('/games/' + game._id);
+			})
+			.error(function(err){
+				console.log("Error" + err);
+			});
+	};
+});

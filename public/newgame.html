@@ -1,0 +1,15 @@
+<div data-ng-controller="adminController">
+	<form data ng-if="" class="col-md-offset-2">
+		<input data-ng-model="newGame.id" type="text" placeholder="GameÂ´s ID" required />
+		<input data-ng-model="newGame.gameTitle" type="password" placeholder="Game Title" required />
+		<input data-ng-model="newGame.platformId" type="password" placeholder="Platform Id" required />
+		<input data-ng-model="newGame.platform" type="password" placeholder="Platform" required />
+		<input data-ng-model="newGame.releaseDate" type="password" placeholder="Realise Date" required />
+		<input data-ng-model="newGame.overview" type="password" placeholder="overview" required />
+		<input data-ng-model="newGame.Genres" type="password" placeholder="Genres" required />
+		<input data-ng-model="newGame.Players" type="password" placeholder="Players" required />
+		<input data-ng-model="newGame.Developer" type="password" placeholder="Developer" required />
+		<input data-ng-model="newGame.Rating" type="password" placeholder="Rating" required />
+		<button data-ng-click="newGame()" id="submitNewGame" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+	</form>
+</div>

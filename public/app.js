@@ -19,5 +19,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('game', {
 		url: '/games/:id',
 		templateUrl: 'game.html'
+	})
+	.state('newGame',{
+		url: 'admin/game',
+		templateUrl: 'newGame.html'
 	});
 });
