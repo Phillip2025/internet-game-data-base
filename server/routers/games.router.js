@@ -7,6 +7,7 @@ module.exports = function(app) {
 		.put(games.update)
 		.delete(games.delete);
 
+//comment
 	app.route("/games")
 		.get(games.getAllGames)
 		.post(games.insert);
