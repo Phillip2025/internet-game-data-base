@@ -1,0 +1,19 @@
+.game{
+	background-color: #00000A;
+	color: whitesmoke;
+	padding: 1%;
+}
+.img{
+	width:100%;
+	height: 500px;
+}
+.game ul{
+	padding: 1%;
+}
+span{
+	color: #33CCFF;
+	font-size: 16px;
+}
+h2{
+	color: #33CCFF;
+}

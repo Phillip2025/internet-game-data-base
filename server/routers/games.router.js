@@ -15,5 +15,8 @@ module.exports = function(app) {
 	app.route("/latest")
 		.get(games.getLatestGames);
 
+	app.route("/admin/game")
+		.post(games.insert);
+
 	app.param('id', games.getGameById);
 };

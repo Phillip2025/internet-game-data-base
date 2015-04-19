@@ -1,23 +1,30 @@
-<h2>{{game.gameTitle}}</h2>
+<div class="game col-md-10" data-ng-controller="adminController">
+	<h2>{{game.gameTitle}}</h2>
 		<div class="row">
-			<div class="thumbnail col-md-3">
-				<img src="" alt="">
+			<div class="col-md-3">
+				<img class="img"src="" alt="">
 			</div>
 			<div class="col-md-9">
 				<ul class="list-unstyled">
-					<li>Titulos Alternativos</li>
-					<li>Plataforma: {{game.platform}}</li>
-					<li>Fecha de lanzamiento: {{game.releaseDate}}</li>
-					<li>Calificación: {{game.rating}}</li>
-					<li>Jugadores: {{game.players}}</li>
-					<li>Cooperativo: {{game.coop}}</li>
-					<li>Editor: {{game.publisher}}</li>
-					<li>Desarrollador: {{game.developer}}</li>
-					<li>Géneros: {{game.genres}}</li>
+					<li><span>Titulos Alternativos</span></li>
+					<li><span>Plataforma:</span>{{game.platform}}</li>
+					<li><span>Fecha de lanzamiento:</span> {{game.releaseDate}}</li>
+					<li><span>Calificación:</span> {{game.rating}}</li>
+					<li><span>Jugadores:</span> {{game.players}}</li>
+					<li><span>Cooperativo:</span> {{game.coop}}</li>
+					<li><span>Editor:</span> {{game.publisher}}</li>
+					<li><span>Desarrollador:</span> {{game.developer}}</li>
+					<li><span>Géneros:</span> {{game.genres}}</li>
 				</ul>
 			</div>
 		</div>
 		<p>{{game.overview}}</p>
-		<p>Imágenes</p>
-		<p>Plataformas disponibles</p>
-		<p>Juegos relacionados:</p>
+		<p><span>Imágenes</span></p>
+		<p><span>Plataformas disponibles</span></p>
+		<p><span>Juegos relacionados:</span></p>
+		<ul class="list-unstyled">
+			<li><input data-ng-click="" class="col-md-12 col-sm-12 btn btn-success" type="button" value="COMENTAR ESTE JUEGO"></li>
+			<li><input data-ng-click="" class="col-md-12 col-sm-12 btn btn-primary" type="button" value="VER COMENTARIOS"></li>
+
+		</ul>
+		</div>

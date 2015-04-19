@@ -77,7 +77,8 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 			.success(function (game){
 				console.log("Nuevo juego insertado");
 				$rootScope.game = game;
-				$location.path('/games/' + game._id);
+				$location.path('/admin');
+				//$location.path('/games/' + game._id);
 			})
 			.error(function(err){
 				console.log("Error" + err);

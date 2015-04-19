@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html data-ng-app="igdbAngular" lang="en">
 <head>
@@ -6,7 +7,8 @@
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/game.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css">
@@ -23,23 +25,17 @@
 				<h1 class="col-md-6"><a href="/">Internet Game Data Base</a>
 					<small>igdb</small>
 				</h1>
-				<form class="form-inline col-md-3 col-md-offset-2">
-					<div class="ui-widget">
-						<label for="tags">Tags: </label>
-						<input id="tags" data-ng-model="search.term" type="text" placeholder="Busca tu juego"/>
-					</div>
-					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-				</form>
 			</div>
 		</header>
-		<nav class="container navbar navbar-default">
-			<ul class="nav nav-tabs">
-				<li><a href="#">Juegos</a></li>
+		<nav class="container navbar">
+			<ul class="nav nav-tabs"  data-ng-controller="userController">
+				<li><a href="/">Home</a></li>
 				<li><a href="#">Plataformas</a></li>
 				<li><a href="#">Editores</a></li>
 				<li><a href="#">Desarrolladores</a></li>
 				<li><a href="#">Tu perfil</a></li>
-				<li data-ng-controller="userController">
+				<li><a data ng-if="$root.user._id == 'admin'" href="/admin">ADMIN</a></li>
+				<li>
 				<span data ng-if="$root.user">Logeado</span>
 				<form data ng-if="!$root.user" class="form-inline col-md-offset-2">
 					<input data-ng-model="credentials.id" type="text" placeholder="Nombre de usuario" required />
@@ -49,7 +45,14 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="container" data-ui-view>
+		<form data-ng-controller="gameController" class="form-inline col-md-3 col-md-offset-7">
+					<div class="ui-widget">
+						<label for="tags">Tags: </label>
+						<input id="tags" data-ng-model="search.term" type="text" placeholder="Busca tu juego"/>
+					</div>
+					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				</form>
+		<div class="container col-md-12" data-ui-view>
 		</div>
 	</div>
 </body>

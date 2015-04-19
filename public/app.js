@@ -21,7 +21,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: 'game.html'
 	})
 	.state('newGame',{
-		url: 'admin/game',
-		templateUrl: 'newGame.html'
+		url: '/admin',
+		templateUrl: 'newgame.html'
 	});
 });

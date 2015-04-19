@@ -5,8 +5,8 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017/igdb';
 var id = 1;
 var getsPorCiclo = 50;
-var tiempoEntreCiclos = 2000;
-var idLimite = 27000;
+var tiempoEntreCiclos = 1000;
+var idLimite = 500;
 var total = 0;
 var dataBase;
 var coll;
@@ -67,9 +67,7 @@ function saveGamebyId(id) {
 				    	json.platformId = parseInt(datos.PlatformId[0]);
 				    	json.platform = datos.Platform[0];
 				    	json.releaseDate = datos.ReleaseDate[0];
-				    	if (datos.Overview !== undefined) {
-				    		json.overview = datos.Overview[0];
-				    	}
+				    	json.overview = datos.Overview[0];
 				    	if (datos.ESRB !== undefined) {
 				    		json.esrb = datos.ESRB[0];
 				    	}
