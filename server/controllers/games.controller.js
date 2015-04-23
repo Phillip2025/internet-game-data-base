@@ -116,3 +116,31 @@ exports.getLatestGames = function(req, res) {
 		}
 	});
 };
+
+exports.addComment = function (req, res) {
+	console.log("Añadiendo comentario de " + req.user._id + " para el juego " + req.game._id);
+	var game = req.game;
+	game.comments.push(req.body);
+	game.save(function(err) {
+		if (err) {
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(game);
+	});
+};
+
+exports.addRating = function (req, res) {
+	console.log("Añadiendo rating de " + req.user._id + " para el juego " + req.game._id);
+	var game = req.game;
+	game.ratings.push(req.body);
+	game.save(function(err) {
+		if (err) {
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(game);
+	});
+};

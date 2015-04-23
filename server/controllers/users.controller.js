@@ -54,3 +54,25 @@ exports.signUp = function(req, res) {
 		}
 	});
 };
+
+exports.requiresLogin = function(req, res, next) {
+	if (!req.isAuthenticated()) {
+		return res.status(401).send({
+			message: 'El usuario no esta logeado'
+		});
+	}
+	else {
+		next();
+	}
+};
+
+exports.hasAuthorization = function(req, res, next) {
+	if (req.user.role === 'Admin') {
+		next();
+	}
+	 else {
+		return res.status(403).send({
+			message: 'El usuario no esta autorizado'
+		});
+	}
+};

@@ -34,9 +34,9 @@
 				<li><a href="#">Editores</a></li>
 				<li><a href="#">Desarrolladores</a></li>
 				<li><a href="#">Tu perfil</a></li>
-				<li><a data ng-if="$root.user._id == 'admin'" href="/admin">ADMIN</a></li>
+				<li><a data ng-if="$root.user.role == 'Admin'" data-ng-click="newGameView()" href="#">Añadir juego</a></li>
 				<li>
-				<span data ng-if="$root.user">Logeado</span>
+				<span data ng-if="$root.user">Bienvenido {{user._id}}</span>
 				<form data ng-if="!$root.user" class="form-inline col-md-offset-2">
 					<input data-ng-model="credentials.id" type="text" placeholder="Nombre de usuario" required />
 					<input data-ng-model="credentials.password" type="password" placeholder="Password" required />

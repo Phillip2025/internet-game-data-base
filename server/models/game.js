@@ -11,6 +11,9 @@ var GameSchema = new Schema({
 		trim: true,
 		required: 'Title cannot be blank'
 	},
+	alternateTitles: [{
+		type: String
+	}],
 	platformId: {
 		type: Number,
 	},
@@ -24,7 +27,105 @@ var GameSchema = new Schema({
 	},
 	overview: {
 		type: String
-	}
+	},
+	esrb: {
+		type: String
+	},
+	genres: [{
+		type: String
+	}],
+	players: {
+		type: String
+	},
+	coop: {
+		type: String
+	},
+	similar: [{ 
+		_id: Number,
+	 	platformId: Number 
+	}],
+	youtube: {
+		type: String
+	},
+	publisher: {
+		type: String
+	},
+
+	rating: {
+		type: Number
+	},
+	ratings: [{ 
+		_id: String,
+	 	rating: Number
+	}],
+	comments: [{ 
+		_id: String,
+	 	picture: String,
+	 	text: String 
+	}],
+	images: [{ 
+		fanart: [{
+			original: [{
+				url: String,
+				width: [{
+					type: Number
+				}],
+				height: [{
+					type: Number
+				}]
+			}],
+			thumb: [{
+				type: String
+			}]
+		}],
+	 	boxart: [{
+	 		url: String,
+	 		side: [{
+	 			type: String
+	 		}],
+	 		width: [{
+				type: Number
+			}],
+			height: [{
+				type: Number
+			}],
+			thumb: [{
+				type: String
+			}]
+	 	}],
+	 	banner: [{
+			url: String,
+			width: [{
+				type: Number
+			}],
+			height: [{
+				type: Number
+			}]
+		}],
+		screenshot: [{
+			original: [{
+				url: String,
+				width: [{
+					type: Number
+				}],
+				height: [{
+					type: Number
+				}]
+			}],
+			thumb: [{
+				type: String
+			}]
+		}],
+		clearlogo: [{
+			url: String,
+			width: [{
+				type: Number
+			}],
+			height: [{
+				type: Number
+			}]
+		}],
+	}]
 });
 
 mongoose.model('Game', GameSchema);

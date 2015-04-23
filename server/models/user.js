@@ -9,6 +9,10 @@ var UserSchema = new Schema({
 	password: {
 		type: String,
 		required: 'Password no puede ser nulo'
+	},
+	role: {
+		type: String,
+		default: 'User'
 	}
 });
 
