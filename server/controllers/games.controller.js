@@ -78,9 +78,11 @@ exports.delete = function(req, res) {
 
 exports.insert = function(req, res) {
 	console.log("Peticion de insercion");
-	var game = req.game;
+	var game = new Game(req.body);
+	console.log(game);
 	game.save(function(err) {
 		if (err) {
+			console.log(err);
 			return res.status(500).send({
 				message: 'Error interno del servidor'
 			});
@@ -105,7 +107,7 @@ exports.getAllGames = function(req, res){
 
 exports.getLatestGames = function(req, res) {
 	console.log("Peticion de ultimos juegos");
-	Game.find().sort('-releaseDate').limit(10).exec(function (err, games) {
+	Game.find().sort('releaseDate').limit(10).exec(function (err, games) {
 		if(err){
 			return res.status(500).send({
 				message: 'Error interno del servidor'

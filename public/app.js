@@ -25,3 +25,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: 'newgame.html'
 	});
 });
+
+app.constant('esrbENG', 
+	['T - Teen','M - Mature','E - Everyone','E10+ - Everyone 10+','RP - Rating Pending','EC - Early Childhood']
+);
+
+app.constant('esrbESP',
+	['16','18','TP','10','RP','3']
+);

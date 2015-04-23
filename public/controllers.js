@@ -1,7 +1,7 @@
 var controllers = angular.module('controllers', []);  
 
-controllers.controller('gameController', function ($scope, $rootScope, $http, $location) {
-	//$scope.formData = {};
+controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP) {
+	
 	$scope.search = {};
 	$scope.comment = {};
 	
@@ -103,6 +103,7 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 	};
 
 	$scope.addGame = function(){
+		console.log(JSON.stringify($scope.newGame));
 		$http.post('/games', $scope.newGame)
 			.success(function (game){
 				console.log("Nuevo juego insertado");

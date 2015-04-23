@@ -4,9 +4,9 @@ var MongoClient = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/igdb';
 var id = 1;
-var getsPorCiclo = 50;
+var getsPorCiclo = 40;
 var tiempoEntreCiclos = 1000;
-var idLimite = 500;
+var idLimite = 27000;
 var total = 0;
 var dataBase;
 var coll;
@@ -25,6 +25,9 @@ function procesar(id, totalAProcesar, callback) {
 	if (id > idLimite) {
 		dataBase.close(function() {
 			console.log("Total de juegos procesados: " + total);
+		    console.log(totalESRB);
+		    console.log(totalGenres);
+		    console.log(totalPlayers);
 			process.exit(0);
 		});
 	}
@@ -77,7 +80,7 @@ function saveGamebyId(id) {
 				    	}
 				    	if (datos.ESRB) {
 				    		json.esrb = datos.ESRB[0];
-				    		if (!totalESRB[json.esrb]) {
+				    		if (totalESRB.indexOf(json.esrb) == -1) {
 				    			totalESRB.push(json.esrb);
 				    		}
 				    	}
@@ -85,14 +88,14 @@ function saveGamebyId(id) {
 				    		json.genres = datos.Genres[0].genre;
 				    		for (var j = 0; j< json.genres.length; j++) {
 				    			gen = json.genres[j];
-				    			if (!totalGenres[gen]) {
+				    			if (totalGenres.indexOf(gen) == -1) {
 				    				totalGenres.push(gen);
 				    			}
 				    		}
 				    	}
 				    	if (datos.Players) {
 				    		json.players = datos.Players[0];
-				    		if (!totalPlayers[json.players]) {
+				    		if (totalPlayers.indexOf(json.players) == -1) {
 				    			totalPlayers.push(json.players);
 				    		}
 				    	}
@@ -132,9 +135,6 @@ function saveGamebyId(id) {
 					    coll.insert(json);
 					    console.log("Guardado juego con id " + datos.id);
 					    total++;
-					    console.log(totalESRB);
-					    console.log(totalGenres);
-					    console.log(totalPlayers);
 					}
 					else {
 						console.log("No se encontro datos para el id " + id);

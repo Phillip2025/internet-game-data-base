@@ -20,7 +20,7 @@ var GameSchema = new Schema({
 	platform: {
 		type: String,
 		trim: true,
-		required: "Falta plataforma"
+		required: 'Falta plataforma'
 	},
 	releaseDate: {
 		type: Date
@@ -29,16 +29,19 @@ var GameSchema = new Schema({
 		type: String
 	},
 	esrb: {
-		type: String
+		type: String,
+		enum : ['T - Teen', 'M - Mature', 'E - Everyone', 'E10+ - Everyone 10+', 'RP - Rating Pending', 'EC - Early Childhood']
 	},
 	genres: [{
 		type: String
 	}],
 	players: {
-		type: String
+		type: String,
+		enum: ['1', '2', '3', '4+']
 	},
 	coop: {
 		type: String
+		enum: ['Yes', 'No']
 	},
 	similar: [{ 
 		_id: Number,
