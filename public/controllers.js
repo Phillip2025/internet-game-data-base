@@ -123,6 +123,7 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 	};
 
 	$scope.addGame = function(){
+		console.log(JSON.stringify($scope.newGame));
 		$http.post('/games', $scope.newGame)
 		.success(function (game){
 			console.log("Nuevo juego insertado");
