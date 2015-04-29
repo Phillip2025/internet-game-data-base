@@ -30,12 +30,12 @@
 		</header>
 		<nav class="container navbar col-md-11">
 			<ul class="nav nav-tabs"  data-ng-controller="userController">
-				<li><a href="#">Juegos</a></li>
+				<li><a href="#" ui-sref="home">Home</a></li>
 				<li><a href="#">Plataformas</a></li>
 				<li><a href="#">Editores</a></li>
 				<li><a href="#">Desarrolladores</a></li>
 				<li><a href="#">Tu perfil</a></li>
-				<li><a data ng-if="$root.user.role == 'Admin'" data-ng-click="adminPanel()" href="#">Administrador</a></li>
+				<li><a data ng-if="$root.user.role == 'Admin'" ui-sref="newgame" href="#">Administrador</a></li>
 				<li>
 				<span data ng-if="$root.user">Bienvenido {{user._id}}</span>
 				<form data ng-if="!$root.user" class="form-inline col-md-offset-2">

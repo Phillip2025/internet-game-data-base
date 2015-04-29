@@ -2,11 +2,12 @@
 	<h2>{{game.gameTitle}}</h2>
 	<div class="row">
 		<div class="col-md-3">
-			<img class="img"src="" alt="">
+			<img ng-src="http://thegamesdb.net/banners/{{game.images.boxart[1].url}}" alt="Portada de:{{game.gameTitle}}">
 		</div>
 		<div class="col-md-9">
 		<div data-ng-controller="userController">
-			<a data ng-if="$root.user.role == 'Admin'" data-ng-click="editGameView(game._id)" href="#">Editar juego</a>
+			<a class="btn btn-success" data ng-if="$root.user.role == 'Admin'" data-ng-click="editGameView(game._id)" href="#">Editar juego</a>
+			<a class="btn btn-warning" data ng-if="$root.user.role == 'Admin'" data-ng-click="deleteGameView(game._id)" href="#">Borrar juego</a>
 		</div>
 			<ul class="list-unstyled">
 				<li data-ng-if="game.alternateTitles.length !== 0"><span>Titulos Alternativos:</span>
