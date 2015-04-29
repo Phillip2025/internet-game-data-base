@@ -113,6 +113,7 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 		$location.path('/home');
 	};
 
+
 });
 
 controllers.controller('adminController', function ($scope, $rootScope, $http, $location) {

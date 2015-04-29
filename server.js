@@ -5,20 +5,12 @@ var config = require('./config/config');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var mongoose = require('mongoose');
-require('./server/models/game');
-require('./server/models/user');
-require('./config/passport')(app);
+var ai = require('mongoose-auto-increment');
 var chalk = require('chalk');
 
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(session({secret: config.sessionSecret, 
-	resave: true,
-    saveUninitialized: true}
-));
-app.use(passport.initialize());
-app.use(passport.session());
 
 var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
 	if (err) {
@@ -27,11 +19,24 @@ var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
 		process.exit(-1);
 	}
 });
-mongoose.connection.on('error', function(err) {
+var connection = mongoose.connection.on('error', function(err) {
 	console.error(chalk.red("Error de conexion en base de datos: " + err));
 	process.exit(-1);
 	}
 );
+
+ai.initialize(connection);
+
+require('./server/models/game');
+require('./server/models/user');
+require('./config/passport')(app);
+
+app.use(session({secret: config.sessionSecret, 
+	resave: true,
+    saveUninitialized: true}
+));
+app.use(passport.initialize());
+app.use(passport.session());
 
 require('./server/routers/games.router')(app);
 require('./server/routers/index.router')(app);

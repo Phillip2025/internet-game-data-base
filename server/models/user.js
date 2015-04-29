@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ai = require('mongoose-auto-increment');
 
 var UserSchema = new Schema({
-	_id: {
+	user: {
 		type: String,
-		required: 'Id no puede ser nulo'
+		required: 'Nombre no puede ser nulo'
 	},
 	password: {
 		type: String,
@@ -16,4 +17,5 @@ var UserSchema = new Schema({
 	}
 });
 
+UserSchema.plugin(ai.plugin, 'User');
 module.exports = mongoose.model('User', UserSchema);

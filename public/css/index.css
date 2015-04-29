@@ -37,3 +37,8 @@ nav{
 a{
 	color:white;
 }
+
+div [ui-view] {
+	background-color: white;
+	border: 1px solid black;
+}

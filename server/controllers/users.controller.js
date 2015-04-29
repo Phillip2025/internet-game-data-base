@@ -6,7 +6,7 @@ chalk = require('chalk');
 exports.logIn = function(req, res, next) {
 	console.log("Usuario logeando");
 	console.log("body: " + JSON.stringify(req.body));
-	console.log("id: " + req.body.id);
+	console.log("id: " + req.body.user);
 	console.log("pass: " + req.body.password);
 	passport.authenticate('local', function(err, user, info) {
 		console.log("Entrando en autenticacion");
@@ -20,6 +20,8 @@ exports.logIn = function(req, res, next) {
 			req.login(user, function(err) {
 				//req.session = user._id;
 				console.log("Usuario en la request");
+				console.log("ID: " + user._id);
+				console.log("Nombre: " + user.user);
 				if (err) {
 					res.status(400).send(err);
 				} else {

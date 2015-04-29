@@ -29,7 +29,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: 'newgame.html'
 	})
 	.state('updategame',{
-		url:'/admin/updategame',
+		url:'/edit/:id',
 		templateUrl:'updategame.html'
 	});
 });
