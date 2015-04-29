@@ -40,7 +40,7 @@ var GameSchema = new Schema({
 		enum: ['1', '2', '3', '4+']
 	},
 	coop: {
-		type: String
+		type: String,
 		enum: ['Yes', 'No']
 	},
 	similar: [{ 
