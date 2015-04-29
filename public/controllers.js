@@ -1,7 +1,7 @@
 var controllers = angular.module('controllers', []);  
 
 controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP) {
-	console.log("Coge todos los  juegos")
+	
 	$scope.search = {};
 	$scope.comment = {};
 	
