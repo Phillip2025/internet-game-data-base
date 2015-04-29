@@ -1,7 +1,7 @@
 var controllers = angular.module('controllers', []);  
 
 controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP) {
-	
+	console.log("Coge todos los  juegos")
 	$scope.search = {};
 	$scope.comment = {};
 	
@@ -87,6 +87,10 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 				console.log("Error: " + err);
 			});
 	};
+
+	$scope.createUser = function(){
+		$location.path('/user')
+	}
 
 	$scope.newGameView = function() {
 		$location.path('/admin/newgame');

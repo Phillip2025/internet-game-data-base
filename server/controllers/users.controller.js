@@ -33,7 +33,7 @@ exports.logIn = function(req, res, next) {
 exports.signUp = function(req, res) {
 	console.log("Usuario registrandose");
 	var user = new User(req.body);
-	console.log(user.id);
+	console.log(user._id);
 	console.log(user.password);
 	// Then save the user
 	user.save(function(err, user) {

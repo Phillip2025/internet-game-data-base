@@ -34,6 +34,7 @@
 				<li><a href="#">Editores</a></li>
 				<li><a href="#">Desarrolladores</a></li>
 				<li><a href="#">Tu perfil</a></li>
+				<li><a href="#" data ng-if="!$root.user" data-ng-click="createUser()">Registrarse</a></li>
 				<li><a data ng-if="$root.user.role == 'Admin'" data-ng-click="newGameView()" href="#">Añadir juego</a></li>
 				<li>
 				<span data ng-if="$root.user">Bienvenido {{user._id}}</span>

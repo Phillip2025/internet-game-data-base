@@ -23,7 +23,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('newgame',{
 		url: '/admin/newgame',
 		templateUrl: 'newgame.html'
-	});
+	})
+	.state('newuser',{
+		url: '/user',
+		templateUrl: 'newuser.html'
+	})
 });
 
 app.constant('esrbENG', 
