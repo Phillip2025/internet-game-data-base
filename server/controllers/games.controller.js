@@ -24,33 +24,12 @@ exports.getGameById = function(req, res, next, id) {
 	});
 };
 
-exports.getGameByName = function(req, res) {
-	var term = req.query.term;
-	console.log("Peticion por nombre: " + term);
-	var regex = new RegExp('^.*'+term+'.*$', "i");
-	Game.find({gameTitle: regex}).select('gameTitle').sort('rating').exec( function(err, games) {
-		if (err) {
-			return res.status(500).send({
-				message: 'Error interno de servidor'
-			});
-		}
-		if (games.length === 0) {
-			console.log(chalk.red("No hay similitudes"));
-			return res.json({
-				message: 'No hay similitudes'
-			});
-		}
-		res.json(games);
-		
-	});
-};
-
 exports.read = function(req, res) {
 	console.log("Peticion de visualizacion");
 	res.json(req.game);
 };
 
-exports.update = function(req, res) {
+exports.updateGame = function(req, res) {
 	console.log("Peticion de update");
 	var game = req.game;
 	game.save(function (err) {
@@ -63,7 +42,7 @@ exports.update = function(req, res) {
 	});
 };
 
-exports.delete = function(req, res) {
+exports.deleteGame = function(req, res) {
 	console.log("Peticion de borrado");
 	var game = req.game;
 	game.remove(function(err) {
@@ -76,7 +55,7 @@ exports.delete = function(req, res) {
 	});
 };
 
-exports.insert = function(req, res) {
+exports.insertGame = function(req, res) {
 	console.log("Peticion de insercion");
 	var game = new Game(req.body);
 	console.log(game);
@@ -94,20 +73,6 @@ exports.insert = function(req, res) {
 exports.getAllGames = function(req, res){
 	console.log("Peticion a todos los juegos");
 	Game.find().sort('-releaseDate').exec(function(err, games){
-		if(err){
-			return res.status(500).send({
-				message: 'Error interno del servidor'
-			});
-		}
-		else{
-			res.json(games);
-		}
-	});
-};
-
-exports.getLatestGames = function(req, res) {
-	console.log("Peticion de ultimos juegos");
-	Game.find().sort('releaseDate').limit(10).exec(function (err, games) {
 		if(err){
 			return res.status(500).send({
 				message: 'Error interno del servidor'

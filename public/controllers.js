@@ -5,13 +5,17 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 	$scope.search = {};
 	$scope.comment = {};
 	
-	$http.get('/latest')
-	.success(function(games) {
-		$scope.games = games;
-	})
-	.error(function(err) {
-		console.log(err);
-	});
+	$scope.getLatestGames = function () {
+		console.log("Juegos nuevos");
+		$http.get('/latest')
+		.success(function(games) {
+			$scope.games = games;
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	};
+	
 
 	$scope.getGameById = function (id) {
 		$http.get('/games/' + id)
@@ -32,8 +36,20 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			console.log(games);
 			$rootScope.games = games;
 			$rootScope.term = term;
+			$rootScope.letter = undefined;
 			$location.path('/search/' + term);
 		});
+	};
+
+	$scope.getGamesByLetter = function () {
+		var letter = $scope.search.letter;
+		$http.get('search/letter/' + letter)
+			.success(function(games) {
+				$rootScope.games = games;
+				$rootScope.letter = letter;
+				$rootScope.term = undefined;
+				$location.path('/search/' + letter);
+			});
 	};
 
 	$scope.addComment = function() {
@@ -56,10 +72,6 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			});
 		}
 	};
-	$scope.home = function(){
-		$location.path('/home');
-	};
-
 	
 });
 

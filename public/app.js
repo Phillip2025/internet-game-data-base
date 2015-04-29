@@ -9,7 +9,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 	$stateProvider
 	.state('home', {
-		url: '/home',
+		url: '/',
 		templateUrl: 'main.html',
 	})
 	.state('search', {
