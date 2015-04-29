@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/game.css">
+	<link rel="stylesheet" href="css/main.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css">
@@ -22,20 +23,24 @@
 	<div class="container">
 		<header class="container">
 			<div data-ng-controller="gameController" class="row vertical-align">
-				<h1 class="col-md-6"><a href="/">Internet Game Data Base</a>
+				<h1 class="col-md-6"><a href="#" ui-sref="home">Internet Game Data Base</a>
 					<small>igdb</small>
 				</h1>
 			</div>
 		</header>
-		<nav class="container navbar">
+		<nav class="container navbar col-md-11">
 			<ul class="nav nav-tabs"  data-ng-controller="userController">
-				<li><a href="/">Home</a></li>
+				<li><a href="#">Juegos</a></li>
 				<li><a href="#">Plataformas</a></li>
 				<li><a href="#">Editores</a></li>
 				<li><a href="#">Desarrolladores</a></li>
 				<li><a href="#">Tu perfil</a></li>
+<<<<<<< HEAD
 				<li><a href="#" data ng-if="!$root.user" data-ng-click="createUser()">Registrarse</a></li>
 				<li><a data ng-if="$root.user.role == 'Admin'" data-ng-click="newGameView()" href="#">Añadir juego</a></li>
+=======
+				<li><a data ng-if="$root.user.role == 'Admin'" data-ng-click="adminPanel()" href="#">Administrador</a></li>
+>>>>>>> 4c8e07f45630e19a4befd95c0094b4f852e9695d
 				<li>
 				<span data ng-if="$root.user">Bienvenido {{user._id}}</span>
 				<form data ng-if="!$root.user" class="form-inline col-md-offset-2">
@@ -46,14 +51,14 @@
 				</li>
 			</ul>
 		</nav>
-		<form data-ng-controller="gameController" class="form-inline col-md-3 col-md-offset-7">
+		<form data-ng-controller="gameController" class="buscador form-inline col-md-3 col-md-offset-8">
 					<div class="ui-widget">
 						<label for="tags">Tags: </label>
 						<input id="tags" data-ng-model="search.term" type="text" placeholder="Busca tu juego"/>
 					</div>
 					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 				</form>
-		<div class="container col-md-12" data-ui-view>
+		<div class="swifter container col-md-12" data-ui-view>
 		</div>
 	</div>
 </body>

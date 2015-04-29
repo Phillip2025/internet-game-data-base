@@ -12,16 +12,12 @@ module.exports = function(app) {
 
 	app.route("/games/:id")
 		.get(games.read)
-		.put(user.requiresLogin, user.hasAuthorization, games.update)
-		.delete(user.requiresLogin, user.hasAuthorization, games.delete);
+		.put(user.requiresLogin, user.hasAuthorization, games.updateGame)
+		.delete(user.requiresLogin, user.hasAuthorization, games.deleteGame);
 
-//comment
 	app.route("/games")
 		.get(games.getAllGames)
-		.post(user.requiresLogin, user.hasAuthorization, games.insert);
-
-	app.route("/latest")
-		.get(games.getLatestGames);
+		.post(user.requiresLogin, user.hasAuthorization, games.insertGame);
 
 	app.param('id', games.getGameById);
 };

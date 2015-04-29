@@ -1,6 +1,19 @@
 
-<div ng-controller="gameController">
+<div ng-controller="gameController" data-ng-init="getLatestGames()">
 	<h3>Ultimos juegos añadidos</h3>
 	<div ng-repeat="game in games">
-		<a href="#" ng-click="$parent.getGameById(game._id)"><p>{{game.gameTitle}}</p></a>
+		<a href="#" ng-click="$parent.getGameById(game._id)">
+			<div class="item-game col-md-2">
+				<div class="col-md-12" ng-repeat="image in game.images">
+					<div class="col-md-12" ng-repeat="boxart in image.boxart">
+						<div class="col-md-12" ng-if="boxart.side == 'front'"><img class="12" data-ng-src="{{boxart.url}}"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<p>{{game.gameTitle}}</p>
+				</div>
+		</a>
 	</div>
+	<div class="col-md-1"></div>
+</div>

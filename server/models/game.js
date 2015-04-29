@@ -66,7 +66,7 @@ var GameSchema = new Schema({
 	 	picture: String,
 	 	text: String 
 	}],
-	images: [{ 
+	images: { 
 		fanart: [{
 			original: [{
 				url: String,
@@ -128,7 +128,7 @@ var GameSchema = new Schema({
 				type: Number
 			}]
 		}],
-	}]
+	}
 });
 
 mongoose.model('Game', GameSchema);
