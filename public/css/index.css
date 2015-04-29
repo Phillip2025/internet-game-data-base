@@ -1,12 +1,39 @@
+.cuerpo{
+
+#F36E00
+
+#1A9300
+#3CE21A
+
+#2B4FC6
+#0D2677
+}
+
 body{
-	background-color: black;
+	background-color:#F36E00;
+	background-size: 150%;
+	background-attachment: fixed;
+    background-repeat: no-repeat;
+	background-image: url('../img/fondo-body.jpg');
+}
+.buscador{
+	padding: 1%;
+	border:2px solid #E7DAFD;
+	background-color: #F36E00;
+	border-radius: 4px;
 }
 ul{
 	padding: 1%;
 }
+.navbar{
+	border:2px solid #E7DAFD;
+}
 nav{
-	background-color: #00000A;
+	background-color: #F36E00;	
 }
 .nav-tabs{
 	border: none;
+}
+a{
+	color:white;
 }
