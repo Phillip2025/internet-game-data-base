@@ -1,10 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ai = require('mongoose-auto-increment');
 
 var GameSchema = new Schema({
-	_id: {
-		type: Number
-	},
 	gameTitle: {
 		type: String,
 		default: '',
@@ -55,7 +53,8 @@ var GameSchema = new Schema({
 	},
 
 	rating: {
-		type: Number
+		type: Number,
+		default: 5
 	},
 	ratings: [{ 
 		_id: String,
@@ -131,4 +130,5 @@ var GameSchema = new Schema({
 	}
 });
 
+GameSchema.plugin(ai.plugin, {model: 'Game', startAt: 27000});
 mongoose.model('Game', GameSchema);

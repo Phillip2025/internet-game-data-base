@@ -21,40 +21,39 @@
 </head>
 <body>
 	<div class="container">
-		<header class="container">
-			<div data-ng-controller="gameController" class="row vertical-align">
-				<h1 class="col-md-6"><a href="#" ui-sref="home">Internet Game Data Base</a>
+		<header class="row vertical-align">
+			<div data-ng-controller="gameController" class="col-md-6">
+				<h1><a href="#" ui-sref="home">Internet Game Data Base</a>
 					<small>igdb</small>
 				</h1>
 			</div>
+			<form data-ng-controller="gameController" class="buscador form-inline col-md-4">
+				<div class="ui-widget">
+					<input id="tags" data-ng-model="search.term" type="text" placeholder="Busca tu juego"/>
+					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				</div>
+			</form>
 		</header>
-		<nav class="container navbar col-md-11">
+		<nav class="navbar col-md-11">
 			<ul class="nav nav-tabs"  data-ng-controller="userController">
-				<li><a href="#" ui-sref="home">Home</a></li>
-				<li><a href="#">Plataformas</a></li>
-				<li><a href="#">Editores</a></li>
-				<li><a href="#">Desarrolladores</a></li>
-				<li><a href="#">Tu perfil</a></li>
+				<li ui-sref-active="active"><a href="#">Juegos</a></li>
+				<li ui-sref-active="active"><a href="#">Plataformas</a></li>
+				<li ui-sref-active="active"><a href="#">Editores</a></li>
+				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
+				<li ui-sref-active="active"><a href="#">Tu perfil</a></li>
+				<li><a data ng-if="$root.user.role == 'Admin'" ui-sref="newgame" href="#">Administrador</a></li>
 				<li><a href="#" data ng-if="!$root.user" data-ng-click="createUser()">Registrarse</a></li>
-				<li><a data ng-if="$root.user.role == 'Admin'" data-ng-click="newGameView()" href="#">Añadir juego</a></li>
 				<li>
-				<span data ng-if="$root.user">Bienvenido {{user._id}}</span>
+				<span data ng-if="$root.user">Bienvenido {{user.user}}</span>
 				<form data ng-if="!$root.user" class="form-inline col-md-offset-2">
-					<input data-ng-model="credentials.id" type="text" placeholder="Nombre de usuario" required />
+					<input data-ng-model="credentials.user" type="text" placeholder="Nombre de usuario" required />
 					<input data-ng-model="credentials.password" type="password" placeholder="Password" required />
 					<button data-ng-click="login()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 				</form>
 				</li>
 			</ul>
 		</nav>
-		<form data-ng-controller="gameController" class="buscador form-inline col-md-3 col-md-offset-8">
-					<div class="ui-widget">
-						<label for="tags">Tags: </label>
-						<input id="tags" data-ng-model="search.term" type="text" placeholder="Busca tu juego"/>
-					</div>
-					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-				</form>
-		<div class="swifter container col-md-12" data-ui-view>
+		<div class="swifter col-md-12" ui-view>
 		</div>
 	</div>
 </body>

@@ -8,13 +8,13 @@ module.exports = function(app) {
 
 	// Use local strategy
 	passport.use(new LocalStrategy({
-			usernameField: 'id',
+			usernameField: 'user',
 			passwordField: 'password'
 		},
-		function(id, password, done) {
+		function(user, password, done) {
 			console.log("Entrando en la estrategia local");
-			console.log("Buscando al user" + id);
-			User.findById(id, function(err, user) {
+			console.log("Buscando al user" + user);
+			User.findOne({"user" : user}, function(err, user) {
 				if (err) {
 					console.log("Error en la estrategia");
 					return done(err);
