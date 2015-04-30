@@ -57,11 +57,13 @@ var GameSchema = new Schema({
 		default: 5
 	},
 	ratings: [{ 
-		_id: String,
+		_id: Number,
+		user: String,
 	 	rating: Number
 	}],
 	comments: [{ 
-		_id: String,
+		_id: Number,
+		user: String,
 	 	picture: String,
 	 	text: String 
 	}],

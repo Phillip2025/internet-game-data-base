@@ -4,5 +4,6 @@ module.exports = function(app) {
 
 	app.post('/login', users.logIn);
 	app.post('/signup', users.signUp);
+	app.get('/logout', users.logout);
 	//app.param('id', games.getGameById);
 };

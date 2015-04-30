@@ -19,5 +19,7 @@ module.exports = function(app) {
 		.get(games.getAllGames)
 		.post(user.requiresLogin, user.hasAuthorization, games.insertGame);
 
+	app.get('/count', games.getCount);
+
 	app.param('id', games.getGameById);
 };

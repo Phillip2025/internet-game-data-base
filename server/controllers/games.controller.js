@@ -10,7 +10,6 @@ exports.getGameById = function(req, res, next, id) {
 			message: 'Id invalido'
 		});
 	}
-
 	Game.findById(id, function(err, game) {
 		if (err) return next(err);
 		if (!game) {
@@ -21,6 +20,17 @@ exports.getGameById = function(req, res, next, id) {
 		}
 		req.game = game;
 		next();
+	});
+};
+
+exports.getCount = function(req, res) {
+	Game.count(function (err, count) {
+		if (err) {
+			return res.status(500).send({
+				message: 'Error interno de servidor'
+			});
+		}
+		res.json({'count': count});
 	});
 };
 
@@ -87,6 +97,7 @@ exports.getAllGames = function(req, res){
 exports.addComment = function (req, res) {
 	console.log("Añadiendo comentario de " + req.user._id + " para el juego " + req.game._id);
 	var game = req.game;
+	console.log(req.body);
 	game.comments.push(req.body);
 	game.save(function(err) {
 		if (err) {
@@ -99,7 +110,7 @@ exports.addComment = function (req, res) {
 };
 
 exports.addRating = function (req, res) {
-	console.log("Añadiendo rating de " + req.user._id + " para el juego " + req.game._id);
+	console.log("Añadiendo rating de " + req.user.name + " para el juego " + req.game._id);
 	var game = req.game;
 	game.ratings.push(req.body);
 	game.save(function(err) {

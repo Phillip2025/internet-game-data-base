@@ -1,15 +1,15 @@
 
 <div ng-controller="gameController" data-ng-init="getLatestGames()">
 	<h3>Ultimos juegos añadidos</h3>
-	<div ng-repeat="game in games">
+	<div class="animate-repeat" data-ng-repeat="game in games">
 		<a href="#" ng-click="$parent.getGameById(game._id)">
 			<div class="item-game col-md-2">
-			<img ng-src="http://thegamesdb.net/banners/{{game.images.boxart[1].url}}" alt="Portada de:{{game.gameTitle}}">
+			<img ng-src="{{game.baseUrl}}/{{game.images.boxart[1].url}}" alt="Portada de:{{game.gameTitle}}">
 			<div class="col-md-12">
 				<p>{{game.gameTitle}}</p>
 			</div>
+			</div>
 		</a>
-	</div>
-	
+	</div>	
 </div>
 

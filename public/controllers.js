@@ -3,7 +3,7 @@ var controllers = angular.module('controllers', []);
 controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP) {
 	
 	$scope.search = {};
-	$scope.comment = {};
+	
 	
 	$scope.getLatestGames = function () {
 		console.log("Juegos nuevos");
@@ -44,12 +44,12 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 	$scope.getGamesByLetter = function () {
 		var letter = $scope.search.letter;
 		$http.get('search/letter/' + letter)
-			.success(function(games) {
-				$rootScope.games = games;
-				$rootScope.letter = letter;
-				$rootScope.term = undefined;
-				$location.path('/search/' + letter);
-			});
+		.success(function(games) {
+			$rootScope.games = games;
+			$rootScope.letter = letter;
+			$rootScope.term = undefined;
+			$location.path('/search/' + letter);
+		});
 	};
 
 	$scope.addComment = function() {
@@ -59,12 +59,16 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		}
 		else {
 			var comment = {};
+			console.log(JSON.stringify($rootScope.user));
 			comment._id = $rootScope.user._id;
+			comment.user = $rootScope.user.user;
 			comment.picture = $rootScope.user.picture;
 			comment.text = $scope.comment.text;
+			console.log(JSON.stringify(comment));
 			$http.put('/comments/' + $rootScope.game._id, comment)
 			.success(function(game) {
 				console.log("Comentario añadido con exito");
+				
 				$rootScope.game = game;
 			})
 			.error(function(err) {
@@ -75,14 +79,31 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 	
 });
 
+controllers.controller('countController', function ($scope, $http) {
+
+	$scope.count = "";
+
+	$scope.getCount = function () {
+		$http.get('/count')
+		.success(function (count) {
+			$scope.count = count.count;
+		})
+		.error(function (err){
+			console.log ("Error" + err);
+		});
+	};
+
+});
+
 controllers.controller('userController', function ($scope, $rootScope, $http, $location) {
 
 	$scope.credentials = {};
 
 	$scope.login = function() {
 		$http.post('/login', $scope.credentials)
-		.success(function(user) {
+		.success(function (user) {
 			console.log("Logeado");
+			console.log(JSON.stringify(user));
 			$rootScope.user = user;
 			$location.path('/');
 		})
@@ -103,41 +124,23 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 		});
 	};
 
-	$scope.createUser = function(){
-		$location.path('/user')
-	}
-
-	$scope.newGameView = function() {
-		$location.path('/admin/newgame');
+	$scope.logout = function() {
+		console.log("Deslogeando");
+		$http.get('/logout')
+		.success(function () {
+			$rootScope.user = undefined;
+			$scope.credentials = {};
+			$location.path('/');
+		})
+		.error(function (err) {
+			console.log("Error " + err);
+		});
 	};
-	$scope.adminPanel = function(){
-		$location.path('/admin/adminPanel');
-	};
-	$scope.home = function(){
-		$location.path('/home');
-	};
-
-
 });
 
 controllers.controller('adminController', function ($scope, $rootScope, $http, $location) {
 	
 	$scope.newGame = {};
-	$scope.home = function(){
-		$location.path('/home');
-	};
-	$scope.adminPanel = function(){
-		$location.path('/admin/adminPanel');
-	};
-	$scope.newGameView = function() {
-		$location.path('/admin/newgame');
-	};
-	$scope.updateView = function() {
-		$location.path('/admin/updategame');
-	};
-	$scope.deleteView = function() {
-		$location.path('/admin/deletegame');
-	};
 
 	$scope.addGame = function(){
 		console.log(JSON.stringify($scope.newGame));

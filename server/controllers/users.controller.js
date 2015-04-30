@@ -57,6 +57,12 @@ exports.signUp = function(req, res) {
 	});
 };
 
+exports.logout = function(req, res) {
+	console.log("Deslogueando en el server");
+	req.logout();
+	res.json({message: "Deslogeado"});
+};
+
 exports.requiresLogin = function(req, res, next) {
 	if (!req.isAuthenticated()) {
 		return res.status(401).send({
