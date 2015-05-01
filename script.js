@@ -4,9 +4,9 @@ var MongoClient = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
-var getsPorCiclo = 1;
+var getsPorCiclo = 50;
 var tiempoEntreCiclos = 1000;
-var idLimite = 500;
+var idLimite =100;
 var total = 0;
 var dataBase;
 var coll;
@@ -170,8 +170,8 @@ function saveGamebyId(id) {
 					    		for(var i = 0; i < images.fanart.length; i++) {
 					    			var fanart = {};
 					    			fanart.url = baseUrl + images.fanart[i].original[0].url;
-					    			fanart.width = images.fanart[i].original[0].width[0];
-					    			fanart.height = images.fanart[i].original[0].height[0];
+					    			fanart.width = parseInt(images.fanart[i].original[0].width[0]);
+					    			fanart.height = parseInt(images.fanart[i].original[0].height[0]);
 					    			fanart.thumb = baseUrl + images.fanart[i].thumb[0];
 					    			json.images.fanart.push(fanart);
 					    		}
@@ -185,8 +185,8 @@ function saveGamebyId(id) {
 					    			var boxart = {};
 					    			boxart.url = baseUrl + images.boxart[i].url;
 					    			boxart.side = images.boxart[i].side[0];
-					    			boxart.width = images.boxart[i].width[0];
-					    			boxart.height = images.boxart[i].height[0];
+					    			boxart.width = parseInt(images.boxart[i].width[0]);
+					    			boxart.height = parseInt(images.boxart[i].height[0]);
 					    			boxart.thumb = baseUrl + images.boxart[i].thumb[0];
 					    			json.images.boxart.push(boxart);
 					    		}
@@ -199,8 +199,8 @@ function saveGamebyId(id) {
 					    		for(var i = 0; i < images.screenshot.length; i++) {
 					    			var screenshot = {};
 					    			screenshot.url = baseUrl + images.screenshot[i].original[0].url;
-					    			screenshot.width = images.screenshot[i].original[0].width[0];
-					    			screenshot.height = images.screenshot[i].original[0].height[0];
+					    			screenshot.width = parseInt(images.screenshot[i].original[0].width[0]);
+					    			screenshot.height = parseInt(images.screenshot[i].original[0].height[0]);
 					    			screenshot.thumb = baseUrl + images.screenshot[i].thumb[0];
 									json.images.screenshot.push(screenshot);
 					    		}
@@ -213,8 +213,8 @@ function saveGamebyId(id) {
 					    		for(var i = 0; i < images.banner.length; i++) {
 					    			var banner = {};
 					    			banner.url = baseUrl + images.banner[i].url;
-					    			banner.width = images.banner[i].width[0];
-					    			banner.height = images.banner[i].height[0];
+					    			banner.width = parseInt(images.banner[i].width[0]);
+					    			banner.height = parseInt(images.banner[i].height[0]);
 					    			json.images.banner.push(banner);
 					    		}
 					    	}
@@ -226,8 +226,8 @@ function saveGamebyId(id) {
 					    		for(var i = 0; i < images.clearlogo.length; i++) {
 					    			var clearlogo = {};
 					    			clearlogo.url = baseUrl + images.clearlogo[i].url;
-					    			clearlogo.width = images.clearlogo[i].width[0];
-					    			clearlogo.height = images.clearlogo[i].height[0];
+					    			clearlogo.width = parseInt(images.clearlogo[i].width[0]);
+					    			clearlogo.height = parseInt(images.clearlogo[i].height[0]);
 					    			json.images.clearlogo.push(clearlogo);
 					    		}
 					    	}

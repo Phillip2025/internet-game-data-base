@@ -12,20 +12,14 @@ var GameSchema = new Schema({
 	alternateTitles: [{
 		type: String
 	}],
-	platformId: {
-		type: Number,
-	},
+	platformId: Number,
 	platform: {
 		type: String,
 		trim: true,
 		required: 'Falta plataforma'
 	},
-	releaseDate: {
-		type: Date
-	},
-	overview: {
-		type: String
-	},
+	releaseDate: Date,
+	overview: String,
 	esrb: {
 		type: String,
 		enum : ['T - Teen', 'M - Mature', 'E - Everyone', 'E10+ - Everyone 10+', 'RP - Rating Pending', 'EC - Early Childhood']
@@ -45,12 +39,8 @@ var GameSchema = new Schema({
 		_id: Number,
 	 	platformId: Number 
 	}],
-	youtube: {
-		type: String
-	},
-	publisher: {
-		type: String
-	},
+	youtube: String,
+	publisher: String,
 
 	rating: {
 		type: Number,
@@ -70,60 +60,32 @@ var GameSchema = new Schema({
 	images: { 
 		fanart: [{
 			url: String,
-			width: {
-				type: Number
-			},
-			height: {
-				type: Number
-			},
-			thumb: {
-			type: String
-			}	
+			width: Number,
+			height: Number,
+			thumb: String
 		}],
 	 	boxart: [{
 	 		url: String,
-	 		side: {
-	 			type: String
-	 		},
-	 		width: {
-				type: Number
-			},
-			height: {
-				type: Number
-			},
-			thumb: {
-				type: String
-			}
+	 		side: String,
+	 		width: Number,
+			height: Number,
+			thumb: String
 	 	}],
 	 	banner: [{
 			url: String,
-			width: {
-				type: Number
-			},
-			height: {
-				type: Number
-			}
+			width: Number,
+			height: Number
 		}],
 		screenshot: [{
 			url: String,
-			width: {
-				type: Number
-			},
-			height: {
-				type: Number
-			},
-			thumb: {
-				type: String
-			}
+			width: Number,
+			height: Number,
+			thumb: String
 		}],
 		clearlogo: [{
 			url: String,
-			width: {
-				type: Number
-			},
-			height: {
-				type: Number
-			}
+			width: Number,
+			height: Number
 		}],
 	}
 });
