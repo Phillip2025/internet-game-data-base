@@ -1,7 +1,7 @@
 var parseString = require('xml2js').parseString;
 
 
-var xml = '<Data><baseImgUrl>http://thegamesdb.net/banners/</baseImgUrl><Game><id>149</id><GameTitle>World of Warcraft</GameTitle><PlatformId>1</PlatformId><Platform>PC</Platform><ReleaseDate>11/23/2004</ReleaseDate><ESRB>T - Teen</ESRB><Genres><genre>MMO</genre><genre>Role-Playing</genre></Genres><Players>4+</Players><Co-op>Yes</Co-op><Youtube>http://www.youtube.com/watch?v=dYK_Gqyf48Y</Youtube><Publisher>Blizzard Entertainment</Publisher><Developer>Blizzard Entertainment</Developer><Rating>7.6667</Rating></Game></Data>';
+var xml = '<Data><baseImgUrl>http://thegamesdb.net/banners/</baseImgUrl><Game><id>5281</id><GameTitle>Call of Juarez</GameTitle><PlatformId>1</PlatformId><Platform>PC</Platform><ReleaseDate>06/05/2007</ReleaseDate><Overview>A narrator tells the legend of the Gold of Juarez, which was allegedly meant as a ransom for Moctezuma, held hostage by conquistadores. The treasure was lost long ago and never found again. Nevertheless, many daring souls set out to retrieve the riches of the Aztec Empire, but the treasure is rumored to be cursed. Billy is a young man who doesn\'t know who his father is, and has no real last name. Due to the town\'s racism against his Mexican ancestry, he suffered racial prejudice from the local population. He especially hated his stepfather Thomas, who beat him daily. Fed up, Billy left his hometown of Hope to go after the Gold of Juarez, but after two years of fruitless searching, he found nothing. Billy eventually returns to Hope, but when he arrives, he finds his mother and Thomas dead, lying underneath the words "Call of Juarez" written in blood. A man named Reverend Ray, a former outlaw who is Thomas\' brother, sees Billy standing over his family, and presumes that Billy is the murderer. Billy flees from Ray’s attacks and escapes. Ray decides that it is his duty as God\'s emissary to track down and kill Billy for the crime.</Overview><ESRB>M - Mature</ESRB><Genres><genre>Shooter</genre></Genres><Co-op>No</Co-op><Publisher>Ubisoft</Publisher><Developer>Techland</Developer><Rating>6.25</Rating><Similar><SimilarCount>1</SimilarCount><Game><id>12895</id><PlatformId>15</PlatformId></Game></Similar><Images><fanart><original width="1920" height="1080">fanart/original/5281-1.jpg</original><thumb>fanart/thumb/5281-1.jpg</thumb></fanart><fanart><original width="1920" height="1080">fanart/original/5281-2.jpg</original><thumb>fanart/thumb/5281-2.jpg</thumb></fanart><fanart><original width="1920" height="1080">fanart/original/5281-3.jpg</original><thumb>fanart/thumb/5281-3.jpg</thumb></fanart><fanart><original width="1920" height="1080">fanart/original/5281-4.jpg</original><thumb>fanart/thumb/5281-4.jpg</thumb></fanart><fanart><original width="1920" height="1080">fanart/original/5281-5.jpg</original><thumb>fanart/thumb/5281-5.jpg</thumb></fanart><boxart side="back" width="756" height="1079" thumb="boxart/thumb/original/back/5281-1.jpg">boxart/original/back/5281-1.jpg</boxart><boxart side="front" width="1517" height="2139" thumb="boxart/thumb/original/front/5281-1.jpg">boxart/original/front/5281-1.jpg</boxart><banner width="760" height="140">graphical/5281-g.png</banner><banner width="760" height="140">graphical/5281-g2.png</banner><screenshot><original width="1920" height="1080">screenshots/5281-1.jpg</original><thumb>screenshots/thumb/5281-1.jpg</thumb></screenshot><screenshot><original width="1920" height="1080">screenshots/5281-2.jpg</original><thumb>screenshots/thumb/5281-2.jpg</thumb></screenshot><screenshot><original width="1920" height="1080">screenshots/5281-3.jpg</original><thumb>screenshots/thumb/5281-3.jpg</thumb></screenshot><screenshot><original width="1920" height="1080">screenshots/5281-4.jpg</original><thumb>screenshots/thumb/5281-4.jpg</thumb></screenshot><clearlogo width="400" height="100">clearlogo/5281.png</clearlogo></Images></Game></Data>';
 var MongoClient = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/igdb';
@@ -25,6 +25,7 @@ MongoClient.connect(url, function(err, db) {
 	    	};
 	parseString(xml, options, function(err, result) {
 		try {
+			console.log(result.Data.Game);
 			if (result.Data.Game) {
 				var datos = result.Data.Game[0];
 		    	var json = {};
@@ -96,7 +97,7 @@ MongoClient.connect(url, function(err, db) {
 			    	json.baseUrl = result.Data.baseImgUrl[0];
 			    } 
 			    console.log(json);
-			    coll.insert(json);
+			    //coll.insert(json);
 			    console.log("Guardado juego con id " + datos.id);
 			    total++;
 			    console.log(totalESRB);

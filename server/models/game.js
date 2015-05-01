@@ -69,65 +69,61 @@ var GameSchema = new Schema({
 	}],
 	images: { 
 		fanart: [{
-			original: [{
-				url: String,
-				width: [{
-					type: Number
-				}],
-				height: [{
-					type: Number
-				}]
-			}],
-			thumb: [{
-				type: String
-			}]
+			url: String,
+			width: {
+				type: Number
+			},
+			height: {
+				type: Number
+			},
+			thumb: {
+			type: String
+			}	
 		}],
 	 	boxart: [{
 	 		url: String,
-	 		side: [{
+	 		side: {
 	 			type: String
-	 		}],
-	 		width: [{
+	 		},
+	 		width: {
 				type: Number
-			}],
-			height: [{
+			},
+			height: {
 				type: Number
-			}],
-			thumb: [{
+			},
+			thumb: {
 				type: String
-			}]
+			}
 	 	}],
 	 	banner: [{
 			url: String,
-			width: [{
+			width: {
 				type: Number
-			}],
-			height: [{
+			},
+			height: {
 				type: Number
-			}]
+			}
 		}],
 		screenshot: [{
-			original: [{
-				url: String,
-				width: [{
-					type: Number
-				}],
-				height: [{
-					type: Number
-				}]
-			}],
-			thumb: [{
+			url: String,
+			width: {
+				type: Number
+			},
+			height: {
+				type: Number
+			},
+			thumb: {
 				type: String
-			}]
+			}
 		}],
 		clearlogo: [{
 			url: String,
-			width: [{
+			width: {
 				type: Number
-			}],
-			height: [{
+			},
+			height: {
 				type: Number
-			}]
+			}
 		}],
 	}
 });

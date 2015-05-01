@@ -3,16 +3,49 @@ var parseString = require('xml2js').parseString;
 var MongoClient = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/igdb';
-var id = 1;
-var getsPorCiclo = 40;
+var id = 0;
+var getsPorCiclo = 1;
 var tiempoEntreCiclos = 1000;
-var idLimite = 27000;
+var idLimite = 500;
 var total = 0;
 var dataBase;
 var coll;
 var totalGenres = [];
 var totalPlayers = [];
 var totalESRB = [];
+
+var imgNotAvailable = [{ 
+	url: "img/image.gif",
+	width: 800,
+	height: 600,
+	thumb: "img/image-thumb.gif"
+}];
+
+var boxNotAvailable = [{ 
+	url: "img/front.gif",
+	side: "front",
+	width: 800,
+	height: 600,
+	thumb: "img/front-thumb.gif"
+}, {
+	url: "img/back.gif",
+	side: "back",
+	width: 800,
+	height: 600,
+	thumb: "img/back-thumb.gif"
+}];
+
+var bannerNotAvailable = [{ 
+	url: "img/banner.gif",
+	width: 760,
+	height: 140
+}];
+
+var logoNotAvailable = [{ 
+	url: "img/logo.gif",
+	width: 400,
+	height: 200
+}];
 
 MongoClient.connect(url, function(err, db) {
 	dataBase = db;
@@ -129,8 +162,78 @@ function saveGamebyId(id) {
 				    	json.ratings = [];
 				    	json.comments = [];
 				    	if (datos.Images) {
-					    	json.images = datos.Images[0];
-					    	json.baseUrl = result.Data.baseImgUrl[0];
+					    	json.images = {};
+					    	var images = datos.Images[0];
+					    	var baseUrl = result.Data.baseImgUrl[0];
+					    	if (images.fanart) {
+					    		json.images.fanart = [];
+					    		for(var i = 0; i < images.fanart.length; i++) {
+					    			var fanart = {};
+					    			fanart.url = baseUrl + images.fanart[i].original[0].url;
+					    			fanart.width = images.fanart[i].original[0].width[0];
+					    			fanart.height = images.fanart[i].original[0].height[0];
+					    			fanart.thumb = baseUrl + images.fanart[i].thumb[0];
+					    			json.images.fanart.push(fanart);
+					    		}
+					    	}
+					    	else {
+					    		json.images.fanart = imgNotAvailable;
+					    	}
+					    	if (images.boxart) {
+					    		json.images.boxart = [];
+					    		for(var i = 0; i < images.boxart.length; i++) {
+					    			var boxart = {};
+					    			boxart.url = baseUrl + images.boxart[i].url;
+					    			boxart.side = images.boxart[i].side[0];
+					    			boxart.width = images.boxart[i].width[0];
+					    			boxart.height = images.boxart[i].height[0];
+					    			boxart.thumb = baseUrl + images.boxart[i].thumb[0];
+					    			json.images.boxart.push(boxart);
+					    		}
+					    	}
+					    	else {
+					    		json.images.boxart = boxNotAvailable;
+					    	}
+					    	if (images.screenshot) {
+					    		json.images.screenshot = [];
+					    		for(var i = 0; i < images.screenshot.length; i++) {
+					    			var screenshot = {};
+					    			screenshot.url = baseUrl + images.screenshot[i].original[0].url;
+					    			screenshot.width = images.screenshot[i].original[0].width[0];
+					    			screenshot.height = images.screenshot[i].original[0].height[0];
+					    			screenshot.thumb = baseUrl + images.screenshot[i].thumb[0];
+									json.images.screenshot.push(screenshot);
+					    		}
+					    	}
+					    	else {
+					    		json.images.screenshot = imgNotAvailable;
+					    	}
+					    	if (images.banner) {
+					    		json.images.banner = [];
+					    		for(var i = 0; i < images.banner.length; i++) {
+					    			var banner = {};
+					    			banner.url = baseUrl + images.banner[i].url;
+					    			banner.width = images.banner[i].width[0];
+					    			banner.height = images.banner[i].height[0];
+					    			json.images.banner.push(banner);
+					    		}
+					    	}
+					    	else {
+					    		json.images.banner = bannerNotAvailable;
+					    	}
+					    	if (images.clearlogo) {
+					    		json.images.clearlogo = [];
+					    		for(var i = 0; i < images.clearlogo.length; i++) {
+					    			var clearlogo = {};
+					    			clearlogo.url = baseUrl + images.clearlogo[i].url;
+					    			clearlogo.width = images.clearlogo[i].width[0];
+					    			clearlogo.height = images.clearlogo[i].height[0];
+					    			json.images.clearlogo.push(clearlogo);
+					    		}
+					    	}
+					    	else {
+					    		json.images.clearlogo = logoNotAvailable;
+					    	}
 					    } 
 					    coll.insert(json);
 					    console.log("Guardado juego con id " + datos.id);

@@ -4,7 +4,7 @@
 	<div class="animate-repeat" data-ng-repeat="game in games">
 		<a href="#" ng-click="$parent.getGameById(game._id)">
 			<div class="item-game col-md-2">
-			<img ng-src="{{game.baseUrl}}/{{game.images.boxart[1].url}}" alt="Portada de:{{game.gameTitle}}">
+			<img ng-src="{{game.images.boxart[1].url}}" alt="Portada de:{{game.gameTitle}}">
 			<div class="col-md-12">
 				<p>{{game.gameTitle}}</p>
 			</div>
