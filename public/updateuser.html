@@ -1,10 +1,10 @@
 <div data-ng-controller="userController">
 	<form data class="form col-md-offset-2">
-		<input type="text" data-ng-model="credentials.user" placeho="{{user.user}}" required>
-		<input type="password" data-ng-model="credentials.password" value={{user.password}} required>
-		<input type="text" data-ng-model="credentials.name" placeholder="Nombre" required>
-		<input type="text" data-ng-model="credentials.surname" placeholder="Apellido" required>
-		<input type="text" data-ng-model="credentials.mail" placeholder="Email" required>
+		<input type="text" data-ng-model="credentials.user" placeholder="{{User.user}}" required>
+		<input type="password" data-ng-model="credentials.password" required>
+		<input type="text" data-ng-model="credentials.name" placeholder="{{user.name}}" required>
+		<input type="text" data-ng-model="credentials.surname" placeholder="{{user.surname}}" required>
+		<input type="text" data-ng-model="credentials.mail" placeholder="{{user.mail}}" required>
 		<input type="file" data-ng-model="credentials.picture" required>			
 		<button data-ng-click="updateUser()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 	</form>
