@@ -45,6 +45,7 @@
 				<li ui-sref-active="active"><a href="#">Tu perfil</a></li>
 				<li><a data ng-if="$root.user.role == 'Admin'" ui-sref="newgame" href="#">Administrador</a></li>
 				<li><a href="#" data ng-if="!$root.user" ui-sref="newuser">Registrarse</a></li>
+				<li><a href="#" data ng-if="$root.user" ng-click="updateUser()">Modificar datos</a></li>
 				<li>
 				<span data-ng-if="$root.user">Bienvenido {{user.user}}</span>
 				<a data-ng-if="$root.user" class="btn btn-default" href="#" data-ng-click="logout()">Logout</a>

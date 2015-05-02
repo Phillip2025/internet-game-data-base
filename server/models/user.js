@@ -15,6 +15,15 @@ var UserSchema = new Schema({
 		type: String,
 		default: 'User'
 	},
+	name: {
+		type: String
+	},
+	surname: {
+		type: String
+	},
+	mail: {
+		type: String
+	},
 	picture: {
 		type: String
 	}

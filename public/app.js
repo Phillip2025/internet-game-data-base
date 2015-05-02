@@ -31,6 +31,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('updategame',{
 		url:'/edit/:id',
 		templateUrl:'updategame.html'
+	})
+	.state('updateuser',{
+		url:'/updateuser/:user',
+		templateUrl:'updateuser.html'
 	});
 });
 

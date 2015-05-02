@@ -124,6 +124,18 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 		});
 	};
 
+	$scope.updateUser = function(){
+		$http.put('/updateuser/user.user', $scope.credentials)
+		.success(function(user){
+			console.log("Usuario modificando");
+			$rootScope.user = user;
+			$location.path('/updateuser/user.user');
+		})
+		.error(function(err){
+			console.log('Error: ' + err);
+		})
+	};
+
 	$scope.logout = function() {
 		console.log("Deslogeando");
 		$http.get('/logout')

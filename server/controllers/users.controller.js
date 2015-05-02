@@ -35,7 +35,7 @@ exports.logIn = function(req, res, next) {
 exports.signUp = function(req, res) {
 	console.log("Usuario registrandose");
 	var user = new User(req.body);
-	console.log(user._id);
+	console.log(user.user);
 	console.log(user.password);
 	// Then save the user
 	user.save(function(err, user) {
@@ -61,6 +61,19 @@ exports.logout = function(req, res) {
 	console.log("Deslogueando en el server");
 	req.logout();
 	res.json({message: "Deslogeado"});
+};
+
+exports.updateUser = function(req, res) {
+	console.log("Peticion de update de usuario");
+	var user = req.user;
+	user.save(function (err) {
+		if (err) {
+			return res.status(500).send({
+				message: 'Error interno de servidor'
+			});
+		}
+		res.json(user);
+	});
 };
 
 exports.requiresLogin = function(req, res, next) {
