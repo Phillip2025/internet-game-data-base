@@ -19,13 +19,21 @@ var GameSchema = new Schema({
 		required: 'Falta plataforma'
 	},
 	releaseDate: Date,
+	created: {
+		type: Date,
+		default: Date.now
+	},
 	overview: String,
 	esrb: {
 		type: String,
 		enum : ['T - Teen', 'M - Mature', 'E - Everyone', 'E10+ - Everyone 10+', 'RP - Rating Pending', 'EC - Early Childhood']
 	},
 	genres: [{
-		type: String
+		type: String,
+		enum: ['Shooter','Action','Flight Simulator','Role-Playing','Adventure',
+			'Sandbox','Fighting','Racing','Horror','MMO','Platform',
+			'Puzzle','Strategy','Stealth','Sports','Construction and Management Simulation',
+			'Vehicle Simulation','Life Simulation','Music']
 	}],
 	players: {
 		type: String,
@@ -64,13 +72,20 @@ var GameSchema = new Schema({
 			height: Number,
 			thumb: String
 		}],
-	 	boxart: [{
-	 		url: String,
-	 		side: String,
-	 		width: Number,
-			height: Number,
-			thumb: String
-	 	}],
+	 	boxart: {
+	 		front: {
+				url: String,
+		 		width: Number,
+				height: Number,
+				thumb: String
+	 		},
+	 		back: {
+				url: String,
+		 		width: Number,
+				height: Number,
+				thumb: String
+	 		}
+	 	},
 	 	banner: [{
 			url: String,
 			width: Number,
@@ -82,11 +97,11 @@ var GameSchema = new Schema({
 			height: Number,
 			thumb: String
 		}],
-		clearlogo: [{
+		clearlogo: {
 			url: String,
 			width: Number,
 			height: Number
-		}],
+		},
 	}
 });
 

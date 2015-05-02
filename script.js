@@ -6,13 +6,15 @@ var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
 var getsPorCiclo = 50;
 var tiempoEntreCiclos = 1000;
-var idLimite =100;
+var idLimite = 100;
 var total = 0;
 var dataBase;
 var coll;
 var totalGenres = [];
 var totalPlayers = [];
 var totalESRB = [];
+var twoBoxGames = 0;
+var twoLogoGames = 0;
 
 var imgNotAvailable = [{ 
 	url: "img/image.gif",
@@ -21,19 +23,21 @@ var imgNotAvailable = [{
 	thumb: "img/image-thumb.gif"
 }];
 
-var boxNotAvailable = [{ 
+var frontBoxNotAvailable = { 
 	url: "img/front.gif",
 	side: "front",
 	width: 800,
 	height: 600,
 	thumb: "img/front-thumb.gif"
-}, {
+};
+
+var backBoxNotAvailable = {
 	url: "img/back.gif",
 	side: "back",
 	width: 800,
 	height: 600,
 	thumb: "img/back-thumb.gif"
-}];
+};
 
 var bannerNotAvailable = [{ 
 	url: "img/banner.gif",
@@ -58,6 +62,8 @@ function procesar(id, totalAProcesar, callback) {
 	if (id > idLimite) {
 		dataBase.close(function() {
 			console.log("Total de juegos procesados: " + total);
+			console.log("Juegos con mas de 2 caratulas: " + twoBoxGames);
+			console.log("Juegos con mas de 2 logos: " + twoLogoGames);
 		    console.log(totalESRB);
 		    console.log(totalGenres);
 		    console.log(totalPlayers);
@@ -106,8 +112,9 @@ function saveGamebyId(id) {
 				    	json.platformId = parseInt(datos.PlatformId[0]);
 				    	json.platform = datos.Platform[0];
 				    	if (datos.ReleaseDate) {
-				    		json.releaseDate = datos.ReleaseDate[0];
+				    		json.releaseDate = new Date(datos.ReleaseDate[0]);
 				    	}
+				    	json.created = new Date();
 				    	if (datos.Overview) {
 				    		json.overview = datos.Overview[0];
 				    	}
@@ -180,19 +187,31 @@ function saveGamebyId(id) {
 					    		json.images.fanart = imgNotAvailable;
 					    	}
 					    	if (images.boxart) {
-					    		json.images.boxart = [];
+					    		json.images.boxart = {};
 					    		for(var i = 0; i < images.boxart.length; i++) {
 					    			var boxart = {};
 					    			boxart.url = baseUrl + images.boxart[i].url;
-					    			boxart.side = images.boxart[i].side[0];
 					    			boxart.width = parseInt(images.boxart[i].width[0]);
 					    			boxart.height = parseInt(images.boxart[i].height[0]);
 					    			boxart.thumb = baseUrl + images.boxart[i].thumb[0];
-					    			json.images.boxart.push(boxart);
+					    			if (images.boxart[i].side[0] === 'front') {
+					    				json.images.boxart.front = boxart;
+					    			}
+					    			else if (images.boxart[i].side[0] === 'back') {
+					    				json.images.boxart.back = boxart;
+					    			}
+					    		}
+					    		if (!json.images.boxart.front) {
+					    			json.images.boxart.front = frontBoxNotAvailable;
+					    		}
+					    		if (!json.images.boxart.back) {
+					    			json.images.boxart.back = backBoxNotAvailable;
 					    		}
 					    	}
 					    	else {
-					    		json.images.boxart = boxNotAvailable;
+					    		json.images.boxart = {};
+					    		json.images.boxart.front = frontBoxNotAvailable;
+					    		json.images.boxart.back = backBoxNotAvailable;
 					    	}
 					    	if (images.screenshot) {
 					    		json.images.screenshot = [];
@@ -222,14 +241,10 @@ function saveGamebyId(id) {
 					    		json.images.banner = bannerNotAvailable;
 					    	}
 					    	if (images.clearlogo) {
-					    		json.images.clearlogo = [];
-					    		for(var i = 0; i < images.clearlogo.length; i++) {
-					    			var clearlogo = {};
-					    			clearlogo.url = baseUrl + images.clearlogo[i].url;
-					    			clearlogo.width = parseInt(images.clearlogo[i].width[0]);
-					    			clearlogo.height = parseInt(images.clearlogo[i].height[0]);
-					    			json.images.clearlogo.push(clearlogo);
-					    		}
+					    		json.images.clearlogo = {};
+				    			json.images.clearlogo.url = baseUrl + images.clearlogo[0].url;
+				    			json.images.clearlogo.width = parseInt(images.clearlogo[0].width[0]);
+				    			json.images.clearlogo.height = parseInt(images.clearlogo[0].height[0]);
 					    	}
 					    	else {
 					    		json.images.clearlogo = logoNotAvailable;
