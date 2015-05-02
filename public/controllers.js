@@ -125,15 +125,20 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 	};
 
 	$scope.updateUser = function(){
-		$http.put('/updateuser/user.user', $scope.credentials)
-		.success(function(user){
-			console.log("Usuario modificando");
-			$rootScope.user = user;
-			$location.path('/updateuser/user.user');
-		})
-		.error(function(err){
-			console.log('Error: ' + err);
-		})
+		if (!$rootScope.user) {
+			console.log("No hay usuario logeado");
+			console.log("Aqui deberia cargar el formulario de registro");
+		}else{
+				$http.put('/updateuser', $scope.credentials)
+				.success(function (user){
+					console.log("Updateando user con id:" + user.user);
+					$rootScope.user = user;
+					$location.path('/');
+				})
+				.error(function(err){
+					console.log("Error" +err);
+				});
+			}
 	};
 
 	$scope.logout = function() {
