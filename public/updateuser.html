@@ -1,10 +1,11 @@
 <div data-ng-controller="userController">
 	<form data class="form col-md-offset-2">
-		<input type="text" value="Pepe" data-ng-model="credentials.user" value="$rootScope.user" required><br>
+		<input type="text" value="Pepe" data-ng-model="credentials.user" value="$root.user.user" required><br>
 		<input type="password" data-ng-model="credentials.password" required><br>
 		<input type="text" data-ng-model="credentials.name" placeholder="{{user.name}}" required><br>
 		<input type="text" data-ng-model="credentials.surname" placeholder="{{user.surname}}" required><br>
-		<input type="text" data-ng-model="credentials.mail" placeholder="{{user.mail}}" required><br>
+		<input type="text" data-ng-model="credentials.mail" placeholder="{{user.mail}}" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
+" required><br>
 		<input type="file" data-ng-model="credentials.picture" required><br>			
 		<button data-ng-click="updateUser()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 	</form>
