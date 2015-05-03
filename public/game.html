@@ -41,7 +41,7 @@
 	<div class="col-md-12">
       <carousel class="col-md-6" interval="interval">
         <slide ng-repeat="screenshot in game.images.screenshot" active="slide.active">
-          <img ng-src="http://thegamesdb.net/banners/{{screenshot.original[0].url}}">
+          <img ng-src="{{screenshot.url}}">
           <!--<div class="carousel-caption">
             <h4>Slide {{$index+1}}</h4>
           </div>-->

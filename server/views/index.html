@@ -7,8 +7,8 @@
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href="css/game.css">
+	<!--<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/game.css">-->
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/animations.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -32,8 +32,8 @@
 				</h1>
 			</div>
 			<form data-ng-controller="gameController" class="buscador form-inline col-md-4">
-				<div class="ui-widget">
-					<input id="tags" data-ng-model="search.term" type="text" placeholder="Busca tu juego"/>
+				<div class="form-group ui-widget">
+					<input id="tags" class="form-control" data-ng-model="search.term" type="text" placeholder="Busca tu juego"/>
 					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 				</div>
 			</form>
@@ -45,16 +45,26 @@
 				<li ui-sref-active="active"><a href="#">Editores</a></li>
 				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
 				<li ui-sref-active="active"><a href="#">Tu perfil</a></li>
-				<li><a data ng-if="$root.user.role == 'Admin'" ui-sref="newgame" href="#">Administrador</a></li>
-				<li><a href="#" data ng-if="!$root.user" ui-sref="newuser">Registrarse</a></li>
-				<li><a href="#" data ng-if="$root.user" ui-sref="updateuser">Modificar datos</a></li>
-				<li>
-					<span data-ng-if="$root.user">Bienvenido {{user.user}}</span>
-					<a data-ng-if="$root.user" class="btn btn-default" href="#" data-ng-click="logout()">Logout</a>
-					<form data ng-if="!$root.user" class="form-inline col-md-offset-2">
-						<input data-ng-model="credentials.user" type="text" placeholder="Nombre de usuario" required />
-						<input data-ng-model="credentials.password" type="password" placeholder="Password" required />
-						<button data-ng-click="login()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+				<li data-ng-if="$root.user.role == 'Admin'">
+					<a ui-sref="newgame" href="#">Administrador</a>
+				</li>
+				<li data-ng-if="!$root.user">
+					<a href="#" ui-sref="newuser">Registrarse</a>
+				</li>
+				<li data-ng-if="$root.user">
+					<a href="#"  ui-sref="updateuser">Modificar datos</a>
+				</li>
+				<li data-ng-if="$root.user">
+					<span>Bienvenido {{user.user}} </span>
+					<button class="btn btn-default" data-ng-click="logout()"><a href="#">Logout</a></button>
+				</li>
+				<li data ng-if="!$root.user">
+					<form class="form-inline col-md-offset-1">
+						<div class="form-group">
+							<input class="form-control" data-ng-model="credentials.user" type="text" placeholder="Nombre de usuario" required />
+							<input class="form-control" data-ng-model="credentials.password" type="password" placeholder="Password" required />
+							<button data-ng-click="login()" id="submitsearch" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+						</div>
 					</form>
 				</li>
 			</ul>

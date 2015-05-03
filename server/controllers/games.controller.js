@@ -41,8 +41,8 @@ exports.read = function(req, res) {
 
 exports.updateGame = function(req, res) {
 	console.log("Peticion de update");
-	var game = req.game;
-	game.save(function (err) {
+	var game = new Game(req.body);
+	Game.findOneAndUpdate({_id: game._id}, game, {upsert:true}, function (err) {
 		if (err) {
 			return res.status(500).send({
 				message: 'Error interno de servidor'

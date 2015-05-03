@@ -1,22 +1,66 @@
 <div data-ng-controller="adminController">
-	<form data class="form col-md-offset-2">
-		<label for="gameTitle">Titulo: </label><input data-ng-model="game.gameTitle" type="text" placeholder="Titulo de juego" required />
-		<label for="platform">Plataforma: </label><input data-ng-model="game.platform" type="text" placeholder="Plataforma" required />
-		<label for="realiseDate">Fecha de Lanzamiento: </label><input data-ng-model="game.releaseDate" type="text" placeholder="Fecha de lanzamiento" required />
-		<label for="overview">Overview: </label><input data-ng-model="game.overview" type="textarea" placeholder="Descripcion" rows="2" required />
-		<label for="players">Jugadores: </label><input data-ng-model="game.players" type="number" placeholder="Jugadores" required />
-		<label>Cooperativo</label>
-		<label>
-			<input data-ng-model="game.coop" type="radio"  name="coop" placeholder="Cooperativo" value="Yes" required />
-			Si
-		</label>
-		<label>
-			<input data-ng-model="game.coop" type="radio" name="coop" placeholder="Cooperativo" value="No" required />
-			No
-		</label>
-		
-		<label for="publisher">Editor: </label><input data-ng-model="game.publisher" type="text" placeholder="Editor" required />
-		<label for="developer">Desarrollador: </label><input data-ng-model="game.developer" type="text" placeholder="Desarrollador" required />
-		<button data-ng-click="updateGame()" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label class="col-md-2 control-label" for="gameTitle">Titulo nuevo: </label>
+			<div class="col-md-4">
+				<input class="form-control" data-ng-model="$root.game.gameTitle" type="text" placeholder="Titulo de juego" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label" for="platform">Plataforma: </label>
+			<div class="col-md-4">
+				<input class="form-control" data-ng-model="$root.game.platform" type="text" placeholder="Plataforma" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label" for="releaseDate">Fecha de Lanzamiento: </label>
+			<div class="col-md-4"><input class="form-control" data-ng-model="$root.game.releaseDate" type="text" placeholder="Fecha de lanzamiento" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label" for="esrb">Clasificación por edad: </label>
+			<div class="col-md-4"><select class="form-control" ng-model="$root.game.esrb" ng-options="o as o for o in $root.esrbENG"></select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label" for="overview">Overview: </label>
+			<div class="col-md-4"><textarea class="form-control" data-ng-model="$root.game.overview" rows="2" placeholder="Descripcion" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label" for="players">Jugadores: </label>
+			<div class="col-md-4"><select class="form-control" ng-model="$root.game.players" ng-options="o as o for o in $root.players"></select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label">Cooperativo</label>
+			<div class="col-md-4">
+				<label class="checkbox-inline"><input class="form-control" data-ng-model="$root.game.coop" type="radio" ng-checked="$root.game.coop == 'Yes'" value="Yes" />Si</label>
+				<label class="checkbox-inline"><input class="form-control" data-ng-model="$root.game.coop" type="radio" ng-checked="$root.game.coop == 'No'" value="No" />No</label>
+			</div>	
+		</div>
+		<div class="form-group">	
+			<label class="col-md-2 control-label" for="publisher">Editor: </label>
+			<div class="col-md-4">
+				<input class="form-control" data-ng-model="$root.game.publisher" type="text" placeholder="Editor" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label" for="developer">Desarrollador: </label>
+			<div class="col-md-4">
+				<input class="form-control" data-ng-model="$root.game.developer" type="text" placeholder="Desarrollador" required />
+			</div>
+		</div>
+		<div class="form-group" data-ng-controller="checkBoxController" data-ng-init="populate()">
+			<label class="col-md-2 control-label" for="genres">Géneros</label>
+			<div class="col-md-4">
+				<label class="checkbox-inline col-md-4" ng-repeat="genre in $root.genres">
+					<input ng-checked="checkGenre(genre) > -1" type="checkbox" data-ng-click="toggle(genre)" value="genre" /> {{genre}} 
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<button data-ng-click="updateGame()" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+		</div>
 	</form>
 </div>

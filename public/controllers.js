@@ -163,6 +163,7 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 	$scope.newGame = {};
 
 	$scope.addGame = function(){
+		$scope.newGame.genres = $rootScope.genresCheckBox;
 		console.log(JSON.stringify($scope.newGame));
 		$http.post('/games', $scope.newGame)
 		.success(function (game){
@@ -174,25 +175,57 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 			console.log("Error" + err);
 		});
 	};
-	/*
+	
 	$scope.updateGame = function(){
 		if (!$rootScope.user) {
 			console.log("No hay usuario logeado");
 			console.log("Aqui deberia cargar el formulario de registro");
-		}else{
-			if($rootScope.user.role == 'Admin'){
-				$http.put('/games', $scope.newGame)
-				.success(function (game){
-					console.log("Updateando juego con id:" game._id);
+		} else {
+			if($rootScope.user.role == 'Admin') {
+				console.log("Root: " + JSON.stringify($rootScope.game));
+				$http.put('/games/' + $rootScope.game._id, $rootScope.game)
+				.success(function (game) {
+					console.log("Updateando juego con id:" + game._id);
+					console.log(JSON.stringify(game));
 					$rootScope.game = game;
 					$location.path('/games/'+game._id);
 				})
-				.error(function(err){
+				.error(function(err) {
 					console.log("Error" +err);
 				});
-			}else{
+			} else {
 				console.log("El usuario no tiene los permisos para hacer esto");
 			}
 		}
-	};*/
+	};
+});
+
+controllers.controller('checkBoxController', function ($scope, $rootScope) {
+
+	$rootScope.genresCheckBox = [];
+
+	$scope.toggle = function (genre) {
+		var index = $rootScope.genresCheckBox.indexOf(genre);
+		if (index > -1) {
+			$rootScope.genresCheckBox.splice(index, 1);
+		}
+		else {
+			$rootScope.genresCheckBox.push(genre);
+		}
+	}
+
+	$scope.populate = function () {
+		$rootScope.genresCheckBox = $rootScope.game.genres;
+	}
+
+	$scope.checkGenre = function (genre) {
+		if ($rootScope.genresCheckBox.indexOf(genre) > -1) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
+
+
 });
