@@ -1,11 +1,12 @@
 <div data-ng-controller="userController">
 	<form data class="form col-md-offset-2">
-		<input type="text" data-ng-model="credentials.user" placeholder="Nombre Usuario" required>
-		<input type="password" data-ng-model="credentials.password" placeholder="Password" required>
-		<input type="text" data-ng-model="credentials.name" placeholder="Nombre" required>
-		<input type="text" data-ng-model="credentials.surname" placeholder="Apellido" required>
-		<input type="text" data-ng-model="credentials.mail" placeholder="Email" required>
-		<input type="file" data-ng-model="credentials.picture" required>			
+		<input type="text" data-ng-model="credentials.user" placeholder="Nombre Usuario" required><br>
+		<input type="password" data-ng-model="credentials.password" placeholder="Password" required><br>
+		<input type="text" data-ng-model="credentials.name" placeholder="Nombre" required><br>
+		<input type="text" data-ng-model="credentials.surname" placeholder="Apellido" required><br>
+		<input type="text" data-ng-model="credentials.mail" placeholder="Email" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
+" required><br>
+		<input type="file" data-ng-model="credentials.picture" required><br>			
 		<button data-ng-click="signUp()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 	</form>
 </div>

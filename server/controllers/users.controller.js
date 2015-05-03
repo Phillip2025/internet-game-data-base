@@ -37,6 +37,8 @@ exports.signUp = function(req, res) {
 	var user = new User(req.body);
 	console.log(user.user);
 	console.log(user.password);
+	console.log(user.mail);
+	console.log(user.picture);
 	// Then save the user
 	user.save(function(err, user) {
 		if (err) {
@@ -65,14 +67,16 @@ exports.logout = function(req, res) {
 
 exports.updateUser = function(req, res) {
 	console.log("Peticion de update de usuario");
+	console.log
 	var user = req.user;
 	user.save(function (err) {
 		if (err) {
 			return res.status(500).send({
-				message: 'Error interno de servidor'
+				message: 'Error interno de servidor',
 			});
+		}else{
+			res.json(user);
 		}
-		res.json(user);
 	});
 };
 

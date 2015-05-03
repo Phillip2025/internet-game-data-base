@@ -134,7 +134,7 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 		}else{
 				$http.put('/updateuser', $scope.credentials)
 				.success(function (user){
-					console.log("Updateando user con id:" + user.user);
+					$rootScope.user={};
 					$rootScope.user = user;
 					$location.path('/');
 				})
@@ -142,6 +142,7 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 					console.log("Error" +err);
 				});
 			}
+			console.log("updateado usuario")
 	};
 
 	$scope.logout = function() {

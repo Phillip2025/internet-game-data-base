@@ -44,7 +44,8 @@
 				<li ui-sref-active="active"><a href="#">Plataformas</a></li>
 				<li ui-sref-active="active"><a href="#">Editores</a></li>
 				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
-				<li ui-sref-active="active"><a href="#">Tu perfil</a></li>
+<<<<<<< HEAD
+				<li data-ng-if="!$root.user" ui-sref-active="active"><a href="#">Tu perfil</a></li>
 				<li data-ng-if="$root.user.role == 'Admin'">
 					<a ui-sref="newgame" href="#">Administrador</a>
 				</li>

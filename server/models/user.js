@@ -22,7 +22,8 @@ var UserSchema = new Schema({
 		type: String
 	},
 	mail: {
-		type: String
+		type: String,
+		required: 'Email debe ser correcto'
 	},
 	picture: {
 		type: String,
