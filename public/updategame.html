@@ -1,22 +1,22 @@
 <div data-ng-controller="adminController">
 	<form data class="form col-md-offset-2">
-		<label for="gameTitle">Titulo: </label><input data-ng-model="newGame.gameTitle" type="text" placeholder="Titulo de juego" required />
-		<label for="platform">Plataforma: </label><input data-ng-model="newGame.platform" type="text" placeholder="Plataforma" required />
-		<label for="realiseDate">Fecha de Lanzamiento: </label><input data-ng-model="newGame.releaseDate" type="text" placeholder="Fecha de lanzamiento" required />
-		<label for="overview">Overview: </label><input data-ng-model="newGame.overview" type="textarea" placeholder="Descripcion" rows="2" required />
-		<label for="players">Jugadores: </label><input data-ng-model="newGame.players" type="number" placeholder="Jugadores" required />
+		<label for="gameTitle">Titulo: </label><input data-ng-model="game.gameTitle" type="text" placeholder="Titulo de juego" required />
+		<label for="platform">Plataforma: </label><input data-ng-model="game.platform" type="text" placeholder="Plataforma" required />
+		<label for="realiseDate">Fecha de Lanzamiento: </label><input data-ng-model="game.releaseDate" type="text" placeholder="Fecha de lanzamiento" required />
+		<label for="overview">Overview: </label><input data-ng-model="game.overview" type="textarea" placeholder="Descripcion" rows="2" required />
+		<label for="players">Jugadores: </label><input data-ng-model="game.players" type="number" placeholder="Jugadores" required />
 		<label>Cooperativo</label>
 		<label>
-			<input data-ng-model="newGame.coop" type="radio"  name="coop" placeholder="Cooperativo" value="Yes" required />
+			<input data-ng-model="game.coop" type="radio"  name="coop" placeholder="Cooperativo" value="Yes" required />
 			Si
 		</label>
 		<label>
-			<input data-ng-model="newGame.coop" type="radio" name="coop" placeholder="Cooperativo" value="No" required />
+			<input data-ng-model="game.coop" type="radio" name="coop" placeholder="Cooperativo" value="No" required />
 			No
 		</label>
 		
-		<label for="publisher">Editor: </label><input data-ng-model="newGame.publisher" type="text" placeholder="Editor" required />
-		<label for="developer">Desarrollador: </label><input data-ng-model="newGame.developer" type="text" placeholder="Desarrollador" required />
+		<label for="publisher">Editor: </label><input data-ng-model="game.publisher" type="text" placeholder="Editor" required />
+		<label for="developer">Desarrollador: </label><input data-ng-model="game.developer" type="text" placeholder="Desarrollador" required />
 		<button data-ng-click="updateGame()" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 	</form>
 </div>

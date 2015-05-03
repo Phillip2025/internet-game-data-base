@@ -1,8 +1,11 @@
 var controllers = angular.module('controllers', []);  
 
-controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP) {
+controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP, players, genres) {
 	
 	$scope.search = {};
+	$rootScope.esrbENG = esrbENG;
+	$rootScope.players = players;
+	$rootScope.genres = genres;
 	
 	
 	$scope.getLatestGames = function () {
@@ -68,7 +71,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			$http.put('/comments/' + $rootScope.game._id, comment)
 			.success(function(game) {
 				console.log("Comentario añadido con exito");
-				
+				$scope.comment = {};
 				$rootScope.game = game;
 			})
 			.error(function(err) {

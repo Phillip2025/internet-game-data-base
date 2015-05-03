@@ -25,7 +25,8 @@ var UserSchema = new Schema({
 		type: String
 	},
 	picture: {
-		type: String
+		type: String,
+		default: "http://placehold.it/200&text=Imagen+no+disponible"
 	}
 });
 

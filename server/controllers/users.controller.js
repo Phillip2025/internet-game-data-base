@@ -97,3 +97,7 @@ exports.hasAuthorization = function(req, res, next) {
 		});
 	}
 };
+
+exports.confirmLogin = function(req, res) {
+	res.json(req.user);
+};

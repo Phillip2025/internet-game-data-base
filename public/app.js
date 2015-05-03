@@ -38,10 +38,31 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	});
 });
 
+app.run(function ($rootScope, $location, $http) {
+    $http.get('/confirmlogin')
+        .success(function (user) {
+        	$rootScope.user = user;
+        })
+        .error(function (err) {
+        	console.log("Error: " + err);
+        });
+});
+
 app.constant('esrbENG', 
 	['T - Teen','M - Mature','E - Everyone','E10+ - Everyone 10+','RP - Rating Pending','EC - Early Childhood']
 );
 
 app.constant('esrbESP',
 	['16','18','TP','10','RP','3']
+);
+
+app.constant('players',
+	['1', '2', '3', '4+']
+);
+
+app.constant('genres',
+	['Shooter','Action','Flight Simulator','Role-Playing','Adventure',
+			'Sandbox','Fighting','Racing','Horror','MMO','Platform',
+			'Puzzle','Strategy','Stealth','Sports','Construction and Management Simulation',
+			'Vehicle Simulation','Life Simulation','Music']
 );
