@@ -6,8 +6,8 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 	$rootScope.esrbENG = esrbENG;
 	$rootScope.players = players;
 	$rootScope.genres = genres;
-	
-	
+	$scope.interval =5000;
+
 	$scope.getLatestGames = function () {
 		console.log("Juegos nuevos");
 		$http.get('/latest')

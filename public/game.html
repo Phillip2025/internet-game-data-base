@@ -5,10 +5,10 @@
 			<img ng-src="http://thegamesdb.net/banners/{{game.images.boxart[1].url}}" alt="Portada de:{{game.gameTitle}}">
 		</div>
 		<div class="col-md-9">
-		<div data-ng-controller="userController">
-			<a class="btn btn-warning" data ng-if="$root.user.role == 'Admin'" data-ng-click="deleteGameView(game._id)" href="#">Borrar juego</a>
-			<a data ng-if="$root.user.role == 'Admin'" ui-sref="updategame" href="#">Editar juego</a>
-		</div>
+			<div data-ng-controller="userController">
+				<a class="btn btn-warning" data ng-if="$root.user.role == 'Admin'" data-ng-click="deleteGameView(game._id)" href="#">Borrar juego</a>
+				<a data ng-if="$root.user.role == 'Admin'" ui-sref="updategame" href="#">Editar juego</a>
+			</div>
 			<ul class="list-unstyled">
 				<li data-ng-if="game.alternateTitles.length !== 0"><span>Titulos Alternativos:</span>
 					<ul data-ng-repeat="alt in game.alternateTitles">
@@ -38,6 +38,16 @@
 	</div>
 	<p>{{game.overview}}</p>
 	<p><span>Imágenes</span></p>
+	<div class="col-md-12">
+      <carousel class="col-md-6" interval="interval">
+        <slide ng-repeat="screenshot in game.images.screenshot" active="slide.active">
+          <img ng-src="http://thegamesdb.net/banners/{{screenshot.original[0].url}}">
+          <!--<div class="carousel-caption">
+            <h4>Slide {{$index+1}}</h4>
+          </div>-->
+        </slide>
+      </carousel>
+    </div>
 	<p><span>Juegos relacionados:</span></p>
 	<div data-ng-repeat="comment in game.comments" class="list-unstyled">
 		<div class="row thumbnail">
@@ -56,8 +66,8 @@
 	<form>
 		<div class="form-group form-group-lg">
 			
-				<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
-				<a href="#" data-ng-click="addComment()" role="button">Publicar</a>
+			<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
+			<a href="#" data-ng-click="addComment()" role="button">Publicar</a>
 			
 		</div>
 
