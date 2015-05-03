@@ -3,8 +3,8 @@ var controllers = angular.module('controllers', []);
 controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP) {
 	
 	$scope.search = {};
-	
-	
+	$scope.interval =5000;
+
 	$scope.getLatestGames = function () {
 		console.log("Juegos nuevos");
 		$http.get('/latest')
