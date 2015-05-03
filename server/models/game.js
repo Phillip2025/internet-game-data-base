@@ -49,7 +49,7 @@ var GameSchema = new Schema({
 	}],
 	youtube: String,
 	publisher: String,
-
+	developer: String,
 	rating: {
 		type: Number,
 		default: 5
