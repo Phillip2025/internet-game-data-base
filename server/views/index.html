@@ -44,7 +44,7 @@
 				<li ui-sref-active="active"><a href="#">Plataformas</a></li>
 				<li ui-sref-active="active"><a href="#">Editores</a></li>
 				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
-				<li ui-sref-active="active"><a href="#">Tu perfil</a></li>
+				<li><a href="#" data-ng-if="$root.user" ui-sref="perfil">Tu perfil</a></li>
 				<li><a data ng-if="$root.user.role == 'Admin'" ui-sref="newgame" href="#">Administrador</a></li>
 				<li><a href="#" data ng-if="!$root.user" ui-sref="newuser">Registrarse</a></li>
 				<li><a href="#" data ng-if="$root.user" ui-sref="updateuser">Modificar datos</a></li>

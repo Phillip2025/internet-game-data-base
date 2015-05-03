@@ -35,6 +35,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('updateuser',{
 		url:'/updateuser/:user',
 		templateUrl:'updateuser.html'
+	})
+	.state('perfil',{
+		url:'/perfil',
+		templateUrl:'perfil.html'
 	});
 });
 
