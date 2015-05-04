@@ -10,7 +10,7 @@
 }
 
 body{
-	background-color:#F36E00;
+	background-color:black;
 	background-size: 150%;
 	background-attachment: fixed;
     background-repeat: no-repeat;
@@ -39,6 +39,6 @@ a{
 }
 
 div [ui-view] {
-	background-color: pink;
-	border: 1px solid black;
+	/*background-color: #FFFF99;
+	border: 1px solid black;*/
 }

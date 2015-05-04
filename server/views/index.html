@@ -7,10 +7,11 @@
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	<!--<link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href="css/game.css">-->
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/game.css">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/formularios.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css">
@@ -31,16 +32,16 @@
 					<small data-ng-controller="countController" data-ng-init="getCount()">Contamos con {{count}} juegos</small>
 				</h1>
 			</div>
-			<form data-ng-controller="gameController" class="buscador form-inline col-md-4">
+			<form data-ng-controller="gameController" class="buscador form-inline col-md-3 col-md-offset-3">
 				<div class="form-group ui-widget">
 					<input id="tags" class="form-control" data-ng-model="search.term" type="text" placeholder="Busca tu juego"/>
 					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 				</div>
 			</form>
 		</header>
-		<nav class="navbar col-md-11">
+		<nav class="navbar col-md-12">
 			<ul class="nav nav-tabs"  data-ng-controller="userController">
-				<li ui-sref-active="active"><a href="#">Juegos</a></li>
+				<li ui-sref-active="active" ui-sref="home"><a href="#">Juegos</a></li>
 				<li ui-sref-active="active"><a href="#">Plataformas</a></li>
 				<li ui-sref-active="active"><a href="#">Editores</a></li>
 				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
@@ -56,7 +57,7 @@
 				</li>
 				<li data-ng-if="$root.user">
 					<span>Bienvenido {{user.user}} </span>
-					<button class="btn btn-default" data-ng-click="logout()"><a href="#">Logout</a></button>
+					<button class="btn btn-primary" data-ng-click="logout()"><a href="#">Logout</a></button>
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="form-inline col-md-offset-1">

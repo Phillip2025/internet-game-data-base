@@ -7,6 +7,10 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 	$rootScope.players = players;
 	$rootScope.genres = genres;
 	$scope.interval =5000;
+	$scope.status = {
+    	isFirstOpen: true,
+   		isFirstDisabled: false
+  	};
 
 	$scope.getLatestGames = function () {
 		console.log("Juegos nuevos");

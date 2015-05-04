@@ -2,7 +2,7 @@
 	<h2>{{game.gameTitle}}</h2>
 	<div class="row">
 		<div class="col-md-3">
-			<img ng-src="http://thegamesdb.net/banners/{{game.images.boxart[1].url}}" alt="Portada de:{{game.gameTitle}}">
+			<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
 		</div>
 		<div class="col-md-9">
 			<div data-ng-controller="userController">
@@ -39,38 +39,68 @@
 	<p>{{game.overview}}</p>
 	<p><span>Imágenes</span></p>
 	<div class="col-md-12">
-      <carousel class="col-md-6" interval="interval">
-        <slide ng-repeat="screenshot in game.images.screenshot" active="slide.active">
-          <img ng-src="{{screenshot.url}}">
-          <!--<div class="carousel-caption">
-            <h4>Slide {{$index+1}}</h4>
-          </div>-->
-        </slide>
-      </carousel>
-    </div>
-	<p><span>Juegos relacionados:</span></p>
-	<div data-ng-repeat="comment in game.comments" class="list-unstyled">
-		<div class="row thumbnail">
-			<div class="col-md-3">
-				<img data-ng-src="img/{{comment.picture}}"/>
-				<span>{{comment.user}}</span>
-			</div>
-			<div class="col-md-8 col-md-offset-1">
-				<span>{{comment.text}}</span>
-			</div>
+		<accordion close-others="true" class="col-md-6">
+			<accordion-group heading="BANNERS" is-open="status.isFirstOpen">
+				<div class="col-md-12">
+					<carousel class="col-md-12" interval="interval">
+						<slide ng-repeat="banner in game.images.banner" active="slide.active">
+							<img ng-src="{{banner.url}}">
+				            <!--<div class="carousel-caption">
+				         	   <h4>Slide {{$index+1}}</h4>
+				            </div>-->
+		    			</slide>
+					</carousel>
+				</div>
+			</accordion-group>
+			<accordion-group heading="SCREENSHOTS">
+				<div class="col-md-12">
+					<carousel class="col-md-12" interval="interval">
+						<slide ng-repeat="screenshot in game.images.screenshot" active="slide.active">
+							<img ng-src="{{screenshot.url}}">
+		        	<!--<div class="carousel-caption">
+		           	   	    <h4>Slide {{$index+1}}</h4>
+		      	  	    </div>-->
+		   		 		</slide>
+					</carousel>
+				</div>
+			</accordion-group>
+			<accordion-group heading="FANARTS">
+				<div class="col-md-12">
+					<carousel class="col-md-12" interval="interval">
+						<slide ng-repeat="fanart in game.images.fanart" active="slide.active">
+							<img ng-src="{{fanart.url}}">
+		       		    <!--<div class="carousel-caption">
+		         	   		<h4>Slide {{$index+1}}</h4>
+		        	    </div>-->
+		    			</slide>
+					</carousel>
+				</div>
+			</accordion-group>
+		</accordion>
+	</div>
+<p><span>Juegos relacionados:</span></p>
+<div data-ng-repeat="comment in game.comments" class="list-unstyled">
+	<div class="row thumbnail">
+		<div class="col-md-3">
+			<img data-ng-src="img/{{comment.picture}}"/>
+			<span>{{comment.user}}</span>
+		</div>
+		<div class="col-md-8 col-md-offset-1">
+			<span>{{comment.text}}</span>
 		</div>
 	</div>
-	<div data-ng-if="game.comments.length === 0">
-		<p>No hay comentarios, que esperas para ser el primero?</p>
-	</div>
-	<form>
-		<div class="form-group form-group-lg">
-			
-			<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
-			<a href="#" data-ng-click="addComment()" role="button">Publicar</a>
-			
-		</div>
+</div>
+<div data-ng-if="game.comments.length === 0">
+	<p>No hay comentarios, que esperas para ser el primero?</p>
+</div>
+<form>
+	<div class="form-group form-group-lg">
 
-	</form>
-	
+		<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
+		<a href="#" data-ng-click="addComment()" role="button" class="btn btn-primary col-md-12">Publicar</a>
+
+	</div>
+
+</form>
+
 </div>

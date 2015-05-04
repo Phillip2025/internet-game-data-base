@@ -16,3 +16,11 @@ span{
 h2{
 	color: #33CCFF;
 }
+.item-game{
+	background-color: white;
+	margin:1px;
+	margin-right: 2%;
+	padding: 1px;
+	color:black;
+	text-align: center;
+}

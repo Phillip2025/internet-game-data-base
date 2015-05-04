@@ -1,4 +1,5 @@
 <div data-ng-controller="userController">
+<<<<<<< HEAD
 	<form data class="form col-md-offset-2">
 		<input type="text" data-ng-model="credentials.user" placeholder="{{user.user}}" required><br>
 		<input type="password" data-ng-model="credentials.password" required><br>
@@ -9,4 +10,51 @@
 		<input type="file" data-ng-model="credentials.picture" required><br>			
 		<button data-ng-click="updateUser()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 	</form>
+=======
+	<div class="formulario col-md-12">
+		<form data class="form-horizontal col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" for="gameTitle">Usuario</label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" value="Pepe" data-ng-model="credentials.user" value="$root.user.user" required>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" for="gameTitle">Contraseña</label>
+				<div  class="col-md-4">
+					<input  class="form-control"type="password" data-ng-model="credentials.password" required>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" for="gameTitle">Nombre:</label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" data-ng-model="credentials.name" placeholder="{{user.name}}" required>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" for="gameTitle">Apellidos:</label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" data-ng-model="credentials.surname" placeholder="{{user.surname}}" required>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" for="gameTitle">Email:</label>
+				<div class="col-md-4">
+					<input class="form-control" type="text" data-ng-model="credentials.mail" placeholder="{{user.mail}}" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
+					" required>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" for="gameTitle">Foto:</label>
+				<div class="col-md-6">
+					<input class="form-control" type="file" data-ng-model="credentials.picture" required>
+				</div>			
+			</div>
+			<div class="col-md-4"></div>
+			<div class="form-group col-md-8">
+				<button data-ng-click="updateUser()" class="col-md-6 btn btn-success">MODIFICAR DATOS PERSONALES  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+			</div>
+		</form>
+	</div>
+>>>>>>> fe7d1e73affe28b16f521db48ad1ca3f1624a0d0
 </div>
