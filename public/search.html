@@ -1,7 +1,9 @@
 
 <div ng-controller="gameController">
-<h3 data-ng-if="$root.term">Juegos relacionados con el termino {{term}}</h3>
-<h3 data-ng-if="$root.letter">Juegos que comienzan por la letra {{letter}}</h3>
-<div ng-repeat="game in $root.games">
-	<a href="#" ng-click="$parent.getGameById(game._id)"><p>{{game.gameTitle}}</p></a>
+	<h3 data-ng-if="$root.term">Juegos relacionados con el termino {{term}}</h3>
+	<h3 data-ng-if="$root.letter">Juegos que comienzan por la letra {{letter}}</h3>
+	<div ng-repeat="game in $root.games">
+		<a href="#" ng-click="$parent.getGameById(game._id)"><p>{{game.gameTitle}}</p></a>
+	</div>
+	<pagination total-items="$root.count" ng-model="currentPage" ng-change="getGamesByTerm(currentPage + 1)" class="pagination-sm" boundary-links="true"></pagination>
 </div>

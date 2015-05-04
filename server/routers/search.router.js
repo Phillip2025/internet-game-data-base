@@ -8,7 +8,7 @@ module.exports = function(app) {
 	app.route('/search/letter/:letter')
 		.get(search.read);
 
-	app.route("/search/:term")
+	app.route("/search/:term/:page")
 		.get(search.read);
 
 	app.param('letter', search.getGamesByLetter);

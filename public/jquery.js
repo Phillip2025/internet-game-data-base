@@ -2,7 +2,7 @@ $(function() {
   $( "#tags" ).autocomplete({
     source: function(request, response) {
       $.ajax({
-        url: "search/" + request.term,
+        url: "search/" + request.term + '/1',
         dataType: "json",
       	success: function(data) {
           

@@ -36,12 +36,16 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		});
 	};
 
-	$scope.getGamesByTerm = function () {
+	$scope.getGamesByTerm = function (page) {
 		var term = $scope.search.term;
-		$http.get('/search/' + term)
-		.success(function(games) {
-			console.log(games);
-			$rootScope.games = games;
+		if ($rootScope.term) {
+			term = $rootScope.term;
+		}
+		$http.get('/search/' + term + '/' + page)
+		.success(function(search) {
+			$rootScope.games = search.games;
+			$rootScope.count = search.count;
+			console.log("JUeogs: " + $rootScope.count)
 			$rootScope.term = term;
 			$rootScope.letter = undefined;
 			$location.path('/search/' + term);
@@ -83,7 +87,18 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			});
 		}
 	};
-	
+
+	 $scope.currentPage = 1;
+
+	  $scope.setPage = function (pageNo) {
+	    $scope.currentPage = pageNo;
+
+	  };
+
+	  $scope.pageChanged = function() {
+	    console.log('Page changed to: ' + $scope.currentPage);
+	  };
+		
 });
 
 controllers.controller('countController', function ($scope, $http) {
