@@ -1,66 +1,69 @@
 <div data-ng-controller="adminController">
-	<form class="form-horizontal">
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="gameTitle">Titulo: </label>
+	<div class="col-md-12 formulario">
+	<form class="form-horizontal col-md-12">
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="gameTitle">Titulo: </label>
 			<div class="col-md-4">
 				<input class="form-control" data-ng-model="newGame.gameTitle" type="text" placeholder="Titulo de juego" required />
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="platform">Plataforma: </label>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="platform">Plataforma: </label>
 			<div class="col-md-4">
 				<input class="form-control" data-ng-model="newGame.platform" type="text" placeholder="Plataforma" required />
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="releaseDate">Fecha de Lanzamiento: </label>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="releaseDate">Fecha de Lanzamiento: </label>
 			<div class="col-md-4"><input class="form-control" data-ng-model="newGame.releaseDate" type="text" placeholder="Fecha de lanzamiento" required />
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="esrb">Clasificación por edad: </label>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="esrb">Clasificación por edad: </label>
 			<div class="col-md-4"><select class="form-control" ng-model="newGame.esrb" ng-options="o as o for o in $root.esrbENG"></select>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="overview">Overview: </label>
-			<div class="col-md-4"><textarea class="form-control" data-ng-model="newGame.overview" rows="2" placeholder="Descripcion" required />
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="overview">Overview: </label>
+			<div class="col-md-8"><textarea class="form-control" data-ng-model="newGame.overview" rows="2" placeholder="Descripcion" required />
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="players">Jugadores: </label>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="players">Jugadores: </label>
 			<div class="col-md-4"><select class="form-control" ng-model="newGame.players" ng-options="o as o for o in $root.players"></select>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label">Cooperativo</label>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label">Cooperativo</label>
 			<div class="col-md-4">
 				<label class="checkbox-inline"><input class="form-control" data-ng-model="newGame.coop" type="radio" value="Yes" />Si</label>
 				<label class="checkbox-inline"><input class="form-control" data-ng-model="newGame.coop" type="radio" value="No" />No</label>
 			</div>	
 		</div>
-		<div class="form-group">	
-			<label class="col-md-2 control-label" for="publisher">Editor: </label>
+		<div class="form-group col-md-12 mi-form-group">	
+			<label class="col-md-4 control-label" for="publisher">Editor: </label>
 			<div class="col-md-4">
 				<input class="form-control" data-ng-model="newGame.publisher" type="text" placeholder="Editor" required />
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="developer">Desarrollador: </label>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="developer">Desarrollador: </label>
 			<div class="col-md-4">
 				<input class="form-control" data-ng-model="newGame.developer" type="text" placeholder="Desarrollador" required />
 			</div>
 		</div>
-		<div class="form-group" data-ng-controller="checkBoxController">
-			<label class="col-md-2 control-label" for="genres">Géneros</label>
-			<div class="col-md-4">
-				<label class="checkbox-inline col-md-4" ng-repeat="genre in $root.genres">
+		<div class="form-group col-md-12" data-ng-controller="checkBoxController">
+			<label class="col-md-4 control-label" for="genres">Géneros</label>
+			<div class="col-md-6">
+				<label class="checkbox-inline col-md-5" ng-repeat="genre in $root.genres">
 					<input type="checkbox" data-ng-click="toggle(genre)" value="genre" /> {{genre}} 
 				</label>
 			</div>
 		</div>
-	<div class="form-group">
-		<button data-ng-click="addGame()" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+		<div class="col-md-4"></div>
+	<div class="form-group col-md-8">
+		<button data-ng-click="addGame()" class="col-md-6 btn btn-success">AÑADIR JUEGO NUEVO  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 	</div>
 </form>
+</div>
 </div>

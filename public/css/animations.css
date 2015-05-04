@@ -35,7 +35,7 @@
 }
 
 .animate-view {
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 .animate-view.ng-enter, .animate-view.ng-leave {

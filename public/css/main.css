@@ -1,8 +1,14 @@
 .item-game{
 	margin-bottom: 1%;
-	min-height: 250px;
-	max-height: 250px;
+	min-height: 300px;
+	max-height: 300px;
 	overflow: hidden;
+	background-color: white;
+	margin-right: 3%;
+	padding: 1px;
+	color:black;
+	text-align: center;
+
 }
 h3{
 	color: white;
@@ -10,7 +16,7 @@ h3{
 .item-game img{
 	width:100%;
 	min-height: 200px;
-	max-height: 200px;
+	max-height: 250px;
 	margin-bottom:5px;
 }
 .title{
