@@ -38,7 +38,7 @@ exports.signUp = function(req, res) {
 	console.log(user.user);
 	console.log(user.password);
 	console.log(user.mail);
-	console.log(user.picture);
+	console.log(req.picture);
 	// Then save the user
 	user.save(function(err, user) {
 		if (err) {
