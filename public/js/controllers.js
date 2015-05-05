@@ -157,7 +157,7 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 				console.log("Error" +err);
 			});
 		}
-		console.log("updateado usuario")
+		console.log("updateado usuario");
 	};
 
 	$scope.logout = function() {
@@ -228,11 +228,11 @@ controllers.controller('checkBoxController', function ($scope, $rootScope) {
 		else {
 			$rootScope.genresCheckBox.push(genre);
 		}
-	}
+	};
 
 	$scope.populate = function () {
 		$rootScope.genresCheckBox = $rootScope.game.genres;
-	}
+	};
 
 	$scope.checkGenre = function (genre) {
 		if ($rootScope.genresCheckBox.indexOf(genre) > -1) {
@@ -241,7 +241,7 @@ controllers.controller('checkBoxController', function ($scope, $rootScope) {
 		else {
 			return -1;
 		}
-	}
+	};
 
 
 });

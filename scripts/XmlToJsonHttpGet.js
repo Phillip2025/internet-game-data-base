@@ -4,9 +4,9 @@ var MongoClient = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
-var getsPorCiclo = 25;
+var getsPorCiclo = 1;
 var tiempoEntreCiclos = 1000;
-var idLimite = 1000;
+var idLimite = 10;
 var total = 0;
 var dataBase;
 var coll;
@@ -88,7 +88,15 @@ function saveGamebyId(id) {
 		host: "thegamesdb.net",
 		path: "/api/GetGame.php?id=" + id
 	};
-	http.get(getOptions, function(res) {
+	var proxyOptions = {
+		host: "lupus.sia.es",
+		port: 8080,
+		path: "thegamesdb.net/api/GetGame.php?id=" + id,
+		headers: {
+		/*Host: "www.thegamesdb.net"*/
+		}
+	};
+	http.get(proxyOptions, function(res) {
 	  	console.log("Obtenida respuesta " + res.statusCode + " para el id " + id);
 	  	var xml = "";
 	  	res.on("data", function(body) {
