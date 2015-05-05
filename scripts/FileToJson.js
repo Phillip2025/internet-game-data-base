@@ -65,7 +65,6 @@ function readLines(input, func) {
     var index = remaining.indexOf('\n');
     while (index > -1) {
       var line = remaining.substring(0, index);
-      console.log(line);
       remaining = remaining.substring(index + 1);
       func(line);
       index = remaining.indexOf('\n');
@@ -247,15 +246,15 @@ function func(xml) {
 			    	}
 			    } 
 			    coll.insert(json);
-			    console.log("Guardado juego con id " + datos.id);
+			    console.log("Guardado juego");// con id " + datos.id);
 			    total++;
 			}
 			else {
-				console.log("No se encontro datos para el id " + id);
+				console.log("No se encontro datos");// para el id " + id);
 			}
 		}
 		catch (err){
-			console.log("Fallo en id" + id);
+			console.log("Fallo");// en id" + id);
 			console.log(err);
 		}
 	});
