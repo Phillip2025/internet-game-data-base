@@ -5,7 +5,7 @@ chalk = require('chalk');
 exports.getGamesByTerm = function(req, res, next, term) {
 	console.log("Peticion por nombre: " + term);
 	var regex = new RegExp('^.*'+term+'.*$', "i");
-	Game.find({gameTitle: regex}).select('gameTitle').sort('rating').exec( function(err, games) {
+	Game.find({gameTitle: regex}).select('gameTitle images').sort('rating').exec( function(err, games) {
 		if (err) {
 			return res.status(500).send({
 				message: 'Error interno de servidor'

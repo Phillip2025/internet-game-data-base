@@ -8,9 +8,10 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 	$rootScope.genres = genres;
 	$scope.interval =5000;
 	$scope.status = {
-    	isFirstOpen: true,
-   		isFirstDisabled: false
-  	};
+		isFirstOpen: true,
+		isFirstDisabled: false
+	};
+	
 
 	$scope.getLatestGames = function () {
 		console.log("Juegos nuevos");
@@ -43,8 +44,19 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			console.log(games);
 			$rootScope.games = games;
 			$rootScope.term = term;
+			$rootScope.totalItems = games.length;
 			$rootScope.letter = undefined;
 			$location.path('/search/' + term);
+			$rootScope.currentPage = 1;
+			$rootScope.numPerPage = 5;
+			$rootScope.maxSize = 5;
+			$rootScope.filteredTodos = [];
+			$rootScope.$watch("currentPage + numPerPage", function() {
+				var begin = (($rootScope.currentPage - 1) * $rootScope.numPerPage);
+				var end = begin + $rootScope.numPerPage;
+				//console.log("begin:"+begin+"end:"+end);
+				$rootScope.filteredTodos = $rootScope.games.slice(begin, end);
+			});
 		});
 	};
 
@@ -136,17 +148,17 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 			console.log("No hay usuario logeado");
 			console.log("Aqui deberia cargar el formulario de registro");
 		}else{
-				$http.put('/updateuser', $scope.credentials)
-				.success(function (user){
-					$rootScope.user={};
-					$rootScope.user = user;
-					$location.path('/');
-				})
-				.error(function(err){
-					console.log("Error" +err);
-				});
-			}
-			console.log("updateado usuario")
+			$http.put('/updateuser', $scope.credentials)
+			.success(function (user){
+				$rootScope.user={};
+				$rootScope.user = user;
+				$location.path('/');
+			})
+			.error(function(err){
+				console.log("Error" +err);
+			});
+		}
+		console.log("updateado usuario")
 	};
 
 	$scope.logout = function() {
