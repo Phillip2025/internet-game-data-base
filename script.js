@@ -4,9 +4,9 @@ var MongoClient = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
-var getsPorCiclo = 50;
+var getsPorCiclo = 25;
 var tiempoEntreCiclos = 1000;
-var idLimite = 100;
+var idLimite = 1000;
 var total = 0;
 var dataBase;
 var coll;

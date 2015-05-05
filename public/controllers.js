@@ -94,8 +94,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 				console.log(err);
 			});
 		}
-	};
-	
+	};	
 });
 
 controllers.controller('countController', function ($scope, $http) {

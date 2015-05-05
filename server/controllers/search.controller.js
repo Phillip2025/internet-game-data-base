@@ -3,9 +3,9 @@ var Game = mongoose.model('Game');
 chalk = require('chalk');
 
 exports.getGamesByTerm = function(req, res, next, term) {
-	console.log("Peticion por nombre: " + term);
+	console.log("Peticion por nombre: " + term );
 	var regex = new RegExp('^.*'+term+'.*$', "i");
-	Game.find({gameTitle: regex}).select('gameTitle images').sort('rating').exec( function(err, games) {
+	Game.find({gameTitle: regex}).select('gameTitle images').exec( function(err, games) {
 		if (err) {
 			return res.status(500).send({
 				message: 'Error interno de servidor'
@@ -19,7 +19,6 @@ exports.getGamesByTerm = function(req, res, next, term) {
 		}
 		req.games = games;
 		next();
-		
 	});
 };
 
@@ -46,7 +45,7 @@ exports.getGamesByLetter = function(req, res) {
 
 exports.getLatestGames = function(req, res) {
 	console.log("Peticion de ultimos juegos");
-	Game.find().sort('releaseDate').limit(10).exec(function (err, games) {
+	Game.find().sort('-created').limit(10).exec(function (err, games) {
 		if(err){
 			return res.status(500).send({
 				message: 'Error interno del servidor'
@@ -60,5 +59,11 @@ exports.getLatestGames = function(req, res) {
 
 exports.read = function(req, res) {
 	console.log("Peticion de visualizacion por termino de busqueda");
-	res.json(req.games);
+	if (req.search) {
+		res.json(req.search);
+	}
+	else {
+		res.json(req.games);
+	}
+	
 };
