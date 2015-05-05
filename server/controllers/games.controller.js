@@ -101,6 +101,7 @@ exports.addComment = function (req, res) {
 	game.comments.push(req.body);
 	game.save(function(err) {
 		if (err) {
+			console.log(err);
 			return res.status(500).send({
 				message: 'Error interno del servidor'
 			});

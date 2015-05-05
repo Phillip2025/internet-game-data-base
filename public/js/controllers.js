@@ -41,7 +41,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		var term = $scope.search.term;
 		$http.get('/search/' + term)
 		.success(function(games) {
-			console.log(games);
+			$scope.search = {};
 			$rootScope.games = games;
 			$rootScope.term = term;
 			$rootScope.totalItems = games.length;
@@ -79,12 +79,11 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		else {
 			var comment = {};
 			console.log(JSON.stringify($rootScope.user));
-			comment._id = $rootScope.user._id;
 			comment.user = $rootScope.user.user;
 			comment.picture = $rootScope.user.picture;
 			comment.text = $scope.comment.text;
 			console.log(JSON.stringify(comment));
-			$http.put('/comments/' + $rootScope.game._id, comment)
+			$http.post('games/' + $rootScope.game._id + '/comments', comment)
 			.success(function(game) {
 				console.log("Comentario añadido con exito");
 				$scope.comment = {};

@@ -3,11 +3,20 @@ var user = require('../controllers/users.controller');
 
 module.exports = function(app) {
 
-	app.route("/comments/:id")
-		.put(user.requiresLogin, games.addComment);
+	app.route("/games/:id/comments/:com")
+		//.put(user.requiresLogin, games.editComment)
+		//.delete(user.requiresLogin, games.deleteComment);
 
-	app.route("/ratings/:id")
-		.put(user.requiresLogin, games.addRating);
+	app.route("/games/:id/comments")
+		.post(user.requiresLogin, games.addComment);
+
+	//los ratings creo que van a ir al user, tiene mas logica
+	/*app.route("games/:id/ratings")
+		.put(user.requiresLogin, games.editRating)
+		.delete(user.requiresLogin, games.deleteRating);
+
+	app.route("games/:id/ratings")
+		.post(user.requiresLogin, games.addRating);*/
 
 
 	app.route("/games/:id")
