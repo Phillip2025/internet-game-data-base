@@ -96,7 +96,7 @@ function saveGamebyId(id) {
 		/*Host: "www.thegamesdb.net"*/
 		}
 	};
-	http.get(proxyOptions, function(res) {
+	http.get(getOptions, function(res) {
 	  	console.log("Obtenida respuesta " + res.statusCode + " para el id " + id);
 	  	var xml = "";
 	  	res.on("data", function(body) {

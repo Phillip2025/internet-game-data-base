@@ -1,5 +1,5 @@
 //declaracion de app y sus dependencias
-var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'ngAnimate', 'ui.bootstrap']);  
+var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap']);  
 
 
 //state provider

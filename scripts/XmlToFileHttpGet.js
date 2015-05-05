@@ -41,7 +41,9 @@ function saveGamebyId(id) {
 	  		xml += body;
 	  	});
 	  	res.on("end", function() {
+	  		xml += "\n\r";
 	  		fs.appendFileSync(file, xml);
+	  		console.log("Guardado juego con id " + id);
 		});
 	}).on('error', function(e) {
 	  console.log("Error en peticion get de id " + id + ": " + e.message);

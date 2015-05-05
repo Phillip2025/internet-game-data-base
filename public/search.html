@@ -1,15 +1,9 @@
 
 <div ng-controller="gameController">
-	<pagination total-items="totalItems" ng-model="$root.currentPage" ng-changed="changed()" items-per-page="$root.numPerPage" total-items="$root.totalItems"></pagination>
-	<h3 data-ng-if="$root.term">Juegos relacionados con el termino {{term}}</h3>
+	<h3 data-ng-if="$root.term">Juegos relacionados con el termino {{term}}: {{$root.totalItems}} encontrados</h3>
 	<h3 data-ng-if="$root.letter">Juegos que comienzan por la letra {{letter}}</h3>
-	<div ng-repeat="game in filteredTodos">
-		<a href="#" ng-click="$parent.getGameById(game._id)">
-			<div class="item-game col-md-2">
-				<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
-				<div class="col-md-12">
-					<p>{{game.gameTitle}}</p>
-				</div>
-			</div>
-		</a>
+	<div inline-thumb ng-repeat="game in gamesPage"></div>
+	<div class="row text-center">
+		<pagination ng-model="$root.currentPage" ng-changed="changed()" items-per-page="$root.numPerPage" total-items="$root.totalItems"></pagination>
 	</div>
+</div>

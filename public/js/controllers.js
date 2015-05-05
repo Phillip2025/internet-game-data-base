@@ -50,12 +50,12 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			$rootScope.currentPage = 1;
 			$rootScope.numPerPage = 5;
 			$rootScope.maxSize = 5;
-			$rootScope.filteredTodos = [];
+			$rootScope.gamesPage = [];
 			$rootScope.$watch("currentPage + numPerPage", function() {
 				var begin = (($rootScope.currentPage - 1) * $rootScope.numPerPage);
 				var end = begin + $rootScope.numPerPage;
 				//console.log("begin:"+begin+"end:"+end);
-				$rootScope.filteredTodos = $rootScope.games.slice(begin, end);
+				$rootScope.gamesPage = $rootScope.games.slice(begin, end);
 			});
 		});
 	};
