@@ -95,6 +95,31 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			});
 		}
 	};	
+
+	$scope.autoComplete = {
+		options: {
+			html: true,
+			focusOpen: true,
+			onlySelectValid: true,
+			minLength: 2,
+			source: function (request, response) {
+				$http.get('search/' + request.term)
+				.success( function(data) {
+					if (data.length > 0) {
+						var array = [];
+						for (var i = 0; i< data.length; i++) {
+							array.push(data[i].gameTitle);
+						}
+						response(array);
+					}
+					else {
+						response([data.message]);
+					}
+				});
+			},
+		}
+	};
+	
 });
 
 controllers.controller('countController', function ($scope, $http) {
