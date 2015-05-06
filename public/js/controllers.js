@@ -48,7 +48,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			$rootScope.letter = undefined;
 			$location.path('/search/' + term);
 			$rootScope.currentPage = 1;
-			$rootScope.numPerPage = 5;
+			$rootScope.numPerPage = 8;
 			$rootScope.maxSize = 5;
 			$rootScope.gamesPage = [];
 			$rootScope.$watch("currentPage + numPerPage", function() {

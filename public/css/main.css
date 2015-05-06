@@ -1,4 +1,4 @@
-.item-game{
+/*.item-game{
 	margin-bottom: 1%;
 	min-height: 300px;
 	max-height: 300px;
@@ -9,16 +9,17 @@
 	color:black;
 	text-align: center;
 
-}
+}*/
 h3{
 	color: white;
 }
+/*
 .item-game img{
 	width:100%;
 	min-height: 200px;
 	max-height: 250px;
 	margin-bottom:5px;
-}
+}*/
 .title{
 	background-color:black;
 	width:100%;
