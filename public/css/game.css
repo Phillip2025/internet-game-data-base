@@ -16,5 +16,24 @@ span{
 h2{
 	color: #33CCFF;
 }
-.item-game{
-	}
+.item-game .panel-heading{
+	max-height: 50px;
+}
+.item-game .panel-body{
+	min-height: 200px;
+	max-height: 200px;
+}
+.media{
+	background-color: whitesmoke;
+	border:1px solid black;	
+	margin:1%;
+	padding: 2px;
+	min-height: 225px;
+}
+.media a{
+	color:black;
+}
+.media-object{
+	width: 125px;
+	height: 100%;
+}
