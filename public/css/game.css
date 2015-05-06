@@ -37,3 +37,12 @@ h2{
 	width: 125px;
 	height: 100%;
 }
+.comentarios{
+	padding: 2%;
+}
+span.ng-binding{
+	color:black;
+}
+.comentario img{
+	width: 50%;
+}
