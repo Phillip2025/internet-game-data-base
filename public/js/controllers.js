@@ -41,7 +41,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		var term = $scope.search.term;
 		$http.get('/search/' + term)
 		.success(function(games) {
-			console.log(games);
+			$scope.search = {};
 			$rootScope.games = games;
 			$rootScope.term = term;
 			$rootScope.totalItems = games.length;
@@ -79,12 +79,11 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		else {
 			var comment = {};
 			console.log(JSON.stringify($rootScope.user));
-			comment._id = $rootScope.user._id;
 			comment.user = $rootScope.user.user;
 			comment.picture = $rootScope.user.picture;
 			comment.text = $scope.comment.text;
 			console.log(JSON.stringify(comment));
-			$http.put('/comments/' + $rootScope.game._id, comment)
+			$http.post('games/' + $rootScope.game._id + '/comments', comment)
 			.success(function(game) {
 				console.log("Comentario añadido con exito");
 				$scope.comment = {};
@@ -95,6 +94,31 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			});
 		}
 	};	
+
+	$scope.autoComplete = {
+		options: {
+			html: true,
+			focusOpen: true,
+			onlySelectValid: true,
+			minLength: 2,
+			source: function (request, response) {
+				$http.get('search/' + request.term)
+				.success( function(data) {
+					if (data.length > 0) {
+						var array = [];
+						for (var i = 0; i< data.length; i++) {
+							array.push(data[i].gameTitle);
+						}
+						response(array);
+					}
+					else {
+						response([data.message]);
+					}
+				});
+			},
+		}
+	};
+	
 });
 
 controllers.controller('countController', function ($scope, $http) {

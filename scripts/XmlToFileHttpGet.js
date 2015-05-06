@@ -4,7 +4,7 @@ var fs = require('fs');
 var id = 0;
 var getsPorCiclo = 25;
 var tiempoEntreCiclos = 1000;
-var idLimite = 1000;
+var idLimite = 27000;
 var total = 0;
 var file = 'gamesxml.txt';
 
@@ -41,9 +41,11 @@ function saveGamebyId(id) {
 	  		xml += body;
 	  	});
 	  	res.on("end", function() {
-	  		xml += "\n\r";
+	  		xml = xml.replace(/(?:\r\n|\r|\n)/g, '');
+	  		xml += "\n"
 	  		fs.appendFileSync(file, xml);
 	  		console.log("Guardado juego con id " + id);
+	  		total++;
 		});
 	}).on('error', function(e) {
 	  console.log("Error en peticion get de id " + id + ": " + e.message);

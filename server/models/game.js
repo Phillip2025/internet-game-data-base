@@ -2,6 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ai = require('mongoose-auto-increment');
 
+var CommentSchema = new Schema({ 
+	user: String,
+ 	picture: String,
+ 	text: String  
+ });
+
 var GameSchema = new Schema({
 	gameTitle: {
 		type: String,
@@ -59,12 +65,7 @@ var GameSchema = new Schema({
 		user: String,
 	 	rating: Number
 	}],
-	comments: [{ 
-		_id: Number,
-		user: String,
-	 	picture: String,
-	 	text: String 
-	}],
+	comments: [CommentSchema],
 	images: { 
 		fanart: [{
 			url: String,
@@ -106,4 +107,5 @@ var GameSchema = new Schema({
 });
 
 GameSchema.plugin(ai.plugin, {model: 'Game', startAt: 27000});
+CommentSchema.plugin(ai.plugin, {model: 'Comment'});
 mongoose.model('Game', GameSchema);
