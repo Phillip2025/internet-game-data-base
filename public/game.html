@@ -4,7 +4,7 @@
 		<div class="col-md-3">
 			<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-3">
 			<div data-ng-controller="userController">
 				<a class="btn btn-warning" data ng-if="$root.user.role == 'Admin'" data-ng-click="deleteGameView(game._id)" href="#">Borrar juego</a>
 				<a data ng-if="$root.user.role == 'Admin'" ui-sref="updategame" href="#">Editar juego</a>
@@ -17,13 +17,12 @@
 				</li>
 				<li><span>Plataforma:</span>{{game.platform}}</li>
 				<li data-ng-if="game.similar.length !== 0"><span>otras Plataformas disponibles</span>
-					<ul data-ng-repeat="similar in game.similar" class="list-unstyled list-inline">
-						<li><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img data-ng-src="img/platformicons/{{similar.platformId}}"></a></li>
+					<ul class="list-unstyled list-inline">
+						<li data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img data-ng-src="img/platformicons/{{similar.platformId}}"></a></li>
 					</ul>
 				</li>
 				<li><span>Fecha de lanzamiento:</span> {{game.releaseDate}}</li>
 				<li><span>Calificacion por edades:</span> {{game.esrb}}</li>
-				<li><span>Calificación:</span> {{game.rating}}</li>
 				<li><span>Jugadores:</span> {{game.players}}</li>
 				<li><span>Cooperativo:</span> {{game.coop}}</li>
 				<li><span>Editor:</span> {{game.publisher}}</li>
@@ -34,6 +33,12 @@
 					</ul>
 				</li>
 			</ul>
+		</div>
+		<div class="col-md-3">
+			<div class="thumbnail">
+				<p>Calificación: {{game.rating}}</p>
+				<p>Aqui votar</p>
+			</div>
 		</div>
 	</div>
 	<p>{{game.overview}}</p>

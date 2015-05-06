@@ -95,6 +95,20 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		}
 	};	
 
+	$scope.updateComment = function(gameId, commentId) {
+		var comment = {};
+		comment.user = $rootScope.user.user;
+		comment.picture = $rootScope.user.picture;
+		comment.text = $scope.comment.text;
+		$http.put('games/' + gameId + '/comments/' + commentId, comment)
+		.success(function(game) {
+			$rootScope.game = game;
+		})
+		.error(function (err) {
+			console.log(err);
+		});
+	};
+
 	$scope.autoComplete = {
 		options: {
 			html: true,
