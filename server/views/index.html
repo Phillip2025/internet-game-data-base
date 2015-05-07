@@ -26,7 +26,6 @@
 	<script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
-	<!--<script src="js/jquery.js"></script>-->
 </head>
 <body>
 	<div class="container">
@@ -51,7 +50,7 @@
 				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
 				<li data-ng-if="!$root.user" ui-sref-active="active"><a href="#">Tu perfil</a></li>
 				<li data-ng-if="$root.user.role == 'Admin'">
-					<a ui-sref="newgame" href="#">Administrador</a>
+					<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">Añadir juego</a>
 				</li>
 				<li data-ng-if="!$root.user">
 					<a href="#" ui-sref="newuser">Registrarse</a>

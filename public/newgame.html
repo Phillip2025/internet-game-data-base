@@ -1,5 +1,7 @@
-<div data-ng-controller="adminController">
-	<div class="col-md-12 formulario">
+<div class="modal-header">
+	<h4 class="modal-title">Nuevo juego</h4>
+</div>
+<div class="modal-body"> 
 	<form class="form-horizontal col-md-12">
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="gameTitle">Titulo: </label>
@@ -60,10 +62,9 @@
 				</label>
 			</div>
 		</div>
-		<div class="col-md-4"></div>
-	<div class="form-group col-md-8">
-		<button data-ng-click="addGame()" class="col-md-6 btn btn-success">AÑADIR JUEGO NUEVO  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-	</div>
-</form>
+	</form>
 </div>
+<div class="modal-footer">
+	<button data-ng-click="addGame()" class="col-md-6 btn btn-success">Añadir <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>

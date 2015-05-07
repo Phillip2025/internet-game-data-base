@@ -212,9 +212,10 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 	};
 });
 
-controllers.controller('adminController', function ($scope, $rootScope, $http, $location) {
+controllers.controller('adminController', function ($scope, $rootScope, $http, $modal, $location) {
 	
 	$scope.newGame = {};
+	$scope.modalInstance;
 
 	$scope.addGame = function(){
 		$scope.newGame.genres = $rootScope.genresCheckBox;
@@ -223,6 +224,7 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 		.success(function (game){
 			console.log("Nuevo juego insertado");
 			$rootScope.game = game;
+			$scope.modalInstance.close();
 			$location.path('/games/' + game._id);
 		})
 		.error(function(err){
@@ -252,6 +254,27 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 			}
 		}
 	};
+
+	$scope.openNewGame = function () {
+
+	    $scope.modalInstance = $modal.open({
+	      templateUrl: 'newgame.html',
+	      scope: $scope,
+	      resolve: {
+	        newGame: function () {
+	          return $scope.newGame;
+	        }
+	      }
+	    });
+	    
+	    //Al cerrar el modal
+	    /*$scope.modalInstance.result.then(function (credentials) {
+	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+	    }, function () {
+	      $log.info('Modal dismissed at: ' + new Date());
+	    });*/
+	    
+  	};
 });
 
 controllers.controller('checkBoxController', function ($scope, $rootScope) {
