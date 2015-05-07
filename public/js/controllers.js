@@ -151,8 +151,9 @@ controllers.controller('countController', function ($scope, $http) {
 
 });
 
-controllers.controller('userController', function ($scope, $rootScope, $http, $location) {
+controllers.controller('userController', function ($scope, $rootScope, $http, $modal, $location) {
 
+	$scope.modalInstance;
 	$scope.credentials = {};
 
 	$scope.login = function() {
@@ -171,6 +172,7 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 	$scope.signUp = function() {
 		$http.post('/signup', $scope.credentials)
 		.success(function (user) {
+			$scope.modalInstance.close();
 			console.log ("Registrado y logeado");
 			$rootScope.user = user;
 			$location.path('/');
@@ -187,7 +189,7 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 		}else{
 			$http.put('/updateuser', $scope.credentials)
 			.success(function (user){
-				$rootScope.user={};
+				$rootScope.user= {};
 				$rootScope.user = user;
 				$location.path('/');
 			})
@@ -197,6 +199,48 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $l
 		}
 		console.log("updateado usuario");
 	};
+
+	$scope.openNewUser = function () {
+
+	    $scope.modalInstance = $modal.open({
+	      templateUrl: 'newuser.html',
+	      scope: $scope,
+	      resolve: {
+	        credentials: function () {
+	          return $scope.credentials;
+	        }
+	      }
+	    });
+	    
+	    //Al cerrar el modal
+	    /*$scope.modalInstance.result.then(function (credentials) {
+	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+	    }, function () {
+	      $log.info('Modal dismissed at: ' + new Date());
+	    });*/
+	    
+  	};
+
+  	$scope.openEditUser = function () {
+
+	    $scope.modalInstance = $modal.open({
+	      templateUrl: 'updateuser.html',
+	      scope: $scope,
+	      resolve: {
+	        credentials: function () {
+	          return $scope.credentials;
+	        }
+	      }
+	    });
+	    
+	    //Al cerrar el modal
+	    /*$scope.modalInstance.result.then(function (credentials) {
+	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+	    }, function () {
+	      $log.info('Modal dismissed at: ' + new Date());
+	    });*/
+	    
+  	};
 
 	$scope.logout = function() {
 		console.log("Deslogeando");
@@ -241,6 +285,7 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 				console.log("Root: " + JSON.stringify($rootScope.game));
 				$http.put('/games/' + $rootScope.game._id, $rootScope.game)
 				.success(function (game) {
+					$scope.modalInstance.close();
 					console.log("Updateando juego con id:" + game._id);
 					console.log(JSON.stringify(game));
 					$rootScope.game = game;
@@ -263,6 +308,27 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 	      resolve: {
 	        newGame: function () {
 	          return $scope.newGame;
+	        }
+	      }
+	    });
+	    
+	    //Al cerrar el modal
+	    /*$scope.modalInstance.result.then(function (credentials) {
+	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+	    }, function () {
+	      $log.info('Modal dismissed at: ' + new Date());
+	    });*/
+	    
+  	};
+
+  	$scope.openEditGame = function () {
+
+	    $scope.modalInstance = $modal.open({
+	      templateUrl: 'updategame.html',
+	      scope: $scope,
+	      resolve: {
+	        game: function () {
+	          return $scope.game;
 	        }
 	      }
 	    });

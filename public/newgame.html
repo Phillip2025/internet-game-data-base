@@ -2,7 +2,7 @@
 	<h4 class="modal-title">Nuevo juego</h4>
 </div>
 <div class="modal-body"> 
-	<form class="form-horizontal col-md-12">
+	<form class="form-horizontal">
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="gameTitle">Titulo: </label>
 			<div class="col-md-4">
@@ -65,6 +65,6 @@
 	</form>
 </div>
 <div class="modal-footer">
-	<button data-ng-click="addGame()" class="col-md-6 btn btn-success">Añadir <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+	<button data-ng-click="addGame()" class="btn btn-success">Añadir <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>

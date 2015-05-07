@@ -1,8 +1,10 @@
-<div data-ng-controller="adminController">
-	<div class="formulario col-md-12">
+<div class="modal-header">
+	<h4 class="modal-title">Editar juego</h4>
+</div>
+<div class="modal-body">
 	<form class="form-horizontal col-md-12">
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label" for="gameTitle">Titulo nuevo: </label>
+			<label class="col-md-4 control-label" for="gameTitle">Titulo: </label>
 			<div class="col-md-4">
 				<input class="form-control" data-ng-model="$root.game.gameTitle" type="text" placeholder="Titulo de juego" required />
 			</div>
@@ -60,10 +62,9 @@
 				</label>
 			</div>
 		</div>
-		<div class="col-md-4"></div>
-	<div class="form-group col-md-8">
-			<button data-ng-click="updateGame()" class="col-md-6 btn btn-primary">MODIFICAR DATOS  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-		</div>
-	</form>
-	</div>
+	</form>	
+</div>
+<div class="modal-footer">
+	<button data-ng-click="updateGame()" class="btn btn-primary">Editar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>
