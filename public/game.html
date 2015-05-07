@@ -42,10 +42,9 @@
 		</div>
 	</div>
 	<p>{{game.overview}}</p>
-	<p><span>Imágenes</span></p>
 	<div class="col-md-12">
 		<accordion close-others="true">
-			<accordion-group heading="BANNERS" is-open="status.isFirstOpen">
+			<accordion-group heading="Banners" is-open="status.isFirstOpen">
 			<div class="col-md-12">
 				<carousel class="col-md-12" interval="interval">
 					<slide ng-repeat="banner in game.images.banner" active="slide.active">
@@ -57,7 +56,7 @@
 				     </carousel>
 				 </div>
 				</accordion-group>
-				<accordion-group heading="SCREENSHOTS">
+				<accordion-group heading="Capturas de pantalla">
 				<div class="col-md-12">
 					<carousel class="col-md-12" interval="interval">
 						<slide ng-repeat="screenshot in game.images.screenshot" active="slide.active">
@@ -69,7 +68,7 @@
 		           	</carousel>
 		           </div>
 		       </accordion-group>
-		       <accordion-group heading="FANARTS">
+		       <accordion-group heading="Imágenes de usuarios">
 		       <div class="col-md-12">
 		       	<carousel class="col-md-12" interval="interval">
 		       		<slide ng-repeat="fanart in game.images.fanart" active="slide.active">
@@ -86,7 +85,7 @@
 		<p><span>Juegos relacionados:</span></p>
 		<p><span>Comentarios:</span></p>
 			<div data-ng-repeat="comment in game.comments" class="list-unstyled comentarios">
-				<div class="comentario col-md-11 col-md-offset-1 thumbnail">
+				<div class="comentario col-md-11 thumbnail">
 					<div class="col-md-2">
 						<img data-ng-src="img/{{comment.picture}}"/>
 						<span>{{comment.user}}</span>
@@ -94,6 +93,9 @@
 					<div class="col-md-9 col-md-offset-1">
 						<span>{{comment.user}} escribió: <p>{{comment.text}}</p></span>
 					</div>
+				</div>
+				<div class="col-md-1" data-ng-if="$root.user._id == comment.userId" data-ng-click="deleteComment(game._id, comment._id)">
+				<p><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>
 				</div>
 			</div>
 			<div data-ng-if="game.comments.length === 0">

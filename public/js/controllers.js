@@ -79,6 +79,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		else {
 			var comment = {};
 			console.log(JSON.stringify($rootScope.user));
+			comment.userId = $rootScope.user._id;
 			comment.user = $rootScope.user.user;
 			comment.picture = $rootScope.user.picture;
 			comment.text = $scope.comment.text;
@@ -101,6 +102,17 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		comment.picture = $rootScope.user.picture;
 		comment.text = $scope.comment.text;
 		$http.put('games/' + gameId + '/comments/' + commentId, comment)
+		.success(function(game) {
+			$rootScope.game = game;
+		})
+		.error(function (err) {
+			console.log(err);
+		});
+	};
+
+	$scope.deleteComment = function(gameId, commentId) {
+
+		$http.delete('games/' + gameId + '/comments/' + commentId)
 		.success(function(game) {
 			$rootScope.game = game;
 		})
