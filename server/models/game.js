@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var ai = require('mongoose-auto-increment');
 
 var CommentSchema = new Schema({ 
+	userId: Number,
 	user: String,
  	picture: String,
  	text: String  

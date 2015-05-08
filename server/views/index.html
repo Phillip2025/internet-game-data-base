@@ -12,8 +12,6 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/formularios.css">
 	<link rel="stylesheet" href="css/animations.css">
-
-	<link rel="stylesheet" href="css/formularios.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css">
@@ -26,7 +24,6 @@
 	<script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
-	<!--<script src="js/jquery.js"></script>-->
 </head>
 <body>
 	<div class="container">
@@ -51,13 +48,13 @@
 				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
 				<li data-ng-if="!$root.user" ui-sref-active="active"><a href="#">Tu perfil</a></li>
 				<li data-ng-if="$root.user.role == 'Admin'">
-					<a ui-sref="newgame" href="#">Administrador</a>
+					<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">Añadir juego</a>
 				</li>
 				<li data-ng-if="!$root.user">
-					<a href="#" ui-sref="newuser">Registrarse</a>
+					<a href="#" data-ng-click="openNewUser()">Registrarse</a>
 				</li>
 				<li data-ng-if="$root.user">
-					<a href="#"  ui-sref="updateuser">Modificar datos</a>
+					<a href="#" data-ng-click="openEditUser()">Modificar datos</a>
 				</li>
 				<li data-ng-if="$root.user">
 					<span>Bienvenido {{user.user}} </span>
@@ -68,7 +65,7 @@
 						<div class="form-group">
 							<input class="form-control" data-ng-model="credentials.user" type="text" placeholder="Nombre de usuario" required />
 							<input class="form-control" data-ng-model="credentials.password" type="password" placeholder="Password" required />
-							<button data-ng-click="login()" id="submitsearch" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+							<button data-ng-click="login()" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 						</div>
 					</form>
 				</li>

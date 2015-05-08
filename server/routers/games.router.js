@@ -4,11 +4,11 @@ var user = require('../controllers/users.controller');
 module.exports = function(app) {
 
 	app.route("/games/:id/comments/:com")
-		//.put(user.requiresLogin, games.editComment)
-		//.delete(user.requiresLogin, games.deleteComment);
+		.put(user.requiresLogin, games.updateComment)
+		.delete(user.requiresLogin, games.deleteComment);
 
 	app.route("/games/:id/comments")
-		.post(user.requiresLogin, games.addComment);
+		.post(user.requiresLogin, games.insertComment);
 
 	//los ratings creo que van a ir al user, tiene mas logica
 	/*app.route("games/:id/ratings")

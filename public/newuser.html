@@ -1,4 +1,7 @@
-<div data-ng-controller="userController">
+<div class="modal-header">
+	<h4 class="modal-title">Nuevo registro</h4>
+</div>
+<div class="modal-body">
 	<form data class="form col-md-offset-2">
 		<input type="text" data-ng-model="credentials.user" placeholder="Nombre Usuario" required><br>
 		<input type="password" data-ng-model="credentials.password" placeholder="Password" required><br>
@@ -7,6 +10,8 @@
 		<input type="text" data-ng-model="credentials.mail" placeholder="Email" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
 " required><br>
 		<input type="file" data-ng-model="credentials.picture" required><br>			
-		<button data-ng-click="signUp()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" data-ng-click="signUp()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 </div>

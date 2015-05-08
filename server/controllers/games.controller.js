@@ -39,6 +39,21 @@ exports.read = function(req, res) {
 	res.json(req.game);
 };
 
+exports.insertGame = function(req, res) {
+	console.log("Peticion de insercion");
+	var game = new Game(req.body);
+	console.log(game);
+	game.save(function(err) {
+		if (err) {
+			console.log(err);
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(game);
+	});
+};
+
 exports.updateGame = function(req, res) {
 	console.log("Peticion de update");
 	var game = new Game(req.body);
@@ -65,21 +80,6 @@ exports.deleteGame = function(req, res) {
 	});
 };
 
-exports.insertGame = function(req, res) {
-	console.log("Peticion de insercion");
-	var game = new Game(req.body);
-	console.log(game);
-	game.save(function(err) {
-		if (err) {
-			console.log(err);
-			return res.status(500).send({
-				message: 'Error interno del servidor'
-			});
-		}
-		res.json(game);
-	});
-};
-
 exports.getAllGames = function(req, res){
 	console.log("Peticion a todos los juegos");
 	Game.find().sort('-releaseDate').exec(function(err, games){
@@ -94,11 +94,43 @@ exports.getAllGames = function(req, res){
 	});
 };
 
-exports.addComment = function (req, res) {
+exports.insertComment = function (req, res) {
 	console.log("Añadiendo comentario de " + req.user._id + " para el juego " + req.game._id);
 	var game = req.game;
 	console.log(req.body);
 	game.comments.push(req.body);
+	game.save(function(err) {
+		if (err) {
+			console.log(err);
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(game);
+	});
+};
+
+exports.updateComment = function (req, res) {
+	console.log("Editando comentario de " + req.user._id + " para el juego " + req.game._id);
+	var game = req.game;
+	console.log(req.body);
+	game.comments.push(req.body);
+	game.save(function(err) {
+		if (err) {
+			console.log(err);
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(game);
+	});
+};
+
+exports.deleteComment = function (req, res) {
+	console.log("Borrando comentario de " + req.user._id + " para el juego " + req.game._id);
+	console.log("Id de comentario: " + req.params.com);
+	var game = req.game;
+	game.comments.pull(req.params.com);
 	game.save(function(err) {
 		if (err) {
 			console.log(err);
