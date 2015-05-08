@@ -2,9 +2,9 @@ var http = require('http');
 var fs = require('fs');
 
 var id = 0;
-var getsPorCiclo = 25;
+var getsPorCiclo = 50;
 var tiempoEntreCiclos = 1000;
-var idLimite = 27000;
+var idLimite = 100;
 var total = 0;
 var file = 'gamesxml.txt';
 
