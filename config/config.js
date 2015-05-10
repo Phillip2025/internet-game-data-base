@@ -26,7 +26,7 @@ module.exports = {
 	// The session cookie name
 	sessionName: 'connect.sid',
 	db : {
-		uri: "mongodb://localhost/igdb",
+		uri: "mongodb://127.0.0.1:27017/igdb",
 		options: {
 
 		}

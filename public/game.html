@@ -21,7 +21,7 @@
 						<li data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img data-ng-src="img/platformicons/{{similar.platformId}}"></a></li>
 					</ul>
 				</li>
-				<li><span>Fecha de lanzamiento:</span> {{game.releaseDate}}</li>
+				<li><span>Fecha de lanzamiento:</span> {{game.releaseDate | date:'d MMMM y'}}</li>
 				<li><span>Calificacion por edades:</span> {{game.esrb}}</li>
 				<li><span>Jugadores:</span> {{game.players}}</li>
 				<li><span>Cooperativo:</span> {{game.coop}}</li>
