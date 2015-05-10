@@ -7,11 +7,12 @@
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="css/index.css">
+	<!--<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/game.css">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/formularios.css">
-	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/animations.css">-->
+	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/themes/smoothness/jquery-ui.css">
@@ -24,14 +25,14 @@
 	<script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
+	<link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-	<div class="container">
-		<header class="row vertical-align">
+			<header class="row vertical-align jumbotron">
 			<div data-ng-controller="gameController" class="col-md-6">
-				<h1><a href="#" ui-sref="home">Internet Game Data Base</a>
+				<h2><a href="#" ui-sref="home">Internet Game Data Base</a>
 					<small data-ng-controller="countController" data-ng-init="getCount()">Contamos con {{count}} juegos</small>
-				</h1>
+				</h2>
 			</div>
 			<form data-ng-controller="gameController" class="buscador form-inline col-md-3 col-md-offset-3">
 				<div class="form-group ui-widget">
@@ -40,13 +41,12 @@
 				</div>
 			</form>
 		</header>
-		<nav class="navbar col-md-12">
+		<nav class="navbar">
 			<ul class="nav nav-tabs"  data-ng-controller="userController">
 				<li ui-sref-active="active" ui-sref="home"><a href="#">Juegos</a></li>
 				<li ui-sref-active="active" ui-sref="platform"><a data-ng-click="getPlatforms()" href="#">Plataformas</a></li>
 				<li ui-sref-active="active"><a href="#">Editores</a></li>
 				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
-				<li data-ng-if="!$root.user" ui-sref-active="active"><a href="#">Tu perfil</a></li>
 				<li data-ng-if="$root.user.role == 'Admin'">
 					<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">Añadir juego</a>
 				</li>
@@ -71,8 +71,8 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="swifter animate-view col-md-12" ng-animate-children ui-view>
-		</div>
+	<div class="container col-md-12">
+		<div class="animate-view col-md-12" ng-animate-children ui-view></div>
 	</div>
 </body>
 </html>

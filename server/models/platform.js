@@ -12,41 +12,23 @@ var PlatformSchema = new Schema({
 	console:{
 		type: String,
 		required: 'Name console is necesary'
-	}
+	},
 	controller:{
 		type: String,
 		required: 'Video controller is necesary'
 	},
-	overview: {
-		type: String
-	},
-	developer: {
-		type: String
-	},
-	manufacture:{
-		type: String
-	},
-	cpu:{
-		type: String
-	},
-	memory:{
-		type: String
-	},
-	graphics:{
-		type: String
-	},
-	sound:{
-		type: String
-	},
-	display:{
-		type: String
-	},
-	media:{
-		type: String
-	},
+	overview: String,
+	developer: String,
+	manufacturer: String,
+	cpu: String,
+	memory: String,
+	graphics: String,
+	sound: String,
+	display: String,
+	media: String,
 	maxControllers:{
 		type: Number,
-		default: 1
+		enum: ["1", "2", "3", "4+"]
 	},
 	rating:[{
 		_id: Number,

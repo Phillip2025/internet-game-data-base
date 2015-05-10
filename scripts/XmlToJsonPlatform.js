@@ -13,8 +13,8 @@ var coll;
 var totalGenres = [];
 var totalPlayers = [];
 var totalESRB = [];
-var twoBoxGames = 0;
-var twoLogoGames = 0;
+var twoBoxPlatforms = 0;
+var twoLogoPlatforms = 0;
 
 var imgNotAvailable = [{ 
 	url: "img/image.gif",
@@ -62,8 +62,8 @@ function procesar(id, totalAProcesar, callback) {
 	if (id > idLimite) {
 		dataBase.close(function() {
 			console.log("Total de plataformas procesadas: " + total);
-			console.log("Plataformas con mas de 2 caratulas: " + twoBoxGames);
-			console.log("Plataformas con mas de 2 logos: " + twoLogoGames);
+			console.log("Plataformas con mas de 2 caratulas: " + twoBoxPlatforms);
+			console.log("Plataformas con mas de 2 logos: " + twoLogoPlatforms);
 		    console.log(totalESRB);
 		    console.log(totalGenres);
 		    console.log(totalPlayers);
@@ -73,7 +73,7 @@ function procesar(id, totalAProcesar, callback) {
 	else {
 		do {
 			console.log("Accediendo a la plataforma con id " + id);
-			saveGamebyId(id);
+			savePlatformbyId(id);
 			id++;
 		} while (id <= idFin);
 		console.log("Esperando " + tiempoEntreCiclos / 1000 + " segundos a que se completen las operaciones previas");
@@ -83,15 +83,15 @@ function procesar(id, totalAProcesar, callback) {
 	}
 }
 
-function saveGamebyId(id) {
+function savePlatformbyId(id) {
 	var getOptions = {
 		host: "thegamesdb.net",
-		path: "/api/GetGame.php?id=" + id
+		path: "/api/GetPlatform.php?id=" + id
 	};
 	var proxyOptions = {
 		host: "lupus.sia.es",
 		port: 8080,
-		path: "thegamesdb.net/api/GetGame.php?id=" + id,
+		path: "thegamesdb.net/api/GetPlatform.php?id=" + id,
 		headers: {
 		/*Host: "www.thegamesdb.net"*/
 		}
@@ -109,65 +109,49 @@ function saveGamebyId(id) {
 	    	};
 			parseString(xml, options, function(err, result) {
 				try {
-					if (result.Data.Game) {
-						var datos = result.Data.Game[0];
+					if (result.Data.Platform) {
+						var datos = result.Data.Platform[0];
 				    	var json = {};
 				    	json._id = parseInt(datos.id[0]);
-				    	json.gameTitle = datos.GameTitle[0];
-				    	if (datos.AlternateTitles) {
-				    		json.alternateTitles = datos.AlternateTitles[0].title;
-				    	}
+						console.log("ha entrado hasta aqui")
+				    	json.platform = datos.Platform[0];
+				    	json.console = datos.console[0].title;
 				    	json.platformId = parseInt(datos.PlatformId[0]);
 				    	json.platform = datos.Platform[0];
-				    	if (datos.ReleaseDate) {
-				    		json.releaseDate = new Date(datos.ReleaseDate[0]);
+
+				    	if (datos.Controller) {
+				    		json.controller = datos.Controller[0];
 				    	}
-				    	json.created = new Date();
 				    	if (datos.Overview) {
 				    		json.overview = datos.Overview[0];
-				    	}
-				    	if (datos.ESRB) {
-				    		json.esrb = datos.ESRB[0];
-				    		if (totalESRB.indexOf(json.esrb) == -1) {
-				    			totalESRB.push(json.esrb);
-				    		}
-				    	}
-				    	if (datos.Genres) {
-				    		json.genres = datos.Genres[0].genre;
-				    		for (var j = 0; j< json.genres.length; j++) {
-				    			gen = json.genres[j];
-				    			if (totalGenres.indexOf(gen) == -1) {
-				    				totalGenres.push(gen);
-				    			}
-				    		}
-				    	}
-				    	if (datos.Players) {
-				    		json.players = datos.Players[0];
-				    		if (totalPlayers.indexOf(json.players) == -1) {
-				    			totalPlayers.push(json.players);
-				    		}
-				    	}
-				    	if (datos['Co-op']) {
-				    		json.coop = datos['Co-op'][0];
-				    	}
-				    	if (datos.Similar) {
-				    		json.similar = [];
-				    		for (var i = 0; i < datos.Similar[0].SimilarCount[0]; i++) {
-				    			var similarGame = {};
-				    			similarGame._id = datos.Similar[0].Game[i].id[0];
-				    			similarGame.platformId = datos.Similar[0].Game[i].PlatformId[0];
-				    			json.similar.push(similarGame);
-				    		}
-				    	}
-				    	if (datos.Youtube) {
-				    		json.youtube = datos.Youtube[0];
-				    	}
-				    	if (datos.Publisher) {
-				    		json.publisher = datos.Publisher[0];
 				    	}
 				    	if (datos.Developer) {
 				    		json.developer = datos.Developer[0];
 				    	}
+				    	if (datos.Manufacture) {
+				    		json.manufacture = datos.Manufacture[0];
+				    	}
+				    	if (datos.Cpu) {
+				    		json.cpu = datos.Cpu[0];
+				    	}
+				    	if (datos.Memory) {
+				    		json.memory = datos.Memory[0];
+				    	}
+				    	if (datos.Graphics) {
+				    		json.graphics = datos.Graphics[0];
+				    	}
+				    	if (datos.Sound) {
+				    		json.sound = datos.Sound[0];
+				    	}
+						if (datos.Display) {
+							json.display = datos.Display[0];
+						}
+						if (datos.Media) {
+							json.media = datos.Media[0];
+						}
+						if (datos.MaxControllers) {
+							json.maxControllers = datos.MaxControllers[0];
+						}
 				    	if (datos.Rating) {
 				    		json.rating = parseFloat(datos.Rating[0]);
 				    	}
@@ -221,20 +205,6 @@ function saveGamebyId(id) {
 					    		json.images.boxart.front = frontBoxNotAvailable;
 					    		json.images.boxart.back = backBoxNotAvailable;
 					    	}
-					    	if (images.screenshot) {
-					    		json.images.screenshot = [];
-					    		for(var i = 0; i < images.screenshot.length; i++) {
-					    			var screenshot = {};
-					    			screenshot.url = baseUrl + images.screenshot[i].original[0].url;
-					    			screenshot.width = parseInt(images.screenshot[i].original[0].width[0]);
-					    			screenshot.height = parseInt(images.screenshot[i].original[0].height[0]);
-					    			screenshot.thumb = baseUrl + images.screenshot[i].thumb[0];
-									json.images.screenshot.push(screenshot);
-					    		}
-					    	}
-					    	else {
-					    		json.images.screenshot = imgNotAvailable;
-					    	}
 					    	if (images.banner) {
 					    		json.images.banner = [];
 					    		for(var i = 0; i < images.banner.length; i++) {
@@ -248,19 +218,34 @@ function saveGamebyId(id) {
 					    	else {
 					    		json.images.banner = bannerNotAvailable;
 					    	}
-					    	if (images.clearlogo) {
-					    		json.images.clearlogo = {};
-				    			json.images.clearlogo.url = baseUrl + images.clearlogo[0].url;
-				    			json.images.clearlogo.width = parseInt(images.clearlogo[0].width[0]);
-				    			json.images.clearlogo.height = parseInt(images.clearlogo[0].height[0]);
+							if (!json.images.ConsoleArt) {
+					    		json.images.consoleart = datos.ConsoleArt[0];
 					    	}
-					    	else {
-					    		json.images.clearlogo = logoNotAvailable;
+							else {
+					    		json.images.consoleart = imgNotAvailable;								
+							}
+							if (!json.images.ControllerArt) {
+					    		json.images.controllerart = datos.ControllerArt[0];
 					    	}
+							else {
+					    		json.images.consoleart = imgNotAvailable;								
+							}
 					    } 
 					    coll.insert(json);
-					    console.log("Guardado juego con id " + datos.id);
+					    console.log("Guardado plataforma con id " + datos.id);
 					    total++;
 					}
 					else {
 						console.log("No se encontro datos para el id " + id);
+					}	
+				}
+				catch (err){
+					console.log("Fallo en id" + id);
+					console.log(err);
+				}
+			});
+		});
+	}).on('error', function(e) {
+	  console.log("Error en peticion get de id " + id + ": " + e.message);
+	});
+}
