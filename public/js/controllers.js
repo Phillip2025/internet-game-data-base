@@ -37,6 +37,16 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		});
 	};
 
+	$scope.getPlatforms = function(){
+		$http.get('/platform/')
+		.success(function(platform){
+			$rootScope.platform = platform;
+		})
+		.error(function(err){
+			console.log(err);
+		});
+	}
+
 	$scope.getGamesByTerm = function () {
 		var term = $scope.search.term;
 		$http.get('/search/' + term)

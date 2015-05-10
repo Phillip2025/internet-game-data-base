@@ -3,13 +3,13 @@
 </div>
 <div class="modal-body">
 	<form data class="form col-md-offset-2">
-		<input type="text" data-ng-model="credentials.user" placeholder="Nombre Usuario" required><br>
-		<input type="password" data-ng-model="credentials.password" placeholder="Password" required><br>
-		<input type="text" data-ng-model="credentials.name" placeholder="Nombre" required><br>
-		<input type="text" data-ng-model="credentials.surname" placeholder="Apellido" required><br>
-		<input type="text" data-ng-model="credentials.mail" placeholder="Email" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
+		<label class="col-md-4 control-label">Nombre Usuario: </label><input type="text" data-ng-model="credentials.user" placeholder="Nombre Usuario" required><br>
+		<label class="col-md-4 control-label">Password: </label><input type="password" data-ng-model="credentials.password" placeholder="Password" required><br>
+		<label class="col-md-4 control-label">Nombre: </label><input type="text" data-ng-model="credentials.name" placeholder="Nombre" required><br>
+		<label class="col-md-4 control-label">Apellido: </label><input type="text" data-ng-model="credentials.surname" placeholder="Apellido" required><br>
+		<label class="col-md-4 control-label">Email: </label><input type="text" data-ng-model="credentials.mail" placeholder="Email" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
 " required><br>
-		<input type="file" data-ng-model="credentials.picture" required><br>			
+		<label class="col-md-4 control-label">Foto de perfil: </label><input type="file" data-ng-model="credentials.picture" required><br>			
 	</form>
 </div>
 <div class="modal-footer">
