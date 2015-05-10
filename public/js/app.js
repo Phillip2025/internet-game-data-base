@@ -39,6 +39,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('perfil',{
 		url:'/perfil',
 		templateUrl:'perfil.html'
+	})
+	.state('platform',{
+		url: '/platform',
+		templateUrl: 'platform.html'
 	});
 });
 

@@ -28,6 +28,6 @@ a{
 }
 
 div [ui-view] {
-	/*background-color: #FFFF99;
-	border: 1px solid black;*/
+	background-color: #FFFF99;
+	border: 1px solid black;
 }

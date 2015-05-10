@@ -6,7 +6,7 @@ var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
 var getsPorCiclo = 40;
 var tiempoEntreCiclos = 1000;
-var idLimite = 2000;
+var idLimite = 41;
 var total = 0;
 var dataBase;
 var coll;
@@ -53,7 +53,7 @@ var logoNotAvailable = [{
 
 MongoClient.connect(url, function(err, db) {
 	dataBase = db;
-	coll = db.collection('games');
+	coll = db.collection('platforms');
 	procesar(id, getsPorCiclo, procesar);
 });
 
@@ -61,9 +61,9 @@ function procesar(id, totalAProcesar, callback) {
 	var idFin = id + totalAProcesar - 1;
 	if (id > idLimite) {
 		dataBase.close(function() {
-			console.log("Total de juegos procesados: " + total);
-			console.log("Juegos con mas de 2 caratulas: " + twoBoxGames);
-			console.log("Juegos con mas de 2 logos: " + twoLogoGames);
+			console.log("Total de plataformas procesadas: " + total);
+			console.log("Plataformas con mas de 2 caratulas: " + twoBoxGames);
+			console.log("Plataformas con mas de 2 logos: " + twoLogoGames);
 		    console.log(totalESRB);
 		    console.log(totalGenres);
 		    console.log(totalPlayers);
@@ -72,7 +72,7 @@ function procesar(id, totalAProcesar, callback) {
 	}
 	else {
 		do {
-			console.log("Accediendo al juego con id " + id);
+			console.log("Accediendo a la plataforma con id " + id);
 			saveGamebyId(id);
 			id++;
 		} while (id <= idFin);
@@ -264,15 +264,3 @@ function saveGamebyId(id) {
 					}
 					else {
 						console.log("No se encontro datos para el id " + id);
-					}
-				}
-				catch (err){
-					console.log("Fallo en id" + id);
-					console.log(err);
-				}
-			});
-		});
-	}).on('error', function(e) {
-	  console.log("Error en peticion get de id " + id + ": " + e.message);
-	});
-}

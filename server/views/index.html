@@ -43,7 +43,7 @@
 		<nav class="navbar col-md-12">
 			<ul class="nav nav-tabs"  data-ng-controller="userController">
 				<li ui-sref-active="active" ui-sref="home"><a href="#">Juegos</a></li>
-				<li ui-sref-active="active"><a href="#">Plataformas</a></li>
+				<li ui-sref-active="active" ui-sref="platform"><a data-ng-click="getPlatforms()" href="#">Plataformas</a></li>
 				<li ui-sref-active="active"><a href="#">Editores</a></li>
 				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
 				<li data-ng-if="!$root.user" ui-sref-active="active"><a href="#">Tu perfil</a></li>
