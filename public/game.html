@@ -1,5 +1,7 @@
 <div class="game col-md-12" data-ng-controller="gameController">
 	<h2>{{game.gameTitle}}</h2>
+	<!--<div class="col-md-12"><img src="http://thegamesdb.net/banners/{{game.images.clearlogo[0].url}}" alt="logo de:{{game.gameTitle}}">
+	<p>http://thegamesdb.net/banners/{{game.images.clearlogo[0].url}}</p>-->
 	<div class="row">
 		<div class="col-md-3">
 			<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
@@ -35,17 +37,18 @@
 			</ul>
 		</div>
 		<div class="col-md-3">
-			<div class="thumbnail">
+			<div class="thumbnail rating">
 				<p>Calificación: {{game.rating}}</p>
 				<p>Aqui votar</p>
+				<rating ng-model="rating.rate" max="max" on-leave="overStar = null"></rating><span><button class="btn btn-success" data ng-if="$root.user.user != null" data-ng-click="addRate()">Votar</button></span>
 			</div>
 		</div>
 	</div>
-	<p>{{game.overview}}</p>
-	<div class="col-md-12">
+	<div class="col-md-11"><p>{{game.overview}}</p></div>
+	<div class="col-md-10 col-md-offset-1">
 		<accordion close-others="true">
 			<accordion-group heading="Banners" is-open="status.isFirstOpen">
-			<div class="col-md-12">
+			<div class="col-md-8 col-md-offset-2">
 				<carousel class="col-md-12" interval="interval">
 					<slide ng-repeat="banner in game.images.banner" active="slide.active">
 						<img ng-src="{{banner.url}}">
@@ -57,7 +60,7 @@
 				 </div>
 				</accordion-group>
 				<accordion-group heading="Capturas de pantalla">
-				<div class="col-md-12">
+				<div class="col-md-8 col-md-offset-2">
 					<carousel class="col-md-12" interval="interval">
 						<slide ng-repeat="screenshot in game.images.screenshot" active="slide.active">
 							<img ng-src="{{screenshot.url}}">
@@ -69,7 +72,7 @@
 		           </div>
 		       </accordion-group>
 		       <accordion-group heading="Imágenes de usuarios">
-		       <div class="col-md-12">
+		       <div class="col-md-8 col-md-offset-2">
 		       	<carousel class="col-md-12" interval="interval">
 		       		<slide ng-repeat="fanart in game.images.fanart" active="slide.active">
 		       			<img ng-src="{{fanart.url}}">
@@ -82,7 +85,10 @@
 		     </accordion-group>
 		 </accordion>
 		</div>
-		<p><span>Juegos relacionados:</span></p>
+		<div class="col-md-10 col-md-offset-1">
+			<p><span>Juegos relacionados:</span></p>
+		</div>
+		<div class="col-md-10 col-md-offset-1">
 		<p><span>Comentarios:</span></p>
 			<div data-ng-repeat="comment in game.comments" class="list-unstyled comentarios">
 				<div class="comentario col-md-11 thumbnail">
@@ -103,7 +109,8 @@
 			</div>
 		<div class="col-md-12 form-group form-group-lg">
 			<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
-			<a href="#" data-ng-click="addComment()" role="button" class="btn btn-primary col-md-12">Publica Tu Comentario</a>
+			<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-md-12">Publica Tu Comentario</a>
+		</div>
 		</div>
 
 
