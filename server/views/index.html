@@ -58,7 +58,7 @@
 				</li>
 				<li data-ng-if="$root.user">
 					<span>Bienvenido {{user.user}} </span>
-					<button class="btn btn-primary" data-ng-click="logout()"><a href="#">Logout</a></button>
+					<button class="btn btn-default" data-ng-click="logout()"><a href="#">Logout</a></button>
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="form-inline col-md-offset-1">
@@ -72,7 +72,7 @@
 			</ul>
 		</nav>
 	<div class="container col-md-12">
-		<div class="animate-view col-md-12" ng-animate-children ui-view></div>
+		<div class="animate-view col-md-10 col-md-offset-1" ng-animate-children ui-view></div>
 	</div>
 </body>
 </html>

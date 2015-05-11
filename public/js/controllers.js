@@ -11,6 +11,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		isFirstOpen: true,
 		isFirstDisabled: false
 	};
+	$scope.max= 10;
 	
 
 	$scope.getLatestGames = function () {
@@ -80,6 +81,14 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			$location.path('/search/' + letter);
 		});
 	};
+
+	$scope.addRate = function(){
+		var rating = {};
+		rating.rate = $scope.rating.rate;
+		rating.userId= $rootScope.user._id;
+		rating.user = $rootScope.user.user;
+		console.log(JSON.stringify(rating));
+	}
 
 	$scope.addComment = function() {
 		if (!$rootScope.user) {
