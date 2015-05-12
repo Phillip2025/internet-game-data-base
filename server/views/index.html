@@ -56,6 +56,7 @@
 					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 				</div>
 			</form>
+			<ul class="nav navbar-nav navbar-right" data-ng-controller="userController">
 				<li data-ng-if="$root.user">
 					<a href="#" data-ng-click="openEditUser()">Modificar datos</a>
 				</li>
