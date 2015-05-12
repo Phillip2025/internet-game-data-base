@@ -122,5 +122,19 @@ form{
 	box-shadow: 1px 10px 83px -12px rgba(23,230,54,1);
 }
 .rating{
-	background-color: transparent;
+background: #005700; /* Old browsers */
+background: -moz-linear-gradient(45deg, #005700 0%, #2c472d 38%, #017a05 70%, #9ab79a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#005700), color-stop(38%,#2c472d), color-stop(70%,#017a05), color-stop(100%,#9ab79a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(45deg, #005700 0%,#2c472d 38%,#017a05 70%,#9ab79a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(45deg, #005700 0%,#2c472d 38%,#017a05 70%,#9ab79a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(45deg, #005700 0%,#2c472d 38%,#017a05 70%,#9ab79a 100%); /* IE10+ */
+background: linear-gradient(45deg, #005700 0%,#2c472d 38%,#017a05 70%,#9ab79a 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005700', endColorstr='#9ab79a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+color: #1AF702;
+border:0px;
+font-size: 30px;
+}
+.rating > p{
+	font-size:16px;
+	color:white;
 }

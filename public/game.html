@@ -1,7 +1,5 @@
 <div class="game col-md-12" data-ng-controller="gameController">
 	<h2>{{game.gameTitle}}</h2>
-	<!--<div class="col-md-12"><img src="http://thegamesdb.net/banners/{{game.images.clearlogo[0].url}}" alt="logo de:{{game.gameTitle}}">
-	<p>http://thegamesdb.net/banners/{{game.images.clearlogo[0].url}}</p>-->
 	<div class="row">
 		<div class="col-md-3">
 			<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
@@ -36,13 +34,13 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col-md-3">
-			<div class="thumbnail rating">
+		<div class="col-md-4">
+			<div class="thumbnail rating form-group">
 				<p>{{'GAME.RATING' | translate}}: {{game.rating}}</p>
-				<p>Aqui votar</p>
-				<rating ng-model="rating.rate" max="max" on-leave="overStar = null"></rating><span><button class="btn btn-success" data ng-if="$root.user.user != null" data-ng-click="addRate()">Votar</button></span>
+				<rating ng-model="rate" max="max" ></rating><span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>
 			</div>
 		</div>
+		<div class="col-md-5"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}" alt="logo de:{{game.gameTitle}}">
 	</div>
 	<div class="col-md-11"><p>{{game.overview}}</p></div>
 	<div class="col-md-10 col-md-offset-1">

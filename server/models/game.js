@@ -8,7 +8,11 @@ var CommentSchema = new Schema({
  	picture: String,
  	text: String  
  });
-
+var RatingSchema = new Schema({
+	userId: Number,
+	user: String,
+	rate: Number
+});
 var GameSchema = new Schema({
 	gameTitle: {
 		type: String,
@@ -61,11 +65,7 @@ var GameSchema = new Schema({
 		type: Number,
 		default: 5
 	},
-	ratings: [{ 
-		_id: Number,
-		user: String,
-	 	rating: Number
-	}],
+	ratings: [RatingSchema],
 	comments: [CommentSchema],
 	images: { 
 		fanart: [{
@@ -109,4 +109,5 @@ var GameSchema = new Schema({
 
 GameSchema.plugin(ai.plugin, {model: 'Game', startAt: 27000});
 CommentSchema.plugin(ai.plugin, {model: 'Comment'});
+RatingSchema.plugin(ai.plugin, {model: 'Rating'});
 mongoose.model('Game', GameSchema);
