@@ -3,11 +3,11 @@ var user = require('../controllers/users.controller');
 
 module.exports = function(app) {
 
-	app.route("/games/:id/comments/:com")
+	app.route("/games/:gameId/comments/:commentId")
 		.put(user.requiresLogin, games.updateComment)
 		.delete(user.requiresLogin, games.deleteComment);
 
-	app.route("/games/:id/comments")
+	app.route("/games/:gameId/comments")
 		.post(user.requiresLogin, games.insertComment);
 
 	//los ratings creo que van a ir al user, tiene mas logica
@@ -19,8 +19,8 @@ module.exports = function(app) {
 		.post(user.requiresLogin, games.addRating);*/
 	/*app.route("games/:id/ratings")
 		.post(user.requiresLogin, games.addRating);	*/
-	app.post('/games/:id/ratings', user.requiresLogin, games.addRating);
-	app.route("/games/:id")
+	app.post('/games/:gameId/ratings', user.requiresLogin, games.addRating);
+	app.route("/games/:gameId")
 		.get(games.read)
 		.put(user.requiresLogin, user.hasAuthorization, games.updateGame)
 		.delete(user.requiresLogin, user.hasAuthorization, games.deleteGame);
@@ -31,6 +31,6 @@ module.exports = function(app) {
 
 	app.get('/count', games.getCount);
 
-	app.param('id', games.getGameById);
+	app.param('gameId', games.getGameById);
 
 };

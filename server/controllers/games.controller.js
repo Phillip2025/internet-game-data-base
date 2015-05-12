@@ -130,7 +130,7 @@ exports.deleteComment = function (req, res) {
 	console.log("Borrando comentario de " + req.user._id + " para el juego " + req.game._id);
 	console.log("Id de comentario: " + req.params.com);
 	var game = req.game;
-	game.comments.pull(req.params.com);
+	game.comments.pull(req.params.commentId);
 	game.save(function(err) {
 		if (err) {
 			console.log(err);
