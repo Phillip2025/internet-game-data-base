@@ -27,19 +27,20 @@
 	<script src="js/ext/tmhDynamicLocale.min.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/fuentes.css">
 	<link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 	<div class="container-fluid">
 		<header class="row vertical-align jumbotron">
-			<div class="col-md-10">
-				<h2><a href="#" ui-sref="home">Internet Game Data Base</a>
+			<div data-ng-controller="gameController" class="col-md-10">
+				<h2><a href="#" ui-sref="home"><img class="col-md-3" src="img/logotipo.png"><img class="col-md-8" src="img/textocabecera.png"></a>
 					<small data-ng-controller="countController" data-ng-init="getCount()">{{'SLOGAN_1' | translate}} {{count}} {{'SLOGAN_2' | translate}}</small>
 				</h2>
 			</div>
 			<div data-ng-controller="translationController" class="col-md-offset-1 col-md-1">
-				<img data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
-				<img data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
+				<img class="col-md-12" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
+				<img class="col-md-12" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
 			</div>
 		</header>
 		<nav class="navbar navbar-default">
@@ -63,7 +64,7 @@
 					<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">Añadir juego</a>
 				</li>
 				<li data-ng-if="$root.user">
-					<span>Bienvenido {{user.user}}</span><button class="btn btn-default navbar-btn" data-ng-click="logout()"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></button>
+					<span>Bienvenido {{user.user}}</span><button style="margin-right: 5px;" class="btn btn-default navbar-btn" data-ng-click="logout()"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></button>
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="navbar-form form-inline">
