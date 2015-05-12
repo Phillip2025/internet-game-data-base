@@ -9,16 +9,16 @@ module.exports = function(app) {
 
 	app.route("platforms/:id/ratings")
 		.post(user.requiresLogin, platforms.addRating);*/
-
+	
+app.route("/platforms")
+		.get(platforms.getAllPlatforms)
+		.post(user.requiresLogin, user.hasAuthorization, platforms.insertPlatform);	
+	
 	app.route("/platforms/:id")
 		.get(platforms.read)
 		.put(user.requiresLogin, user.hasAuthorization, platforms.updatePlatform)
 		.delete(user.requiresLogin, user.hasAuthorization, platforms.deletePlatform);
-
-	app.route("/platforms")
-		.get(platforms.getAllPlatforms)
-		.post(user.requiresLogin, user.hasAuthorization, platforms.insertPlatform);
-
+		
 	app.get('/count', platforms.getCount);
 
 	app.param('id', platforms.getPlatformById);
