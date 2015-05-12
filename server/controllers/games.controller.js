@@ -154,7 +154,4 @@ exports.addRating = function (req, res) {
 		}
 		res.json(game);
 	});
-}
-exports.getPlatform = function (req, res){
-	console.log("ver plataformas")	
 };

@@ -38,16 +38,6 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		});
 	};
 
-	$scope.getPlatforms = function(){
-		$http.get('/platform/')
-		.success(function(platform){
-			$rootScope.platform = platform;
-		})
-		.error(function(err){
-			console.log(err);
-		});
-	}
-
 	$scope.getGamesByTerm = function () {
 		var term = $scope.search.term;
 		$http.get('/search/' + term)
@@ -411,3 +401,17 @@ controllers.controller('translationController', ['$translate', '$scope', functio
   };
  
 }]);
+
+controllers.controller('platformController', function ($scope, $rootScope, $http) {
+
+	$scope.getAllPlatforms = function(){
+		console.log("Estamos en plataformas")
+		$http.get('/allplatforms')
+		.success(function(platform){
+			$rootScope.platform = platform;
+		})
+		.error(function(err){
+			console.log(err);
+		});
+	}
+});

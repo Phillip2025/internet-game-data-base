@@ -40,10 +40,22 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
 		url:'/perfil',
 		templateUrl:'perfil.html'
 	})
+	.state('allplatforms',{
+		url: '/platforms',
+		templateUrl: 'platforms.html'
+	})
 	.state('platform',{
-		url: '/platform',
+		url: '/platform/:id',
 		templateUrl: 'platform.html'
-	});
+	})
+	.state('newplatform',{
+		url: '/admin/newplatform',
+		templateUrl: 'newplatform.html'
+	})
+	.state('updateplatform',{
+		url:'/edit/:id',
+		templateUrl:'updateplatform.html'
+	})
 
 	$translateProvider
 	.translations('es', translationsES)

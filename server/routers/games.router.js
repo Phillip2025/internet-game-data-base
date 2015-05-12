@@ -31,6 +31,5 @@ module.exports = function(app) {
 	app.get('/count', games.getCount);
 
 	app.param('id', games.getGameById);
-	
-	app.get('/platform', games.getPlatform);
+
 };

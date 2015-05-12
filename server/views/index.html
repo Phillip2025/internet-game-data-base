@@ -49,9 +49,7 @@
 		<nav class="navbar">
 			<ul class="nav nav-tabs"  data-ng-controller="userController">
 				<li ui-sref-active="active" ui-sref="home"><a href="#">{{'NAV_GAMES' | translate}}</a></li>
-				<li ui-sref-active="active" ui-sref="platform"><a data-ng-click="getPlatforms()" href="#">{{'NAV_PLATFORMS' | translate}}</a></li>
-				<li ui-sref-active="active"><a href="#">Editores</a></li>
-				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
+				<li ui-sref-active="active" ui-sref="allplatforms"><a href="#">{{'NAV_PLATFORMS' | translate}}</a></li>
 				<li data-ng-if="$root.user.role == 'Admin'">
 					<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">Añadir juego</a>
 				</li>
