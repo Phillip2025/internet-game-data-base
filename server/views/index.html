@@ -9,8 +9,8 @@
 	<!--<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/game.css">
 	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/formularios.css">
-	<link rel="stylesheet" href="css/animations.css">-->
+	<link rel="stylesheet" href="css/formularios.css">-->
+	<link rel="stylesheet" href="css/animations.css">
 	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
@@ -31,19 +31,19 @@
 	<div class="container">
 		<header class="row vertical-align jumbotron">
 			<div data-ng-controller="gameController" class="col-md-10">
-				<h2><a href="#" ui-sref="home">Internet Game Data Base</a>
+				<h2><a href="#" ui-sref="home"><img class="col-md-3" src="img/logotipo.png"><img class="col-md-8" src="img/textocabecera.png"></a>
 					<small data-ng-controller="countController" data-ng-init="getCount()">{{'SLOGAN_1' | translate}} {{count}} {{'SLOGAN_2' | translate}}</small>
 				</h2>
 			</div>
 			<div data-ng-controller="translationController" class="col-md-offset-1 col-md-1">
-				<img data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
-				<img data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
+				<img class="col-md-12" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
+				<img class="col-md-12" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
 			</div>
 		</header>
 		<nav class="navbar navbar-default">
 			<ul class="nav navbar-nav">
-				<li ui-sref-active="active" ui-sref="home"><a href="#">{{'NAV_GAMES' | translate}}</a></li>
-				<li ui-sref-active="active" ui-sref="platform"><a data-ng-click="getPlatforms()" href="#">{{'NAV_PLATFORMS' | translate}}</a></li>
+				<li ui-sref="home"><a href="#">{{'NAV_GAMES' | translate}}</a></li>
+				<li ui-sref-active="" ui-sref="platform"><a data-ng-click="getPlatforms()" href="#">{{'NAV_PLATFORMS' | translate}}</a></li>
 				<li data-ng-if="$root.user.role == 'Admin'">
 					<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">Añadir juego</a>
 				</li>

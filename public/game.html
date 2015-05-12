@@ -1,7 +1,7 @@
 <div class="game col-md-12" data-ng-controller="gameController">
 	<h2>{{game.gameTitle}}</h2>
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-offset-1 col-md-3">
 			<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
 		</div>
 		<div class="col-md-3">
@@ -40,9 +40,9 @@
 				<rating ng-model="rate" max="max" ></rating><span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>
 			</div>
 		</div>
-		<div class="col-md-5"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}" alt="logo de:{{game.gameTitle}}">
+		<div class="col-md-4"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}" alt="logo de:{{game.gameTitle}}">
 	</div>
-	<div class="col-md-11"><p>{{game.overview}}</p></div>
+	<div class="col-md-offset-1 col-md-10"><p>{{game.overview}}</p></div>
 	<div class="col-md-10 col-md-offset-1">
 		<accordion close-others="true">
 			<accordion-group heading="{{'GAME.BANNERS' | translate}}" is-open="status.isFirstOpen">
