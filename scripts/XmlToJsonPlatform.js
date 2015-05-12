@@ -31,7 +31,7 @@ var frontBoxNotAvailable = {
 	thumb: "img/front-thumb.gif"
 };
 
-var backBoxNotAvailable = {
+var boxNotAvailable = {
 	url: "img/back.gif",
 	side: "back",
 	width: 800,
@@ -113,53 +113,26 @@ function savePlatformbyId(id) {
 						var datos = result.Data.Platform[0];
 				    	var json = {};
 				    	json._id = parseInt(datos.id[0]);
-						console.log("ha entrado hasta aqui")
 				    	json.platform = datos.Platform[0];
-				    	json.console = datos.console[0].title;
-				    	json.platformId = parseInt(datos.PlatformId[0]);
-				    	json.platform = datos.Platform[0];
-
-				    	if (datos.Controller) {
-				    		json.controller = datos.Controller[0];
-				    	}
-				    	if (datos.Overview) {
-				    		json.overview = datos.Overview[0];
-				    	}
-				    	if (datos.Developer) {
-				    		json.developer = datos.Developer[0];
-				    	}
-				    	if (datos.Manufacture) {
-				    		json.manufacture = datos.Manufacture[0];
-				    	}
-				    	if (datos.Cpu) {
-				    		json.cpu = datos.Cpu[0];
-				    	}
-				    	if (datos.Memory) {
-				    		json.memory = datos.Memory[0];
-				    	}
-				    	if (datos.Graphics) {
-				    		json.graphics = datos.Graphics[0];
-				    	}
-				    	if (datos.Sound) {
-				    		json.sound = datos.Sound[0];
-				    	}
-						if (datos.Display) {
-							json.display = datos.Display[0];
-						}
-						if (datos.Media) {
-							json.media = datos.Media[0];
-						}
-						if (datos.MaxControllers) {
-							json.maxControllers = datos.MaxControllers[0];
-						}
+				    	json.console = datos.console[0];
+				    	json.controller = datos.controller[0];
+				    	json.overview = datos.overview[0];
+				   		json.developer = datos.developer[0];
+				    	json.manufacture = datos.manufacturer[0];
+				    	json.cpu = datos.cpu[0];
+				   		json.memory = datos.memory[0];
+				   		json.graphics = datos.graphics[0];
+				   		json.sound = datos.sound[0];
+						json.display = datos.display[0];
+						json.media = datos.media[0];
+						json.maxControllers = datos.maxcontrollers[0];
 				    	if (datos.Rating) {
 				    		json.rating = parseFloat(datos.Rating[0]);
 				    	}
 				    	else {
 				    		json.rating = 5;
 				    	}
-				    	json.ratings = [];
-				    	json.comments = [];
+
 				    	if (datos.Images) {
 					    	json.images = {};
 					    	var images = datos.Images[0];
@@ -173,7 +146,7 @@ function savePlatformbyId(id) {
 					    			fanart.height = parseInt(images.fanart[i].original[0].height[0]);
 					    			fanart.thumb = baseUrl + images.fanart[i].thumb[0];
 					    			json.images.fanart.push(fanart);
-					    		}
+								}
 					    	}
 					    	else {
 					    		json.images.fanart = imgNotAvailable;
@@ -183,27 +156,16 @@ function savePlatformbyId(id) {
 					    		for(var i = 0; i < images.boxart.length; i++) {
 					    			var boxart = {};
 					    			boxart.url = baseUrl + images.boxart[i].url;
-					    			boxart.width = parseInt(images.boxart[i].width[0]);
-					    			boxart.height = parseInt(images.boxart[i].height[0]);
-					    			boxart.thumb = baseUrl + images.boxart[i].thumb[0];
-					    			if (images.boxart[i].side[0] === 'front') {
-					    				json.images.boxart.front = boxart;
-					    			}
-					    			else if (images.boxart[i].side[0] === 'back') {
+									boxart.width = parseInt(images.boxart[i].width[0]);
+									boxart.height = parseInt(images.boxart[i].height[0]);
+									if (images.boxart[i].side[0] === 'back') {
 					    				json.images.boxart.back = boxart;
 					    			}
-					    		}
-					    		if (!json.images.boxart.front) {
-					    			json.images.boxart.front = frontBoxNotAvailable;
-					    		}
-					    		if (!json.images.boxart.back) {
-					    			json.images.boxart.back = backBoxNotAvailable;
-					    		}
+								}
 					    	}
 					    	else {
 					    		json.images.boxart = {};
-					    		json.images.boxart.front = frontBoxNotAvailable;
-					    		json.images.boxart.back = backBoxNotAvailable;
+					    		json.images.boxart = boxNotAvailable;
 					    	}
 					    	if (images.banner) {
 					    		json.images.banner = [];
@@ -218,14 +180,14 @@ function savePlatformbyId(id) {
 					    	else {
 					    		json.images.banner = bannerNotAvailable;
 					    	}
-							if (!json.images.ConsoleArt) {
-					    		json.images.consoleart = datos.ConsoleArt[0];
+							if (images.consoleart) {
+					    		json.images.consoleArt = images.consoleart[0];
 					    	}
 							else {
-					    		json.images.consoleart = imgNotAvailable;								
+					    		json.images.consoleArt = imgNotAvailable;								
 							}
-							if (!json.images.ControllerArt) {
-					    		json.images.controllerart = datos.ControllerArt[0];
+							if (images.controllerart) {
+					    		json.images.controllerArt = images.controllerart[0];
 					    	}
 							else {
 					    		json.images.consoleart = imgNotAvailable;								

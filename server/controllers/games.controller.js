@@ -143,9 +143,15 @@ exports.deleteComment = function (req, res) {
 };
 
 exports.addRating = function (req, res) {
-	console.log("Añadiendo rating de " + req.user.name + " para el juego " + req.game._id);
+	console.log("Añadiendo rating de " + req.user._id + " para el juego " + req.game._id);
 	var game = req.game;
 	game.ratings.push(req.body);
+	var aux = 0;	
+	for (var i = 0; i < game.ratings.length; i++){
+		aux += game.ratings[i].rate;
+	}
+	game.rating = (game.rating + aux)/(game.ratings.length+1)
+	console.log(req.body);
 	game.save(function(err) {
 		if (err) {
 			return res.status(500).send({

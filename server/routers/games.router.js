@@ -17,8 +17,9 @@ module.exports = function(app) {
 
 	app.route("games/:id/ratings")
 		.post(user.requiresLogin, games.addRating);*/
-
-
+	/*app.route("games/:id/ratings")
+		.post(user.requiresLogin, games.addRating);	*/
+	app.post('/games/:id/ratings', user.requiresLogin, games.addRating);
 	app.route("/games/:id")
 		.get(games.read)
 		.put(user.requiresLogin, user.hasAuthorization, games.updateGame)

@@ -94,54 +94,6 @@ exports.getAllPlatforms = function(req, res) {
 	});
 };
 
-exports.insertComment = function (req, res) {
-	console.log("Añadiendo comentario de " + req.user._id + " para la plataforma " + req.platform._id);
-	var platform = req.platform;
-	console.log(req.body);
-	platform.comments.push(req.body);
-	platform.save(function(err) {
-		if (err) {
-			console.log(err);
-			return res.status(500).send({
-				message: 'Error interno del servidor'
-			});
-		}
-		res.json(platform);
-	});
-};
-
-exports.updateComment = function (req, res) {
-	console.log("Editando comentario de " + req.user._id + " para la plataforma " + req.platform._id);
-	var platform = req.platform;
-	console.log(req.body);
-	platform.comments.push(req.body);
-	platform.save(function(err) {
-		if (err) {
-			console.log(err);
-			return res.status(500).send({
-				message: 'Error interno del servidor'
-			});
-		}
-		res.json(platform);
-	});
-};
-
-exports.deleteComment = function (req, res) {
-	console.log("Borrando comentario de " + req.user._id + " para la plataforma " + req.platform._id);
-	console.log("Id de comentario: " + req.params.com);
-	var platform = req.platform;
-	platform.comments.pull(req.params.com);
-	platform.save(function(err) {
-		if (err) {
-			console.log(err);
-			return res.status(500).send({
-				message: 'Error interno del servidor'
-			});
-		}
-		res.json(platform);
-	});
-};
-
 exports.addRating = function (req, res) {
 	console.log("Añadiendo rating de " + req.user.name + " para la plataforma " + req.platform._id);
 	var platform = req.platform;
@@ -154,7 +106,4 @@ exports.addRating = function (req, res) {
 		}
 		res.json(platform);
 	});
-}
-exports.getPlatform = function (req, res){
-	console.log("ver plataformas")	
 };

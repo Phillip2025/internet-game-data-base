@@ -1,9 +1,7 @@
 <div class="game col-md-12" data-ng-controller="gameController">
 	<h2>{{game.gameTitle}}</h2>
-	<!--<div class="col-md-12"><img src="http://thegamesdb.net/banners/{{game.images.clearlogo[0].url}}" alt="logo de:{{game.gameTitle}}">
-	<p>http://thegamesdb.net/banners/{{game.images.clearlogo[0].url}}</p>-->
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-offset-1 col-md-3">
 			<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
 		</div>
 		<div class="col-md-3">
@@ -17,37 +15,37 @@
 						<li>{{alt}}</li>
 					</ul>
 				</li>
-				<li><span>Plataforma:</span>{{game.platform}}</li>
-				<li data-ng-if="game.similar.length !== 0"><span>otras Plataformas disponibles</span>
+				<li><span>{{'GAME.PLATFORM' | translate}}:</span>{{game.platform}}</li>
+				<li data-ng-if="game.similar.length !== 0"><span>{{'GAME.OTHER_PLATFORMS' | translate}}</span>
 					<ul class="list-unstyled list-inline">
 						<li data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img data-ng-src="img/platformicons/{{similar.platformId}}"></a></li>
 					</ul>
 				</li>
-				<li><span>Fecha de lanzamiento:</span> {{game.releaseDate | date:'d MMMM y'}}</li>
-				<li><span>Calificacion por edades:</span> {{game.esrb}}</li>
-				<li><span>Jugadores:</span> {{game.players}}</li>
-				<li><span>Cooperativo:</span> {{game.coop}}</li>
-				<li><span>Editor:</span> {{game.publisher}}</li>
-				<li><span>Desarrollador:</span> {{game.developer}}</li>
-				<li><span>Géneros:</span> 
+				<li><span>{{'GAME.RELEASE_DATE' | translate}}:</span> {{game.releaseDate | date:'longDate'}}</li>
+				<li><span>{{'GAME.ESRB' | translate}}:</span> {{game.esrb}}</li>
+				<li><span>{{'GAME.PLAYERS' | translate}}:</span> {{game.players}}</li>
+				<li><span>{{'GAME.COOP' | translate}}:</span> {{game.coop}}</li>
+				<li><span>{{'GAME.PUBLISHER' | translate}}:</span> {{game.publisher}}</li>
+				<li><span>{{'GAME.DEVELOPER' | translate}}:</span> {{game.developer}}</li>
+				<li><span>{{'GAME.GENRES' | translate}}:</span> 
 					<ul data-ng-repeat="genre in game.genres">
 						<li><a href="#" data-ng-click="searchByGenre(genre)">{{genre}}</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
-		<div class="col-md-3">
-			<div class="thumbnail rating">
-				<p>Calificación: {{game.rating}}</p>
-				<p>Aqui votar</p>
-				<rating ng-model="rating.rate" max="max" on-leave="overStar = null"></rating><span><button class="btn btn-success" data ng-if="$root.user.user != null" data-ng-click="addRate()">Votar</button></span>
+		<div class="col-md-4">
+			<div class="thumbnail rating form-group">
+				<p>{{'GAME.RATING' | translate}}: {{game.rating}}</p>
+				<rating ng-model="rate" max="max" ></rating><span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>
 			</div>
 		</div>
+		<div class="col-md-4"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}" alt="logo de:{{game.gameTitle}}">
 	</div>
-	<div class="col-md-11"><p>{{game.overview}}</p></div>
+	<div class="col-md-offset-1 col-md-10"><p>{{game.overview}}</p></div>
 	<div class="col-md-10 col-md-offset-1">
 		<accordion close-others="true">
-			<accordion-group heading="Banners" is-open="status.isFirstOpen">
+			<accordion-group heading="{{'GAME.BANNERS' | translate}}" is-open="status.isFirstOpen">
 			<div class="col-md-8 col-md-offset-2">
 				<carousel class="col-md-12" interval="interval">
 					<slide ng-repeat="banner in game.images.banner" active="slide.active">
@@ -59,7 +57,7 @@
 				     </carousel>
 				 </div>
 				</accordion-group>
-				<accordion-group heading="Capturas de pantalla">
+				<accordion-group heading="{{'GAME.SCREENSHOTS' | translate}}">
 				<div class="col-md-8 col-md-offset-2">
 					<carousel class="col-md-12" interval="interval">
 						<slide ng-repeat="screenshot in game.images.screenshot" active="slide.active">
@@ -71,7 +69,7 @@
 		           	</carousel>
 		           </div>
 		       </accordion-group>
-		       <accordion-group heading="Imágenes de usuarios">
+		       <accordion-group heading="{{'GAME.FANARTS' | translate}}">
 		       <div class="col-md-8 col-md-offset-2">
 		       	<carousel class="col-md-12" interval="interval">
 		       		<slide ng-repeat="fanart in game.images.fanart" active="slide.active">
@@ -89,7 +87,7 @@
 			<p><span>Juegos relacionados:</span></p>
 		</div>
 		<div class="col-md-10 col-md-offset-1">
-		<p><span>Comentarios:</span></p>
+		<p><span>{{'GAME.COMMENTS' | translate}}:</span></p>
 			<div data-ng-repeat="comment in game.comments" class="list-unstyled comentarios">
 				<div class="comentario col-md-11 thumbnail">
 					<div class="col-md-2">
@@ -101,15 +99,15 @@
 					</div>
 				</div>
 				<div class="col-md-1" data-ng-if="$root.user._id == comment.userId" data-ng-click="deleteComment(game._id, comment._id)">
-				<p><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>
+				<p><icono class="glyphicon glyphicon-remove" aria-hidden="true"></icono></p>
 				</div>
 			</div>
 			<div data-ng-if="game.comments.length === 0">
-				<p>No hay comentarios, que esperas para ser el primero?</p>
+				<p>{{'GAME.NO_COMMENTS' | translate}}</p>
 			</div>
 		<div class="col-md-12 form-group form-group-lg">
 			<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
-			<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-md-12">Publica Tu Comentario</a>
+			<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-md-12"><icono class="glyphicon glyphicon-edit"></icono></a>
 		</div>
 		</div>
 

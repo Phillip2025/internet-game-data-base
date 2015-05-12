@@ -59,10 +59,10 @@ var PlatformSchema = new Schema({
 			width: Number,
 			height: Number
 		}],
-		consoleart: {
+		consoleArt: {
 			type: String
 		},
-		controllerart:{
+		controllerArt:{
 			type: String
 		}
 	}

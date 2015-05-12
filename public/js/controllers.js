@@ -11,8 +11,8 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		isFirstOpen: true,
 		isFirstDisabled: false
 	};
-	$scope.max= 10;
-	
+	$scope.max= 10; 
+	$scope.rate = 1;
 
 	$scope.getLatestGames = function () {
 		console.log("Juegos nuevos");
@@ -72,13 +72,28 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		});
 	};
 
-	$scope.addRate = function(){
-		var rating = {};
-		rating.rate = $scope.rating.rate;
-		rating.userId= $rootScope.user._id;
-		rating.user = $rootScope.user.user;
-		console.log(JSON.stringify(rating));
-	}
+	$scope.addRating = function(){
+		if (!$rootScope.user) {
+			console.log("No hay usuario logeado");
+			console.log("Aqui deberia cargar el formulario de registro");
+		} else{
+			var rating = {};
+			rating.rate = $scope.rate;
+			rating.userId= $rootScope.user._id;
+			rating.user = $rootScope.user.user;
+			console.log(JSON.stringify(rating));
+			$http.post('games/' + $rootScope.game._id + '/ratings', rating)
+			.success(function(game){
+				console.log("Puntuacion añadida");
+				$scope.rating ={};
+				$rootScope.game = game;
+			})
+			.error(function(err){
+				console.log("TOY AKIIII");
+				console.log(err);
+			});
+		}
+	};
 
 	$scope.addComment = function() {
 		if (!$rootScope.user) {
@@ -223,58 +238,58 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 
 	$scope.openNewUser = function () {
 
-	    $scope.modalInstance = $modal.open({
-	      templateUrl: 'newuser.html',
-	      scope: $scope,
-	      resolve: {
-	        credentials: function () {
-	          return $scope.credentials;
-	        }
-	      }
-	    });
-	    
-	    //Al cerrar el modal
-	    /*$scope.modalInstance.result.then(function (credentials) {
-	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
-	    }, function () {
-	      $log.info('Modal dismissed at: ' + new Date());
-	    });*/
-	    
-  	};
-
-  	$scope.openEditUser = function () {
-
-	    $scope.modalInstance = $modal.open({
-	      templateUrl: 'updateuser.html',
-	      scope: $scope,
-	      resolve: {
-	        credentials: function () {
-	          return $scope.credentials;
-	        }
-	      }
-	    });
-	    
-	    //Al cerrar el modal
-	    /*$scope.modalInstance.result.then(function (credentials) {
-	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
-	    }, function () {
-	      $log.info('Modal dismissed at: ' + new Date());
-	    });*/
-	    
-  	};
-
-	$scope.logout = function() {
-		console.log("Deslogeando");
-		$http.get('/logout')
-		.success(function () {
-			$rootScope.user = undefined;
-			$scope.credentials = {};
-			$location.path('/');
-		})
-		.error(function (err) {
-			console.log("Error " + err);
+		$scope.modalInstance = $modal.open({
+			templateUrl: 'newuser.html',
+			scope: $scope,
+			resolve: {
+				credentials: function () {
+					return $scope.credentials;
+				}
+			}
 		});
-	};
+
+	    //Al cerrar el modal
+	    /*$scope.modalInstance.result.then(function (credentials) {
+	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+	    }, function () {
+	      $log.info('Modal dismissed at: ' + new Date());
+	  });*/
+
+};
+
+$scope.openEditUser = function () {
+
+	$scope.modalInstance = $modal.open({
+		templateUrl: 'updateuser.html',
+		scope: $scope,
+		resolve: {
+			credentials: function () {
+				return $scope.credentials;
+			}
+		}
+	});
+
+	    //Al cerrar el modal
+	    /*$scope.modalInstance.result.then(function (credentials) {
+	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+	    }, function () {
+	      $log.info('Modal dismissed at: ' + new Date());
+	  });*/
+
+};
+
+$scope.logout = function() {
+	console.log("Deslogeando");
+	$http.get('/logout')
+	.success(function () {
+		$rootScope.user = undefined;
+		$scope.credentials = {};
+		$location.path('/');
+	})
+	.error(function (err) {
+		console.log("Error " + err);
+	});
+};
 });
 
 controllers.controller('adminController', function ($scope, $rootScope, $http, $modal, $location) {
@@ -323,45 +338,45 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 
 	$scope.openNewGame = function () {
 
-	    $scope.modalInstance = $modal.open({
-	      templateUrl: 'newgame.html',
-	      scope: $scope,
-	      resolve: {
-	        newGame: function () {
-	          return $scope.newGame;
-	        }
-	      }
-	    });
-	    
+		$scope.modalInstance = $modal.open({
+			templateUrl: 'newgame.html',
+			scope: $scope,
+			resolve: {
+				newGame: function () {
+					return $scope.newGame;
+				}
+			}
+		});
+
 	    //Al cerrar el modal
 	    /*$scope.modalInstance.result.then(function (credentials) {
 	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
 	    }, function () {
 	      $log.info('Modal dismissed at: ' + new Date());
-	    });*/
-	    
-  	};
+	  });*/
 
-  	$scope.openEditGame = function () {
+};
 
-	    $scope.modalInstance = $modal.open({
-	      templateUrl: 'updategame.html',
-	      scope: $scope,
-	      resolve: {
-	        game: function () {
-	          return $scope.game;
-	        }
-	      }
-	    });
-	    
+$scope.openEditGame = function () {
+
+	$scope.modalInstance = $modal.open({
+		templateUrl: 'updategame.html',
+		scope: $scope,
+		resolve: {
+			game: function () {
+				return $scope.game;
+			}
+		}
+	});
+
 	    //Al cerrar el modal
 	    /*$scope.modalInstance.result.then(function (credentials) {
 	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
 	    }, function () {
 	      $log.info('Modal dismissed at: ' + new Date());
-	    });*/
-	    
-  	};
+	  });*/
+
+};
 });
 
 controllers.controller('checkBoxController', function ($scope, $rootScope) {
@@ -394,10 +409,16 @@ controllers.controller('checkBoxController', function ($scope, $rootScope) {
 
 });
 
-controllers.controller('translationController', ['$translate', '$scope', function ($translate, $scope) {
+controllers.controller('translationController', ['$translate', '$scope', 'tmhDynamicLocale', function ($translate, $scope, tmhDynamicLocale) {
  
   $scope.changeLanguage = function (langKey) {
     $translate.use(langKey);
+    if (langKey === 'en') {
+    	tmhDynamicLocale.set('en-us');
+    }
+    else if (langKey === 'es') {
+    	tmhDynamicLocale.set('es-es');
+    }
   };
  
 }]);
@@ -406,9 +427,9 @@ controllers.controller('platformController', function ($scope, $rootScope, $http
 
 	$scope.getAllPlatforms = function(){
 		console.log("Estamos en plataformas")
-		$http.get('/allplatforms')
-		.success(function(platform){
-			$rootScope.platform = platform;
+		$http.get('/platforms')
+		.success(function(platforms){
+			$rootScope.platforms = platforms;
 		})
 		.error(function(err){
 			console.log(err);
