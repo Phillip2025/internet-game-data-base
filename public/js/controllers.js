@@ -419,10 +419,16 @@ controllers.controller('checkBoxController', function ($scope, $rootScope) {
 
 });
 
-controllers.controller('translationController', ['$translate', '$scope', function ($translate, $scope) {
+controllers.controller('translationController', ['$translate', '$scope', 'tmhDynamicLocale', function ($translate, $scope, tmhDynamicLocale) {
  
   $scope.changeLanguage = function (langKey) {
     $translate.use(langKey);
+    if (langKey === 'en') {
+    	tmhDynamicLocale.set('en-us');
+    }
+    else if (langKey === 'es') {
+    	tmhDynamicLocale.set('es-es');
+    }
   };
  
 }]);

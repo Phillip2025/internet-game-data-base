@@ -1,9 +1,12 @@
 //declaracion de app y sus dependencias
-var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap', 'ui.autocomplete', 'pascalprecht.translate']);  
+var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap', 'ui.autocomplete', 'pascalprecht.translate', 'tmh.dynamicLocale']);  
 
 
 //state provider
-app.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $translateProvider, $compileProvider, tmhDynamicLocaleProvider) {
+
+	//Produccion
+	$compileProvider.debugInfoEnabled(false);
 
 	$urlRouterProvider.otherwise('/');
 
@@ -20,22 +23,6 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
 		url: '/games/:id',
 		templateUrl: 'game.html'
 	})
-	.state('newgame',{
-		url: '/admin/newgame',
-		templateUrl: 'newgame.html'
-	})
-	.state('newuser',{
-		url: '/user',
-		templateUrl: 'newuser.html'
-	})
-	.state('updategame',{
-		url:'/edit/:id',
-		templateUrl:'updategame.html'
-	})
-	.state('updateuser',{
-		url:'/updateuser/:user',
-		templateUrl:'updateuser.html'
-	})
 	.state('perfil',{
 		url:'/perfil',
 		templateUrl:'perfil.html'
@@ -50,6 +37,9 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
 	.translations('en', translationsEN)
 	.preferredLanguage('es')
 	.useSanitizeValueStrategy(null);
+
+	tmhDynamicLocaleProvider
+	.localeLocationPattern('js/ext/angular-locale_{{locale}}.js');
 
 });
 
@@ -85,9 +75,13 @@ app.constant('genres',
 var translationsES = {
 	SLOGAN_1: "Contamos con ",
 	SLOGAN_2: " juegos al menos!",
-	NAV_GAMES: "Juegos",
-	NAV_PLATFORMS: "Plataformas",
-	SEARCH_PLACEHOLDER: "Busca tu juego",
+	NAV: {
+		GAMES: "Juegos",
+		PLATFORMS: "Platformas",
+		API: "Json Api",
+		ABOUT: "¿Quienes somos?",
+		SEARCH_PLACEHOLDER: "Busca tu juego",
+	},
 	LAST_GAMES: "Últimos juegos añadidos",
 	GAME: {
 		TITLE: "Titulo",
@@ -128,9 +122,13 @@ var translationsES = {
 var translationsEN = {
 	SLOGAN_1: "Counting with at least ",
 	SLOGAN_2: " games!",
-	NAV_GAMES: "Games",
-	NAV_PLATFORMS: "Platforms",
-	SEARCH_PLACEHOLDER: "Search your game",
+	NAV: {
+		GAMES: "Games",
+		PLATFORMS: "Platforms",
+		API: "Json Api",
+		ABOUT: "About us",
+		SEARCH_PLACEHOLDER: "Search your game",
+	},
 	LAST_GAMES: "Last added games",
 	GAME: {
 		TITLE: "Title",

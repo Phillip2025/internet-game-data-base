@@ -101,9 +101,7 @@ span.ng-binding{
 	width: 50%;
 }
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-form{
-	padding:2.5%;
-}
+
 .container{
 	border: 1px solid green;
 }
