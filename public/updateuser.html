@@ -1,41 +1,41 @@
 
-<div data-ng-controller="userController">
-	<div class="modal-body">
-		<h4 class="modal-title">Rellena todos los campos</h4>
-		<form data class="form-horizontal col-md-12">
-			<div class="form-group col-md-12">
-				<label class="col-md-4 control-label" for="gameTitle">Usuario</label>
-				<div class="col-md-4">
-					<input class="form-control" type="text" data-ng-model="$root.user.user" value="$root.user.user" required>
-				</div>
+<div class="modal-header">
+	<h4 class="modal-title">Rellena todos los campos</h4>
+</div>
+<div class="modal-body row">
+	<form data class="form-horizontal col-md-12">
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label" for="gameTitle">{{'USER.USERNAME' | translate}}</label>
+			<div class="col-md-8">
+				<input class="form-control" type="text" data-ng-model="$root.user.user" value="$root.user.user" required>
 			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4 control-label" for="gameTitle">Contraseña</label>
-				<div  class="col-md-4">
-					<input  class="form-control"type="password" data-ng-model="$root.user.password" value="$root.user.password" required>
-				</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label" for="gameTitle">{{'USER.PASSWORD' | translate}}</label>
+			<div class="col-md-8">
+				<input class="form-control"type="password" data-ng-model="$root.user.password" value="$root.user.password" required>
 			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4 control-label" for="gameTitle">Nombre:</label>
-				<div class="col-md-4">
-					<input class="form-control" type="text" data-ng-model="$root.user.name" value="$root.user.name" required>
-				</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label" for="gameTitle">{{'USER.NAME' | translate}}:</label>
+			<div class="col-md-8">
+				<input class="form-control" type="text" data-ng-model="$root.user.name" value="$root.user.name" required>
 			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4 control-label" for="gameTitle">Apellidos:</label>
-				<div class="col-md-4">
-					<input class="form-control" type="text" data-ng-model="$root.user.surname" value="$root.user.surname" required>
-				</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label" for="gameTitle">{{'USER.SURNAME' | translate}}:</label>
+			<div class="col-md-8">
+				<input class="form-control" type="text" data-ng-model="$root.user.surname" value="$root.user.surname" required>
 			</div>
-			<div class="form-group col-md-12">
-				<label class="col-md-4 control-label" for="gameTitle">Email:</label>
-				<div class="col-md-4">
-					<input class="form-control" type="text" data-ng-model="$root.user.mail" value="$root.user.mail" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
-					" required>
-				</div>
-		</form>
-	</div>
-	<div class="modal-footer">
-		<button data-ng-click="updateUser()" class="btn btn-success">Editar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-	</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label" for="gameTitle">{{'USER.EMAIL' | translate}}:</label>
+			<div class="col-md-8">
+				<input class="form-control" type="text" data-ng-model="$root.user.mail" value="$root.user.mail" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
+				" required>
+			</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button data-ng-click="updateUser()" class="btn btn-success">Editar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 </div>

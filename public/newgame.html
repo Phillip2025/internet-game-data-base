@@ -1,70 +1,70 @@
 <div class="modal-header">
 	<h4 class="modal-title">Nuevo juego</h4>
 </div>
-<div class="modal-body"> 
+<div class="modal-body row"> 
 	<form class="form-horizontal">
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label" for="gameTitle">Titulo: </label>
-			<div class="col-md-4">
+			<label class="col-md-4 control-label" for="gameTitle">{{'GAME.TITLE' | translate}}: </label>
+			<div class="col-md-8">
 				<input class="form-control" data-ng-model="newGame.gameTitle" type="text" placeholder="Titulo de juego" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label" for="platform">Plataforma: </label>
-			<div class="col-md-4">
+			<label class="col-md-4 control-label" for="platform">{{'GAME.PLATFORM' | translate}}: </label>
+			<div class="col-md-8">
 				<input class="form-control" data-ng-model="newGame.platform" type="text" placeholder="Plataforma" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label" for="releaseDate">Fecha de Lanzamiento: </label>
-			<div class="col-md-4"><input class="form-control" data-ng-model="newGame.releaseDate" type="text" placeholder="Fecha de lanzamiento" required />
+			<label class="col-md-4 control-label" for="releaseDate">{{'GAME.RELEASE_DATE' | translate}}: </label>
+			<div class="col-md-8"><input class="form-control" data-ng-model="newGame.releaseDate" type="text" placeholder="Fecha de lanzamiento" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label" for="esrb">Clasificación por edad: </label>
-			<div class="col-md-4"><select class="form-control" ng-model="newGame.esrb" ng-options="o as o for o in $root.esrbENG"></select>
+			<label class="col-md-4 control-label" for="esrb">{{'GAME.ESRB' | translate}}: </label>
+			<div class="col-md-8"><select class="form-control" ng-model="newGame.esrb" ng-options="o as o for o in $root.esrbENG"></select>
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label" for="overview">Overview: </label>
+			<label class="col-md-4 control-label" for="overview">{{'GAME.OVERVIEW' | translate}}: </label>
 			<div class="col-md-8"><textarea class="form-control" data-ng-model="newGame.overview" rows="2" placeholder="Descripcion" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label" for="players">Jugadores: </label>
-			<div class="col-md-4"><select class="form-control" ng-model="newGame.players" ng-options="o as o for o in $root.players"></select>
+			<label class="col-md-4 control-label" for="players">{{'GAME.PLAYERS' | translate}}: </label>
+			<div class="col-md-8"><select class="form-control" ng-model="newGame.players" ng-options="o as o for o in $root.players"></select>
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label">Cooperativo</label>
-			<div class="col-md-4">
-				<label class="checkbox-inline"><input class="form-control" data-ng-model="newGame.coop" type="radio" value="Yes" />Si</label>
-				<label class="checkbox-inline"><input class="form-control" data-ng-model="newGame.coop" type="radio" value="No" />No</label>
+			<label class="col-md-4 control-label">{{'GAME.COOP' | translate}}</label>
+			<div class="col-md-8">
+				<label class="checkbox-inline"><input class="form-control" data-ng-model="newGame.coop" type="radio" value="Yes" />{{'GAME.COOPVALUES.YES' | translate}}</label>
+				<label class="checkbox-inline"><input class="form-control" data-ng-model="newGame.coop" type="radio" value="No" />{{'GAME.COOPVALUES.NO' | translate}}</label>
 			</div>	
 		</div>
 		<div class="form-group col-md-12 mi-form-group">	
-			<label class="col-md-4 control-label" for="publisher">Editor: </label>
-			<div class="col-md-4">
+			<label class="col-md-4 control-label" for="publisher">{{'GAME.PUBLISHER' | translate}}: </label>
+			<div class="col-md-8">
 				<input class="form-control" data-ng-model="newGame.publisher" type="text" placeholder="Editor" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
-			<label class="col-md-4 control-label" for="developer">Desarrollador: </label>
-			<div class="col-md-4">
+			<label class="col-md-4 control-label" for="developer">{{'GAME.DEVELOPER' | translate}}: </label>
+			<div class="col-md-8">
 				<input class="form-control" data-ng-model="newGame.developer" type="text" placeholder="Desarrollador" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12" data-ng-controller="checkBoxController">
-			<label class="col-md-4 control-label" for="genres">Géneros</label>
-			<div class="col-md-6">
+			<label class="col-md-4 control-label" for="genres">{{'GAME.GENRES' | translate}}</label>
+			<div class="col-md-8">
 				<label class="checkbox-inline col-md-5" ng-repeat="genre in $root.genres">
 					<input type="checkbox" data-ng-click="toggle(genre)" value="genre" /> {{genre}} 
 				</label>
 			</div>
 		</div>
 	</form>
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>
 <div class="modal-footer">
 	<button data-ng-click="addGame()" class="btn btn-success">Añadir <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>

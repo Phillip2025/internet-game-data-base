@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html data-ng-app="igdbAngular" lang="en">
 <head>
@@ -29,44 +28,44 @@
 	<link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-			<header class="row vertical-align jumbotron">
-			<div data-ng-controller="gameController" class="col-md-6">
+	<div class="container">
+		<header class="row vertical-align jumbotron">
+			<div data-ng-controller="gameController" class="col-md-10">
 				<h2><a href="#" ui-sref="home">Internet Game Data Base</a>
 					<small data-ng-controller="countController" data-ng-init="getCount()">{{'SLOGAN_1' | translate}} {{count}} {{'SLOGAN_2' | translate}}</small>
 				</h2>
 			</div>
-			<form data-ng-controller="gameController" class="buscador form-inline col-md-3 col-md-offset-2">
-				<div class="form-group ui-widget">
-					<input class="form-control" data-ng-model="search.term" ui-autocomplete="autoComplete" type="text" placeholder="{{'SEARCH_PLACEHOLDER' | translate}}"/>
-					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-				</div>
-			</form>
-			<div data-ng-controller="translationController" class="col-md-1">
+			<div data-ng-controller="translationController" class="col-md-offset-1 col-md-1">
 				<img data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
 				<img data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
 			</div>
 		</header>
-		<nav class="navbar">
-			<ul class="nav nav-tabs"  data-ng-controller="userController">
+		<nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
 				<li ui-sref-active="active" ui-sref="home"><a href="#">{{'NAV_GAMES' | translate}}</a></li>
 				<li ui-sref-active="active" ui-sref="platform"><a data-ng-click="getPlatforms()" href="#">{{'NAV_PLATFORMS' | translate}}</a></li>
-				<li ui-sref-active="active"><a href="#">Editores</a></li>
-				<li ui-sref-active="active"><a href="#">Desarrolladores</a></li>
 				<li data-ng-if="$root.user.role == 'Admin'">
 					<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">Añadir juego</a>
 				</li>
+			</ul>
+			<form data-ng-controller="gameController" class="buscador navbar-form navbar-left">
+				<div class="form-group">
+					<input class="form-control" data-ng-model="search.term" ui-autocomplete="autoComplete" type="text" placeholder="{{'SEARCH_PLACEHOLDER' | translate}}"/>
+					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right" data-ng-controller="userController">
 				<li data-ng-if="!$root.user">
-					<a href="#" data-ng-click="openNewUser()">Registrarse</a>
+					<button class="btn btn-default navbar-btn" data-ng-click="openNewUser()">Registrarse</button>
 				</li>
 				<li data-ng-if="$root.user">
 					<a href="#" data-ng-click="openEditUser()">Modificar datos</a>
 				</li>
 				<li data-ng-if="$root.user">
-					<span>Bienvenido {{user.user}} </span>
-					<button class="btn btn-default" data-ng-click="logout()"><a href="#">Logout</a></button>
+					<span>Bienvenido {{user.user}}</span><button class="btn btn-default navbar-btn" data-ng-click="logout()">Logout</button>
 				</li>
 				<li data ng-if="!$root.user">
-					<form class="form-inline col-md-offset-1">
+					<form class="form-inline">
 						<div class="form-group">
 							<input class="form-control" data-ng-model="credentials.user" type="text" placeholder="Nombre de usuario" required />
 							<input class="form-control" data-ng-model="credentials.password" type="password" placeholder="Password" required />
@@ -76,8 +75,7 @@
 				</li>
 			</ul>
 		</nav>
-	<div class="container col-md-12">
-		<div class="animate-view col-md-10 col-md-offset-1" ng-animate-children ui-view></div>
+		<div class="animate-view" ng-animate-children ui-view></div>
 	</div>
 </body>
 </html>

@@ -98,6 +98,10 @@ var translationsES = {
 		ESRB: "Calificación por edades",
 		PLAYERS: "Jugadores",
 		COOP: "Cooperativo",
+		COOPVALUES: {
+			YES: 'Si',
+			NO: 'No'
+		},
 		OVERVIEW: "Descripción",
 		PUBLISHER: "Editor",
 		DEVELOPER: "Desarrollador",
@@ -109,6 +113,15 @@ var translationsES = {
 		COMMENTS: "Comentarios",
 		NO_COMMENTS: "No hay comentarios, que esperas para ser el primero?",
 		ADD_COMMENT: "Publicar comentario"
+	},
+	NEW_USER_FORM: "Registro de nuevo usuario",
+	USER: {
+		USERNAME: "Nombre de usuario",
+		PASSWORD: "Password",
+		NAME: "Nombre",
+		SURNAME: "Apellidos",
+		EMAIL: "E-Mail",
+		PICTURE: "Imagen de perfil"
 	}
 };
 
@@ -128,6 +141,10 @@ var translationsEN = {
 		ESRB: "ESRB Rating",
 		PLAYERS: "Players",
 		COOP: "Cooperative",
+		COOPVALUES: {
+			YES: 'Yes',
+			NO: 'No'
+		},
 		OVERVIEW: "Overview",
 		PUBLISHER: "Publisher",
 		DEVELOPER: "Developer",
@@ -139,5 +156,14 @@ var translationsEN = {
 		COMMENTS: "Comments",
 		NO_COMMENTS: "There are no comments, what are you waiting to write the first one?",
 		ADD_COMMENT: "Add comment"
+	},
+	NEW_USER_FORM: "User Sign Up",
+	USER: {
+		USERNAME: "Username",
+		PASSWORD: "Password",
+		NAME: "Name",
+		SURNAME: "Surname",
+		EMAIL: "Email",
+		PICTURE: "Profile picture"
 	}
 };
