@@ -6,6 +6,7 @@ body{
 	background-repeat: no-repeat;
 	background-image: url('../img/fondo-body2.jpg');
 	padding: 0px;
+	font-family: underwood_champion;
 }
 img{
 	width:100%;
@@ -127,9 +128,17 @@ form{
 	font-size: 16px;
 	margin: 1%;
 }
+
 .game span{
 	color:#1AF702;
 	font-size: 16px;
+}
+
+.game .panel-heading span{
+	font-family: starcraft;
+}
+.game .panel-heading{
+	border-radius: 3px;
 }
 .rating{
 	background: #005700; /* Old browsers */
@@ -157,3 +166,14 @@ form{
 .comentario span{
 	color:black;
 }
+.carousel-control .glyphicon-chevron-right {
+       //Reset the icon
+       content: " ";
+       //Give layout
+       display:block;
+       //Your image as background
+       background:url('../img/flecha-derecha.png') no-repeat;
+       //To show full image set the dimensions
+       width:30px;
+       height:30px;
+   }

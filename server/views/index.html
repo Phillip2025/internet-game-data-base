@@ -25,6 +25,7 @@
 	<script src="js/ui-bootstrap-tpls-0.13.0.min.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/fuentes.css">
 	<link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
@@ -62,7 +63,7 @@
 					<a href="#" data-ng-click="openEditUser()">Modificar datos</a>
 				</li>
 				<li data-ng-if="$root.user">
-					<span>Bienvenido {{user.user}}</span><button class="btn btn-default navbar-btn" data-ng-click="logout()">Logout</button>
+					<span>Bienvenido {{user.user}}</span><button style="margin-right: 5px;" class="btn btn-default navbar-btn" data-ng-click="logout()">Logout</button>
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="form-inline">
