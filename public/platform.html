@@ -1,3 +1,9 @@
-<div class="platform col-md-12" data-ng-controller="platformController">
-	<h2>{{platform.console}}</h2>
+<div class="game col-md-12" data-ng-controller="platformController">
+	<h2>{{platform.platform}}</h2>
+	<img class="col-md-5" ng-src="{{platform.images.boxart.back.url}}" alt="">
+	<span>Developer: </span><span>{{platform.developer}}</span>
+	<span>Manufacture: </span><span>{{platform.manufacture}} </span>
+	<span>Cpu: </span><span>{{platform.cpu}}</span>
+	<img class="col-md-2" ng-src="http://thegamesdb.net/banners/{{platform.images.consoleArt}}" alt="">
+	<img class="col-md-2" ng-src="http://thegamesdb.net/banners/{{platform.images.controllerArt}}" alt="">
 </div>

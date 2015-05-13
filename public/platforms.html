@@ -1,8 +1,18 @@
-
 <div ng-controller="platformController" data-ng-init="getAllPlatforms()">
 	<h3>CONSOLAS</h3>
-	<div thumb class="animate-repeat" data-ng-repeat="platform in platforms">
-
+	<div thumbPlatform class="animate-repeat" data-ng-repeat="platform in platforms">
+		<div class="col-md-2 item-platform">
+			<div ng-click="$parent.getPlatformById(platform._id)" class="panel panel-default">
+				<div class="panel-heading"><a href="#">{{platform.platform}}</a></div>
+					<div class="panel-body">
+						<img style="width: 100%; height: 100%" ng-src="{{platform.images.boxart.back.url}}" alt="Portada de:{{platform.platform}}">
+					</div>
+					<div class="panel-footer">
+						Rating: {{platform.rating | number:1}}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>	
 </div>
 

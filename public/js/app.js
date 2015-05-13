@@ -33,7 +33,7 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, $com
 		templateUrl: 'platforms.html'
 	})
 	.state('platform',{
-		url: '/platform',
+		url: '/platforms/:id',
 		templateUrl: 'platform.html'
 	})
 	.state('newplatform',{

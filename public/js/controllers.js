@@ -423,16 +423,29 @@ controllers.controller('translationController', ['$translate', '$scope', 'tmhDyn
  
 }]);
 
-controllers.controller('platformController', function ($scope, $rootScope, $http) {
+controllers.controller('platformController', function ($scope, $rootScope, $http, $location) {
 
 	$scope.getAllPlatforms = function(){
 		console.log("Estamos en plataformas")
 		$http.get('/platforms')
 		.success(function(platforms){
-			$rootScope.platforms = platforms;
+			$scope.platforms = platforms;
+			
 		})
 		.error(function(err){
 			console.log(err);
 		});
-	}
+	};
+	
+	$scope.getPlatformById = function (id) {
+		$http.get('/platforms/' + id)
+		.success(function(platform) {
+			$rootScope.platform = platform;
+			$location.path('/platforms/' + id);
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	};
+	
 });
