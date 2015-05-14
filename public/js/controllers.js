@@ -425,11 +425,30 @@ controllers.controller('translationController', ['$translate', '$scope', 'tmhDyn
 
 controllers.controller('platformController', function ($scope, $rootScope, $http, $location) {
 
+	$scope.interval =5000;
+	$scope.max= 10; 
+	$scope.rate = 1;
+	$scope.status = {
+		isFirstOpen: true,
+		isFirstDisabled: false
+	};
+
 	$scope.getAllPlatforms = function(){
 		console.log("Estamos en plataformas")
 		$http.get('/platforms')
 		.success(function(platforms){
-			$scope.platforms = platforms;
+			$rootScope.platforms = platforms;
+			$rootScope.currentPage = 1;
+			$rootScope.numPerPage = 12;
+			$rootScope.maxSize = 5;
+			$rootScope.totalItems = platforms.length;
+			$rootScope.platformPage = [];
+			$rootScope.$watch("currentPage + numPerPage", function() {
+				var begin = (($rootScope.currentPage - 1) * $rootScope.numPerPage);
+				var end = begin + $rootScope.numPerPage;
+				//console.log("begin:"+begin+"end:"+end);
+				$rootScope.platformPage = $rootScope.platforms.slice(begin, end);
+			});
 			
 		})
 		.error(function(err){

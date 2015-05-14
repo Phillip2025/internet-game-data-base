@@ -82,7 +82,7 @@ exports.deletePlatform = function(req, res) {
 
 exports.getAllPlatforms = function(req, res) {
 	console.log("Peticion de todas las plataformas");
-	Platform.find().sort('-created').limit(12).exec(function (err, platforms) {
+	Platform.find().sort('-created').exec(function (err, platforms) {
 		if(err){
 			return res.status(500).send({
 				message: 'Error interno del servidor'

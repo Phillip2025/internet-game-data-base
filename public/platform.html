@@ -1,9 +1,59 @@
 <div class="game col-md-12" data-ng-controller="platformController">
 	<h2>{{platform.platform}}</h2>
-	<img class="col-md-5" ng-src="{{platform.images.boxart.back.url}}" alt="">
-	<span>Developer: </span><span>{{platform.developer}}</span>
-	<span>Manufacture: </span><span>{{platform.manufacture}} </span>
-	<span>Cpu: </span><span>{{platform.cpu}}</span>
-	<img class="col-md-2" ng-src="http://thegamesdb.net/banners/{{platform.images.consoleArt}}" alt="">
-	<img class="col-md-2" ng-src="http://thegamesdb.net/banners/{{platform.images.controllerArt}}" alt="">
-</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-3">
+			<img ng-src="{{platform.images.boxart.back.url}}" alt="">
+		</div>
+		<div class="col-md-3">
+			<ul class="list-unstyled">
+				<li><span>{{'PLATFORM.DEVELOPER' | translate}}: </span>{{platform.developer}}</li>
+				<li><span>{{'PLATFORM.MANUFACTURER' | translate}}: </span>{{platform.manufacture}}</li>
+				<li><span>{{'PLATFORM.CPU' | translate}}: </span>{{platform.cpu}}</li>
+				<li><span>{{'PLATFORM.GRAPHICS' | translate}}: </span>{{platform.graphics}}</li>
+				<li><span>{{'PLATFORM.SOUND' | translate}}: </span>{{platform.sound}}</li>
+				<li><span>{{'PLATFORM.MEMORY' | translate}}: </span>{{platform.memory}}</li>
+				<li><span>{{'PLATFORM.MAXCONTROLLERS'| translate}}: </span>{{platform.maxControllers}}</li>
+			</ul>
+		</div>
+	<!--
+		<div class="col-md-4">
+			<div class="thumbnail rating form-group">
+				<p>Puntuacion : {{platform.rating.rating}}</p>
+				<rating ng-model="rate" max="max" state-on="'green-rating'" state-off="'black-rating'"></rating><span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>
+			</div>
+		</div>
+	-->
+		<div class="col-md-6">
+			<img class="col-md-5" ng-src="http://thegamesdb.net/banners/{{platform.images.consoleArt}}" alt="">
+			<img class="col-md-5" ng-src="http://thegamesdb.net/banners/{{platform.images.controllerArt}}" alt="">
+		</div>
+		<div class="col-md-offset-1 col-md-10"><p>{{platform.overview}}</p></div>
+		<div class="col-md-10 col-md-offset-1">
+			<accordion close-others="true">
+				<accordion-group heading="{{'PLATFORM.BANNERS'|translate}}" is-open="status.isFirstOpen">
+					<div class="col-md-8 col-md-offset-2">
+						<carousel class="col-md-12" interval="interval">
+							<slide ng-repeat="banner in platform.images.banner" active="slide.active">
+								<img ng-src="{{banner.url}}">
+					            <!--<div class="carousel-caption">
+					         	   <h4>Slide {{$index+1}}</h4>
+					         	</div>-->
+					         </slide>
+					     </carousel>
+					</div>
+				</accordion-group>
+				<accordion-group heading="{{'PLATFORM.FANARTS'|translate}}">
+				<div class="col-md-8 col-md-offset-2">
+					<carousel class="col-md-12" interval="interval">
+						<slide ng-repeat="fanart in platform.images.fanart" active="slide.active">
+							<img ng-src="{{fanart.url}}">
+		        	<!--<div class="carousel-caption">
+		           	   	    <h4>Slide {{$index+1}}</h4>
+		           	   	</div>-->
+		           	   </slide>
+		           	</carousel>
+		           </div>
+		       </accordion-group>
+		    </accordion>
+		</div>
+	</div>
