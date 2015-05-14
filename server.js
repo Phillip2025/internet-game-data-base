@@ -29,7 +29,7 @@ ai.initialize(connection);
 
 require('./server/models/game');
 require('./server/models/user');
-require('./server/models/platform')
+require('./server/models/platform');
 require('./config/passport')(app);
 
 app.use(session({secret: config.sessionSecret, 
@@ -44,6 +44,7 @@ require('./server/routers/index.router')(app);
 require('./server/routers/search.router')(app);
 require('./server/routers/users.router')(app);
 require('./server/routers/platforms.router')(app);
+require('./server/routers/uploads.router')(app);
 
 app.listen(config.port);
 

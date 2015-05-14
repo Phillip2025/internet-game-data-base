@@ -37,6 +37,7 @@
 		<div class="form-group col-md-12">
 			<label class="col-md-4 control-label">{{'USER.PICTURE' | translate}}: </label>
 			<div class="col-md-8">
+			<div ng-controller="uploadController" class="button" ngf-select ngf-change="uploadProfileImage($files)">Upload on file change</div>
 				<input class="form-control" type="file" data-ng-model="credentials.picture" required>
 			</div>
 		</div>		
