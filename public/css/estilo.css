@@ -1,3 +1,4 @@
+
 body{
 	border:0;
 	background-color:black;
@@ -48,9 +49,21 @@ img{
 	overflow: hidden;
 }
 .item-game .panel-body{
-	min-height: 215px;
-	max-height: 215px;
+	min-height: 240px;
+	max-height: 240px;
 }
+.item-platform .panel-heading{
+	max-height: 50px;
+	min-height: 50px;
+	overflow: hidden;
+}
+.item-platform .panel-body{
+	min-height: 260px;
+	max-height: 260px;
+	overflow: hidden;
+}
+
+
 .panel-default > .panel-heading a{
 	color:white;
 }
@@ -164,18 +177,6 @@ span.ng-binding{
 .comentario span{
 	color:black;
 }
-.carousel-control .glyphicon-chevron-right {
-       //Reset the icon
-       content: " ";
-       //Give layout
-       display:block;
-       //Your image as background
-       background:url('../img/flecha-derecha.png') no-repeat;
-       //To show full image set the dimensions
-       width:30px;
-       height:30px;
-   }
-
 .green-rating { 
 	  height: 1.5em;
 	  width: 1.5em;

@@ -6,7 +6,7 @@ var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives
 app.config(function($stateProvider, $urlRouterProvider, $translateProvider, $compileProvider, tmhDynamicLocaleProvider) {
 
 	//Produccion
-	$compileProvider.debugInfoEnabled(false);
+	//$compileProvider.debugInfoEnabled(false);
 
 	$urlRouterProvider.otherwise('/');
 
@@ -121,6 +121,22 @@ var translationsES = {
 		NO_COMMENTS: "No hay comentarios, que esperas para ser el primero?",
 		ADD_COMMENT: "Publicar comentario"
 	},
+	PLATFORM: {
+		PLATFORM: "Plataforma",
+		OVERVIEW: "Descripción",
+		DEVELOPER: "Desarrollador",
+		MANUFACTURER: "Fabricante",
+		CPU: "Procesador",
+		MEMORY: "Memoria",
+		GRAPHICS: "Grafica",
+		SOUND: "Sonido", 
+		DISPLAY: "",
+		MEDIA: "",
+		MAXCONTROLLERS: "Maximo de Controladores",
+		BANNERS: "Banners",
+		SCREENSHOTS: "Capturas de pantalla",
+		FANARTS: "Imágenes de usuarios"
+	},
 	NEW_USER_FORM: "Registro de nuevo usuario",
 	USER: {
 		USERNAME: "Nombre de usuario",
@@ -167,6 +183,22 @@ var translationsEN = {
 		COMMENTS: "Comments",
 		NO_COMMENTS: "There are no comments, what are you waiting to write the first one?",
 		ADD_COMMENT: "Add comment"
+	},
+	PLATFORM:{
+		PLATFORM: "Platform",
+		OVERVIEW: "Overview",
+		DEVELOPER: "Developer",
+		MANUFACTURER: "Manufacturer",
+		CPU: "CPU",
+		MEMORY: "Memory",
+		GRAPHICS: "Graphics",
+		SOUND: "Sound", 
+		DISPLAY: "Display",
+		MEDIA: "Media",
+		MAXCONTROLLERS: "Controllers",
+		BANNERS: "Banners",
+		SCREENSHOTS: "Screenshots",
+		FANARTS: "Fanarts"
 	},
 	NEW_USER_FORM: "User Sign Up",
 	USER: {
