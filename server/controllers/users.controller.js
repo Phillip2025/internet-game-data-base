@@ -66,13 +66,12 @@ exports.logout = function(req, res) {
 };
 
 exports.updateUser = function(req, res) {
-	console.log("Peticion de update de usuario");
-	console.log(req.user._id);
+	console.log("Peticion de update");
 	var user = new User(req.body);
-	User.findOneAndUpdate({_id: req.user._id}, user, function(err){
-		if(err){
+	User.findOneAndUpdate({_id: user._id}, user, function (err) {
+		if (err) {
 			return res.status(500).send({
-				message: 'Error al modificar usuario'
+				message: 'Error interno de servidor'
 			});
 		}
 		res.json(user);

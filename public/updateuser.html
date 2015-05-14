@@ -1,41 +1,38 @@
-
 <div class="modal-header">
-	<h4 class="modal-title">Rellena todos los campos</h4>
+	<h4 class="modal-title">Editar juego</h4>
 </div>
 <div class="modal-body row">
-	<form data class="form-horizontal col-md-12">
-		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for="gameTitle">{{'USER.USERNAME' | translate}}</label>
-			<div class="col-md-8">
-				<input class="form-control" type="text" data-ng-model="$root.user.user" value="$root.user.user" required>
+	<form class="form-horizontal col-md-12">
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="username">{{'USER.USERNAME' | translate}}: </label>
+			<div class="col-md-4">
+				<input class="form-control" type="text"  data-ng-model="$root.user.user" placeholder="Usuario" required />
 			</div>
 		</div>
-		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for="gameTitle">{{'USER.PASSWORD' | translate}}</label>
-			<div class="col-md-8">
-				<input class="form-control"type="password" data-ng-model="$root.user.password" value="$root.user.password" required>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="password">{{'USER.PASSWORD' | translate}}: </label>
+			<div class="col-md-4">
+				<input class="form-control" data-ng-model="$root.user.password" type="password" placeholder="Password" required />
 			</div>
 		</div>
-		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for="gameTitle">{{'USER.NAME' | translate}}:</label>
-			<div class="col-md-8">
-				<input class="form-control" type="text" data-ng-model="$root.user.name" value="$root.user.name" required>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="name">{{'USER.NAME' | translate}}: </label>
+			<div class="col-md-4"><input class="form-control" data-ng-model="$root.user.name" type="text" placeholder="Nombre" required />
 			</div>
 		</div>
-		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for="gameTitle">{{'USER.SURNAME' | translate}}:</label>
-			<div class="col-md-8">
-				<input class="form-control" type="text" data-ng-model="$root.user.surname" value="$root.user.surname" required>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="surname">{{'USER.SURNAME' | translate}}: </label>
+			<div class="col-md-4"><input class="form-control" ng-model="$root.user.surname" type="text" placeholder="Apellido"></select>
 			</div>
 		</div>
-		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for="gameTitle">{{'USER.EMAIL' | translate}}:</label>
-			<div class="col-md-8">
-				<input class="form-control" type="text" data-ng-model="$root.user.mail" value="$root.user.mail" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$  
-				" required>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="mail">{{'USER.EMAIL' | translate}}: </label>
+			<div class="col-md-4"><input class="form-control" data-ng-model="$root.user.mail" type="text" placeholder="Email" required />
 			</div>
-	</form>
+		</div>
+	</form>	
 </div>
 <div class="modal-footer">
-	<button data-ng-click="updateUser()" class="btn btn-success">Editar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+	<button data-ng-click="updateUser()" class="btn btn-primary">Editar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>

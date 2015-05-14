@@ -220,20 +220,22 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 
 	$scope.updateUser = function(){
 		if (!$rootScope.user) {
-			console.log("No hay usuario logeado");
-			console.log("Aqui deberia cargar el formulario de registro");
-		}else{
-			$http.put('/updateuser', $scope.credentials)
-			.success(function (user){
-				$rootScope.user= {};
-				$rootScope.user = user;
-				$location.path('/');
-			})
-			.error(function(err){
-				console.log("Error" +err);
-			});
+			console.log("No hay usuario que modificar");
+		} else {
+				console.log("Root: " + JSON.stringify($rootScope.user));
+				$http.put('/users/' + $rootScope.user._id, $rootScope.user)
+				.success(function (user) {
+					$scope.modalInstance.close();
+					console.log(user)
+					console.log("Updateando usuario con id:" + user._id);
+					console.log(JSON.stringify(user));
+					$rootScope.user = user;
+					//$location.path('/users/'+user._id);
+				})
+				.error(function(err) {
+					console.log("Error" +err);
+				});
 		}
-		console.log("updateado usuario");
 	};
 
 	$scope.openNewUser = function () {
