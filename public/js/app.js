@@ -1,17 +1,12 @@
 //declaracion de app y sus dependencias
-var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap', 'ui.autocomplete', 'pascalprecht.translate', 'tmh.dynamicLocale']);  
-
+var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap', 'ui.autocomplete', 'pascalprecht.translate', 'tmh.dynamicLocale', 'ngFileUpload']);  
 
 //state provider
-app.config(function($stateProvider, $urlRouterProvider, $translateProvider, $compileProvider, tmhDynamicLocaleProvider) {
-
-	//Produccion
-	//$compileProvider.debugInfoEnabled(false);
+app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhDynamicLocaleProvider) {
 
 	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
-
 	.state('home', {
 		url: '/',
 		templateUrl: 'main.html',
@@ -35,15 +30,7 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, $com
 	.state('platform',{
 		url: '/platforms/:id',
 		templateUrl: 'platform.html'
-	})
-	.state('newplatform',{
-		url: '/admin/newplatform',
-		templateUrl: 'newplatform.html'
-	})
-	.state('updateplatform',{
-		url:'/edit/:id',
-		templateUrl:'updateplatform.html'
-	})
+	});
 
 	$translateProvider
 	.translations('es', translationsES)
