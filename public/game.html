@@ -36,20 +36,20 @@
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail rating form-group">
-				<p>{{'GAME.RATING' | translate}}: {{game.rating}}</p>
-				<rating ng-model="rate" max="max" state-on="'green-rating'" state-off="'black-rating'"></rating><span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>
+				<p>{{'GAME.RATING' | translate}}: {{game.rating | number:1}}</p>
+				<rating ng-model="rate" max="max" state-on="'green-rating'" state-off="'black-rating'" data-ng-click="addRating()"></rating><!--<span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>-->
 			</div>
 		</div>
 		<div class="col-md-4"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}" alt="logo de:{{game.gameTitle}}">
-	</div>
-	<div class="col-md-offset-1 col-md-10"><p>{{game.overview}}</p></div>
-	<div class="col-md-10 col-md-offset-1">
-		<accordion close-others="true">
-			<accordion-group heading="{{'GAME.BANNERS' | translate}}" is-open="status.isFirstOpen">
-			<div class="col-md-8 col-md-offset-2">
-				<carousel class="col-md-12" interval="interval">
-					<slide ng-repeat="banner in game.images.banner" active="slide.active">
-						<img ng-src="{{banner.url}}">
+		</div>
+		<div class="col-md-offset-1 col-md-10"><p>{{game.overview}}</p></div>
+		<div class="col-md-10 col-md-offset-1">
+			<accordion close-others="true">
+				<accordion-group heading="{{'GAME.BANNERS' | translate}}" is-open="status.isFirstOpen">
+				<div class="col-md-8 col-md-offset-2">
+					<carousel class="col-md-12" interval="interval">
+						<slide ng-repeat="banner in game.images.banner" active="slide.active">
+							<img ng-src="{{banner.url}}">
 				            <!--<div class="carousel-caption">
 				         	   <h4>Slide {{$index+1}}</h4>
 				         	</div>-->
@@ -87,7 +87,7 @@
 			<p><span>Juegos relacionados:</span></p>
 		</div>
 		<div class="col-md-10 col-md-offset-1">
-		<p><span>{{'GAME.COMMENTS' | translate}}:</span></p>
+			<p><span>{{'GAME.COMMENTS' | translate}}:</span></p>
 			<div data-ng-repeat="comment in game.comments" class="list-unstyled comentarios">
 				<div class="comentario col-md-11 thumbnail">
 					<div class="col-md-2">
@@ -99,16 +99,16 @@
 					</div>
 				</div>
 				<div class="col-md-1" data-ng-if="$root.user._id == comment.userId" data-ng-click="deleteComment(game._id, comment._id)">
-				<p><icono class="glyphicon glyphicon-remove" aria-hidden="true"></icono></p>
+					<p><icono class="glyphicon glyphicon-remove" aria-hidden="true"></icono></p>
 				</div>
 			</div>
 			<div data-ng-if="game.comments.length === 0">
 				<p>{{'GAME.NO_COMMENTS' | translate}}</p>
 			</div>
-		<div class="col-md-12 form-group form-group-lg">
-			<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
-			<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-md-12"><icono class="glyphicon glyphicon-edit"></icono></a>
-		</div>
+			<div class="col-md-12 form-group form-group-lg">
+				<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
+				<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-md-12"><icono class="glyphicon glyphicon-edit"></icono></a>
+			</div>
 		</div>
 
 
