@@ -34,13 +34,13 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col-md-5">
-			<div class="thumbnail rating form-group">
+		<div class="col-md-4">
+			<div class="col-md-7 thumbnail rating form-group">
 				<p>{{'GAME.RATING' | translate}}: {{game.rating | number:1}}</p>
 				<rating ng-model="rate" max="max" state-on="'green-rating'" state-off="'black-rating'" data-ng-click="addRating()"></rating><!--<span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>-->
 			</div>
 		</div>
-		<div class="col-md-5"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}" alt="logo de:{{game.gameTitle}}">
+		<div class="col-md-4"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}" alt="logo de:{{game.gameTitle}}">
 		</div>
 		<div class="col-md-offset-1 col-md-10"><p>{{game.overview}}</p></div>
 		<div class="col-md-10 col-md-offset-1">
@@ -107,7 +107,7 @@
 			</div>
 			<div class="col-md-12 form-group form-group-lg">
 				<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
-				<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-md-12"><icono class="glyphicon glyphicon-edit"></icono></a>
+				<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-md-12 col-xs-12"><icono class="glyphicon glyphicon-edit"></icono></a>
 			</div>
 		</div>
 

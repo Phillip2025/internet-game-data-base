@@ -31,14 +31,14 @@
 <body>
 	<div class="container-fluid">
 		<header class="row vertical-align jumbotron">
-			<div data-ng-controller="gameController" class="col-md-10">
-				<h2><a href="#" ui-sref="home"><img class="col-md-3" src="img/logotipo.png"><img class="col-md-9" src="img/textocabecera1.png"></a>
+			<div data-ng-controller="gameController" class="col-md-10 col-xs-12">
+				<h2><a href="#" ui-sref="home"><img class="col-md-3 col-xs-12" src="img/logotipo.png"><img class="col-md-9 col-xs-12" src="img/textocabecera1.png"></a>
 					<small data-ng-controller="countController" data-ng-init="getCount()">{{'SLOGAN_1' | translate}} {{count}} {{'SLOGAN_2' | translate}}</small>
 				</h2>
 			</div>
 			<div data-ng-controller="translationController" class="col-md-offset-1 col-md-1">
-				<img class="col-md-10 col-xs-4" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
-				<img class="col-md-10 col-xs-4" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
+				<img class="col-md-10 col-xs-3" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
+				<img class="col-md-10 col-xs-3" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
 			</div>
 		</header>
 		<nav class="navbar navbar-default">
@@ -60,10 +60,10 @@
 			<form data-ng-controller="gameController" class="buscador navbar-form navbar-left">
 				<div class="form-group">
 					<input class="form-control" data-ng-model="search.term" ui-autocomplete="autoComplete" type="text" placeholder="{{'NAV.SEARCH_PLACEHOLDER' | translate}}"/>
-					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default pull-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 				</div>
 			</form>
-			<ul class="nav navbar-nav navbar-right" data-ng-controller="userController">
+			<ul class="nav navbar-nav navbar-right col-md-5 navbar-login" data-ng-controller="userController">
 				<li data-ng-if="$root.user">
 					<a href="#" data-ng-click="openEditUser()">Modificar datos</a>
 				</li>
@@ -75,11 +75,11 @@
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="navbar-form form-inline">
-						<div class="form-group col-md-10">
-							<input class="form-control" data-ng-model="credentials.user" type="text" placeholder="{{'USER.USERNAME' | translate}}" required />
-							<input class="form-control" data-ng-model="credentials.password" type="password" placeholder="{{'USER.PASSWORD' | translate}}" required />
-							<button data-ng-click="login()" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-							<button class="btn btn-default" data-ng-click="openNewUser()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+						<div class="form-group form-login-navbar">
+							<input class="form-control inputs-log" data-ng-model="credentials.user" type="text" placeholder="{{'USER.USERNAME' | translate}}" required />
+							<input class="form-control inputs-log" data-ng-model="credentials.password" type="password" placeholder="{{'USER.PASSWORD' | translate}}" required />
+							<button data-ng-click="login()" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+							<button class="btn btn-default pull-right" data-ng-click="openNewUser()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
 						</div>
 					</form>
 				</li>
