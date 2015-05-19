@@ -356,45 +356,57 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 
 	$scope.openNewGame = function () {
 
+			$scope.modalInstance = $modal.open({
+				templateUrl: 'newgame.html',
+				scope: $scope,
+				resolve: {
+					newGame: function () {
+						return $scope.newGame;
+					}
+				}
+			});
+
+		    //Al cerrar el modal
+		    /*$scope.modalInstance.result.then(function (credentials) {
+		      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+		    }, function () {
+		      $log.info('Modal dismissed at: ' + new Date());
+		  });*/
+
+	};
+
+	$scope.openEditGame = function () {
+
+		$rootScope.updateGame = clone($rootScope.game);
 		$scope.modalInstance = $modal.open({
-			templateUrl: 'newgame.html',
+			templateUrl: 'updategame.html',
 			scope: $scope,
 			resolve: {
-				newGame: function () {
-					return $scope.newGame;
+				game: function () {
+					return $scope.game;
 				}
 			}
 		});
 
-	    //Al cerrar el modal
-	    /*$scope.modalInstance.result.then(function (credentials) {
-	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
-	    }, function () {
-	      $log.info('Modal dismissed at: ' + new Date());
-	  });*/
+		    //Al cerrar el modal
+		    $scope.modalInstance.result.then(function (credentials) {
+		      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+		    }, function () {
+		    	$rootScope.updateGame = {};
+			console.info('Modal dismissed at: ' + new Date());
+		  });
 
-};
+	};
 
-$scope.openEditGame = function () {
-
-	$scope.modalInstance = $modal.open({
-		templateUrl: 'updategame.html',
-		scope: $scope,
-		resolve: {
-			game: function () {
-				return $scope.game;
-			}
+	function clone(obj) {
+	    if (null == obj || "object" != typeof obj) return obj;
+	    var copy = obj.constructor();
+	    for (var attr in obj) {
+	        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+	    }
+	    return copy;
 		}
-	});
 
-	    //Al cerrar el modal
-	    /*$scope.modalInstance.result.then(function (credentials) {
-	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
-	    }, function () {
-	      $log.info('Modal dismissed at: ' + new Date());
-	  });*/
-
-};
 });
 
 controllers.controller('checkBoxController', function ($scope, $rootScope) {
@@ -489,6 +501,7 @@ controllers.controller('platformController', function ($scope, $rootScope, $http
 
 controllers.controller('uploadController', ['$scope', 'Upload', '$rootScope' ,function ($scope, Upload, $rootScope) {
 
+	$scope.folder= {};
     $scope.uploadProfileImage = function (files) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
@@ -510,20 +523,43 @@ controllers.controller('uploadController', ['$scope', 'Upload', '$rootScope' ,fu
     };
 
     $scope.uploadGameImage = function (files) {
+    	var path = $scope.folder.folder;
+    	console.log("guardando imagen de juego");
+    	console.log("path: " + path);
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                Upload.upload({
-                    url: '/uploads/' + $rootScope.game._id + '/' + $scope.path,
-                    fields: {'username': $scope.username},
-                    file: file
-                }).progress(function (evt) {
-                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-                }).success(function (data, status, headers, config) {
-                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-                });
-            }
+            	var file = files[i];
+	            Upload.upload({
+	                url: '/uploads/' + $rootScope.game._id + '/' + path,
+	                file: file
+	            }).progress(function (evt) {
+	                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+	                console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+	            }).success(function (data, status, headers, config) {
+	                console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+	                if (path === 'boxartfront') {
+	                	$rootScope.updateGame.images.boxart.front = data;
+	                }
+	                if (path === 'banner') {
+	                	$rootScope.updateGame.images.boxart.back = data;
+	                }
+	                if (path === 'banner') {
+	                	$rootScope.updateGame.images.clearlogo = data;
+	                }
+	                if (path === 'banner') {
+	                	$rootScope.updateGame.images.banner.push(data);
+	                }
+	                if (path === 'screenshot') {
+	                	$rootScope.updateGame.images.screenshot.push(data);
+	                }
+	                if (path === 'fanart') {
+	                	$rootScope.updateGame.images.fanart.push(data);
+	                }
+	            });  
+            }  
         }
     };
+
+    $scope.folders = ['boxartfront', 'boxartback', 'logo', 'banner', 'screenshot', 'fanart'];
+
 }]);

@@ -69,41 +69,103 @@ var GameSchema = new Schema({
 	comments: [CommentSchema],
 	images: { 
 		fanart: [{
-			url: String,
-			width: Number,
-			height: Number,
-			thumb: String
+			url: {
+					type: String,
+					default: 'img/image.gif',
+				},
+		 		width: {
+		 			type: Number,
+		 			default: 800,
+		 		},
+		 		height: {
+		 			type: Number,
+		 			default: 600,
+		 		},
+		 		thumb: {
+		 			type: String,
+		 			default: '',
+		 		},
 		}],
 	 	boxart: {
 	 		front: {
-				url: String,
-		 		width: Number,
-				height: Number,
-				thumb: String
+				url: {
+					type: String,
+					default: 'img/front.gif',
+				},
+		 		width: {
+		 			type: Number,
+		 			default: 600,
+		 		},
+		 		height: {
+		 			type: Number,
+		 			default: 800,
+		 		},
+		 		thumb: {
+		 			type: String,
+		 			default: '',
+		 		},
 	 		},
 	 		back: {
-				url: String,
-		 		width: Number,
-				height: Number,
-				thumb: String
-	 		}
+				url: {
+					type: String,
+					default: 'img/back.gif',
+				},
+		 		width: {
+		 			type: Number,
+		 			default: 600,
+		 		},
+		 		height: {
+		 			type: Number,
+		 			default: 800,
+		 		},
+		 		thumb: {
+		 			type: String,
+		 			default: '',
+		 		},
+	 		},
 	 	},
 	 	banner: [{
-			url: String,
-			width: Number,
-			height: Number
+			url: {
+					type: String,
+					default: 'img/banner.gif',
+				},
+		 		width: {
+		 			type: Number,
+		 			default: 760,
+		 		},
+		 		height: {
+		 			type: Number,
+		 			default: 140,
+		 		}
 		}],
 		screenshot: [{
-			url: String,
-			width: Number,
-			height: Number,
-			thumb: String
+			url: {
+					type: String,
+					default: 'img/image.gif',
+				},
+		 		width: {
+		 			type: Number,
+		 			default: 800,
+		 		},
+		 		height: {
+		 			type: Number,
+		 			default: 600,
+		 		}
 		}],
 		clearlogo: {
-			url: String,
-			width: Number,
-			height: Number
-		},
+				url: {
+					type: String,
+					default: 'img/logo.gif',
+				},
+		 		width: {
+		 			type: Number,
+		 			default: 400,
+		 		},
+		 		height: {
+		 			type: Number,
+		 			default: 200,
+		 		}
+	 		},
 	}
 });
 

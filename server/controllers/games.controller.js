@@ -42,6 +42,12 @@ exports.read = function(req, res) {
 exports.insertGame = function(req, res) {
 	console.log("Peticion de insercion");
 	var game = new Game(req.body);
+
+	//Inicializacion de arrays en banner, screenshot y fanart
+	var img = {};
+	game.images.banner.push(img);
+	game.images.screenshot.push(img);
+	game.images.fanart.push(img);
 	console.log(game);
 	game.save(function(err) {
 		if (err) {

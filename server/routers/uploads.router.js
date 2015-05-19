@@ -15,7 +15,7 @@ module.exports = function(app) {
 
 	);
 
-	app.route('uploads/:gameId/:pathFolder')
+	app.route('/uploads/:gameId/:pathFolder')
 	.post(middleMulter, uploads.uploadGameImage);
 
 	app.route('/uploads/:pathFolder')

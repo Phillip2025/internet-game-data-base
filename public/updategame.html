@@ -6,52 +6,52 @@
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="gameTitle">{{'GAME.TITLE' | translate}}: </label>
 			<div class="col-md-4">
-				<input class="form-control"  data-ng-model="$root.game.gameTitle" placeholder="Titulo de juego" required />
+				<input class="form-control"  data-ng-model="$root.updateGame.gameTitle" placeholder="Titulo de juego" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="platform">{{'GAME.PLATFORM' | translate}}: </label>
 			<div class="col-md-4">
-				<input class="form-control" data-ng-model="$root.game.platform" type="text" placeholder="Plataforma" required />
+				<input class="form-control" data-ng-model="$root.updateGame.platform" type="text" placeholder="Plataforma" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="releaseDate">{{'GAME.RELEASE_DATE' | translate}}: </label>
-			<div class="col-md-4"><input class="form-control" data-ng-model="$root.game.releaseDate" type="date" placeholder="Fecha de lanzamiento" required />
+			<div class="col-md-4"><input class="form-control" data-ng-model="$root.updateGame.releaseDate" type="date" placeholder="Fecha de lanzamiento" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="esrb">{{'GAME.ESRB' | translate}}: </label>
-			<div class="col-md-4"><select class="form-control" ng-model="$root.game.esrb" ng-options="o as o for o in $root.esrbENG"></select>
+			<div class="col-md-4"><select class="form-control" ng-model="$root.updateGame.esrb" ng-options="o as o for o in $root.esrbENG"></select>
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="overview">{{'GAME.OVERVIEW' | translate}}: </label>
-			<div class="col-md-4"><textarea class="form-control" data-ng-model="$root.game.overview" rows="2" placeholder="Descripcion" required />
+			<div class="col-md-4"><textarea class="form-control" data-ng-model="$root.updateGame.overview" rows="2" placeholder="Descripcion" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="players">{{'GAME.PLAYERS' | translate}}: </label>
-			<div class="col-md-4"><select class="form-control" ng-model="$root.game.players" ng-options="o as o for o in $root.players"></select>
+			<div class="col-md-4"><select class="form-control" ng-model="$root.updateGame.players" ng-options="o as o for o in $root.players"></select>
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group"> 
 			<label class="col-md-4 control-label">{{'GAME.COOP' | translate}}</label>
 			<div class="col-md-4">
-				<label class="checkbox-inline"><input class="form-control" data-ng-model="$root.game.coop" type="radio" ng-checked="$root.game.coop == 'Yes'" value="Yes" />{{'GAME.COOPVALUES.YES' | translate}}</label>
-				<label class="checkbox-inline"><input class="form-control" data-ng-model="$root.game.coop" type="radio" ng-checked="$root.game.coop == 'No'" value="No" />{{'GAME.COOPVALUES.NO' | translate}}</label>
+				<label class="checkbox-inline"><input class="form-control" data-ng-model="$root.updateGame.coop" type="radio" ng-checked="$root.updateGame.coop == 'Yes'" value="Yes" />{{'GAME.COOPVALUES.YES' | translate}}</label>
+				<label class="checkbox-inline"><input class="form-control" data-ng-model="$root.updateGame.coop" type="radio" ng-checked="$root.updateGame.coop == 'No'" value="No" />{{'GAME.COOPVALUES.NO' | translate}}</label>
 			</div>	
 		</div>
 		<div class="form-group col-md-12 mi-form-group">	
 			<label class="col-md-4 control-label" for="publisher">{{'GAME.PUBLISHER' | translate}}: </label>
 			<div class="col-md-4">
-				<input class="form-control" data-ng-model="$root.game.publisher" type="text" placeholder="Editor" required />
+				<input class="form-control" data-ng-model="$root.updateGame.publisher" type="text" placeholder="Editor" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="developer">{{'GAME.DEVELOPER' | translate}}: </label>
 			<div class="col-md-4">
-				<input class="form-control" data-ng-model="$root.game.developer" type="text" placeholder="Desarrollador" required />
+				<input class="form-control" data-ng-model="$root.updateGame.developer" type="text" placeholder="Desarrollador" required />
 			</div>
 		</div>
 		<div class="form-group" data-ng-controller="checkBoxController" data-ng-init="populate()">
@@ -62,6 +62,49 @@
 				</label>
 			</div>
 		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{'GAME.BOXART' | translate}}</label>
+			<div>
+				<img data-ng-src="{{$root.updateGame.images.boxart.front.url}}" alt="front" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{'GAME.BOXART' | translate}}</label>
+			<div>
+				<img data-ng-src="{{$root.updateGame.images.boxart.back.url}}" alt="back" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{'GAME.LOGO' | translate}}</label>
+			<div>
+				<img data-ng-src="{{$root.updateGame.images.clearlogo.url}}" alt="logo" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{'GAME.BANNERS' | translate}}</label>
+			<div data-ng-repeat="banner in $root.updateGame.images.banner">
+				<img data-ng-src="{{banner.url}}" alt="banner" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{'GAME.SCREENSHOTS' | translate}}</label>
+			<div data-ng-repeat="ss in $root.updateGame.images.screenshot">
+				<img data-ng-src="{{ss.url}}" alt="screenshot" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{'GAME.FANARTS' | translate}}</label>
+			<div data-ng-repeat="fanart in $root.updateGame.images.fanart">
+				<img data-ng-src="{{fanart.url}}" alt="fanart" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			</div>
+		</div>
+		<div ng-controller="uploadController" class="form-group col-md-12">
+			<label class="col-md-4 control-label">Añadir imagen: </label>
+			<div class="col-md-8">
+			<select class="form-control" ng-model="folder.folder" ng-options="o as o for o in folders"></select>
+			<button class="btn btn-default" ngf-select ngf-accept="'image/*'" ngf-change="uploadGameImage($files)">Seleccionar</button>
+			</div>
+		</div>	
 	</form>	
 </div>
 <div class="modal-footer">
