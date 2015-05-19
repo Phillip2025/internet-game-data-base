@@ -26,8 +26,12 @@ var UserSchema = new Schema({
 		required: 'Email debe ser correcto'
 	},
 	picture: {
-		type: String,
-		default: "http://placehold.it/200&text=Imagen+no+disponible"
+		url: {
+			type: String,
+			default: "img/default.gif"
+		},
+		width: Number,
+		height: Number
 	}
 });
 

@@ -105,7 +105,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			console.log(JSON.stringify($rootScope.user));
 			comment.userId = $rootScope.user._id;
 			comment.user = $rootScope.user.user;
-			comment.picture = $rootScope.user.picture;
+			comment.picture = $rootScope.user.picture.url;
 			comment.text = $scope.comment.text;
 			console.log(JSON.stringify(comment));
 			$http.post('games/' + $rootScope.game._id + '/comments', comment)
@@ -222,8 +222,8 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 		if (!$rootScope.user) {
 			console.log("No hay usuario que modificar");
 		} else {
-				console.log("Root: " + JSON.stringify($rootScope.user));
-				$http.put('/users/' + $rootScope.user._id, $rootScope.user)
+			console.log('editando user');
+				$http.put('/users/' + $rootScope.user._id, $rootScope.updateUser)
 				.success(function (user) {
 					$scope.modalInstance.close();
 					console.log(user)
@@ -261,37 +261,53 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 
 $scope.openEditUser = function () {
 
+	$rootScope.updateUser = clone($rootScope.user);
+	console.log("abriendo editar usuario");
 	$scope.modalInstance = $modal.open({
 		templateUrl: 'updateuser.html',
 		scope: $scope,
 		resolve: {
-			credentials: function () {
-				return $scope.credentials;
+			updateUser: function () {
+				return $rootScope.updateUser;
 			}
 		}
 	});
 
 	    //Al cerrar el modal
-	    /*$scope.modalInstance.result.then(function (credentials) {
-	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
+	    $scope.modalInstance.result.then(function (user) {
+	      console.log("Si ha cerrado bien: " + JSON.stringify(user));
 	    }, function () {
-	      $log.info('Modal dismissed at: ' + new Date());
-	  });*/
+	    	console.log('update: ' + JSON.stringify($rootScope.updateUser));
+	    	console.log('root: ' + JSON.stringify($rootScope.user));
+    	  $rootScope.updateUser = {};
+	      console.info('Modal dismissed at: ' + new Date());
+	      
+	  });
 
-};
+	};
 
-$scope.logout = function() {
-	console.log("Deslogeando");
-	$http.get('/logout')
-	.success(function () {
-		$rootScope.user = undefined;
-		$scope.credentials = {};
-		$location.path('/');
-	})
-	.error(function (err) {
-		console.log("Error " + err);
-	});
-};
+	$scope.logout = function() {
+		console.log("Deslogeando");
+		$http.get('/logout')
+		.success(function () {
+			$rootScope.user = undefined;
+			$scope.credentials = {};
+			$location.path('/');
+		})
+		.error(function (err) {
+			console.log("Error " + err);
+		});
+	};
+
+	function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+	}
+
 });
 
 controllers.controller('adminController', function ($scope, $rootScope, $http, $modal, $location) {
@@ -471,10 +487,7 @@ controllers.controller('platformController', function ($scope, $rootScope, $http
 	
 });
 
-controllers.controller('uploadController', ['$scope', 'Upload', function ($scope, Upload) {
-    $scope.$watch('files', function () {
-        $scope.upload($scope.files);
-    });
+controllers.controller('uploadController', ['$scope', 'Upload', '$rootScope' ,function ($scope, Upload, $rootScope) {
 
     $scope.uploadProfileImage = function (files) {
         if (files && files.length) {
@@ -489,6 +502,8 @@ controllers.controller('uploadController', ['$scope', 'Upload', function ($scope
                     console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
                 }).success(function (data, status, headers, config) {
                     console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                    console.log(data);
+                    $rootScope.updateUser.picture = data;
                 });
             }
         }

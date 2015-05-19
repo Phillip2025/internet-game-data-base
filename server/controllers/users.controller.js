@@ -67,7 +67,9 @@ exports.logout = function(req, res) {
 
 exports.updateUser = function(req, res) {
 	console.log("Peticion de update");
+	console.log(req.body);
 	var user = new User(req.body);
+	console.log(user);
 	User.findOneAndUpdate({_id: user._id}, user, function (err) {
 		if (err) {
 			return res.status(500).send({

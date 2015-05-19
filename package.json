@@ -13,6 +13,7 @@
     "chalk": "latest",
     "express": "latest",
     "express-session": "latest",
+    "image-size": "^0.3.5",
     "mongodb": "latest",
     "mongoose": "latest",
     "mongoose-auto-increment": "latest",

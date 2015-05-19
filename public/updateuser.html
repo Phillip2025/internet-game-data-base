@@ -1,35 +1,42 @@
 <div class="modal-header">
-	<h4 class="modal-title">Editar juego</h4>
+	<h4 class="modal-title">Editar perfil</h4>
 </div>
 <div class="modal-body row">
 	<form class="form-horizontal col-md-12">
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="username">{{'USER.USERNAME' | translate}}: </label>
 			<div class="col-md-4">
-				<input class="form-control" type="text"  data-ng-model="$root.user.user" placeholder="Usuario" required />
+				<input class="form-control" type="text"  data-ng-model="$root.updateUser.user" placeholder="Usuario" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="password">{{'USER.PASSWORD' | translate}}: </label>
 			<div class="col-md-4">
-				<input class="form-control" data-ng-model="$root.user.password" type="password" placeholder="Password" required />
+				<input class="form-control" data-ng-model="$root.updateUser.password" type="password" placeholder="Password" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="name">{{'USER.NAME' | translate}}: </label>
-			<div class="col-md-4"><input class="form-control" data-ng-model="$root.user.name" type="text" placeholder="Nombre" required />
+			<div class="col-md-4"><input class="form-control" data-ng-model="$root.updateUser.name" type="text" placeholder="Nombre" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="surname">{{'USER.SURNAME' | translate}}: </label>
-			<div class="col-md-4"><input class="form-control" ng-model="$root.user.surname" type="text" placeholder="Apellido"></select>
+			<div class="col-md-4"><input class="form-control" ng-model="$root.updateUser.surname" type="text" placeholder="Apellido"></select>
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
 			<label class="col-md-4 control-label" for="mail">{{'USER.EMAIL' | translate}}: </label>
-			<div class="col-md-4"><input class="form-control" data-ng-model="$root.user.mail" type="text" placeholder="Email" required />
+			<div class="col-md-4"><input class="form-control" data-ng-model="$root.updateUser.mail" type="text" placeholder="Email" required />
 			</div>
 		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label">{{'USER.PICTURE' | translate}}: </label>
+			<div class="col-md-8">
+			<button ng-controller="uploadController" class="btn btn-default" ngf-select ngf-accept="'image/*'" ngf-change="uploadProfileImage($files)">Seleccionar</button>
+			</div>
+			<p>Foto actual: <img ng-src="{{$root.updateUser.picture.url}}"></p>
+		</div>	
 	</form>	
 </div>
 <div class="modal-footer">

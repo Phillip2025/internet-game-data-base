@@ -83,6 +83,7 @@ var translationsES = {
 		SEARCH_PLACEHOLDER: "Busca tu juego",
 	},
 	LAST_GAMES: "Últimos juegos añadidos",
+	ALL_PLATFORMS: "Todas las plataformas",
 	GAME: {
 		TITLE: "Titulo",
 		ALTERNATE_TITLES: "Títulos alternativos",
@@ -146,6 +147,7 @@ var translationsEN = {
 		SEARCH_PLACEHOLDER: "Search your game",
 	},
 	LAST_GAMES: "Last added games",
+	ALL_PLATFORMS: "All platforms",
 	GAME: {
 		TITLE: "Title",
 		ALTERNATE_TITLES: "Alternate titles",
