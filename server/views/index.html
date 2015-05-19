@@ -75,7 +75,7 @@
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="navbar-form form-inline">
-						<div class="form-group">
+						<div class="form-group col-md-10">
 							<input class="form-control" data-ng-model="credentials.user" type="text" placeholder="{{'USER.USERNAME' | translate}}" required />
 							<input class="form-control" data-ng-model="credentials.password" type="password" placeholder="{{'USER.PASSWORD' | translate}}" required />
 							<button data-ng-click="login()" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
