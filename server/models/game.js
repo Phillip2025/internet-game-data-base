@@ -6,12 +6,12 @@ var CommentSchema = new Schema({
 	userId: Number,
 	user: String,
  	picture: String,
- 	text: String  
+ 	text: String,
  });
 var RatingSchema = new Schema({
 	userId: Number,
 	user: String,
-	rate: Number
+	rate: Number,
 });
 var GameSchema = new Schema({
 	gameTitle: {

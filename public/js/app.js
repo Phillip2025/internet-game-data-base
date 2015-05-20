@@ -81,6 +81,8 @@ var translationsES = {
 		API: "Json Api",
 		ABOUT: "¿Quienes somos?",
 		SEARCH_PLACEHOLDER: "Busca tu juego",
+		MODIFY: "Modificar usuario",
+		VIEW: "Ver perfil"
 	},
 	LAST_GAMES: "Últimos juegos añadidos",
 	ALL_PLATFORMS: "Todas las plataformas",
@@ -145,6 +147,8 @@ var translationsEN = {
 		API: "Json Api",
 		ABOUT: "About us",
 		SEARCH_PLACEHOLDER: "Search your game",
+		VIEW: "View profile",
+		MODIFY: "Modify user"
 	},
 	LAST_GAMES: "Last added games",
 	ALL_PLATFORMS: "All platforms",

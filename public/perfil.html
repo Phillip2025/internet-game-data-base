@@ -1,13 +1,25 @@
-<div data-ng-controller="userController">
-	<ul class="form col-md-offset-2">
-		<li>User name: {{user.user}}</li>
-		<li>Name: {{user.name}}</li>
-		<li>Surname: {{user.surname}}</li>
-		<li>Mail: {{user.mail}}</li>
-		<li>Picture: 
-			<div>
-				{{user.picture}}
-			</div>
-		</li>			
-	</ul>
+<div class="game" data-ng-controller="userController" data-ng-init="viewProfile">
+	<div class="form col-md-offset-2">
+		<div>
+			<span>User name: {{$root.user.user}}</span>
+		</div>
+		<div>
+			<span>Name: {{$root.user.name}}</span>
+		</div>	
+		<div>
+			<span>Surname: {{$root.user.surame}}</span>
+		</div>
+		<div>
+			<span>Mail: {{$root.user.mail}}</span>
+		</div>
+		<div>
+			<span>Picture: {{$root.user.picture}}</span>
+		</div>
+		<div>
+			<a href="#">Mis Votos</a>
+		</div>
+		<div>
+			<a href="#">Mis Comentarios</a>
+		</div>
+	</div>
 </div>

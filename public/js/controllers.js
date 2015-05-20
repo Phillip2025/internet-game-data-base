@@ -259,6 +259,11 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 
 };
 
+$scope.viewProfile = function() {
+	console.log("Estoy viendo el perfil");
+	return $scope.user;
+}
+
 $scope.openEditUser = function () {
 
 	$rootScope.updateUser = clone($rootScope.user);
