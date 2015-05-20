@@ -151,13 +151,27 @@ exports.deleteComment = function (req, res) {
 exports.addRating = function (req, res) {
 	console.log("Añadiendo rating de " + req.user._id + " para el juego " + req.game._id);
 	var game = req.game;
-	game.ratings.push(req.body);
 	var aux = 0;	
-	for (var i = 0; i < game.ratings.length; i++){
-		aux += game.ratings[i].rate;
+	var encontrado = false;
+	if (game.ratings.length <=0){
+		game.ratings.push(req.body);
+	} else{
+		for (var i = 0; i < game.ratings.length; i++){
+			if (game.ratings[i].userId == req.user._id){
+				encontrado = true;
+			}
+		}
 	}
-	game.rating = (game.rating + aux)/(game.ratings.length+1)
-	console.log(req.body);
+	if (!encontrado){
+		game.ratings.push(req.body);
+		for (var j = 1; j < game.ratings.length;j++){
+			aux += game.ratings[j].rate;
+		}
+		game.rating = (game.rating + aux)/(game.ratings.length);
+	}else{
+		console.log("Ya votaste este juego");
+	}
+	//console.log(req.body);
 	game.save(function(err) {
 		if (err) {
 			return res.status(500).send({
