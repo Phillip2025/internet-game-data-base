@@ -1,11 +1,13 @@
 <div ng-controller="platformController" data-ng-init="getAllPlatforms()">
 	<h3>{{'ALL_PLATFORMS' | translate}}</h3>
-	<div thumbPlatform class="animate-repeat" data-ng-repeat="platform in platformPage">
-		<div class="col-md-2 item-platform">
-			<div ng-click="$parent.getPlatformById(platform._id)" class="panel panel-default">
-				<div class="panel-heading"><a href="#">{{platform.platform}}</a></div>
-				<div class="panel-body">
-					<img style="width: 100%; height: 100%" ng-src="{{platform.images.boxart.back.url}}" alt="Portada de:{{platform.platform}}">
+	<div class="row">
+		<div thumbPlatform class="animate-repeat" data-ng-repeat="platform in platformPage">
+			<div class="col-md-2 item-platform">
+				<div ng-click="$parent.getPlatformById(platform._id)" class="panel panel-default">
+					<div class="panel-heading"><a href="#">{{platform.platform}}</a></div>
+					<div class="panel-body">
+						<img style="width: 100%; height: 100%" ng-src="{{platform.images.boxart.back.url}}" alt="Portada de:{{platform.platform}}">
+					</div>
 				</div>
 			</div>
 		</div>

@@ -65,37 +65,37 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{'GAME.BOXART' | translate}}</label>
 			<div>
-				<img data-ng-src="{{$root.updateGame.images.boxart.front.url}}" alt="front" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+				<img data-ng-src="{{$root.updateGame.images.boxart.front.url}}" alt="front" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="$root.updateGame.images.boxart.front={}"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{'GAME.BOXART' | translate}}</label>
 			<div>
-				<img data-ng-src="{{$root.updateGame.images.boxart.back.url}}" alt="back" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+				<img data-ng-src="{{$root.updateGame.images.boxart.back.url}}" alt="back" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="$root.updateGame.images.boxart.back={}"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{'GAME.LOGO' | translate}}</label>
 			<div>
-				<img data-ng-src="{{$root.updateGame.images.clearlogo.url}}" alt="logo" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+				<img data-ng-src="{{$root.updateGame.images.clearlogo.url}}" alt="logo" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="$root.updateGame.images.logo={}"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{'GAME.BANNERS' | translate}}</label>
-			<div data-ng-repeat="banner in $root.updateGame.images.banner">
-				<img data-ng-src="{{banner.url}}" alt="banner" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			<div class="col-md-4" data-ng-repeat="banner in $root.updateGame.images.banner">
+				<img data-ng-src="{{banner.url}}" alt="banner" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="$root.updateGame.images.banner.splice($index,1)"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{'GAME.SCREENSHOTS' | translate}}</label>
-			<div data-ng-repeat="ss in $root.updateGame.images.screenshot">
-				<img data-ng-src="{{ss.url}}" alt="screenshot" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			<div class="col-md-4" data-ng-repeat="ss in $root.updateGame.images.screenshot">
+				<img data-ng-src="{{ss.url}}" alt="screenshot" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="$root.updateGame.images.screenshot.splice($index,1)"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{'GAME.FANARTS' | translate}}</label>
-			<div data-ng-repeat="fanart in $root.updateGame.images.fanart">
-				<img data-ng-src="{{fanart.url}}" alt="fanart" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="removeImage($index)"/>
+			<div class="col-md-4" data-ng-repeat="fanart in $root.updateGame.images.fanart">
+				<img data-ng-src="{{fanart.url}}" alt="fanart" class="img-thumbnail"><icono class="glyphicon glyphicon-remove" aria-hidden="true" data-ng-click="$root.updateGame.images.fanart.splice($index,1)"/>
 			</div>
 		</div>
 		<div ng-controller="uploadController" class="form-group col-md-12">
