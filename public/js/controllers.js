@@ -89,7 +89,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 				$rootScope.game = game;
 			})
 			.error(function(err){
-				console.log("TOY AKIIII");
+				//console.log("TOY AKIIII");
 				console.log(err);
 			});
 		}
