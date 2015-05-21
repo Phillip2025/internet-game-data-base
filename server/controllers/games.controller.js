@@ -153,24 +153,25 @@ exports.addRating = function (req, res) {
 	var game = req.game;
 	var aux = 0;	
 	var encontrado = false;
-	if (game.ratings.length <=0){
-		game.ratings.push(req.body);
-	} else{
+	if (game.ratings.length !=0){
 		for (var i = 0; i < game.ratings.length; i++){
 			if (game.ratings[i].userId == req.user._id){
 				encontrado = true;
 			}
 		}
-	}
-	if (!encontrado){
-		game.ratings.push(req.body);
-		for (var j = 1; j < game.ratings.length;j++){
-			aux += game.ratings[j].rate;
+		if (!encontrado){
+			game.ratings.push(req.body);
+		}else{
+			console.log("Ya votaste este juego");
 		}
-		game.rating = (game.rating + aux)/(game.ratings.length);
-	}else{
-		console.log("Ya votaste este juego");
+	} else{
+		game.ratings.push(req.body);
 	}
+	for (var j = 0; j < game.ratings.length;j++){
+		aux += game.ratings[j].rate;
+	}
+	game.rating = (game.rating + aux)/(game.ratings.length+1);
+	
 	//console.log(req.body);
 	game.save(function(err) {
 		if (err) {

@@ -35,7 +35,7 @@
 			<div class="col-md-8">
 			<button ng-controller="uploadController" class="btn btn-default" ngf-select ngf-accept="'image/*'" ngf-change="uploadProfileImage($files)">Seleccionar</button>
 			</div>
-			<p>Foto actual: <img ng-src="{{$root.updateUser.picture.url}}"></p>
+			<p>Foto actual:<center><img class="col-md-offset-3 col-md-6" ng-src="{{$root.updateUser.picture.url}}"></center></p>
 		</div>	
 	</form>	
 </div>
