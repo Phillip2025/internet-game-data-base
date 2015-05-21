@@ -191,17 +191,24 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 
 	$scope.modalInstance;
 	$scope.credentials = {};
+	$scope.loginAlerts = [];
+	$scope.alerts = [];
 
 	$scope.login = function() {
 		$http.post('/login', $scope.credentials)
 		.success(function (user) {
 			console.log("Logeado");
 			console.log(JSON.stringify(user));
+			$scope.loginAlerts= [];
 			$rootScope.user = user;
 			$location.path('/');
 		})
-		.error(function (err) {
-			console.log("Error: " + err);
+		.error(function (err, status) {
+			var msg = 'Ocurrió un error';
+			if (status == 400) {
+				msg = 'User o password incorrectos';
+			}
+			$scope.loginAlerts[0] = {type: 'danger', msg: msg};
 		});
 	};
 
@@ -209,12 +216,17 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 		$http.post('/signup', $scope.credentials)
 		.success(function (user) {
 			$scope.modalInstance.close();
+			$scope.alerts = [];
 			console.log ("Registrado y logeado");
 			$rootScope.user = user;
 			$location.path('/');
 		})
-		.error(function (err) {
-			console.log("Error: " + err);
+		.error(function (err, status) {
+			var msg = 'Ocurrió un error';
+			if (status == 400) {
+				msg = 'Todos los campos son obligatorios';
+			}
+			$scope.alerts[0] = {type: 'danger', msg: msg};
 		});
 	};
 
@@ -226,20 +238,23 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 				$http.put('/users/' + $rootScope.user._id, $rootScope.updateUser)
 				.success(function (user) {
 					$scope.modalInstance.close();
-					console.log(user)
+					$scope.alerts = [];
+					console.log(user);
 					console.log("Updateando usuario con id:" + user._id);
 					console.log(JSON.stringify(user));
 					$rootScope.user = user;
 					//$location.path('/users/'+user._id);
 				})
-				.error(function(err) {
-					console.log("Error" +err);
+				.error(function(err, status) {
+					var msg = 'Ocurrió un error';
+					$scope.alerts[0] = {type: 'danger', msg: msg};
 				});
 		}
 	};
 
 	$scope.openNewUser = function () {
 
+		$scope.loginAlerts = [];
 		$scope.modalInstance = $modal.open({
 			templateUrl: 'newuser.html',
 			scope: $scope,
@@ -251,18 +266,19 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 		});
 
 	    //Al cerrar el modal
-	    /*$scope.modalInstance.result.then(function (credentials) {
+	    $scope.modalInstance.result.then(function (credentials) {
 	      console.log("Si ha cerrado bien: " + JSON.stringify(credentials));
 	    }, function () {
+	    	$scope.alerts = [];
 	      $log.info('Modal dismissed at: ' + new Date());
-	  });*/
+	  });
 
 };
 
 $scope.viewProfile = function() {
 	console.log("Estoy viendo el perfil");
 	return $scope.user;
-}
+};
 
 $scope.openEditUser = function () {
 
@@ -285,6 +301,7 @@ $scope.openEditUser = function () {
 	    	console.log('update: ' + JSON.stringify($rootScope.updateUser));
 	    	console.log('root: ' + JSON.stringify($rootScope.user));
     	  $rootScope.updateUser = {};
+    	 	$scope.alerts = [];
 	      console.info('Modal dismissed at: ' + new Date());
 	      
 	  });
@@ -302,6 +319,10 @@ $scope.openEditUser = function () {
 		.error(function (err) {
 			console.log("Error " + err);
 		});
+	};
+
+	$scope.close = function (arrayAlerts) {
+		arrayAlerts = [];
 	};
 
 	function clone(obj) {

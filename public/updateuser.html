@@ -36,10 +36,10 @@
 			<button ng-controller="uploadController" class="btn btn-default" ngf-select ngf-accept="'image/*'" ngf-change="uploadProfileImage($files)">Seleccionar</button>
 			</div>
 			<p>Foto actual: <img ng-src="{{$root.updateUser.picture.url}}"></p>
-		</div>	
+		</div>
+		<alert class="col-md-offset-1 col-md-10" ng-repeat="alert in alerts" type="{{alert.type}}" close="close(alerts)">{{alert.msg}}</alert>
 	</form>	
 </div>
 <div class="modal-footer">
 	<button data-ng-click="updateUser()" class="btn btn-primary">Editar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>

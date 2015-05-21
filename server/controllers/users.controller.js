@@ -23,7 +23,7 @@ exports.logIn = function(req, res, next) {
 				console.log("ID: " + user._id);
 				console.log("Nombre: " + user.user);
 				if (err) {
-					res.status(400).send(err);
+					res.status(500).send(err);
 				} else {
 					res.json(user);
 				}

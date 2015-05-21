@@ -82,6 +82,7 @@
 							<button data-ng-click="login()" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 							<button class="btn btn-default pull-right" data-ng-click="openNewUser()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
 						</div>
+						<alert ng-repeat="alert in loginAlerts" type="{{alert.type}}" close="close(loginAlerts)">{{alert.msg}}</alert>
 					</form>
 				</li>
 			</ul>
