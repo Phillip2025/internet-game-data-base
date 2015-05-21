@@ -3,6 +3,27 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 chalk = require('chalk');
 
+exports.getUserById = function(req, res) {
+	var id = req.params.userId;
+	console.log("Peticion de user con id " + id);
+	var pattern = new RegExp("^[0-9]+$");
+	if (!pattern.test(id)) {
+		return res.status(400).send({
+			message: 'Id invalido'
+		});
+	}
+	User.findById(id, function(err, user) {
+		if (err) return next(err);
+		if (!user) {
+			console.log(chalk.red("User con id " + id + " no encontrado"));
+			return res.status(404).send({
+				message: 'User no enconrtado'
+			});
+		}
+		res.json(user);
+	});
+};
+
 exports.logIn = function(req, res, next) {
 	console.log("Usuario logeando");
 	console.log("body: " + JSON.stringify(req.body));
@@ -39,11 +60,23 @@ exports.signUp = function(req, res) {
 	console.log(user.password);
 	console.log(user.mail);
 	console.log(req.picture);
+	User.findOne({'user': user.user}, function (err, user) {
+		if (err) {
+			return res.status(500).send({
+				message: "Error interno"
+			});
+		}
+		else if (user) {
+			return res.status(400).send({
+				message: "Ya existe el usuario"
+			});
+		}
+	});
 	// Then save the user
 	user.save(function(err, user) {
 		if (err) {
-			return res.status(400).send({
-				message: "Error al crear el usuario"
+			return res.status(500).send({
+				message: "Error interno"
 			});
 		} else {
 			user.password = undefined;

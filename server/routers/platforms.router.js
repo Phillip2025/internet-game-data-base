@@ -11,8 +11,6 @@ app.route("/platforms")
 		.get(platforms.read)
 		.put(user.requiresLogin, user.hasAuthorization, platforms.updatePlatform)
 		.delete(user.requiresLogin, user.hasAuthorization, platforms.deletePlatform);
-		
-	app.get('/count', platforms.getCount);
 
 	app.param('platformId', platforms.getPlatformById);
 	

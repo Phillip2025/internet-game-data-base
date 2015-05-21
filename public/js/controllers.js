@@ -195,6 +195,18 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			},
 		}
 	};
+
+	$scope.getUserById = function (id) {
+		$http.get('/users/' + id)
+		.success(function(user) {
+			$rootScope.profileUser = user;
+			$location.path('/users/' + id);
+
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	};
 	
 });
 
@@ -220,6 +232,18 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 	$scope.credentials = {};
 	$scope.loginAlerts = [];
 	$scope.alerts = [];
+
+	$scope.getUserById = function (id) {
+		$http.get('/users/' + id)
+		.success(function(user) {
+			$rootScope.profileUser = user;
+			$location.path('/users/' + id);
+
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	};
 
 	$scope.login = function() {
 		$http.post('/login', $scope.credentials)
@@ -250,8 +274,11 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 		})
 		.error(function (err, status) {
 			var msg = 'Ocurrió un error';
-			if (status == 400) {
+			if (status == 500) {
 				msg = 'Todos los campos son obligatorios';
+			}
+			if (status == 400) {
+				msg = 'El nombre no está disponible';
 			}
 			$scope.alerts[0] = {type: 'danger', msg: msg};
 		});
@@ -300,11 +327,6 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 	      $log.info('Modal dismissed at: ' + new Date());
 	  });
 
-};
-
-$scope.viewProfile = function() {
-	console.log("Estoy viendo el perfil");
-	return $scope.user;
 };
 
 $scope.openEditUser = function () {

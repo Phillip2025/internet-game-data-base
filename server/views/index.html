@@ -69,7 +69,7 @@
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li>
-						<a ui-sref="perfil" href="#" data-ng-click="openViewUser()">{{'NAV.VIEW' | translate}}</a>
+						<a ui-sref="perfil" href="#" data-ng-click="getUserById($root.user._id)">{{'NAV.VIEW' | translate}}</a>
 					</li>
 					<li>
 						<a href="#" data-ng-click="openEditUser()" data-ng-controller="userController">{{'NAV.MODIFY' | translate}}</a>

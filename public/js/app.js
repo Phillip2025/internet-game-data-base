@@ -19,8 +19,12 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhD
 		url: '/games/:id',
 		templateUrl: 'game.html'
 	})
-	.state('perfil',{
-		url:'/perfil',
+	.state('api', {
+		url: '/api',
+		templateUrl: 'api.html'
+	})
+	.state('user',{
+		url:'/users/:id',
 		templateUrl:'perfil.html'
 	})
 	.state('platforms',{

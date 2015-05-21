@@ -1,0 +1,29 @@
+<div class="game jumbotron text-center">
+	<h2>API pública</h3>
+	<p>
+		Todos nuestros datos proceden de <a href="http://www.thegamesdb.net">TheGamesDB.net</a>. Nuestro trabajo ha consistido en la serialización a JSON de su base de datos. Así mismo ofrecemos la posibilidad de usar nuestra API de forma pública, usando sencillos comandos:
+	</p>
+	<h2>/games</h2>
+	<p>Dentro de games tenemos varios usos del API:</p>
+	<h4>/games/id</h4>
+	<p>Devuelve la información de un juego dado su id, por ejemplo:</p>
+	<code><a href="/games/2">http://igdb.com/games/2</a></code>
+	<h2>/search</h2>
+	<p>Dentro de search tenemos varios usos del API:</p>
+	<h4>/search/term/term</h4>
+	<p>Devuelve una lista con la información de uno o varios juegos dado un término de busqueda, por ejemplo:</p>
+	<code><a href="/search/term/mario">http://igdb.com/term/mario</a></code>
+	<h4>/search/letter/letter</h4>
+	<p>Devuelve una lista con la información de uno o varios juegos comenzando por la letra dada, por ejemplo</p>
+	<code><a href="/search/letter/h">http://igdb.com/search/letter/h</a></code>
+	<h2>/platforms</h2>
+	<p>Dentro de platforms tenemos varios usos del API:</p>
+	<h4>/platforms/id</h4>
+	<p>Devuelve la información de una plataforma de videojuegos dado su id, por ejemplo:</p>
+	<code><a href="/platforms/15">http://igdb.com/platforms/15</a></code>
+	<h2>/users</h2>
+	<p>Dentro de users tenemos varios usos del API:</p>
+	<h4>/users/id</h4>
+	<p>Devuelve la información de un usuario dado su id. Contiene sus datos proporcionados, sus comentarios y sus votaciones. Por ejemplo:</p>
+	<code><a href="/users/5">http://igdb.com/users/5</a></code>
+</div>
