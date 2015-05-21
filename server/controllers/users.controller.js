@@ -105,3 +105,22 @@ exports.hasAuthorization = function(req, res, next) {
 exports.confirmLogin = function(req, res) {
 	res.json(req.user);
 };
+
+exports.addRatingUser = function (req, res){
+	console.log("Añadiendo rating en usuario " +req.user._id);
+	var user = req.user;
+	var encontrado = false;
+	if ( user.ratings.length != 0){
+		for ( var i = 0; i < user.ratings.length; i++){
+			if (user.ratings[i].gameId == req.game._id){
+				encontrado = true;
+			}
+		}
+		if (!encontrado){
+			user.ratings.push(req.body);	
+		}
+	} else{
+		user.ratings.push(req.body);	
+	}
+	res.json(user);	
+}

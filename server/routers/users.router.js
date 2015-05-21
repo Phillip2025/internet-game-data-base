@@ -7,5 +7,6 @@ module.exports = function(app) {
 	app.get('/logout', users.logout);
 	app.put('/users/:userid', users.updateUser);
 	app.get('/confirmlogin', users.confirmLogin);
+	app.post('/users/:userid/ratings', users.requiresLogin, users.addRatingUser);
 	//app.param('id', games.getGameById);
 };

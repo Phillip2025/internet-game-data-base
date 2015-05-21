@@ -1,25 +1,30 @@
-<div class="game" data-ng-controller="userController" data-ng-init="viewProfile">
-	<div class="form col-md-offset-2">
-		<div>
-			<span>User name: {{$root.user.user}}</span>
+<div class="game col-md-12" data-ng-controller="userController" data-ng-init="viewProfile">
+	<div class="col-md-10 col-md-offset-1"><span>Bienvenido a tu perfil: </span>{{$root.user.user}}</div>
+	<div class="row">
+		<div class="row col-md-offset-1 col-md-10">
+			<span><img class="col-md-3" ng-src="{{$root.user.picture.url}}"></span>
 		</div>
-		<div>
-			<span>Name: {{$root.user.name}}</span>
-		</div>	
-		<div>
-			<span>Surname: {{$root.user.surame}}</span>
+		<div class="row col-md-10 col-md-offset-1">
+			<div>
+				<span>{{'USER.USERNAME' | translate}}: {{$root.user.user}}</span>
+			</div>
+			<div>
+				<span>{{'USER.NAME' | translate}}: {{$root.user.name}}</span>
+			</div>	
+			<div>
+				<span>{{'USER.SURNAME' | translate}}: {{$root.user.surame}}</span>
+			</div>
+			<div>
+				<span>{{'USER.EMAIL' | translate}} {{$root.user.mail}}</span>
+			</div>
 		</div>
-		<div>
-			<span>Mail: {{$root.user.mail}}</span>
-		</div>
-		<div>
-			<span>Picture: {{$root.user.picture}}</span>
-		</div>
-		<div>
-			<a href="#">Mis Votos</a>
-		</div>
-		<div>
-			<a href="#">Mis Comentarios</a>
+		<div class="row col-md-10 col-md-offset-1">
+			<div>
+				<a href="#">Mis Votos</a>
+			</div>
+			<div>
+				<a href="#">Mis Comentarios</a>
+			</div>
 		</div>
 	</div>
 </div>
