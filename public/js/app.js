@@ -83,12 +83,20 @@ var translationsES = {
 		GAMES: "Juegos",
 		PLATFORMS: "Plataformas",
 		API: "Json Api",
-		ABOUT: "¿Quienes somos?",
+		ABOUT: "Sitio web inspirado por thegamesdb.net. Felipe Murillo - Rafael Morena - Mario Arranz",
 		SEARCH_PLACEHOLDER: "Busca tu juego",
-		MODIFY: "Modificar usuario",
-		VIEW: "Ver perfil"
+		WELCOME: "Bienvenido",
+		DROPDOWN: {
+			ACCOUNT: "Tu cuenta",
+			VIEW: "Ver perfil",
+			MODIFY: "Ajustes de usuario",
+			ADD_GAME: "Añadir juego",
+			LOGOUT: "Cerrar sesión"
+		}
 	},
 	LAST_GAMES: "Últimos juegos añadidos",
+	BEST_GAMES: "Mejores juegos",
+	RELATED_GAMES: "Juegos relacionados con el termino",
 	ALL_PLATFORMS: "Todas las plataformas",
 	GAME: {
 		TITLE: "Titulo",
@@ -113,7 +121,11 @@ var translationsES = {
 		FANARTS: "Imágenes de usuarios",
 		COMMENTS: "Comentarios",
 		NO_COMMENTS: "No hay comentarios, que esperas para ser el primero?",
-		ADD_COMMENT: "Publicar comentario"
+		ADD_COMMENT: "Publicar comentario",
+		ADMIN: {
+			DELETE: "Borrar juego",
+			EDIT: "Editar juego"
+		}
 	},
 	PLATFORM: {
 		PLATFORM: "Plataforma",
@@ -124,8 +136,8 @@ var translationsES = {
 		MEMORY: "Memoria",
 		GRAPHICS: "Grafica",
 		SOUND: "Sonido", 
-		DISPLAY: "",
-		MEDIA: "",
+		DISPLAY: "Display",
+		MEDIA: "Media",
 		MAXCONTROLLERS: "Maximo de Controladores",
 		BANNERS: "Banners",
 		SCREENSHOTS: "Capturas de pantalla",
@@ -139,6 +151,10 @@ var translationsES = {
 		SURNAME: "Apellidos",
 		EMAIL: "E-Mail",
 		PICTURE: "Imagen de perfil"
+	},
+	PAGINATION: {
+		PREVIOUS: "Anterior",
+		NEXT: "Siguiente"
 	}
 };
 
@@ -149,12 +165,20 @@ var translationsEN = {
 		GAMES: "Games",
 		PLATFORMS: "Platforms",
 		API: "Json Api",
-		ABOUT: "About us",
+		ABOUT: "Website inspired in thegamesdb.net. Felipe Murillo - Rafael Morena - Mario Arranz",
 		SEARCH_PLACEHOLDER: "Search your game",
-		VIEW: "View profile",
-		MODIFY: "Modify user"
+		WELCOME: "Welcome",
+		DROPDOWN: {
+			ACCOUNT: "Your account",
+			VIEW: "View profile",
+			MODIFY: "User settings",
+			ADD_GAME: "Add game",
+			LOGOUT: "Logout"
+		}
 	},
 	LAST_GAMES: "Last added games",
+	BEST_GAMES: "Best games",
+	RELATED_GAMES: "Related games with the term",
 	ALL_PLATFORMS: "All platforms",
 	GAME: {
 		TITLE: "Title",
@@ -179,7 +203,11 @@ var translationsEN = {
 		FANARTS: "Fanart",
 		COMMENTS: "Comments",
 		NO_COMMENTS: "There are no comments, what are you waiting to write the first one?",
-		ADD_COMMENT: "Add comment"
+		ADD_COMMENT: "Add comment",
+		ADMIN: {
+			DELETE: "Delete game",
+			EDIT: "Edit game"
+		}
 	},
 	PLATFORM:{
 		PLATFORM: "Platform",
@@ -205,5 +233,9 @@ var translationsEN = {
 		SURNAME: "Surname",
 		EMAIL: "Email",
 		PICTURE: "Profile picture"
+	},
+	PAGINATION: {
+		PREVIOUS: "Previous",
+		NEXT: "Next"
 	}
 };

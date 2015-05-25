@@ -6,11 +6,11 @@
 		</div>
 		<div class="col-md-3">
 			<div data-ng-controller="userController">
-				<a class="btn btn-warning" data ng-if="$root.user.role == 'Admin'" data-ng-click="deleteGameView(game._id)" href="#">Borrar juego</a>
-				<a data-ng-if="$root.user.role == 'Admin'" data-ng-controller="adminController" data-ng-click="openEditGame()" href="#">Editar juego</a>
+				<a class="btn btn-warning" data ng-if="$root.user.role == 'Admin'" data-ng-click="deleteGameView(game._id)" href="#">{{'GAME.ADMIN.DELETE' | translate}}</a>
+				<a data-ng-if="$root.user.role == 'Admin'" data-ng-controller="adminController" data-ng-click="openEditGame()" href="#">{{'GAME.ADMIN.EDIT' | translate}}</a>
 			</div>
 			<ul class="list-unstyled">
-				<li data-ng-if="game.alternateTitles.length !== 0"><span>Titulos Alternativos:</span>
+				<li data-ng-if="game.alternateTitles.length !== 0"><span>{{GAME.ALTERNATE_TITLES | translate}}:</span>
 					<ul data-ng-repeat="alt in game.alternateTitles">
 						<li>{{alt}}</li>
 					</ul>
@@ -83,19 +83,17 @@
 		     </accordion-group>
 		 </accordion>
 		</div>
-		<div class="col-md-10 col-md-offset-1">
-			<p><span>Juegos relacionados:</span></p>
-		</div>
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-8 col-md-offset-2">
 			<p><span>{{'GAME.COMMENTS' | translate}}:</span></p>
 			<div data-ng-repeat="comment in game.comments" class="list-unstyled comentarios">
 				<div class="comentario col-md-11 thumbnail">
 					<div data-ng-click="getUserById(comment.userId)" class="col-md-2">
 						<img data-ng-src="{{comment.picture}}"/>
-						<span>{{comment.user}}</span>
 					</div>
 					<div class="col-md-9 col-md-offset-1">
-						<span>{{comment.user}} escribió: <p>{{comment.text}}</p></span>
+						<span><p>{{comment.user}} escribió:</p> 
+						<p>{{comment.text}}</p>
+						<p>{{comment.created | date:'short'}}</p></span>
 					</div>
 				</div>
 				<div class="col-md-1" data-ng-if="$root.user._id == comment.userId" data-ng-click="deleteComment(game._id, comment._id)">
@@ -105,9 +103,9 @@
 			<div data-ng-if="game.comments.length === 0">
 				<p>{{'GAME.NO_COMMENTS' | translate}}</p>
 			</div>
-			<div class="col-md-12 form-group form-group-lg">
+			<div class="col-md-8 col-md-offset-2 form-group form-group-lg">
 				<input type="textarea" class="form-control" placeholder="Introduce tu comentario" data-ng-model="comment.text">
-				<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-md-12 col-xs-12"><icono class="glyphicon glyphicon-edit"></icono></a>
+				<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-xs-12"><icono class="glyphicon glyphicon-edit"></icono> {{'GAME.ADD_COMMENT' | translate}}</a>
 			</div>
 		</div>
 

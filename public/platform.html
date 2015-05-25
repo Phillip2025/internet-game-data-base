@@ -57,3 +57,8 @@
 		    </accordion>
 		</div>
 	</div>
+	<div data-ng-init="getBestGamesByPlatform(platform._id)">
+			<h3 class="text-center">{{'BEST_GAMES' | translate}}</h3>
+			<div thumb class="animate-repeat" data-ng-repeat="game in games">
+			</div>	
+		</div>

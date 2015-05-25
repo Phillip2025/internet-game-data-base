@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Internet Game Data Base</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<script src="js/ext/jquery-1.11.2.min.js"></script>
 	<link rel="stylesheet" href="css/ext/bootstrap.min.css">
 	<link rel="stylesheet" href="css/ext/bootstrap-theme.min.css">
@@ -29,7 +30,7 @@
 
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<header class="row vertical-align jumbotron">
 			<div data-ng-controller="gameController" class="col-md-10 col-xs-12">
 				<h2><a href="#" ui-sref="home"><img class="col-md-3 col-xs-12" src="img/logotipo.png"><img class="col-md-9 col-xs-12" src="img/textocabecera1.png"></a>
@@ -62,35 +63,31 @@
 					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default pull-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 				</div>
 			</form>
-			
-			<div class="btn-group" dropdown is-open="status.isopen" data-ng-if="$root.user" data-ng-controller="gameController">
-				<button type="button" class="btn btn-primary dropdown-toggle  desplegable" dropdown-toggle ng-disabled="disabled">
-					Tu cuenta <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li>
-						<a ui-sref="perfil" href="#" data-ng-click="getUserById($root.user._id)">{{'NAV.VIEW' | translate}}</a>
-					</li>
-					<li>
-						<a href="#" data-ng-click="openEditUser()" data-ng-controller="userController">{{'NAV.MODIFY' | translate}}</a>
-					</li>
-				</ul>
-			</div>
 		
 			<ul class="nav navbar-nav navbar-right col-md-5 navbar-login" data-ng-controller="userController">
-				<!--
-				<li data-ng-if="$root.user">
-					<a ui-sref="perfil" href="#" data-ng-click="openViewUser()">{{'NAV.VIEW' | translate}}</a>
+				<li class="btn-group" dropdown is-open="status.isopen" data-ng-if="$root.user">
+					<button type="button" class="btn btn-primary dropdown-toggle  desplegable" dropdown-toggle ng-disabled="disabled">
+						{{'NAV.DROPDOWN.ACCOUNT' | translate}} <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li>
+							<a ui-sref="perfil" href="#" data-ng-click="getUserById($root.user._id)">{{'NAV.DROPDOWN.VIEW' | translate}}</a>
+						</li>
+						<li>
+							<a href="#" data-ng-click="openEditUser()">{{'NAV.DROPDOWN.MODIFY' | translate}}</a>
+						</li>
+						<li data-ng-if="$root.user.role == 'Admin'" class="divider"></li>
+						<li data-ng-if="$root.user.role == 'Admin'">
+						<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">{{'NAV.DROPDOWN.ADD_GAME' | translate}}</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a data-ng-click="logout()"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> {{'NAV.DROPDOWN.LOGOUT' | translate}}</a>
+						</li>
+					</ul>
 				</li>
 				<li data-ng-if="$root.user">
-					<a href="#" data-ng-click="openEditUser()">{{'NAV.MODIFY' | translate}}</a>
-				</li>
-			-->
-				<li data-ng-if="$root.user.role == 'Admin'">
-					<a data-ng-controller="adminController" data-ng-click="openNewGame()" href="#">Añadir juego</a>
-				</li>
-				<li data-ng-if="$root.user">
-					<span>Bienvenido {{user.user}}</span><button style="margin-right: 5px;" class="btn btn-default navbar-btn" data-ng-click="logout()"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></button>
+					<a>{{'NAV.WELCOME' | translate}} {{user.user}}</a>
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="navbar-form form-inline">

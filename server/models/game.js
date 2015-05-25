@@ -7,6 +7,10 @@ var CommentSchema = new Schema({
 	user: String,
  	picture: String,
  	text: String,
+ 	created : {
+ 		type: Date,
+ 		default: Date.now
+ 	}
  });
 var RatingSchema = new Schema({
 	userId: Number,

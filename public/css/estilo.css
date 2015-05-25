@@ -4,7 +4,8 @@ body{
 		background-color:black;
 		background-size: 100%;
 		padding: 0px;
-		font-family: underwood_champion;
+		font-family: 'Roboto', sans-serif;
+		/*font-family: underwood_champion;*/
 	}
 	img{
 		width:100%;
@@ -215,7 +216,8 @@ body{
 		background-repeat: no-repeat;
 		background-image: url('../img/fondo-body2.jpg');
 		padding: 0px;
-		font-family: underwood_champion;
+		font-family: 'Roboto', sans-serif;
+		/*font-family: underwood_champion;*/
 	}
 	.item-game .panel-heading{
 		max-height: 50px;

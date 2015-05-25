@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div class="row text-center">
-		<pagination ng-model="$root.currentPage" ng-changed="changed()" items-per-page="$root.numPerPage" total-items="$root.totalItems"></pagination>
+		<pagination ng-model="$root.currentPage" ng-changed="changed()" previous-text="{{'PAGINATION.PREVIOUS' | translate}}" next-text="{{'PAGINATION.NEXT' | translate}}" items-per-page="$root.numPerPage" total-items="$root.totalItems"></pagination>
 	</div>
 </div>	
 

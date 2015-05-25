@@ -140,6 +140,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 				console.log("Comentario añadido con exito");
 				$scope.comment = {};
 				$rootScope.game = game;
+				$location.path('/games/' + $rootScope.game._id);
 			})
 			.error(function(err) {
 				console.log(err);
@@ -194,18 +195,6 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 				});
 			},
 		}
-	};
-
-	$scope.getUserById = function (id) {
-		$http.get('/users/' + id)
-		.success(function(user) {
-			$rootScope.profileUser = user;
-			$location.path('/users/' + id);
-
-		})
-		.error(function(err) {
-			console.log(err);
-		});
 	};
 	
 });
@@ -391,6 +380,7 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 
 	$scope.addGame = function(){
 		$scope.newGame.genres = $rootScope.genresCheckBox;
+		$scope.newGame.releaseDate = new Date($scope.newGame.noFormatDate);
 		console.log(JSON.stringify($scope.newGame));
 		$http.post('/games', $scope.newGame)
 		.success(function (game){
@@ -536,6 +526,7 @@ controllers.controller('platformController', function ($scope, $rootScope, $http
 		isFirstOpen: true,
 		isFirstDisabled: false
 	};
+	$scope.games = [];
 
 	$scope.getAllPlatforms = function(){
 		console.log("Estamos en plataformas")
@@ -569,6 +560,16 @@ controllers.controller('platformController', function ($scope, $rootScope, $http
 		.error(function(err) {
 			console.log(err);
 		});
+	};
+
+	$scope.getBestGamesByPlatform = function(id) {
+		$http.get('/games/best/' + id)
+		.success(function (games) {
+			$scope.games = games;
+		})
+		.error(function (err, status) {
+			console.log(err);
+		}); 
 	};
 	
 });

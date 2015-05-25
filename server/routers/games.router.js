@@ -10,6 +10,8 @@ module.exports = function(app) {
 	app.route("/games/:gameId/comments")
 		.post(user.requiresLogin, games.insertComment);
 
+	app.route("/games/best/:platformId")
+		.get(games.getBestGamesByPlatform);
 	//los ratings creo que van a ir al user, tiene mas logica
 	/*app.route("games/:id/ratings")
 		.put(user.requiresLogin, games.editRating)
