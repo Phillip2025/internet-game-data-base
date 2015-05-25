@@ -1,5 +1,6 @@
 var controllers = angular.module('controllers', []);  
-
+var myApp = angular.module('myApp', ['youtube-embed']);
+		
 controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP, players, genres) {
 	
 	$scope.search = {};
@@ -197,6 +198,13 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		}
 	};
 	
+});
+
+myApp.controller('MyCtrl', function ($scope, $rootScope) {
+	$scope.boton = function (){
+		console.log($rootScope.youtube)
+		$scope.videoYoutube = $rootScope.youtube;
+	}	
 });
 
 controllers.controller('countController', function ($scope, $http) {
