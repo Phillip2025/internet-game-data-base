@@ -155,5 +155,13 @@ exports.addRatingUser = function (req, res){
 	} else{
 		user.ratings.push(req.body);	
 	}
-	res.json(user);	
+	user.save(function(err){
+		if (err){
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(user);	
+	});
+	
 }

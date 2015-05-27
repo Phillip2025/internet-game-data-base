@@ -83,7 +83,9 @@
 		     </accordion-group>
 			 <accordion-group heading="{{'GAME.VIDEO' | translate}}">
 		       <div class="col-md-8 col-md-offset-2">
-		       		<youtube-video video-url="anotherGoodOne"</youtube-video>
+		       		<!--<youtube-video video-url="anotherGoodOne"</youtube-video>-->
+		       		<!--<video ng-src="{{game.youtube}}" controls></video>-->
+		       		<youtube id="{{codigo}}" width="640" heigth="360"></youtube>
 		         </div>
 		     </accordion-group>
 		 </accordion>
@@ -113,7 +115,4 @@
 				<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-xs-12"><icono class="glyphicon glyphicon-edit"></icono> {{'GAME.ADD_COMMENT' | translate}}</a>
 			</div>
 		</div>
-
-
-
 	</div>

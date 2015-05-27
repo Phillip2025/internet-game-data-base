@@ -42,7 +42,9 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		.success(function(game) {
 			$rootScope.game = game;
 			$location.path('/games/' + id);
-
+			var youtube = game.youtube.split("=");
+			$rootScope.codigo = youtube[1];
+			console.log($rootScope.codigo)
 		})
 		.error(function(err) {
 			console.log(err);
