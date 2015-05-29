@@ -143,11 +143,14 @@ exports.addRatingUser = function (req, res){
 	console.log("Añadiendo rating en usuario " +req.user._id);
 	var user = req.user;
 	var encontrado = false;
+	var rating = req.body
+	console.log(rating.gameId);
 	if ( user.ratings.length != 0){
 		for ( var i = 0; i < user.ratings.length; i++){
-			if (user.ratings[i].gameId == req.game._id){
+			if (user.ratings[i].gameId == rating.gameId){
 				encontrado = true;
 			}
+			
 		}
 		if (!encontrado){
 			user.ratings.push(req.body);	
