@@ -1,5 +1,5 @@
 //declaracion de app y sus dependencias
-var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap', 'ui.autocomplete', 'pascalprecht.translate', 'tmh.dynamicLocale', 'ngFileUpload', 'youtube-controller', 'youtube-service', 'youtube-directive']);  
+var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap', 'ui.autocomplete', 'pascalprecht.translate', 'tmh.dynamicLocale', 'ngFileUpload', 'youtube-embed']);  
 
 //state provider
 app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhDynamicLocaleProvider) {

@@ -24,15 +24,11 @@
 	<script src="js/ext/tmhDynamicLocale.min.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
-	<!--<script src="https://wwww.youtube.com/iframe_api"></script>
-	<script src="js/ext/angular-youtube-embed.js"></script>-->
+	<script src="https://www.youtube.com/iframe_api"></script>
+	<script src="js/angular-youtube-embed.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/fuentes.css">
 	<link rel="stylesheet" href="css/estilo.css">
 	<script src="js/app.js"></script>
-	<script src="js/directive.js"></script>
-	<script src="js/service.js"></script>
-	<script src="js/controllerYoutube.js"></script>
-
 </head>
 <body>
 	<div class="container">
@@ -42,7 +38,7 @@
 					<small data-ng-controller="countController" data-ng-init="getCount()">{{'SLOGAN_1' | translate}} {{count}} {{'SLOGAN_2' | translate}}</small>
 				</h2>
 			</div>
-			<div data-ng-controller="translationController" class="col-md-offset-1 col-md-1">
+			<div data-ng-controller="translationController" class="col-md-offset-1 col-md-1 col-sm-5">
 				<img class="col-md-10 col-xs-3" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
 				<img class="col-md-10 col-xs-3" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
 			</div>
@@ -69,9 +65,9 @@
 				</div>
 			</form>
 		
-			<ul class="nav navbar-nav navbar-right col-md-5 navbar-login" data-ng-controller="userController">
+			<ul class="nav navbar-nav navbar-right navbar-login" data-ng-controller="userController">
 				<li class="btn-group" dropdown is-open="status.isopen" data-ng-if="$root.user">
-					<button type="button" class="btn btn-primary dropdown-toggle  desplegable" dropdown-toggle ng-disabled="disabled">
+					<button type="button" class="btn btn-primary btn-lg dropdown-toggle  desplegable" dropdown-toggle ng-disabled="disabled">
 						{{'NAV.DROPDOWN.ACCOUNT' | translate}} <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
@@ -92,7 +88,7 @@
 					</ul>
 				</li>
 				<li data-ng-if="$root.user">
-					<a>{{'NAV.WELCOME' | translate}} {{user.user}}</a>
+					<p class="info-usuario">{{'NAV.WELCOME' | translate}} {{user.user}}</p>
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="navbar-form form-inline">

@@ -1,7 +1,7 @@
 <div class="game col-md-12" data-ng-controller="platformController">
 	<h2>{{platform.platform}}</h2>
 	<div class="row">
-		<div class="col-md-offset-1 col-md-3">
+		<div class="col-md-offset-1 col-md-3 col-sm-6">
 			<img ng-src="{{platform.images.boxart.back.url}}" alt="">
 		</div>
 		<div class="col-md-3">
@@ -15,6 +15,7 @@
 				<li><span>{{'PLATFORM.MAXCONTROLLERS'| translate}}: </span>{{platform.maxControllers}}</li>
 			</ul>
 		</div>
+		<div class="cierre"></div>
 	<!--
 		<div class="col-md-4">
 			<div class="thumbnail rating form-group">
@@ -23,10 +24,11 @@
 			</div>
 		</div>
 	-->
-		<div class="col-md-6">
-			<img class="col-md-5" ng-src="http://thegamesdb.net/banners/{{platform.images.consoleArt}}" alt="">
-			<img class="col-md-5" ng-src="http://thegamesdb.net/banners/{{platform.images.controllerArt}}" alt="">
+		<div class="col-md-6 col-sm-offset-2">
+			<img class="col-md-5 col-sm-4" ng-src="http://thegamesdb.net/banners/{{platform.images.consoleArt}}" alt="">
+			<img class="col-md-5 col-sm-4" ng-src="http://thegamesdb.net/banners/{{platform.images.controllerArt}}" alt="">
 		</div>
+		<div class="cierre"></div>
 		<div class="col-md-offset-1 col-md-10"><p>{{platform.overview}}</p></div>
 		<div class="col-md-10 col-md-offset-1">
 			<accordion close-others="true">
@@ -62,3 +64,5 @@
 			<div thumb class="animate-repeat" data-ng-repeat="game in games">
 			</div>	
 		</div>
+		<div class="cierre"></div>
+	

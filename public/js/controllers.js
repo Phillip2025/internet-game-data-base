@@ -15,6 +15,8 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 	$scope.max= 10; 
 	$scope.rate = 1;
 
+	$scope.claveYT ="cc-ClutaN_I";
+
 	$scope.toggled = function(open) {
 		$log.log('Dropdown is now: ', open);
 	};
@@ -42,9 +44,6 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 		.success(function(game) {
 			$rootScope.game = game;
 			$location.path('/games/' + id);
-			var youtube = game.youtube.split("=");
-			$rootScope.codigo = youtube[1];
-			console.log($rootScope.codigo)
 		})
 		.error(function(err) {
 			console.log(err);
@@ -644,7 +643,5 @@ controllers.controller('uploadController', ['$scope', 'Upload', '$rootScope' ,fu
 			}  
 		}
 	};
-
 	$scope.folders = ['boxartfront', 'boxartback', 'logo', 'banner', 'screenshot', 'fanart'];
-
 }]);

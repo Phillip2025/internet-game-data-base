@@ -1,7 +1,7 @@
 <div class="game col-md-12" data-ng-controller="gameController">
 	<h2>{{game.gameTitle}}</h2>
 	<div class="row">
-		<div class="col-md-offset-1 col-md-3">
+		<div class="col-md-offset-1 col-md-3 col-sm-6">
 			<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
 		</div>
 		<div class="col-md-3">
@@ -34,14 +34,17 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col-md-4">
+		<div class="cierre"></div>
+		<div class="col-md-5 col-sm-8 col-sm-offset-2 caja-rating">
 			<div class="col-md-7 thumbnail rating form-group">
 				<p>{{'GAME.RATING' | translate}}: {{game.rating | number:1}}</p>
 				<rating ng-model="rate" max="max" state-on="'green-rating'" state-off="'black-rating'" data-ng-click="addRating()"></rating><!--<span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>-->
 			</div>
 		</div>
-		<div class="col-md-4"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}">
+		<div class="cierre"></div>
+		<div class="col-md-4 col-sm-offset-1 col-sm-10"><img ng-if="game.images.clearlogo.url != null" ng-src="{{game.images.clearlogo.url}}">
 		</div>
+		<div class="cierre"></div>
 		<div class="col-md-offset-1 col-md-10"><p>{{game.overview}}</p></div>
 		<div class="col-md-10 col-md-offset-1">
 			<accordion close-others="true">
@@ -83,9 +86,11 @@
 		     </accordion-group>
 			 <accordion-group heading="{{'GAME.VIDEO' | translate}}">
 		       <div class="col-md-8 col-md-offset-2">
-		       		<!--<youtube-video video-url="anotherGoodOne"</youtube-video>-->
-		       		<!--<video ng-src="{{game.youtube}}" controls></video>-->
-		       		<youtube id="{{codigo}}" width="640" heigth="360"></youtube>
+		       		<div class="video-wrapper" data-ng-controller="gameController">
+					    <div class="embed-responsive embed-responsive-16by9">
+					      <youtube-video class="embed-responsive-item" video-url="game.youtube"></youtube-video>
+					    </div>
+					 </div>
 		         </div>
 		     </accordion-group>
 		 </accordion>
@@ -93,8 +98,8 @@
 		<div class="col-md-8 col-md-offset-2">
 			<p><span>{{'GAME.COMMENTS' | translate}}:</span></p>
 			<div data-ng-repeat="comment in game.comments" class="list-unstyled comentarios">
-				<div class="comentario col-md-11 thumbnail">
-					<div data-ng-click="getUserById(comment.userId)" class="col-md-2">
+				<div class="comentario col-md-11 thumbnail col-sm-11">
+					<div data-ng-click="getUserById(comment.userId)" class="col-md-2 col-sm-4">
 						<img data-ng-src="{{comment.picture}}"/>
 					</div>
 					<div class="col-md-9 col-md-offset-1">
@@ -103,10 +108,11 @@
 						<p>{{comment.created | date:'short'}}</p></span>
 					</div>
 				</div>
-				<div class="col-md-1" data-ng-if="$root.user._id == comment.userId" data-ng-click="deleteComment(game._id, comment._id)">
+				<div class="col-md-1 col-sm-1" data-ng-if="$root.user._id == comment.userId" data-ng-click="deleteComment(game._id, comment._id)">
 					<p><icono class="glyphicon glyphicon-remove" aria-hidden="true"></icono></p>
 				</div>
 			</div>
+			<div class="cierre"></div>
 			<div data-ng-if="game.comments.length === 0">
 				<p>{{'GAME.NO_COMMENTS' | translate}}</p>
 			</div>

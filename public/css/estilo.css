@@ -10,6 +10,9 @@ body{
 	img{
 		width:100%;
 	}
+	.cierre{
+		clear: both;
+	}
 	.jumbotron{
 		background: none;
 	}
@@ -186,28 +189,63 @@ body{
 		width: 100px;
 	}
 	.desplegable{
-		margin-top: 6%;
-		background: #005700; /* Old browsers */
-		background: -moz-linear-gradient(45deg, #005700 0%, #2c472d 38%, #017a05 70%, #9ab79a 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#005700), color-stop(38%,#2c472d), color-stop(70%,#017a05), color-stop(100%,#9ab79a)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(45deg, #005700 0%,#2c472d 38%,#017a05 70%,#9ab79a 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(45deg, #005700 0%,#2c472d 38%,#017a05 70%,#9ab79a 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(45deg, #005700 0%,#2c472d 38%,#017a05 70%,#9ab79a 100%); /* IE10+ */
-		background: linear-gradient(45deg, #005700 0%,#2c472d 38%,#017a05 70%,#9ab79a 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005700', endColorstr='#9ab79a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		background: #aebf76; /* Old browsers */
+		background: -moz-linear-gradient(45deg, #aebf76 0%, #aebf76 53%, #77b77a 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#aebf76), color-stop(53%,#aebf76), color-stop(100%,#77b77a)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(45deg, #aebf76 0%,#aebf76 53%,#77b77a 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(45deg, #aebf76 0%,#aebf76 53%,#77b77a 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(45deg, #aebf76 0%,#aebf76 53%,#77b77a 100%); /* IE10+ */
+		background: linear-gradient(45deg, #aebf76 0%,#aebf76 53%,#77b77a 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aebf76', endColorstr='#77b77a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		border:transparent;
 		-webkit-box-shadow: 0px 0px 20px -5px rgba(255,255,255,0.96);
 		-moz-box-shadow: 0px 0px 20px -5px rgba(255,255,255,0.96);
 		box-shadow: 0px 0px 20px -5px rgba(255,255,255,0.96);
 	}
 	.btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open > .dropdown-toggle.btn-primary{
-		background-color: white;
-		color:black;
+		background: #aebf76; /* Old browsers */
+		background: -moz-linear-gradient(45deg, #aebf76 0%, #aebf76 53%, #77b77a 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#aebf76), color-stop(53%,#aebf76), color-stop(100%,#77b77a)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(45deg, #aebf76 0%,#aebf76 53%,#77b77a 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(45deg, #aebf76 0%,#aebf76 53%,#77b77a 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(45deg, #aebf76 0%,#aebf76 53%,#77b77a 100%); /* IE10+ */
+		background: linear-gradient(45deg, #aebf76 0%,#aebf76 53%,#77b77a 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aebf76', endColorstr='#77b77a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */		
 	}
 	.btn-group{
 		margin-top: 5%;
 	}
-@media (min-width: 400px){
+	.info-usuario{
+		color: white;
+	}
+@media (min-width: 500px){
+	.item-game .panel-heading{
+		max-height: 50px;
+		min-height: 50px;
+		overflow: hidden;
+	}
+	.item-game .panel-body{
+		min-height: 300px;
+		max-height: 300px;
+	}
+	.item-platform .panel-heading{
+		max-height: 50px;
+		min-height: 50px;
+		overflow: hidden;
+	}
+	.item-platform .panel-body{
+		min-height: 300px;
+		max-height: 300px;
+		overflow: hidden;
+	}
+	.caja-rating{
+		margin-top:5%;
+	}
+	.panel-footer{
+		color:black;
+	}
+}
+@media (min-width: 801px){
 	body{
 		border:0;
 		background-color:black;
@@ -225,8 +263,8 @@ body{
 		overflow: hidden;
 	}
 	.item-game .panel-body{
-		min-height: 240px;
-		max-height: 240px;
+		min-height: 210px;
+		max-height: 210px;
 	}
 	.item-platform .panel-heading{
 		max-height: 50px;
@@ -238,18 +276,21 @@ body{
 		max-height: 260px;
 		overflow: hidden;
 	}
-
-
 	.navbar-login{
 		margin-right: -25px;
 	}
 	.inputs-log{
 		width: 36% !important;
 	}
-		.navbar,.navbar-default{
+	.navbar,.navbar-default{
 		padding-right: 0;
 	}
 	.btn-group{
 		margin-top: 0;
+	}
+	.info-usuario{
+		margin: 2.5%;
+		margin-right: 25%;
+		padding-top: 7.5%;
 	}
 }
