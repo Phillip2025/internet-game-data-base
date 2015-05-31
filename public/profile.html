@@ -1,0 +1,26 @@
+<div class="game col-md-12" data-ng-controller="userController">
+	<div class="row">
+		<div class="row col-md-offset-1 col-md-6">
+			<span><img class="col-md-5" ng-src="{{$root.user.picture.url}}"></span>
+		</div>
+		<div class="info-profile row col-md-4 col-md-offset-1">
+			<div>
+				<span>{{'USER.USERNAME' | translate}}: {{$root.profileUser.user}}</span>
+			</div>
+			<div>
+				<span>{{'USER.NAME' | translate}}: {{$root.profileUser.name}}</span>
+			</div>	
+			<div>
+				<span>{{'USER.SURNAME' | translate}}: {{$root.profileUser.surname}}</span>
+			</div>
+			<div>
+				<span>{{'USER.EMAIL' | translate}}: {{$root.profileUser.mail}}</span>
+			</div>
+		</div>
+			<div class="info row col-md-10 col-md-offset-1">
+				<button class="ratings btn btn-primary">Votos</button>
+				<button class="comments btn btn-primary">Comentarios</button>
+			</div>
+		</div>
+	</div>
+</div>

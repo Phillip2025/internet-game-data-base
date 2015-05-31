@@ -218,6 +218,37 @@ body{
 	.info-usuario{
 		color: white;
 	}
+
+	.flags{
+		top: 150px;
+		left: 50px
+	}
+
+	.flag-spain{
+		top: 13px;
+		right: 30px;
+	}
+
+	.col-md-6 span img{
+		width: 80%;
+		height: 60%;
+	}
+
+	.info-profile, .col-md-6 span img{
+		margin-top: 5%;
+	}
+
+	.info {
+		margin-top: 5%;
+		margin-bottom: 3%;
+		margin-left: 35%;
+	}
+
+	.comments{
+		margin-left: 15%;
+		background-color: green;
+	}
+
 @media (min-width: 500px){
 	.item-game .panel-heading{
 		max-height: 50px;

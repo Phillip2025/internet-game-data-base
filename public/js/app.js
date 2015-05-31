@@ -25,7 +25,7 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhD
 	})
 	.state('user',{
 		url:'/users/:id',
-		templateUrl:'perfil.html'
+		templateUrl:'profile.html'
 	})
 	.state('platforms',{
 		url: '/platforms',
