@@ -149,8 +149,7 @@ exports.addRatingUser = function (req, res){
 		for ( var i = 0; i < user.ratings.length; i++){
 			if (user.ratings[i].gameId == rating.gameId){
 				encontrado = true;
-			}
-			
+			}		
 		}
 		if (!encontrado){
 			user.ratings.push(req.body);	

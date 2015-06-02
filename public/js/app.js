@@ -146,6 +146,7 @@ var translationsES = {
 	},
 	NEW_USER_FORM: "Registro de nuevo usuario",
 	USER: {
+		PROFILE_MSG: "Bienvenido a tu perfil: ",
 		USERNAME: "Nombre de usuario",
 		PASSWORD: "Password",
 		NAME: "Nombre",
@@ -229,6 +230,7 @@ var translationsEN = {
 	},
 	NEW_USER_FORM: "User Sign Up",
 	USER: {
+		PROFILE_MSG: "Welcome to your profile: ",
 		USERNAME: "Username",
 		PASSWORD: "Password",
 		NAME: "Name",

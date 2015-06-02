@@ -7,6 +7,9 @@ body{
 		font-family: 'Roboto', sans-serif;
 		/*font-family: underwood_champion;*/
 	}
+	.flags{
+		margin-bottom: 10px;
+	}
 	img{
 		width:100%;
 	}
@@ -15,6 +18,15 @@ body{
 	}
 	.jumbotron{
 		background: none;
+	}
+	.panel-footer{
+		color:black;
+	}
+	.row{
+		margin-bottom: 1%;
+	}
+	h3{
+		color:white;
 	}
 	.navbar{
 		border:0px;
@@ -101,7 +113,7 @@ body{
 		-moz-box-shadow: 1px 10px 83px -12px rgba(23,230,54,1);
 		box-shadow: 1px 10px 83px -12px rgba(23,230,54,1);
 	}
-		.media{
+	.media{
 		background-color: whitesmoke;
 		border:1px solid black;	
 		margin:1%;
@@ -218,17 +230,6 @@ body{
 	.info-usuario{
 		color: white;
 	}
-
-	.flags{
-		top: 150px;
-		left: 50px
-	}
-
-	.flag-spain{
-		top: 13px;
-		right: 30px;
-	}
-
 	.col-md-6 span img{
 		width: 80%;
 		height: 60%;

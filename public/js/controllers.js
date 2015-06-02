@@ -104,6 +104,8 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 				rating.userId= $rootScope.user._id;
 				rating.user = $rootScope.user.user;
 				rating.gameId = $rootScope.game._id;
+				rating.gameTitle = $rootScope.game.gameTitle;
+				rating.gameImg = $rootScope.game.images.boxart.front.url;
 				console.log(JSON.stringify(rating));
 				$http.post('users/' + $rootScope.user._id + '/ratings', rating)
 				.success(function(user){
@@ -231,12 +233,36 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 	$scope.loginAlerts = [];
 	$scope.alerts = [];
 
+	$scope.getGameById = function (id) {
+		$http.get('/games/' + id)
+		.success(function(game) {
+			$rootScope.game = game;
+			$location.path('/games/' + id);
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	};
+
 	$scope.getUserById = function (id) {
 		$http.get('/users/' + id)
 		.success(function(user) {
 			$rootScope.profileUser = user;
+			$rootScope.ratingsPage = user.ratings;
 			$location.path('/users/' + id);
-
+			$rootScope.items = user.ratings.length;
+			$rootScope.currentPage = 1;
+			$rootScope.numPerPage = 6;
+			$rootScope.maxSize = 5;
+			$rootScope.ratedPage = [];
+			console.log($rootScope.profileUser.ratings.length);
+			$rootScope.$watch("currentPage + numPerPage", function() {
+				var begin = (($rootScope.currentPage - 1) * $rootScope.numPerPage);
+				var end = begin + $rootScope.numPerPage;
+				//console.log("begin:"+begin+"end:"+end);
+				$rootScope.ratedPage = $rootScope.ratingsPage.slice(begin, end);
+			});
+			console.log($rootScope.ratedPage);
 		})
 		.error(function(err) {
 			console.log(err);
@@ -536,6 +562,17 @@ controllers.controller('platformController', function ($scope, $rootScope, $http
 		isFirstDisabled: false
 	};
 	$scope.games = [];
+
+	$scope.getGameById = function (id) {
+		$http.get('/games/' + id)
+		.success(function(game) {
+			$rootScope.game = game;
+			$location.path('/games/' + id);
+		})
+		.error(function(err) {
+			console.log(err);
+		});
+	};
 
 	$scope.getAllPlatforms = function(){
 		console.log("Estamos en plataformas")

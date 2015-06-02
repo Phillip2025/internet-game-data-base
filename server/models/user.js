@@ -16,7 +16,9 @@ var RatingSchema = new Schema({
 	userId: Number,
 	user: String,
 	rate: Number,
-	gameId: Number
+	gameId: Number,
+	gameTitle: String,
+	gameImg: String
 });
 
 var UserSchema = new Schema({

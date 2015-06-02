@@ -186,7 +186,7 @@ exports.addRating = function (req, res) {
 exports.getBestGamesByPlatform = function (req, res) {
 	var id = req.params.platformId;
 	console.log("Mejores juegos para plataforma con id" + id);
-	Game.find({'platformId': id}).sort('-rating').limit(10).exec(function (err, games) {
+	Game.find({'platformId': id}).sort('-rating').limit(12).exec(function (err, games) {
 		if (err) {
 			res.status(500).send({
 				msg: 'Error interno del servidor'

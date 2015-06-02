@@ -33,16 +33,18 @@
 <body>
 	<div class="container">
 		<header class="row vertical-align jumbotron">
-			<div data-ng-controller="gameController" class="col-md-10 col-xs-12">
+			<div data-ng-controller="gameController" class="flags col-md-10 col-xs-12">
 				<h2><a href="#" ui-sref="home"><img class="col-md-3 col-xs-12" src="img/logotipo.png"><img class="col-md-9 col-xs-12" src="img/textocabecera1.png"></a>
 					<small data-ng-controller="countController" data-ng-init="getCount()">{{'SLOGAN_1' | translate}} {{count}} {{'SLOGAN_2' | translate}}</small>
 				</h2>
 			</div>
-			<div data-ng-controller="translationController" class="flags col-md-offset-1 col-md-1 col-sm-5">
-				<img class="flag-spain col-md-10 col-xs-3" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
-				<img class="flag-england col-md-10 col-xs-3" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
-			</div>
+			<div class="cierre"></div>
 		</header>
+		<div data-ng-controller="translationController" class="flags col-xs-offset-9 col-xs-4 col-sm-offset-11 col-sm-2 col-md-offset-10 col-md-2">
+				<img class="col-md-5 col-xs-10 col-sm-8" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
+				<img class=" col-md-5 col-xs-10 col-sm-8" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
+			</div>
+			<div class="cierre"></div>
 		<nav class="navbar navbar-default">
 			<div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -72,7 +74,7 @@
 					</button>
 					<ul class="dropdown-menu" role="menu">
 						<li>
-							<a ui-sref="perfil" href="#" data-ng-click="getUserById($root.user._id)">{{'NAV.DROPDOWN.VIEW' | translate}}</a>
+							<a href="#" data-ng-click="getUserById($root.user._id)">{{'NAV.DROPDOWN.VIEW' | translate}}</a>
 						</li>
 						<li>
 							<a href="#" data-ng-click="openEditUser()">{{'NAV.DROPDOWN.MODIFY' | translate}}</a>
