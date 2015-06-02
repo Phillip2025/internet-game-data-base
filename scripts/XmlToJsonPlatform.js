@@ -1,6 +1,8 @@
 var http = require('http');
 var parseString = require('xml2js').parseString;
 var MongoClient = require('mongodb').MongoClient;
+var request = require('request');
+var fs = require('fs');
 
 var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
@@ -10,8 +12,8 @@ var idLimite = 41;
 var total = 0;
 var dataBase;
 var coll;
-var twoBoxPlatforms = 0;
-var twoLogoPlatforms = 0;
+var publicPath = '../public/';
+var iconsPath = 'img/platformicons/';
 
 var imgNotAvailable = [{ 
 	url: "img/image.gif",
@@ -59,8 +61,6 @@ function procesar(id, totalAProcesar, callback) {
 	if (id > idLimite) {
 		dataBase.close(function() {
 			console.log("Total de plataformas procesadas: " + total);
-			console.log("Plataformas con mas de 2 caratulas: " + twoBoxPlatforms);
-			console.log("Plataformas con mas de 2 logos: " + twoLogoPlatforms);
 			process.exit(0);
 		});
 	}
@@ -78,30 +78,21 @@ function procesar(id, totalAProcesar, callback) {
 }
 
 function savePlatformbyId(id) {
-	var getOptions = {
-		host: "thegamesdb.net",
-		path: "/api/GetPlatform.php?id=" + id
+	var options = {
+		url: 'http://www.thegamesdb.net/api/GetPlatform.php?id=' + id,
+		//proxy: 'http://lupus.sia.es:8080'
 	};
-	var proxyOptions = {
-		host: "lupus.sia.es",
-		port: 8080,
-		path: "thegamesdb.net/api/GetPlatform.php?id=" + id,
-		headers: {
-		/*Host: "www.thegamesdb.net"*/
-		}
-	};
-	http.get(getOptions, function(res) {
+	request(options, function(err, res, body) {
 	  	console.log("Obtenida respuesta " + res.statusCode + " para el id " + id);
-	  	var xml = "";
-	  	res.on("data", function(body) {
-	  		xml += body;
-	  	});
-	  	res.on("end", function() {
+		if (err) {
+			console.log(err);
+		}
+		else {
 	  		var options = {
 	    		mergeAttrs: true,
 	    		charkey: "url"
 	    	};
-			parseString(xml, options, function(err, result) {
+			parseString(body, options, function(err, result) {
 				try {
 					if (result.Data.Platform) {
 						var datos = result.Data.Platform[0];
@@ -198,10 +189,20 @@ function savePlatformbyId(id) {
 					    		json.images.banner = bannerNotAvailable;
 					    	}
 							if (images.consoleart) {
-					    		json.images.consoleArt = images.consoleart[0];
+					    		json.images.consoleArt = iconsPath + id + '.png';
+					    		var options = {
+										url: baseUrl + images.consoleart,
+										//proxy: 'http://lupus.sia.es:8080'
+									};
+									fs.exists(publicPath + iconsPath, function(exists) {
+									    if (!exists) {
+									        fs.mkdirSync(publicPath + iconsPath);
+									    }
+									});
+									request(options).pipe(fs.createWriteStream(publicPath + iconsPath + id + '.png'));
 					    	}
 							else {
-					    		json.images.consoleArt = imgNotAvailable;								
+					    		json.images.consoleArt = iconsPath + 'no-icon.png';							
 							}
 							if (images.controllerart) {
 					    		json.images.controllerArt = images.controllerart[0];
@@ -223,8 +224,6 @@ function savePlatformbyId(id) {
 					console.log(err);
 				}
 			});
-		});
-	}).on('error', function(e) {
-	  console.log("Error en peticion get de id " + id + ": " + e.message);
+		}
 	});
 }

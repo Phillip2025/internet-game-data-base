@@ -196,6 +196,10 @@ body{
 		background-size: contain;
 		background-image: url("../img/black.png");
 	}
+	.icon {
+		height: 3em;
+		width: 3em;
+	}
 	.img-thumbnail {
 		height: 100px;
 		width: 100px;

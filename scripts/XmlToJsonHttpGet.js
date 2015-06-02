@@ -195,13 +195,13 @@ function saveGamebyId(id) {
 									fanart.height = parseInt(images.fanart[i].original[0].height[0]);
 									fanart.thumb = baseUrl + images.fanart[i].thumb[0];
 									json.images.fanart.push(fanart);
-									console.log("URL Base: " + baseUrl);
+									/*console.log("URL Base: " + baseUrl);
 									console.log("URL img: " + fanart.url);
 									var options = {
 										url: fanart.url,
 										proxy: 'http://lupus.sia.es:8080'
 									};
-									request(options).pipe(fs.createWriteStream(images.fanart[i].original[0].url));
+									request(options).pipe(fs.createWriteStream(images.fanart[i].original[0].url));*/
 								}
 							}
 							else {

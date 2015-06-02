@@ -10,7 +10,7 @@
 				<a data-ng-if="$root.user.role == 'Admin'" data-ng-controller="adminController" data-ng-click="openEditGame()" href="#">{{'GAME.ADMIN.EDIT' | translate}}</a>
 			</div>
 			<ul class="list-unstyled">
-				<li data-ng-if="game.alternateTitles.length !== 0"><span>{{GAME.ALTERNATE_TITLES | translate}}:</span>
+				<li data-ng-if="game.alternateTitles.length !== 0"><span>{{'GAME.ALTERNATE_TITLES' | translate}}:</span>
 					<ul data-ng-repeat="alt in game.alternateTitles">
 						<li>{{alt}}</li>
 					</ul>
@@ -18,7 +18,7 @@
 				<li><span>{{'GAME.PLATFORM' | translate}}:</span>{{game.platform}}</li>
 				<li data-ng-if="game.similar.length !== 0"><span>{{'GAME.OTHER_PLATFORMS' | translate}}</span>
 					<ul class="list-unstyled list-inline">
-						<li data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img data-ng-src="img/platformicons/{{similar.platformId}}"></a></li>
+						<li data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img class="icon" data-ng-src="img/platformicons/{{similar.platformId}}.png"></a></li>
 					</ul>
 				</li>
 				<li><span>{{'GAME.RELEASE_DATE' | translate}}:</span> {{game.releaseDate | date:'longDate'}}</li>
