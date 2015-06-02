@@ -18,7 +18,7 @@
 				<li><span>{{'GAME.PLATFORM' | translate}}:</span>{{game.platform}}</li>
 				<li data-ng-if="game.similar.length !== 0"><span>{{'GAME.OTHER_PLATFORMS' | translate}}</span>
 					<ul class="list-unstyled list-inline">
-						<li data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img data-ng-src="img/platformicons/{{similar.platformId}}"></a></li>
+						<li data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><p>{{similar.platformId}}</p><!--<img data-ng-src="img/platformicons/{{similar.platformId}}">--></a></li>
 					</ul>
 				</li>
 				<li><span>{{'GAME.RELEASE_DATE' | translate}}:</span> {{game.releaseDate | date:'longDate'}}</li>

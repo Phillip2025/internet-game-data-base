@@ -29,6 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="css/fuentes.css">
 	<link rel="stylesheet" href="css/estilo.css">
 	<script src="js/app.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -37,6 +38,13 @@
 				<h2><a href="#" ui-sref="home"><img class="col-md-3 col-xs-12" src="img/logotipo.png"><img class="col-md-9 col-xs-12" src="img/textocabecera1.png"></a>
 					<small data-ng-controller="countController" data-ng-init="getCount()">{{'SLOGAN_1' | translate}} {{count}} {{'SLOGAN_2' | translate}}</small>
 				</h2>
+			</div>
+			<div class="col-md-12">
+                <ul class="social-network social-circle">
+                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                </ul>				
 			</div>
 			<div class="cierre"></div>
 		</header>
@@ -107,6 +115,7 @@
 			</div>
 		</nav>
 		<div class="animate-view" ng-animate-children ui-view></div>
+
 	</div>
 </body>
 </html>
