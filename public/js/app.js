@@ -152,7 +152,8 @@ var translationsES = {
 		NAME: "Nombre",
 		SURNAME: "Apellidos",
 		EMAIL: "E-Mail",
-		PICTURE: "Imagen de perfil"
+		PICTURE: "Imagen de perfil",
+		CONFIRM: "Escribe de nuevo la Password"
 	},
 	PAGINATION: {
 		PREVIOUS: "Anterior",
@@ -236,7 +237,8 @@ var translationsEN = {
 		NAME: "Name",
 		SURNAME: "Surname",
 		EMAIL: "Email",
-		PICTURE: "Profile picture"
+		PICTURE: "Profile picture",
+		CONFIRM: "Retype Password"
 	},
 	PAGINATION: {
 		PREVIOUS: "Previous",

@@ -55,41 +55,54 @@ exports.logIn = function(req, res, next) {
 
 exports.signUp = function(req, res) {
 	console.log("Usuario registrandose");
-	var user = new User(req.body);
+	var user = req.body;
 	console.log(user.user);
 	console.log(user.password);
+	console.log(user.confirm)
 	console.log(user.mail);
-	console.log(req.picture);
-	User.findOne({'user': user.user}, function (err, user) {
-		if (err) {
-			return res.status(500).send({
-				message: "Error interno"
-			});
-		}
-		else if (user) {
-			return res.status(400).send({
-				message: "Ya existe el usuario"
-			});
-		}
-	});
-	// Then save the user
-	user.save(function(err, user) {
-		if (err) {
-			return res.status(500).send({
-				message: "Error interno"
-			});
-		} else {
-			user.password = undefined;
-			req.login(user, function(err) {
-				console.log("Usuario en la request");
-				if (err) {
-					res.status(400).send(err);
-				} else {
-					res.json(user);
-				}
-			});
-		}
-	});
+	if (user.password === user.confirm){
+		var user = new User({user: user.user,
+							password: user.password,
+							name: user.name,
+							surname: user.surname,
+							mail: user.mail,
+							picture: user.picture});
+		console.log(user)
+		User.findOne({'user': user.user}, function (err, user) {
+			if (err) {
+				return res.status(500).send({
+					message: "Error interno"
+				});
+			}
+			else if (user) {
+				return res.status(400).send({
+					message: "Ya existe el usuario"
+				});
+			}
+		});
+		// Then save the user
+		user.save(function(err, user) {
+			if (err) {
+				return res.status(500).send({
+					message: "Error interno"
+				});
+			} else {
+				user.password = undefined;
+				req.login(user, function(err) {
+					console.log("Usuario en la request");
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.json(user);
+					}
+				});
+			}
+		});
+	}
+	else {
+		return res.status(400).send({
+			message: "Las contraseñas deben coincidir"})
+	}
 };
 
 exports.logout = function(req, res) {
