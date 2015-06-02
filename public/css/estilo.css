@@ -368,6 +368,13 @@ a.socialIcon:hover, .socialHoverClass {
 	.panel-footer{
 		color:black;
 	}
+
+	/*End SOCIAL ICONS*/
+
+	.platformIcon {
+		width: 12%;
+	}
+
 }
 @media (min-width: 801px){
 	body{
