@@ -196,10 +196,6 @@ body{
 		background-size: contain;
 		background-image: url("../img/black.png");
 	}
-	.icon {
-		height: 3em;
-		width: 3em;
-	}
 	.img-thumbnail {
 		height: 100px;
 		width: 100px;
@@ -376,7 +372,8 @@ a.socialIcon:hover, .socialHoverClass {
 	/*End SOCIAL ICONS*/
 
 	.platformIcon {
-		width: 12%;
+		width: 3em;
+		height: 3em;
 	}
 
 }

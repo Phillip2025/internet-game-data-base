@@ -19,7 +19,6 @@
 				<li data-ng-if="game.similar.length !== 0"><span>{{'GAME.OTHER_PLATFORMS' | translate}}</span>
 					<ul class="list-unstyled list-inline">
 						<li data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img class="platformIcon" data-ng-src="img/platformicons/{{similar.platformId}}.png"></a></li>
->>>>>>> 1d360eda88b40c0fb93a71ff062398a3b8a47181
 					</ul>
 				</li>
 				<li><span>{{'GAME.RELEASE_DATE' | translate}}:</span> {{game.releaseDate | date:'longDate'}}</li>
