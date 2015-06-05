@@ -121,6 +121,7 @@ var translationsES = {
 		FANARTS: "Imágenes de usuarios",
 		VIDEO: "Video",
 		COMMENTS: "Comentarios",
+		COMMENT: "Introduce tu comentario",
 		NO_COMMENTS: "No hay comentarios, que esperas para ser el primero?",
 		ADD_COMMENT: "Publicar comentario",
 		ADMIN: {
@@ -147,13 +148,17 @@ var translationsES = {
 	NEW_USER_FORM: "Registro de nuevo usuario",
 	USER: {
 		PROFILE_MSG: "Bienvenido a tu perfil: ",
+		UPDATE: "Editar perfil",
 		USERNAME: "Nombre de usuario",
 		PASSWORD: "Password",
 		NAME: "Nombre",
 		SURNAME: "Apellidos",
 		EMAIL: "E-Mail",
 		PICTURE: "Imagen de perfil",
-		CONFIRM: "Escribe de nuevo la Password"
+		CONFIRM: "Escribe de nuevo la Password",
+		SELECT: "Seleccionar",
+		PHOTO: "Foto actual",
+		EDIT: "Editar"
 	},
 	PAGINATION: {
 		PREVIOUS: "Anterior",
@@ -206,6 +211,7 @@ var translationsEN = {
 		FANARTS: "Fanart",
 		VIDEO: "video",
 		COMMENTS: "Comments",
+		COMMENT: "Enter your comment",
 		NO_COMMENTS: "There are no comments, what are you waiting to write the first one?",
 		ADD_COMMENT: "Add comment",
 		ADMIN: {
@@ -232,13 +238,17 @@ var translationsEN = {
 	NEW_USER_FORM: "User Sign Up",
 	USER: {
 		PROFILE_MSG: "Welcome to your profile: ",
+		UPDATE: "Edit profile",
 		USERNAME: "Username",
 		PASSWORD: "Password",
 		NAME: "Name",
 		SURNAME: "Surname",
 		EMAIL: "Email",
 		PICTURE: "Profile picture",
-		CONFIRM: "Retype Password"
+		CONFIRM: "Retype Password",
+		SELECT: "Select",
+		PHOTO: "Current photo",
+		EDIT: "Edit"
 	},
 	PAGINATION: {
 		PREVIOUS: "Previous",

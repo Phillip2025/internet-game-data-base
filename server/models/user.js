@@ -52,8 +52,7 @@ var UserSchema = new Schema({
 		width: Number,
 		height: Number
 	},
-	ratings: [RatingSchema],
-	comments: [CommentSchema]
+	ratings: [RatingSchema]
 });
 
 UserSchema.plugin(ai.plugin, 'User');

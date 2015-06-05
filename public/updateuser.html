@@ -1,5 +1,5 @@
 <div class="modal-header">
-	<h4 class="modal-title">Editar perfil</h4>
+	<h4 class="modal-title">{{'USER.UPDATE' | translate}}</h4>
 </div>
 <div class="modal-body row">
 	<form class="form-horizontal col-md-12">
@@ -13,6 +13,12 @@
 			<label class="col-md-4 control-label" for="password">{{'USER.PASSWORD' | translate}}: </label>
 			<div class="col-md-4">
 				<input class="form-control" data-ng-model="$root.updateUser.password" type="password" placeholder="Password" required />
+			</div>
+		</div>
+		<div class="form-group col-md-12 mi-form-group">
+			<label class="col-md-4 control-label" for="password">{{'USER.CONFIRM' | translate}}: </label>
+			<div class="col-md-4">
+				<input class="form-control" data-ng-model="$root.updateUser.confirm" type="password" placeholder="Password" required />
 			</div>
 		</div>
 		<div class="form-group col-md-12 mi-form-group">
@@ -33,14 +39,14 @@
 		<div class="form-group col-md-12">
 			<label class="col-md-4 control-label">{{'USER.PICTURE' | translate}}: </label>
 			<div class="col-md-8">
-			<button ng-controller="uploadController" class="btn btn-default" ngf-select ngf-accept="'image/*'" ngf-change="uploadProfileImage($files)">Seleccionar</button>
+			<button ng-controller="uploadController" class="btn btn-default" ngf-select ngf-accept="'image/*'" ngf-change="uploadProfileImage($files)">{{'USER.SELECT' | translate}}</button>
 			</div>
-			<p>Foto actual:<center><img class="col-md-offset-3 col-md-6" ng-src="{{$root.updateUser.picture.url}}"></center></p>
+			<p>{{'USER.PHOTO' | translate}}:<center><img class="col-md-offset-3 col-md-6" ng-src="{{$root.updateUser.picture.url}}"></center></p>
 		</div>	
 		<alert class="col-md-offset-1 col-md-10" ng-repeat="alert in alerts" type="{{alert.type}}" close="close(alerts)">{{alert.msg}}</alert>
 
 	</form>	
 </div>
 <div class="modal-footer">
-	<button data-ng-click="updateUser()" class="btn btn-primary">Editar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+	<button data-ng-click="updateUser()" class="btn btn-primary">{{'USER.EDIT' | translate}} <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 </div>
