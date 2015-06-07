@@ -124,6 +124,8 @@ var translationsES = {
 		COMMENT: "Introduce tu comentario",
 		NO_COMMENTS: "No hay comentarios, que esperas para ser el primero?",
 		ADD_COMMENT: "Publicar comentario",
+		REGISTER_TO_RATE: "Regístrate para votar este juego",
+		REGISTER_TO_COMMENT: "Regístrate para comentar este juego",
 		ADMIN: {
 			DELETE: "Borrar juego",
 			EDIT: "Editar juego"
@@ -214,6 +216,8 @@ var translationsEN = {
 		COMMENT: "Enter your comment",
 		NO_COMMENTS: "There are no comments, what are you waiting to write the first one?",
 		ADD_COMMENT: "Add comment",
+		REGISTER_TO_RATE: "Register here to rate this game",
+		REGISTER_TO_COMMENT: "Register here to comment this game",
 		ADMIN: {
 			DELETE: "Delete game",
 			EDIT: "Edit game"

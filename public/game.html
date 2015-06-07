@@ -5,10 +5,7 @@
 			<img ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
 		</div>
 		<div class="col-md-3">
-			<div data-ng-controller="userController">
-				<a class="btn btn-warning" data ng-if="$root.user.role == 'Admin'" data-ng-click="deleteGameView(game._id)" href="#">{{'GAME.ADMIN.DELETE' | translate}}</a>
-				<a data-ng-if="$root.user.role == 'Admin'" data-ng-controller="adminController" data-ng-click="openEditGame()" href="#">{{'GAME.ADMIN.EDIT' | translate}}</a>
-			</div>
+			<a class="btn btn-warning" data-ng-if="$root.user.role == 'Admin'" data-ng-controller="adminController" data-ng-click="openEditGame()" href="#">{{'GAME.ADMIN.EDIT' | translate}}</a>
 			<ul class="list-unstyled">
 				<li data-ng-if="game.alternateTitles.length !== 0"><span>{{'GAME.ALTERNATE_TITLES' | translate}}:</span>
 					<ul data-ng-repeat="alt in game.alternateTitles">
@@ -38,7 +35,8 @@
 		<div class="col-md-offset-3 col-md-9 col-sm-8 col-sm-offset-2 caja-rating">
 			<div class="col-md-7 thumbnail rating form-group">
 				<p>{{'GAME.RATING' | translate}}: {{game.rating | number:1}}</p>
-				<rating ng-model="rate" max="max" state-on="'green-rating'" state-off="'black-rating'" data-ng-click="addRating()"></rating><!--<span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>-->
+				<rating data-ng-if="$root.user" ng-model="rate" max="max" state-on="'green-rating'" state-off="'black-rating'" data-ng-click="addRating()"></rating>
+				<a data-ng-controller="userController" data-ng-if="!$root.user" href="#" data-ng-click="openNewUser()">{{'GAME.REGISTER_TO_RATE' | translate}}</a>
 			</div>
 		</div>
 		<div class="cierre"></div>
@@ -116,9 +114,12 @@
 			<div data-ng-if="game.comments.length === 0">
 				<p>{{'GAME.NO_COMMENTS' | translate}}</p>
 			</div>
-			<div class="col-md-8 col-md-offset-2 form-group form-group-lg">
+			<div data-ng-if="$root.user" class="col-md-8 col-md-offset-2 form-group form-group-lg">
 				<input type="textarea" class="form-control" placeholder="{{'GAME.COMMENT' | translate}}" data-ng-model="comment.text">
 				<a href="#" data-ng-click="addComment()" role="button" class="btn btn-success col-xs-12"><icono class="glyphicon glyphicon-edit"></icono> {{'GAME.ADD_COMMENT' | translate}}</a>
+			</div>
+			<div data-ng-controller="userController" data-ng-if="!$root.user" class="col-md-8 col-md-offset-2 form-group form-group-lg">
+				<a href="#" data-ng-click="openNewUser()">{{'GAME.REGISTER_TO_COMMENT' | translate}}</a>
 			</div>
 		</div>
 	</div>
