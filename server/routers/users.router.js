@@ -9,5 +9,5 @@ module.exports = function(app) {
 	app.put('/users/:userid', users.updateUser);
 	app.get('/confirmlogin', users.confirmLogin);
 	app.post('/users/:userid/ratings', users.requiresLogin, users.addRatingUser);
-
+	app.post('/users/:userid/comments', users.requiresLogin, users.addCommentUser);
 };

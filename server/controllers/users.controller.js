@@ -185,5 +185,21 @@ exports.addRatingUser = function (req, res){
 		}
 		res.json(user);	
 	});
-	
+}
+
+exports.addCommentUser = function (req, res){
+	console.log("Añadiendo comentario en usuario "+ req.user._id);
+	var user = req.user;
+	var comment = req.body;
+	console.log(req.body);
+	user.comments.push(req.body);
+	user.save(function(err){
+		if (err){
+			console.log(err);
+			return res.status(500).send({
+				message: 'Error interno del servidor'
+			});
+		}
+		res.json(user);
+	});
 }

@@ -10,7 +10,8 @@ var CommentSchema = new Schema({
  	created : {
  		type: Date,
  		default: Date.now
- 	}
+ 	},
+ 	gameImg: String
  });
 var RatingSchema = new Schema({
 	userId: Number,
@@ -52,7 +53,8 @@ var UserSchema = new Schema({
 		width: Number,
 		height: Number
 	},
-	ratings: [RatingSchema]
+	ratings: [RatingSchema],
+	comments: [CommentSchema]
 });
 
 UserSchema.plugin(ai.plugin, 'User');

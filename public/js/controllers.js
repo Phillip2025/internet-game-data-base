@@ -138,12 +138,22 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 			comment.user = $rootScope.user.user;
 			comment.picture = $rootScope.user.picture.url;
 			comment.text = $scope.comment.text;
-			console.log(JSON.stringify(comment));
+			comment.gameImg = $rootScope.game.images.boxart.front.url;
+			//console.log(JSON.stringify(comment));
 			$http.post('games/' + $rootScope.game._id + '/comments', comment)
 			.success(function(game) {
-				console.log("Comentario añadido con exito");
-				$scope.comment = {};
+				console.log("Comentario añadido con exito en game");
 				$rootScope.game = game;
+				console.log("en game"+JSON.stringify(comment));
+				$http.post('users/' + $rootScope.user._id + '/comments', comment)
+				.success(function(user){
+					console.log("en user"+JSON.stringify(comment));
+					console.log("Comentario añadido con exito en user");
+					$rootScope.user = user;
+				})
+				.error(function(err){
+					console.log(err);
+				})
 				$location.path('/games/' + $rootScope.game._id);
 			})
 			.error(function(err) {
@@ -256,7 +266,8 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 			$rootScope.numPerPage = 6;
 			$rootScope.maxSize = 5;
 			$rootScope.ratedPage = [];
-			console.log($rootScope.profileUser.ratings.length);
+			$rootScope.userComments = user.comments.slice(-3, user.comments.length);
+			//console.log($rootScope.profileUser.ratings.length);
 			$rootScope.$watch("currentPage + numPerPage", function() {
 				var begin = (($rootScope.currentPage - 1) * $rootScope.numPerPage);
 				var end = begin + $rootScope.numPerPage;
