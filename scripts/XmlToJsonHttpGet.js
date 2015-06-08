@@ -6,8 +6,8 @@ var fs = require('fs');
 
 var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
-var getsPorCiclo = 2;
-var tiempoEntreCiclos = 10000;
+var getsPorCiclo = 40;
+var tiempoEntreCiclos = 1000;
 var idLimite = 1;
 var total = 0;
 var dataBase;
@@ -101,7 +101,7 @@ function saveGamebyId(id) {
 
 	var options = {
 		url: 'http://www.thegamesdb.net/api/GetGame.php?id=' + id,
-		proxy: 'http://lupus.sia.es:8080'
+		/*proxy: 'http://lupus.sia.es:8080'*/
 	};
 	request(options, function(err, res, body) {
 		console.log("Obtenida respuesta " + res.statusCode + " para el id " + id);
