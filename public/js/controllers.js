@@ -2,6 +2,7 @@ var controllers = angular.module('controllers', []);
 		
 controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP, players, genres) {
 	
+	$scope.comment = {};
 	$scope.search = {};
 	$rootScope.esrbENG = esrbENG;
 	$rootScope.players = players;
