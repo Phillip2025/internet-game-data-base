@@ -8,7 +8,7 @@ var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
 var getsPorCiclo = 40;
 var tiempoEntreCiclos = 1000;
-var idLimite = 1;
+var idLimite = 27000;
 var total = 0;
 var dataBase;
 var coll;
