@@ -34,6 +34,10 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhD
 	.state('platform',{
 		url: '/platforms/:id',
 		templateUrl: 'platform.html'
+	})
+	.state('soulmates', {
+		url: '/soulmates/:id',
+		templateUrl: 'soulmates.html'
 	});
 
 	$translateProvider

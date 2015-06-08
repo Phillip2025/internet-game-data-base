@@ -45,6 +45,7 @@ require('./server/routers/search.router')(app);
 require('./server/routers/users.router')(app);
 require('./server/routers/platforms.router')(app);
 require('./server/routers/uploads.router')(app);
+require('./server/routers/soulmates.router')(app);
 
 app.listen(config.port);
 

@@ -703,3 +703,24 @@ controllers.controller('uploadController', ['$scope', 'Upload', '$rootScope' ,fu
 	};
 	$scope.folders = ['boxartfront', 'boxartback', 'logo', 'banner', 'screenshot', 'fanart'];
 }]);
+
+controllers.controller('soulMatesController', function ($scope, $rootScope, $http, $location) {
+
+	$scope.soulMates = {};
+
+	$scope.findGames = function (id) {
+		console.log("Solicitando recomendaciones");
+		$http.get('/soulmates/' + id)
+		.success(function(soulmates) {
+			console.log(soulmates);
+			$scope.soulMates = soulmates;
+		})
+		.error(function(err, status) {
+			var msg = "User no encontrado";
+			if (status == 400) {
+				msg = "No existen almas gemelas";
+			}
+		});
+	};
+
+});

@@ -1,0 +1,7 @@
+<div ng-controller="soulMatesController" data-ng-init="findGames($root.user._id)">
+	<h3 class="text-center">{{'SOUL_MATES.TITLE' | translate}}</h3>
+	<div class="animate-repeat" data-ng-repeat="mate in soulMates">
+		<h3>{{mate.user}} te recomienda:</h3>
+		<div inline-thumb class="animate-repeat" data-ng-repeat="game in mate.games">
+	</div>	
+</div>
