@@ -35,28 +35,28 @@
 </head>
 <body>
 	<div class="container">
-		<header class="row vertical-align jumbotron">
-			<div data-ng-controller="gameController" class="flags col-md-10 col-xs-12">
+		<header class="row">
+			<div data-ng-controller="gameController" class="col-md-8 col-xs-12">
 				<h2><a href="#" ui-sref="home"><img class="col-md-3 col-xs-12" src="img/logotipo.png"><img class="col-md-9 col-xs-12" src="img/textocabecera1.png"></a>
 					<small data-ng-controller="countController" data-ng-init="getCount()">{{'SLOGAN_1' | translate}} {{count}} {{'SLOGAN_2' | translate}}</small>
 				</h2>
 			</div>
-			<div class="col-md-12">
-                <ul class="social-network social-circle">
-                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-                </ul>				
+			<div class="lateral col-xs-12 col-md-4">
+				<div class="col-xs-6 col-md-offset-3 col-md-9 ">
+	                <ul class="social-network social-circle">
+	                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+	                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+	                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+	                </ul>
+                </div>
+                <div data-ng-controller="translationController" class="col-xs-6 col-md-offset-4 col-md-8 flags">
+					<img class="col-xs-3" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
+					<img class="col-xs-3" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
+					<img class="col-xs-3" data-ng-src="img/flag_fr.png" data-ng-click="changeLanguage('fr')">
+					<img class="col-xs-3" data-ng-src="img/flag_de.png" data-ng-click="changeLanguage('de')">
+				</div>				
 			</div>
-			<div class="cierre"></div>
 		</header>
-		<div data-ng-controller="translationController" class="flags col-xs-offset-9 col-xs-4 col-sm-offset-11 col-sm-2 col-md-offset-10 col-md-2">
-				<img class="col-md-5 col-xs-10 col-sm-8" data-ng-src="img/flag_es.png" data-ng-click="changeLanguage('es')">
-				<img class=" col-md-5 col-xs-10 col-sm-8" data-ng-src="img/flag_en.png" data-ng-click="changeLanguage('en')">
-				<img class=" col-md-5 col-xs-10 col-sm-8" data-ng-src="img/flag_fr.png" data-ng-click="changeLanguage('fr')">
-				<img class=" col-md-5 col-xs-10 col-sm-8" data-ng-src="img/flag_de.png" data-ng-click="changeLanguage('de')">
-			</div>
-			<div class="cierre"></div>
 		<nav class="navbar navbar-default">
 			<div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -70,13 +70,13 @@
 			<ul class="nav navbar-nav">
 				<li ui-sref-active="active" ui-sref="home"><a href="#">{{'NAV.GAMES' | translate}}</a></li>
 				<li ui-sref-active="active" ui-sref="platforms"><a href="#">{{'NAV.PLATFORMS' | translate}}</a></li>
-				<li ui-sref-active="active" ui-sref="api"><a href="#">{{'NAV.API' | translate}}</a></li>
 				<li ui-sref-active="active" ui-sref="soulmates"><a href="#">{{'NAV.SOUL_MATES' | translate}}</a></li>
+				<li ui-sref-active="active" ui-sref="api"><a href="#">{{'NAV.API' | translate}}</a></li>
 			</ul>
 			<form data-ng-controller="gameController" class="buscador navbar-form navbar-left">
 				<div class="form-group">
-					<input class="form-control" data-ng-model="search.term" ui-autocomplete="autoComplete" type="text" placeholder="{{'NAV.SEARCH_PLACEHOLDER' | translate}}"/>
-					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-default pull-right"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+					<input class=" input-sm form-control" data-ng-model="search.term" ui-autocomplete="autoComplete" type="text" placeholder="{{'NAV.SEARCH_PLACEHOLDER' | translate}}"/>
+					<button data-ng-click="getGamesByTerm()" id="submitsearch" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 				</div>
 			</form>
 		
@@ -103,15 +103,15 @@
 					</ul>
 				</li>
 				<li data-ng-if="$root.user">
-					<p class="info-usuario">{{'NAV.WELCOME' | translate}} {{user.user}}</p>
+					<p class="text-center info-usuario">{{'NAV.WELCOME' | translate}} {{user.user}}</p>
 				</li>
 				<li data ng-if="!$root.user">
 					<form class="navbar-form form-inline">
 						<div class="form-group form-login-navbar">
-							<input class="form-control inputs-log" data-ng-model="credentials.user" type="text" placeholder="{{'USER.USERNAME' | translate}}" required />
-							<input class="form-control inputs-log" data-ng-model="credentials.password" type="password" placeholder="{{'USER.PASSWORD' | translate}}" required />
-							<button data-ng-click="login()" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-							<button class="btn btn-default pull-right" data-ng-click="openNewUser()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+							<input class="form-control inputs-log input-sm" data-ng-model="credentials.user" type="text" placeholder="{{'USER.USERNAME' | translate}}" required />
+							<input class="form-control inputs-log input-sm" data-ng-model="credentials.password" type="password" placeholder="{{'USER.PASSWORD' | translate}}" required />
+							<button data-ng-click="login()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+							<button class="btn btn-sm btn-default" data-ng-click="openNewUser()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
 						</div>
 						<alert ng-repeat="alert in loginAlerts" type="{{alert.type}}" close="close(loginAlerts)">{{alert.msg}}</alert>
 					</form>

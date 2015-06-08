@@ -88,6 +88,7 @@ var translationsES = {
 	NAV: {
 		GAMES: "Juegos",
 		PLATFORMS: "Plataformas",
+		SOUL_MATES: "Almas gemelas",
 		API: "Json Api",
 		ABOUT: "Sitio web inspirado por thegamesdb.net. Felipe Murillo - Rafael Morena - Mario Arranz",
 		SEARCH_PLACEHOLDER: "Busca tu juego",
@@ -193,6 +194,10 @@ var translationsES = {
 			INTRO: "Dentro de users tenemos varios usos del API:",
 			GET_USER: "Devuelve la información de un usuario dado su id. Contiene sus datos proporcionados, sus comentarios y sus votaciones. Por ejemplo:"
 		}
+	},
+	SOUL_MATES: {
+		TITLE: "Juegos recomendados por usuarios con gustos similares",
+		RECOMMENDS: "te sugiere jugar a:"
 	}
 };
 
@@ -202,6 +207,7 @@ var translationsEN = {
 	NAV: {
 		GAMES: "Games",
 		PLATFORMS: "Platforms",
+		SOUL_MATES: "Soulmates",
 		API: "Json Api",
 		ABOUT: "Website inspired in thegamesdb.net. Felipe Murillo - Rafael Morena - Mario Arranz",
 		SEARCH_PLACEHOLDER: "Search your game",
@@ -307,6 +313,10 @@ var translationsEN = {
 			INTRO: "Inside users we have several uses of our API:",
 			GET_USER: "Returns information of an user, using its id as parameter, including their public data, comments and ratings, for example:"
 		}
+	},
+	SOUL_MATES: {
+		TITLE: "Suggested games from users with similar tastes",
+		RECOMMENDS: "suggests you to play:"
 	}
 };
 
@@ -316,6 +326,7 @@ var translationsFR = {
 	NAV: {
 		GAMES: "Jeux",
 		PLATFORMS: "Platformes",
+		SOUL_MATES: "Âmes soeurs",
 		API: "Json Api",
 		ABOUT: "Site inspiré dans thegamesdb.net. Felipe Murillo - Rafael Morena - Mario Arranz",
 		SEARCH_PLACEHOLDER: "Cherchez dans votre jeu",
@@ -421,6 +432,10 @@ var translationsFR = {
 			INTRO: "Dans utilisateurs, nous ont plusieurs utilisations de notre API:",
 			GET_USER: "Renvoie les informations d'un utilisateur, en utilisant son id en tant que paramètre, y compris leurs données publiques et commentaires, par exemple:"
 		}
+	},
+		SOUL_MATES: {
+		TITLE: "Jeux proposés des utilisateurs avec des goûts similaires",
+		RECOMMENDS: "suggère de jouer:"
 	}
 };
 
@@ -430,6 +445,7 @@ var translationsDE = {
 	NAV: {
 		GAMES: "Videospielen",
 		PLATFORMS: "Plattforms",
+		SOUL_MATES: "Seelenverwandten",
 		API: "Json Api",
 		ABOUT: "Webseite in thegamesdb.net inspiriert Felipe Murillo - Rafael Morena - Mario Arranz",
 		SEARCH_PLACEHOLDER: "Suchen Sie Ihr Videopiel",
@@ -535,5 +551,9 @@ var translationsDE = {
 			INTRO: "Inside Benutzer wir haben einigen Gebrauch unserer API:",
 			GET_USER: "Gibt Informationen eines Benutzers, mit seiner ID als Parameter, einschließlich ihrer öffentlichen Daten, Kommentare und Bewertungen, zum Beispiel:"
 		}
+	},
+		SOUL_MATES: {
+		TITLE: "Spielvorschläge von Nutzern mit ähnlichen Geschmack",
+		RECOMMENDS: "schlägt vor spielen:"
 	}
 };

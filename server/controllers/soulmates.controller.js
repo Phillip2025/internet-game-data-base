@@ -50,33 +50,30 @@ exports.findGames = function(req, res) {
 					mate.user = user.user;
 					mate.picture = user.picture;
 					mate.games = [];
-					//bucle sincrono para ver si el user 
-					//tiene juegos por encima de la nota de corte
+	
 					for (var j = 0; j < user.ratings.length; j++) {
 						var rate = user.ratings[j];
 						if (rate.rate >= 8) {
 							highRates = true;
-							break;
+							//mapeo de datos de inline-thumb
+							var game = {};
+							game._id = rate.gameId;
+							game.gameTitle = rate.gameTitle;
+							game.images = {};
+							game.images.boxart = {};
+							game.images.boxart.front = {};
+							game.rating = rate.rate;
+							game.images.boxart.front.url = rate.gameImg;
+							mate.games.push(game);
 						}
 					}
 					if (highRates) {
 						soulmates.push(mate);
-						for (var k = 0; k < user.ratings.length; k++) {
-							var rate = user.ratings[k];
-							if (rate.rate >= 8) {
-								Game.findById(rate.gameId, function (err, game) {
-									mate.games.push(game);
-								});
-							}
-						}
 					}
 				}
 			}
-			//timeout para esperar a que acabe de leer
-			//de la bbdd (malditos callbacks)
-			setTimeout( function(){
             res.json(soulmates);
-        }, 1000 );
+
 		});
 	});
 };
