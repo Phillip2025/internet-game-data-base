@@ -55,19 +55,13 @@ exports.logIn = function(req, res, next) {
 
 exports.signUp = function(req, res) {
 	console.log("Usuario registrandose");
-	var user = req.body;
+	var user = new User(req.body);
 	console.log(user.user);
 	console.log(user.password);
-	console.log(user.confirm)
+	console.log(user.confirm);
 	console.log(user.mail);
-	if (user.password === user.confirm){
-		var user = new User({user: user.user,
-							password: user.password,
-							name: user.name,
-							surname: user.surname,
-							mail: user.mail,
-							picture: user.picture});
-		console.log(user)
+	if (user.password === req.body.confirm){
+		console.log(user);
 		User.findOne({'user': user.user}, function (err, user) {
 			if (err) {
 				return res.status(500).send({
@@ -101,7 +95,7 @@ exports.signUp = function(req, res) {
 	}
 	else {
 		return res.status(400).send({
-			message: "Las contraseñas deben coincidir"})
+			message: "Las contraseñas deben coincidir"});
 	}
 };
 
@@ -128,7 +122,7 @@ exports.updateUser = function(req, res) {
 	}
 	else {
 		return res.status(400).send({
-			message: "Las contraseñas deben coincidir"})
+			message: "Las contraseñas deben coincidir"});
 	}
 };
 

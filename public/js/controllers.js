@@ -552,6 +552,12 @@ controllers.controller('translationController', ['$translate', '$scope', 'tmhDyn
 		else if (langKey === 'es') {
 			tmhDynamicLocale.set('es-es');
 		}
+		else if (langKey === 'fr') {
+			tmhDynamicLocale.set('fr-fr');
+		}
+		else if (langKey === 'de') {
+			tmhDynamicLocale.set('de-de');
+		}
 	};
 
 }]);
