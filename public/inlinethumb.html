@@ -1,4 +1,4 @@
-<div ng-click="$parent.getGameById(game._id)" class="media col-md-5">
+<div ng-click="$parent.getGameById(game._id)" class="media col-md-3 col-sm-5 col-xs-12">
   <div class="media-left">
     <a href="#">
       <img class="media-object" ng-src="{{game.images.boxart.front.url}}" alt="Portada de:{{game.gameTitle}}">
@@ -8,6 +8,6 @@
     <h4 class="media-heading">
     	<a href="#">{{game.gameTitle}}</a>
     </h4>
-    <p>Plataforma: {{game.platform}}</p><p>Rating: {{game.rating}}</p>
+    <p>Plataforma: {{game.platform}}</p><p>Rating: {{game.rating | number:2}}</p>
   </div>
 </div>

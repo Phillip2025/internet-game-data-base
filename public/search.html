@@ -1,6 +1,6 @@
 <div ng-controller="gameController">
 	<h3 data-ng-if="$root.term">{{'RELATED_GAMES' | translate}} {{term}}: {{$root.totalItems}} encontrados</h3>
-	<div inline-thumb ng-repeat="game in gamesPage"></div>
+	<div inline-thumb ng-repeat="game in gamesPage" class="col-sm-offset-1 col-md-offset-0"></div>
 	<div class="row text-center">
 		<pagination ng-model="$root.currentPage" ng-changed="changed()" previous-text="{{'PAGINATION.PREVIOUS' | translate}}" next-text="{{'PAGINATION.NEXT' | translate}}" items-per-page="$root.numPerPage" total-items="$root.totalItems"></pagination>
 	</div>

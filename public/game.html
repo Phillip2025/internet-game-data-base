@@ -97,14 +97,15 @@
 			<p><span>{{'GAME.COMMENTS' | translate}}:</span></p>
 			<div data-ng-repeat="comment in game.comments" class="list-unstyled comentarios">
 				<div class="comentario col-md-11 thumbnail col-sm-11">
-					<div data-ng-click="getUserById(comment.userId)" class="col-md-2 col-sm-4">
-						<img data-ng-src="{{comment.picture}}"/>
+					<div data-ng-click="getUserById(comment.userId)" class="col-md-3 col-sm-3 col-xs-6">
+						<img data-ng-src="{{comment.picture}}" class="col-xs-12 col-md-12 col-sm-12"/>
 					</div>
-					<div class="col-md-9 col-md-offset-1">
+					<div class="col-md-8 col-xs-offset-0 col-xs-12 col-sm-9">
 						<span><p>{{comment.user}} escribió:</p> 
 						<p>{{comment.text}}</p>
 						<p>{{comment.created | date:'short'}}</p></span>
 					</div>
+					<div class="cierre"></div>
 				</div>
 				<div class="col-md-1 col-sm-1" data-ng-if="$root.user._id == comment.userId" data-ng-click="deleteComment(game._id, comment._id)">
 					<p><icono class="glyphicon glyphicon-remove" aria-hidden="true"></icono></p>
