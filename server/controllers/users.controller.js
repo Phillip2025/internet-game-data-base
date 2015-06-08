@@ -114,16 +114,9 @@ exports.logout = function(req, res) {
 exports.updateUser = function(req, res) {
 	console.log("Peticion de update");
 	console.log(req.body);
-	var user = req.body;
+	var user = new User(req.body);
 	console.log(user);
-	if (user.password === user.confirm){
-		var user = new User({user: user.user,
-							password: user.password,
-							name: user.name,
-							surname: user.surname,
-							mail: user.mail,
-							picture: user.picture});
-		
+	if (user.password === req.body.confirm){
 		User.findOneAndUpdate({_id: user._id}, user, function (err) {
 			if (err) {
 				return res.status(500).send({
@@ -185,6 +178,7 @@ exports.addRatingUser = function (req, res){
 	}
 	user.save(function(err){
 		if (err){
+			console.log(err);
 			return res.status(500).send({
 				message: 'Error interno del servidor'
 			});

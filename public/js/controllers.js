@@ -326,6 +326,9 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 				})
 				.error(function(err, status) {
 					var msg = 'Ocurrió un error';
+					if (status == 400) {
+						msg = "Las contraseñas deben coincidir"
+					}
 					$scope.alerts[0] = {type: 'danger', msg: msg};
 				});
 		}
