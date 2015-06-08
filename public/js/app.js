@@ -39,6 +39,8 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhD
 	$translateProvider
 	.translations('es', translationsES)
 	.translations('en', translationsEN)
+	.translations('fr', translationsFR)
+	.translations('de', translationsDE)
 	.preferredLanguage('es')
 	.useSanitizeValueStrategy(null);
 
