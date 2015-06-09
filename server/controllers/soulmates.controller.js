@@ -44,7 +44,10 @@ exports.findGames = function(req, res) {
 			var soulmates = [];
 			for (var i = 0; i < users.length; i++) {
 				var user = users[i];
-				if (user._id !== req.params.userId) {
+				console.log("user id:" + user._id);
+				console.log("params id:" + req.params.userId);
+				if (user._id != req.params.userId) {
+					console.log("Entrando con " + user._id + " y " + req.params.userId);
 					var highRates = false;
 					var mate = {};
 					mate.user = user.user;
@@ -71,6 +74,11 @@ exports.findGames = function(req, res) {
 						soulmates.push(mate);
 					}
 				}
+			}
+			if (soulmates.length === 0) {
+				return res.status(400).send({
+					message: "No se encontraron almas gemelas"
+				});
 			}
             res.json(soulmates);
 

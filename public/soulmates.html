@@ -1,5 +1,6 @@
 <div ng-controller="soulMatesController" data-ng-init="findGames($root.user._id)">
 	<h3 class="text-center">{{'SOUL_MATES.TITLE' | translate}}</h3>
+	<alert class="col-xs-12 col-md-offset-4 col-md-4" ng-repeat="alert in alerts" type="{{alert.type}}" close="close(alerts)">{{alert.msg}}</alert>
 	<div ng-controller="gameController" class="animate-repeat" data-ng-repeat="mate in soulMates | limitTo:10">
 		<h3>{{mate.user}} {{'SOUL_MATES.RECOMMENDS' | translate}}</h3>
 		<div thumb data-ng-repeat="game in mate.games | limitTo:6">

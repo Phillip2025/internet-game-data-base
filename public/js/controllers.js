@@ -707,6 +707,7 @@ controllers.controller('uploadController', ['$scope', 'Upload', '$rootScope' ,fu
 controllers.controller('soulMatesController', function ($scope, $rootScope, $http, $location) {
 
 	$scope.soulMates = {};
+	$scope.alerts = [];
 
 	$scope.findGames = function (id) {
 		console.log("Solicitando recomendaciones");
@@ -716,10 +717,11 @@ controllers.controller('soulMatesController', function ($scope, $rootScope, $htt
 			$scope.soulMates = soulmates;
 		})
 		.error(function(err, status) {
-			var msg = "User no encontrado";
+			var msg = "Error interno de servidor";
 			if (status == 400) {
 				msg = "No existen almas gemelas";
 			}
+			$scope.alerts[0] = {type: 'warning', msg: msg};
 		});
 	};
 
