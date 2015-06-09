@@ -58,39 +58,41 @@ exports.signUp = function(req, res) {
 	var user = new User(req.body);
 	console.log(user.user);
 	console.log(user.password);
-	console.log(user.confirm);
+	console.log(req.body.confirm);
 	console.log(user.mail);
 	if (user.password === req.body.confirm){
 		console.log(user);
-		User.findOne({'user': user.user}, function (err, user) {
+		User.findOne({'user': user.user}, function (err, oldUser) {
 			if (err) {
 				return res.status(500).send({
 					message: "Error interno"
 				});
 			}
-			else if (user) {
+			else if (oldUser) {
 				return res.status(400).send({
 					message: "Ya existe el usuario"
 				});
 			}
-		});
-		// Then save the user
-		user.save(function(err, user) {
-			if (err) {
-				return res.status(500).send({
-					message: "Error interno"
-				});
-			} else {
-				user.password = undefined;
-				req.login(user, function(err) {
-					console.log("Usuario en la request");
-					if (err) {
-						res.status(400).send(err);
-					} else {
-						res.json(user);
-					}
-				});
-			}
+			console.log("Guardando");
+			// Then save the user
+			user.save(function(err, user) {
+				if (err) {
+					console.log(err);
+					return res.status(500).send({
+						message: "Error interno"
+					});
+				} else {
+					user.password = undefined;
+					req.login(user, function(err) {
+						console.log("Usuario en la request");
+						if (err) {
+							res.status(400).send(err);
+						} else {
+							res.json(user);
+						}
+					});
+				}
+			});
 		});
 	}
 	else {
