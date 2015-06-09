@@ -1,5 +1,5 @@
 //declaracion de app y sus dependencias
-var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap', 'ui.autocomplete', 'pascalprecht.translate', 'tmh.dynamicLocale', 'ngFileUpload', 'youtube-embed']);  
+var app = angular.module('igdbAngular', ['ui.router', 'controllers', 'directives', 'ngAnimate', 'ui.bootstrap', 'ui.autocomplete', 'pascalprecht.translate', 'tmh.dynamicLocale', 'ngFileUpload', 'youtube-embed', 'cgBusy']);  
 
 //state provider
 app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhDynamicLocaleProvider) {
@@ -62,6 +62,12 @@ app.run(function ($rootScope, $location, $http) {
         	console.log("Error: " + err);
         });
 });
+
+/*app.value('cgBusyDefaults',{
+  message:'{{\'SOUL_GAMES.LOADING\' | translate}}',
+  backdrop: true,
+  //templateUrl: 'my_custom_template.html',
+});*/
 
 app.constant('esrbENG', 
 	['T - Teen','M - Mature','E - Everyone','E10+ - Everyone 10+','RP - Rating Pending','EC - Early Childhood']
@@ -197,6 +203,7 @@ var translationsES = {
 	},
 	SOUL_MATES: {
 		TITLE: "Juegos recomendados por usuarios con gustos similares",
+		LOADING: "Cargando almas gemelas",
 		RECOMMENDS: "te sugiere jugar a:"
 	}
 };
@@ -316,6 +323,7 @@ var translationsEN = {
 	},
 	SOUL_MATES: {
 		TITLE: "Suggested games from users with similar tastes",
+		LOADING: "Loading soul mates",
 		RECOMMENDS: "suggests you to play:"
 	}
 };
@@ -435,6 +443,7 @@ var translationsFR = {
 	},
 		SOUL_MATES: {
 		TITLE: "Jeux proposés des utilisateurs avec des goûts similaires",
+		LOADING: "Chargement d'âmes soeurs",
 		RECOMMENDS: "suggère de jouer:"
 	}
 };
@@ -554,6 +563,7 @@ var translationsDE = {
 	},
 		SOUL_MATES: {
 		TITLE: "Spielvorschläge von Nutzern mit ähnlichen Geschmack",
+		LOADING: "Seelenverwandten laden",
 		RECOMMENDS: "schlägt vor spielen:"
 	}
 };

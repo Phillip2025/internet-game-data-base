@@ -710,8 +710,7 @@ controllers.controller('soulMatesController', function ($scope, $rootScope, $htt
 	$scope.alerts = [];
 
 	$scope.findGames = function (id) {
-		console.log("Solicitando recomendaciones");
-		$http.get('/soulmates/' + id)
+		$scope.loading = $http.get('/soulmates/' + id)
 		.success(function(soulmates) {
 			console.log(soulmates);
 			$scope.soulMates = soulmates;
