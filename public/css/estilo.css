@@ -376,6 +376,7 @@ a.socialIcon:hover, .socialHoverClass {
 	.item-game .panel-body{
 		min-height: 300px;
 		max-height: 300px;
+		overflow: hidden;
 	}
 	.item-platform .panel-heading{
 		max-height: 50px;
