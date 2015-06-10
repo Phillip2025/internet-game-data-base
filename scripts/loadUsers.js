@@ -13,18 +13,19 @@ var gameNames = new Array(27000);
 con diferentes juegos y diferentes notas hasta llegar al 
 limite de usuarios marcado
 */
+
 MongoClient.connect(url, function(err, db) {
 	coll = db.collection('games');
 	coll.find().toArray(function(err, games) {
 		for (var i = 0; i < games.length; i++) {
-			gameNames[games[i]._id] = games[i].gameTitle;
+			var pos = games[i]._id;
+			gameNames[pos] = games[i].gameTitle;
 		}
 		//damos tiempo a cargar el array
 		setTimeout(function () {
-			console.log(gameNames);
 			coll = db.collection('users');
 			var users = JSON.parse(fs.readFileSync('100users.json', 'utf8'));
-			//processUser(minId, users);
+			processUser(minId, users);
 		}, 1000);
 	});
 });

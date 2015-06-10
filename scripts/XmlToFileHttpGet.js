@@ -1,10 +1,11 @@
 var http = require('http');
 var fs = require('fs');
+var request = require('request');
 
 var id = 0;
 var getsPorCiclo = 10;
-var tiempoEntreCiclos = 1000;
-var idLimite = 5000;
+var tiempoEntreCiclos = 2000;
+var idLimite = 27000;
 var total = 0;
 var file = 'gamesxml.txt';
 
@@ -30,23 +31,27 @@ function procesar(id, totalAProcesar, callback) {
 }
 
 function saveGamebyId(id) {
-	var getOptions = {
-		host: "thegamesdb.net",
-		path: "/api/GetGame.php?id=" + id
+
+	var options = {
+		url: 'http://www.thegamesdb.net/api/GetGame.php?id=' + id,
+		/*proxy: 'http://lupus.sia.es:8080'*/
 	};
-	http.get(getOptions, function(res) {
-	  	console.log("Obtenida respuesta " + res.statusCode + " para el id " + id);
-	  	var xml = "";
-	  	res.on("data", function(body) {
-	  		xml += body;
-	  	});
-	  	res.on("end", function() {
-	  		xml = xml.replace(/(?:\r\n|\r|\n)/g, '');
+	request(options, function(err, res, xml) {
+		console.log("Obtenida respuesta " + res.statusCode + " para el id " + id);
+		if (err) {
+			console.log(err);
+		}
+		else {
+			var options = {
+	    		mergeAttrs: true,
+	    		charkey: "url"
+	    	};
+	    	xml = xml.replace(/(?:\r\n|\r|\n)/g, '');
 	  		xml += "\n"
 	  		fs.appendFileSync(file, xml);
 	  		console.log("Guardado juego con id " + id);
 	  		total++;
-		});
+		}
 	}).on('error', function(e) {
 	  console.log("Error en peticion get de id " + id + ": " + e.message);
 	});

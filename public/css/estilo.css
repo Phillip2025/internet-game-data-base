@@ -205,14 +205,14 @@ body{
 		color:black;
 	}
 	.green-rating { 
-		height: 1.5em;
-		width: 1.5em;
+		height: 1em;
+		width: 1em;
 		background-size: contain;
 		background-image: url("../img/green.png");
 	}
 	.black-rating {
-		height: 1.5em;
-		width: 1.5em;
+		height: 1em;
+		width: 1em;
 		background-size: contain;
 		background-image: url("../img/black.png");
 	}

@@ -53,7 +53,8 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhD
 
 });
 
-app.run(function ($rootScope, $location, $http) {
+app.run(function ($rootScope, $location, $http, tmhDynamicLocale) {
+	tmhDynamicLocale.set('es-es');
     $http.get('/confirmlogin')
         .success(function (user) {
         	$rootScope.user = user;
