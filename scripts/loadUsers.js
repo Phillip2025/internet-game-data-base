@@ -13,7 +13,6 @@ var gameNames = new Array(27000);
 con diferentes juegos y diferentes notas hasta llegar al 
 limite de usuarios marcado
 */
-
 MongoClient.connect(url, function(err, db) {
 	coll = db.collection('games');
 	coll.find().toArray(function(err, games) {

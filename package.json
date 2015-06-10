@@ -22,6 +22,7 @@
     "passport": "latest",
     "passport-local": "latest",
     "request": "^2.55.0",
+    "sync-request": "^2.0.1",
     "xml2js": "latest"
   }
 }
