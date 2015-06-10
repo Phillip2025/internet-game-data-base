@@ -450,3 +450,8 @@ a.socialIcon:hover, .socialHoverClass {
 		margin-right: 25%;
 	}
 }
+@media (min-width: 100px){
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a{
+		color: white;
+	}
+}
