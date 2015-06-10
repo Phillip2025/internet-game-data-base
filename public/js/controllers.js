@@ -155,6 +155,7 @@ controllers.controller('gameController', function ($scope, $rootScope, $http, $l
 					console.log(err);
 				})
 				$location.path('/games/' + $rootScope.game._id);
+				$scope.comment.text = "";
 			})
 			.error(function(err) {
 				console.log(err);
