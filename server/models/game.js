@@ -173,7 +173,7 @@ var GameSchema = new Schema({
 	}
 });
 
-GameSchema.plugin(ai.plugin, {model: 'Game', startAt: 27000});
+GameSchema.plugin(ai.plugin, {model: 'Game', startAt: 50000});
 CommentSchema.plugin(ai.plugin, {model: 'Comment'});
 RatingSchema.plugin(ai.plugin, {model: 'Rating'});
 mongoose.model('Game', GameSchema);
