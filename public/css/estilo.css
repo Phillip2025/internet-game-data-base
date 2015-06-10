@@ -7,6 +7,7 @@ body{
 		font-family: 'Roboto', sans-serif;
 		/*font-family: underwood_champion;*/
 	}
+	.ui-menu{overflow: scroll;}
 	.vertical-align {
     	display: inline-block;
     	vertical-align: middle;
