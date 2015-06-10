@@ -6,6 +6,7 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhD
 
 	$urlRouterProvider.otherwise('/');
 
+	//configuracion de estados
 	$stateProvider
 	.state('home', {
 		url: '/',
@@ -40,6 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhD
 		templateUrl: 'soulmates.html'
 	});
 
+	//configuracion de traducciones
 	$translateProvider
 	.translations('es', translationsES)
 	.translations('en', translationsEN)
@@ -48,11 +50,16 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider, tmhD
 	.preferredLanguage('es')
 	.useSanitizeValueStrategy(null);
 
+	//localizacion de ficheros de locale
 	tmhDynamicLocaleProvider
 	.localeLocationPattern('js/ext/angular-locale_{{locale}}.js');
 
 });
 
+/*
+Al cargar, esta funcion comprueba si el usuario ya tiene una sesion en el 
+navegador, logea a su usuario y pone la locale ES por defecto
+*/
 app.run(function ($rootScope, $location, $http, tmhDynamicLocale) {
 	tmhDynamicLocale.set('es-es');
     $http.get('/confirmlogin')
@@ -64,11 +71,7 @@ app.run(function ($rootScope, $location, $http, tmhDynamicLocale) {
         });
 });
 
-/*app.value('cgBusyDefaults',{
-  message:'{{\'SOUL_GAMES.LOADING\' | translate}}',
-  backdrop: true,
-  //templateUrl: 'my_custom_template.html',
-});*/
+//Constantes
 
 app.constant('esrbENG', 
 	['T - Teen','M - Mature','E - Everyone','E10+ - Everyone 10+','RP - Rating Pending','EC - Early Childhood']
@@ -88,6 +91,8 @@ app.constant('genres',
 			'Puzzle','Strategy','Stealth','Sports','Construction and Management Simulation',
 			'Vehicle Simulation','Life Simulation','Music']
 );
+
+//Objetos de traducciones
 
 var translationsES = {
 	SLOGAN_1: "Contamos con ",

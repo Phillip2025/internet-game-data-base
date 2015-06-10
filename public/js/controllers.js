@@ -1,5 +1,7 @@
 var controllers = angular.module('controllers', []);  
-		
+
+
+
 controllers.controller('gameController', function ($scope, $rootScope, $http, $location, esrbENG, esrbESP, players, genres) {
 	
 	$scope.comment = {};
@@ -683,10 +685,10 @@ controllers.controller('uploadController', ['$scope', 'Upload', '$rootScope' ,fu
 					if (path === 'boxartfront') {
 						$rootScope.updateGame.images.boxart.front = data;
 					}
-					if (path === 'banner') {
+					if (path === 'boxartback') {
 						$rootScope.updateGame.images.boxart.back = data;
 					}
-					if (path === 'banner') {
+					if (path === 'logo') {
 						$rootScope.updateGame.images.clearlogo = data;
 					}
 					if (path === 'banner') {
