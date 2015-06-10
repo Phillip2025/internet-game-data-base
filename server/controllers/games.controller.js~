@@ -65,7 +65,7 @@ exports.updateGame = function(req, res) {
 	var game = new Game(req.body);
 	//fix linux: borramos el id para insertar
 	game._id = undefined;
-	Game.findOneAndUpdate({_id: req.body._id}, game, function (err) {
+	Game.findOneAndUpdate({_id: req.body._id}, game, {upsert:true}, function (err) {
 		if (err) {
 			console.log(err);
 			return res.status(500).send({

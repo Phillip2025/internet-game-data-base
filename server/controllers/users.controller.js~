@@ -116,7 +116,7 @@ exports.updateUser = function(req, res) {
 	if (user.password === req.body.confirm){
 		//fix linux: borramos el id para insertar
 		user._id = undefined;
-		User.findOneAndUpdate({_id: req.body._id}, user, function (err) {
+		User.findOneAndUpdate({_id: user._id}, user, function (err) {
 			if (err) {
 console.log(err);
 				return res.status(500).send({
