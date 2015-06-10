@@ -450,8 +450,8 @@ controllers.controller('adminController', function ($scope, $rootScope, $http, $
 			console.log("Aqui deberia cargar el formulario de registro");
 		} else {
 			if($rootScope.user.role == 'Admin') {
-				console.log("Root: " + JSON.stringify($rootScope.game));
-				$http.put('/games/' + $rootScope.game._id, $rootScope.game)
+				console.log("Root: " + JSON.stringify($rootScope.updateGame));
+				$http.put('/games/' + $rootScope.updateGame._id, $rootScope.updateGame)
 				.success(function (game) {
 					$scope.modalInstance.close();
 					console.log("Updateando juego con id:" + game._id);
