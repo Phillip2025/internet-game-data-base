@@ -92,7 +92,7 @@
 	<div class="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
 		<p><span>{{'GAME.COMMENTS' | translate}}:</span></p>
 		<div data-ng-repeat="comment in game.comments" class="list-unstyled comentarios">
-			<div class="comentario col-md-11 thumbnail col-sm-11">
+			<div data-ng-controller="userController" class="comentario col-md-11 thumbnail col-sm-11">
 				<div data-ng-click="getUserById(comment.userId)" class="col-md-3 col-sm-3 col-xs-6">
 					<img data-ng-src="{{comment.picture}}" class="col-xs-12 col-md-12 col-sm-12"/>
 				</div>
