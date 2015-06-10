@@ -7,6 +7,7 @@ body{
 		font-family: 'Roboto', sans-serif;
 		/*font-family: underwood_champion;*/
 	}
+	.ui-menu{overflow: scroll;}
 	.vertical-align {
     	display: inline-block;
     	vertical-align: middle;
@@ -145,7 +146,6 @@ body{
 	}
 	.media-object{
 		width: 125px;
-		height: 100%;
 	}
 	.comentarios{
 		padding: 2%;
@@ -448,5 +448,10 @@ a.socialIcon:hover, .socialHoverClass {
 	.info-usuario{
 		margin: 2.5%;
 		margin-right: 25%;
+	}
+}
+@media (min-width: 100px){
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a{
+		color: white;
 	}
 }
