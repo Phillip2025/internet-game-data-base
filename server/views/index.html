@@ -111,8 +111,8 @@
 				<li data ng-if="!$root.user">
 					<form class="navbar-form form-inline">
 						<div class="form-group form-login-navbar">
-							<input class="form-control inputs-log input-sm" data-ng-model="credentials.user" type="text" placeholder="{{'USER.USERNAME' | translate}}" required />
-							<input class="form-control inputs-log input-sm" data-ng-model="credentials.password" type="password" placeholder="{{'USER.PASSWORD' | translate}}" required />
+							<input class="form-control inputs-log input-sm input-log" data-ng-model="credentials.user" type="text" placeholder="{{'USER.USERNAME' | translate}}" required />
+							<input class="form-control inputs-log input-sm input-log" data-ng-model="credentials.password" type="password" placeholder="{{'USER.PASSWORD' | translate}}" required />
 							<button data-ng-click="login()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 							<button class="btn btn-sm btn-default" data-ng-click="openNewUser()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
 						</div>

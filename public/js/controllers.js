@@ -263,12 +263,17 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 		.success(function(user) {
 			$rootScope.profileUser = user;
 			$rootScope.ratingsPage = user.ratings;
+			$rootScope.commentsPage = user.comments;
 			$location.path('/users/' + id);
 			$rootScope.items = user.ratings.length;
+			$rootScope.itemsComment = user.comments.length;
 			$rootScope.currentPage = 1;
 			$rootScope.numPerPage = 6;
+			$rootScope.currentPageComment = 1;
+			$rootScope.numPerPageComment = 6;
 			$rootScope.maxSize = 5;
 			$rootScope.ratedPage = [];
+			$rootScope.commentPage = [];
 			$rootScope.userComments = user.comments.slice(-3, user.comments.length);
 			//console.log($rootScope.profileUser.ratings.length);
 			$rootScope.$watch("currentPage + numPerPage", function() {
@@ -276,6 +281,12 @@ controllers.controller('userController', function ($scope, $rootScope, $http, $m
 				var end = begin + $rootScope.numPerPage;
 				//console.log("begin:"+begin+"end:"+end);
 				$rootScope.ratedPage = $rootScope.ratingsPage.slice(begin, end);
+			});
+			$rootScope.$watch("currentPageComment + numPerPageComment", function() {
+				var begin = (($rootScope.currentPageComment - 1) * $rootScope.numPerPageComment);
+				var end = begin + $rootScope.numPerPageComment;
+				//console.log("begin:"+begin+"end:"+end);
+				$rootScope.commentPage = $rootScope.commentsPage.slice(begin, end);
 			});
 			console.log($rootScope.ratedPage);
 		})
