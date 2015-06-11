@@ -274,7 +274,9 @@ body{
 		margin-top: 2em;
 	}
 
-	
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  		color: black !important;
+	}
 
 /*=========================
   Icons
@@ -364,6 +366,11 @@ a.socialIcon:hover, .socialHoverClass {
 		width: 100%;
 		height: 50px;
 	}
+
+	.dropdown-menu > li > a{
+		color: #282828;
+	}
+
 @media (min-width: 500px){
 	.dropdown-menu > li > a{
 		color: #282828;
@@ -397,6 +404,9 @@ a.socialIcon:hover, .socialHoverClass {
 
 	/*End SOCIAL ICONS*/
 
+	.dropdown-menu>li>a{
+		color: #282828;
+	}
 	
 	.comentario img{
 		width:100%;
@@ -450,8 +460,15 @@ a.socialIcon:hover, .socialHoverClass {
 		margin-right: 25%;
 	}
 }
-@media (min-width: 100px){
+
+/*@media(min-width: 765px){
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  		color: black !important;
+	}
+}*/
+
+@media (max-width: 766px){
 	.navbar-default .navbar-nav .open .dropdown-menu>li>a{
-		color: white;
+		color: white !important;
 	}
 }
