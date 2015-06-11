@@ -8,7 +8,7 @@ var url = 'mongodb://localhost:27017/igdb';
 var id = 0;
 var getsPorCiclo = 5;
 var tiempoEntreCiclos = 1000;
-var idLimite = 41;
+var idLimite = 4930;
 var total = 0;
 var dataBase;
 var coll;
@@ -69,6 +69,10 @@ function procesar(id, totalAProcesar, callback) {
 			console.log("Accediendo a la plataforma con id " + id);
 			savePlatformbyId(id);
 			id++;
+			//fix
+			if (id == 40) {
+				id = 4900;
+			}
 		} while (id <= idFin);
 		console.log("Esperando " + tiempoEntreCiclos / 1000 + " segundos a que se completen las operaciones previas");
 		setTimeout(function() {
