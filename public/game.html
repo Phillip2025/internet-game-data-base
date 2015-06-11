@@ -11,7 +11,7 @@
 					<li>{{alt}}</li>
 				</ul>
 			</li>
-			<li><span>{{'GAME.PLATFORM' | translate}}:</span>{{game.platform}}</li>
+			<li data-ng-controller="platformController"><span>{{'GAME.PLATFORM' | translate}}: </span><a href="#" data-ng-click="getPlatformById(game.platformId)">{{game.platform}}</a></li>
 			<li data-ng-if="game.similar.length !== 0"><span>{{'GAME.OTHER_PLATFORMS' | translate}}</span>
 				<ul class="col-xs-12 list-unstyled list-inline">
 					<li class="col-xs-4" data-ng-repeat="similar in game.similar"><a href="#" data-ng-click="$parent.getGameById(similar._id)"><img class="img-responsive platformIcon" data-ng-src="img/platformicons/{{similar.platformId}}.png"></a></li>

@@ -1,68 +1,58 @@
-<div class="game col-md-12" data-ng-controller="platformController">
-	<h2>{{platform.platform}}</h2>
-	<div class="row">
-		<div class="col-md-offset-1 col-md-3 col-sm-6">
-			<img ng-src="{{platform.images.boxart.back.url}}" alt="">
-		</div>
-		<div class="col-md-3">
-			<ul class="list-unstyled">
-				<li><span>{{'PLATFORM.DEVELOPER' | translate}}: </span>{{platform.developer}}</li>
-				<li><span>{{'PLATFORM.MANUFACTURER' | translate}}: </span>{{platform.manufacture}}</li>
-				<li><span>{{'PLATFORM.CPU' | translate}}: </span>{{platform.cpu}}</li>
-				<li><span>{{'PLATFORM.GRAPHICS' | translate}}: </span>{{platform.graphics}}</li>
-				<li><span>{{'PLATFORM.SOUND' | translate}}: </span>{{platform.sound}}</li>
-				<li><span>{{'PLATFORM.MEMORY' | translate}}: </span>{{platform.memory}}</li>
-				<li><span>{{'PLATFORM.MAXCONTROLLERS'| translate}}: </span>{{platform.maxControllers}}</li>
-			</ul>
-		</div>
-		<div class="cierre"></div>
-	<!--
-		<div class="col-md-4">
-			<div class="thumbnail rating form-group">
-				<p>Puntuacion : {{platform.rating.rating}}</p>
-				<rating ng-model="rate" max="max" state-on="'green-rating'" state-off="'black-rating'"></rating><span><a href="#" class="btn btn-success" role="button" data-ng-click="addRating()">Votar</a></span>
-			</div>
-		</div>
-	-->
-		<div class="col-md-6 col-sm-offset-2">
-			<img class="col-md-5 col-sm-4" ng-src="{{platform.images.consoleArt}}" alt="">
-			<img class="col-md-5 col-sm-4" ng-src="http://thegamesdb.net/banners/{{platform.images.controllerArt}}" alt="">
-		</div>
-		<div class="cierre"></div>
-		<div class="col-md-offset-1 col-md-10"><p>{{platform.overview}}</p></div>
-		<div class="col-md-10 col-md-offset-1">
-			<accordion close-others="true">
-				<accordion-group heading="{{'PLATFORM.BANNERS'|translate}}" is-open="status.isFirstOpen">
-					<div class="col-md-8 col-md-offset-2">
-						<carousel class="col-md-12" interval="interval">
-							<slide ng-repeat="banner in platform.images.banner" active="slide.active">
-								<img ng-src="{{banner.url}}">
-					            <!--<div class="carousel-caption">
-					         	   <h4>Slide {{$index+1}}</h4>
-					         	</div>-->
-					         </slide>
-					     </carousel>
-					</div>
-				</accordion-group>
-				<accordion-group heading="{{'PLATFORM.FANARTS'|translate}}">
+<div class="game col-xs-12" data-ng-controller="platformController">
+	<h2 class="text-center">{{platform.platform}}</h2>
+	<div class="col-md-offset-1 col-md-3 col-sm-6">
+		<img ng-src="{{platform.images.boxart.back.url}}" alt="">
+	</div>
+	<div class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6 col-md-4 col-lg-3">
+		<ul class="list-unstyled">
+			<li><span>{{'PLATFORM.DEVELOPER' | translate}}: </span>{{platform.developer}}</li>
+			<li><span>{{'PLATFORM.MANUFACTURER' | translate}}: </span>{{platform.manufacture}}</li>
+			<li><span>{{'PLATFORM.CPU' | translate}}: </span>{{platform.cpu}}</li>
+			<li><span>{{'PLATFORM.GRAPHICS' | translate}}: </span>{{platform.graphics}}</li>
+			<li><span>{{'PLATFORM.SOUND' | translate}}: </span>{{platform.sound}}</li>
+			<li><span>{{'PLATFORM.MEMORY' | translate}}: </span>{{platform.memory}}</li>
+			<li><span>{{'PLATFORM.MAXCONTROLLERS'| translate}}: </span>{{platform.maxControllers}}</li>
+		</ul>
+	</div>
+	<div class="col-xs-12 col-md-4">
+		<img class="col-xs-offset-2 col-xs-4 col-md-offset-3 col-md-6" ng-src="{{platform.images.consoleArt}}" alt="">
+		<img class="col-xs-4 col-md-offset-3 col-md-6" ng-src="http://thegamesdb.net/banners/{{platform.images.controllerArt}}" alt="">
+	</div>
+	<div class="col-xs-12 col-md-offset-1 col-md-10">
+		<p>{{platform.overview}}</p>
+	</div>
+	<div class="col-xs-12 col-md-offset-1 col-md-10 ">
+		<accordion close-others="true">
+			<accordion-group heading="{{'PLATFORM.BANNERS'|translate}}" is-open="status.isFirstOpen">
 				<div class="col-md-8 col-md-offset-2">
 					<carousel class="col-md-12" interval="interval">
-						<slide ng-repeat="fanart in platform.images.fanart" active="slide.active">
-							<img ng-src="{{fanart.url}}">
-		        	<!--<div class="carousel-caption">
-		           	   	    <h4>Slide {{$index+1}}</h4>
-		           	   	</div>-->
-		           	   </slide>
-		           	</carousel>
-		           </div>
-		       </accordion-group>
-		    </accordion>
+						<slide ng-repeat="banner in platform.images.banner" active="slide.active">
+							<img ng-src="{{banner.url}}">
+				            <!--<div class="carousel-caption">
+				         	   <h4>Slide {{$index+1}}</h4>
+				         	</div>-->
+				         </slide>
+				     </carousel>
+				</div>
+			</accordion-group>
+			<accordion-group heading="{{'PLATFORM.FANARTS'|translate}}">
+			<div class="col-md-8 col-md-offset-2">
+				<carousel class="col-md-12" interval="interval">
+					<slide ng-repeat="fanart in platform.images.fanart" active="slide.active">
+						<img ng-src="{{fanart.url}}">
+	        	<!--<div class="carousel-caption">
+	           	   	    <h4>Slide {{$index+1}}</h4>
+	           	   	</div>-->
+	           	   </slide>
+	           	</carousel>
+	           </div>
+	       </accordion-group>
+	    </accordion>
+	</div>
+	<div class="col-xs-12 col-md-offset-1 col-md-10" data-ng-init="getBestGamesByPlatform(platform._id)">
+		<h3 class="text-center">{{'BEST_GAMES' | translate}}</h3>
+		<div thumb class="animate-repeat" data-ng-repeat="game in games">
 		</div>
 	</div>
-	<div data-ng-init="getBestGamesByPlatform(platform._id)">
-			<h3 class="text-center">{{'BEST_GAMES' | translate}}</h3>
-			<div thumb class="animate-repeat" data-ng-repeat="game in games">
-			</div>	
-		</div>
-		<div class="cierre"></div>
+</div>
 	
