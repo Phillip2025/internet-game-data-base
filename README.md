@@ -1,4 +1,4 @@
-# internet-game-data-base
+# Internet Game Data Base
 
 Final grade project developed with JavaScript, HTML and CSS, just for learning purposes.
 
